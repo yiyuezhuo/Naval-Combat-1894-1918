@@ -1,0 +1,1466 @@
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System;
+using GeographicLib;
+using System.Xml.Serialization;
+
+using CoreUtils;
+using YYZ;
+
+namespace NavalCombatCore
+{
+    public partial class BatteryAmmunitionRecord
+    {
+        public int ArmorPiercing;
+        public int semiArmorPiercing;
+        public int common;
+        public int highExplosive;
+
+        public override string ToString()
+        {
+            return $"BatteryAmmunitionRecord({ArmorPiercing}/{semiArmorPiercing}/{common}/{highExplosive})";
+        }
+
+        public static Dictionary<AmmunitionType, string> ammunitionTypeAcronymMap = new()
+        {
+            { AmmunitionType.ArmorPiercing, "AP" },
+            { AmmunitionType.SemiArmorPiercing, "SAP" },
+            { AmmunitionType.Common, "COM" },
+            { AmmunitionType.HighExplosive, "HE" }
+        };
+
+        public string Summary()
+        {
+            var words = new List<string>();
+            foreach ((var w, var num) in new (string, int)[]{
+                ("AP", ArmorPiercing),
+                ("SAP", semiArmorPiercing),
+                ("COM", common),
+                ("HE", highExplosive)
+            })
+            {
+                if (num > 0)
+                {
+                    words.Add($"{w}: {num}");
+                }
+            }
+
+            return string.Join(", ", words);
+        }
+
+        public int GetValue(AmmunitionType ammo)
+        {
+            return ammo switch
+            {
+                AmmunitionType.ArmorPiercing => ArmorPiercing,
+                AmmunitionType.SemiArmorPiercing => semiArmorPiercing,
+                AmmunitionType.Common => common,
+                AmmunitionType.HighExplosive => highExplosive,
+                _ => 0
+            };
+        }
+
+        public int GetTotalValue() => ArmorPiercing + semiArmorPiercing + common + highExplosive;
+
+        public void CostOne(AmmunitionType ammo)
+        {
+            switch (ammo)
+            {
+                case AmmunitionType.ArmorPiercing:
+                    ArmorPiercing--;
+                    break;
+                case AmmunitionType.SemiArmorPiercing:
+                    semiArmorPiercing--;
+                    break;
+                case AmmunitionType.Common:
+                    common--;
+                    break;
+                case AmmunitionType.HighExplosive:
+                    highExplosive--;
+                    break;
+            }
+        }
+
+        public void CostPercent(double percent)
+        {
+            ArmorPiercing -= (int)Math.Ceiling(ArmorPiercing * percent);
+            semiArmorPiercing -= (int)Math.Ceiling(semiArmorPiercing * percent);
+            common -= (int)Math.Ceiling(common * percent);
+            highExplosive -= (int)Math.Ceiling(highExplosive * percent);
+        }
+
+        public bool IsEmpty() => GetTotalValue() == 0;
+    }
+
+    public enum MountStatus
+    {
+        Operational,
+        Disabled, // may restore after a period of time or by die roll
+        Destroyed
+    }
+
+    public class MountFiringRecord
+    {
+        [XmlAttribute]
+        public string firingTargetObjectId;
+
+        // public ShipLog GetFiringTarget() => EntityManager.Instance.GetOnMapShipLog(firingTargetObjectId);
+        public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(firingTargetObjectId);
+
+        [XmlAttribute]
+        public AmmunitionType ammunitionType;
+
+        [XmlAttribute]
+        public DateTime firingTime;
+
+        [XmlAttribute]
+        public double distanceYards;
+
+        [XmlAttribute]
+        public double hitProb;
+
+        [XmlAttribute]
+        public bool hit;
+
+        // Follows are valid only if hit == true
+
+        [XmlAttribute]
+        public DamageSchema DamageSchema;
+
+        public bool ShouldSerializeDamageSchema() => hit;
+
+        [XmlAttribute]
+        public ArmorLocation ArmorLocation; // Valid only for DamageSchema.Warship
+
+        public bool ShouldSerializeArmorLocation() => hit && (DamageSchema == DamageSchema.Warship || DamageSchema == DamageSchema.LandBattery);
+
+        [XmlAttribute]
+        public HitLocationMerchantVessel HitLocationMerchantVessel; // Valid only for DamageSchema.MerchantVessel
+
+        public bool ShouldSerializeHitLocationMerchantVessel() => hit && DamageSchema == DamageSchema.MerchantVessal;
+
+        [XmlAttribute]
+        public HitPenDetType HitPenDetType;
+
+        public bool ShouldSerializeHitPenDetType() => hit;
+
+        public RuleChart.ShellDamageResult ShellDamageResult;
+
+        public bool ShouldSerializeShellDamageResult() => hit;
+
+        [XmlAttribute]
+        public string DamageEffectId;
+
+        public bool ShouldSerializeDamageEffectId() => hit;
+
+
+        protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+        protected static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
+
+        public string Summary()
+        {
+            var target = GetFiringTarget();
+            var targetName = target?.namedShip?.name?.GetMergedName();
+
+            // return Localize(
+            //     "(DP={0}, Prob of DE={1})",
+            //     damagePoint,
+            //     damageEffectProb
+            // );
+
+            var ammoType = BatteryAmmunitionRecord.ammunitionTypeAcronymMap[ammunitionType];
+            // var hitDesc = hit ? $"hit {armorLocation} -> {hitPenDetType} -> {shellDamageResult}" : "miss";
+            var locStr = DamageSchema switch
+            {
+                DamageSchema.Warship => LocalizeEnum(ArmorLocation),
+                DamageSchema.LandBattery => LocalizeEnum(ArmorLocation),
+                DamageSchema.MerchantVessal => LocalizeEnum(HitLocationMerchantVessel),
+                _ => throw new NotImplementedException()
+            };
+            
+            var hitDesc = hit ? Localize(
+                "hit {0} -> {1} -> (DP={2}, Prob of DE={3})",
+                locStr,
+                LocalizeEnum(HitPenDetType),
+                ShellDamageResult.damagePoint,
+                ShellDamageResult.damageEffectProb
+            ) : Localize("miss");
+
+            var firingTimeStr = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(firingTime);
+            // return $"{firingTimeStr} {ammoType} -> {targetName}, {distanceYards} yards, Prob of Hit={hitProb * 100}%, {hitDesc} {damageEffectId}";
+            return Localize(
+                "{0} {1} -> {2}, {3} yards, Prob of Hit={4}% {5} {6}",
+                firingTimeStr,
+                ammoType,
+                targetName,
+                distanceYards,
+                hitProb * 100,
+                hitDesc,
+                DamageEffectId
+            );
+        }
+
+        public override string ToString() => Summary();
+    }
+
+    // public abstract partial class AbstractMountStatusRecord : UnitModule
+    public partial class AbstractMountStatusRecord : UnitModule
+    {
+        public string mountRecordId;
+        // public string objectId { get; set; }
+        public MountStatus status;
+        public int barrels;
+
+        public string firingTargetObjectId;
+        public ShipLog GetFiringTarget()
+        {
+            var target = EntityManager.Instance.GetOnMapShipLog(firingTargetObjectId);
+            if (target == null || !target.IsOnMap())
+                return null;
+            return target;
+        }
+
+        public virtual void ResetTargetting()
+        {
+            firingTargetObjectId = null;
+        }
+
+
+        public class MountRecordInfo<T> where T : MountRecord
+        {
+            public int recordIndex;
+            public T record;
+
+            public string Summary() // Used in Ship Log Editor
+            {
+                return $"#{recordIndex + 1} x{record.barrels} {record.mountLocationAcronym} ({record.SummaryArcs()})";
+            }
+        }
+
+
+
+    }
+
+    public partial class TorpedoMountStatusRecord : AbstractMountStatusRecord
+    {
+        [XmlIgnore]
+        public TorpedoMountRecord MountRecord { get; private set; }
+
+        public void Bind(TorpedoMountRecord record)
+        {
+            if (record == null || string.IsNullOrEmpty(mountRecordId) || record.objectId != mountRecordId)
+                throw new InvalidOperationException($"Invalid mount binding: {mountRecordId}");
+            MountRecord = record;
+        }
+
+        public int currentLoad;
+        public double reloadingSeconds;
+        public int reloadedLoad;
+
+        // public override IEnumerable<IObjectIdLabeled> GetSubObjects()
+        // {
+        //     yield break;
+        // }
+
+        public MountStatus GetModifiedStatus()
+        {
+            var s = status;
+            foreach (var ms in GetSubStates<ITorpedoMountStatusModifier>().Select(m => m.GetTorpedoMountStatus()))
+            {
+                s = DamageEffectChart.MaxEnum(s, ms);
+            }
+            return s;
+        }
+
+        public bool IsOperational()
+        {
+            return GetModifiedStatus() == MountStatus.Operational;
+        }
+
+        // UI/debug labels only. Combat reads MountRecord directly.
+        public MountRecordInfo<TorpedoMountRecord> GetTorpedoMountRecordInfo()
+        {
+            if (MountRecord == null) return null;
+            var records = EntityManager.Instance.GetParent<ShipLog>(this)?.shipClass?.torpedoSector.mountLocationRecords;
+            return new() { record = MountRecord, recordIndex = records?.IndexOf(MountRecord) ?? -1 };
+        }
+
+        // public override void ResetTargetting()
+        // {
+        //     base.ResetTargetting();
+        // }
+
+        public void ResetDamageExpenditureState()
+        {
+            ResetTargetting();
+
+            var info = MountRecord;
+            barrels = info.barrels;
+            currentLoad = barrels;
+            reloadingSeconds = 0;
+            reloadedLoad = barrels;
+        }
+
+        public void SetFiringTarget(ShipLog target)
+        {
+            firingTargetObjectId = target?.objectId;
+        }
+
+        public static double torpedoFiringAngleErrorDeg = 0d; // solver currently has internal error so don't introduce more error
+        // public static double torpedoFiringAngleErrorDeg = 0.1d;
+        // public static double torpedoFiringRangeCoef = 0.95d;
+
+        public static bool disableTorpedoReload = false; // TODO: Add manual torpedo firing like JTS 
+        // Explicitly assign aw, submerged, deck torpedo. Of course this can be done by reloading limit as well.
+
+        public void Step(double deltaSeconds)
+        {
+            // reload
+            var platform = EntityManager.Instance.GetParent<ShipLog>(this);
+            var record = MountRecord;
+
+            var requested = barrels - currentLoad;
+            var ammunitionCap = platform.torpedoSectorStatus.ammunition;
+
+            // var reloadLimitCap = record.reloadLimit == 0 ? int.MaxValue : record.reloadLimit - reloadedLoad;
+            int reloadLimitCap;
+            if(disableTorpedoReload)
+            {
+                reloadLimitCap = 0;
+            }
+            else
+            {
+                reloadLimitCap = record.reloadLimit == 0 ? int.MaxValue : record.reloadLimit - reloadedLoad;
+            }
+
+            var transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
+
+            if (transferred > 0)
+            {
+                reloadingSeconds += deltaSeconds;
+
+                while (reloadingSeconds >= 360 && transferred > 0) // 6min torpedo reload time (SK5 & DoB)
+                {
+                    requested = barrels - currentLoad;
+                    ammunitionCap = platform.torpedoSectorStatus.ammunition;
+                    transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
+
+                    currentLoad += transferred;
+                    platform.torpedoSectorStatus.ammunition -= transferred;
+                    reloadedLoad += transferred;
+
+                    reloadingSeconds -= 360;
+                }
+            }
+            else
+            {
+                reloadingSeconds = 0;
+            }
+
+            // fire on target
+            var tgt = GetFiringTarget();
+
+            var classSector = platform.shipClass.torpedoSector;
+
+            if (tgt == null || !IsOperational() || currentLoad <= 0 || !platform.torpedoSectorStatus.CanLaunch())
+                return;
+            var evaluation = TorpedoFireEvaluation.BestEligible(TorpedoFireEvaluation.Evaluate(
+                platform, tgt, this, TorpedoAttackContext.GetCurrentOrCreateTemp()));
+            if (evaluation == null) return;
+            var firingAngle = MeasureUtils.NormalizeAngle(evaluation.Azimuth
+                + RandomUtils.NextFloat(-torpedoFiringAngleErrorDeg, torpedoFiringAngleErrorDeg));
+
+            // Launch Torpedo!
+            var newTorpedo = new LaunchedTorpedo()
+            {
+                sourceName = classSector.name.Clone(),
+                damageClass = classSector.damageClass,
+                headingDeg = firingAngle,
+                position = platform.position.Clone(),
+                shooterId = platform.objectId,
+                desiredTargetObjectId = tgt.objectId,
+                mapState = MapState.Deployed,
+                speedKnots = evaluation.SpeedKnots,
+                maxRangeYards = evaluation.RangeYards,
+                movedDistanceYards = 0
+            };
+            NavalGameState.Instance.launchedTorpedos.Add(newTorpedo);
+            EntityManager.Instance.Register(newTorpedo, null);
+            tgt.MarkAttackedAtCurrentMinute();
+
+            currentLoad -= 1;
+            platform.torpedoSectorStatus.RecordLaunch();
+
+            platform.firingTorpedos += 1;
+            NavalGameState.Instance.PublishTorpedoLaunched(new TorpedoLaunchedEvent(
+                NavalGameState.Instance.scenarioState.dateTime, platform.objectId, newTorpedo.objectId,
+                platform.position.LatDeg, platform.position.LonDeg));
+        }
+    }
+
+    public partial class MountStatusRecord : AbstractMountStatusRecord // Battery
+    {
+        [XmlIgnore]
+        public GunMountRecord MountRecord { get; private set; }
+
+        public void Bind(GunMountRecord record)
+        {
+            if (record == null || string.IsNullOrEmpty(mountRecordId) || record.objectId != mountRecordId)
+                throw new InvalidOperationException($"Invalid mount binding: {mountRecordId}");
+            MountRecord = record;
+        }
+
+        public double processSeconds;
+        public AmmunitionType ammunitionType;
+
+        public List<MountFiringRecord> logs = new();
+
+        // public override IEnumerable<IObjectIdLabeled> GetSubObjects()
+        // {
+        //     yield break;
+        // }
+
+        // public void ClearLogs() => logs.Clear();
+
+        public override void ResetTargetting()
+        {
+            base.ResetTargetting();
+
+            processSeconds = 0;
+        }
+
+        public void TrimMissHitLogs()
+        {
+            logs.RemoveAll(x => !x.hit);
+        }
+
+        public MountStatus GetModifiedStatus()
+        {
+            var s = status;
+            foreach (var ms in GetSubStates<IBatteryMountStatusModifier>().Select(m => m.GetBatteryMountStatus()))
+            {
+                s = DamageEffectChart.MaxEnum(s, ms);
+            }
+            return s;
+        }
+
+        public bool IsOperational()
+        {
+            return GetModifiedStatus() == MountStatus.Operational;
+        }
+
+        public MountLocation GetMountLocation()
+        {
+            return MountRecord?.mountLocation ?? MountLocation.NotSpecified;
+        }
+
+        public enum BreakdownBlockedReason
+        {
+            None,
+            MountNotOperational,
+            NoTarget,
+            ContextNotResolved,
+            TargetSupplementaryMissing,
+            OutOfRange,
+            OutOfArc,
+            DoctrineBlocked,
+            AmmunitionUnavailable,
+            FireCheckFailed,
+            PenetrationTableMissing,
+            FireControlTableMissing
+        }
+
+        public class HitModifierLine
+        {
+            public string label;
+            public double value;
+            public bool isMultiplier;
+        }
+
+        public class HitProbabilityBreakdown
+        {
+            public bool canFire;
+            public BreakdownBlockedReason blockedReason;
+
+            public string targetObjectId;
+            public string targetName;
+
+            public bool hasMeasurement;
+            public double distanceYards;
+            public double bearingDeg;
+            public double? targetSpeedKnots;
+            public RangeBand? rangeBand;
+            public TargetAspect? targetAspect;
+
+            public double baseFireControlValue;
+            public double closeRangeOverrideDelta;
+            public double mountSubstateOffset;
+            public double mountSubstateCoef = 1d;
+            public double visibilityOffset;
+            public double dawnDuskOffset;
+            public double nightMoonlightOffset;
+            public double illuminationOffset;
+            public string illuminationReason;
+            public double evasiveActionOffset;
+            public double trackingOffset;
+            public bool trackingLocalControl;
+            public double underFireOffset;
+            public double overConcentrationOffset;
+            public double targetSizeOffset;
+            public double seaStateOffset;
+            public double crewQualityBase;
+            public double leaderNavalTacticalOffset;
+            public LeaderSkillLevel leaderNavalTacticalLevel;
+            public double fireControlRadarOffset;
+
+            public double finalFireControlScore;
+            public double hitProbabilityTableP100;
+            public double globalHitCoef;
+            public double finalHitProbability;
+
+            public string GetBreakdownSignature()
+            {
+                static string S(double v) => Math.Round(v, 3).ToString("0.###");
+                return string.Join("|", new[]
+                {
+                    blockedReason.ToString(),
+                    rangeBand?.ToString() ?? "N/A",
+                    targetAspect?.ToString() ?? "N/A",
+                    trackingLocalControl ? "LC" : "TRK",
+                    S(baseFireControlValue),
+                    S(closeRangeOverrideDelta),
+                    S(mountSubstateOffset),
+                    S(mountSubstateCoef),
+                    S(visibilityOffset),
+                    S(dawnDuskOffset),
+                    S(nightMoonlightOffset),
+                    S(illuminationOffset),
+                    S(evasiveActionOffset),
+                    S(trackingOffset),
+                    S(underFireOffset),
+                    S(overConcentrationOffset),
+                    S(targetSizeOffset),
+                    S(seaStateOffset),
+                    S(crewQualityBase),
+                    S(leaderNavalTacticalOffset),
+                    leaderNavalTacticalLevel.ToString(),
+                    S(fireControlRadarOffset),
+                    S(finalFireControlScore),
+                    S(hitProbabilityTableP100),
+                    S(globalHitCoef),
+                    S(finalHitProbability)
+                });
+            }
+        }
+
+        static string FormatSigned(double value)
+        {
+            var v = Math.Abs(value) < 0.0001d ? 0d : value;
+            return $"{(v >= 0 ? "+" : "")}{v:0.##}";
+        }
+
+        static string FormatNumber(double value)
+        {
+            var v = Math.Abs(value) < 0.0001d ? 0d : value;
+            return $"{v:0.##}";
+        }
+
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
+        static bool ShouldShowOffset(double value) => CoreParameter.Instance.batteryDetailShowNonActiveModifier || Math.Abs(value) > 0.0001d;
+        static bool ShouldShowCoef(double value) => CoreParameter.Instance.batteryDetailShowNonActiveModifier || Math.Abs(value - 1d) > 0.0001d;
+
+        static void AddModifierLine(List<string> lines, bool show, string key, params object[] args)
+        {
+            if (show)
+                lines.Add(Localize(key, args));
+        }
+
+        static string DescribeBlockedReason(BreakdownBlockedReason reason)
+        {
+            return reason switch
+            {
+                BreakdownBlockedReason.None => Localize("No blocking reason."),
+                BreakdownBlockedReason.MountNotOperational => Localize("Mount is not operational."),
+                BreakdownBlockedReason.NoTarget => Localize("No current firing target."),
+                BreakdownBlockedReason.ContextNotResolved => Localize("Mount context is not fully resolved."),
+                BreakdownBlockedReason.TargetSupplementaryMissing => Localize("Target supplementary data is unavailable."),
+                BreakdownBlockedReason.OutOfRange => Localize("Target is out of battery range."),
+                BreakdownBlockedReason.OutOfArc => Localize("Target is outside this mount's firing arc."),
+                BreakdownBlockedReason.DoctrineBlocked => Localize("Blocked by maximum firing distance doctrine."),
+                BreakdownBlockedReason.AmmunitionUnavailable => Localize("Ammunition is unavailable for current doctrine/ammo state."),
+                BreakdownBlockedReason.FireCheckFailed => Localize("Not included in current gunnery fire-check set."),
+                BreakdownBlockedReason.PenetrationTableMissing => Localize("No penetration table record for current distance."),
+                BreakdownBlockedReason.FireControlTableMissing => Localize("No fire control table record for target speed."),
+                _ => Localize("Blocked by an unknown reason.")
+            };
+        }
+
+        public static List<string> BuildHitProbabilityBreakdownLines(HitProbabilityBreakdown breakdown, IEnumerable<string> mountLabels = null)
+        {
+            var lines = new List<string>();
+
+            var targetName = string.IsNullOrWhiteSpace(breakdown?.targetName) ? Localize("[No Target]") : breakdown.targetName;
+            lines.Add(Localize("Hit probability of {0}:", targetName));
+
+            if (mountLabels != null)
+            {
+                var mountLabelList = mountLabels.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+                if (mountLabelList.Count > 0)
+                {
+                    lines.Add(Localize("Mounts: {0}", string.Join(", ", mountLabelList)));
+                }
+            }
+
+            if (breakdown != null && breakdown.hasMeasurement)
+            {
+                var targetSpeedLabel = breakdown.targetSpeedKnots.HasValue
+                    ? Localize("{0} knots", FormatNumber(breakdown.targetSpeedKnots.Value))
+                    : Localize("N/A");
+                lines.Add(Localize("{0} yards => {1} Range Band", FormatNumber(breakdown.distanceYards), breakdown.rangeBand?.ToString() ?? Localize("N/A")));
+                lines.Add(Localize("{0} deg => {1} Angle", FormatNumber(breakdown.bearingDeg), breakdown.targetAspect?.ToString() ?? Localize("N/A")));
+                lines.Add(Localize("Target Speed: {0}", targetSpeedLabel));
+            }
+
+            if (breakdown == null || !breakdown.canFire)
+            {
+                lines.Add("");
+                lines.Add(Localize("Final Hit Probability => {0}%", 0));
+                lines.Add(Localize("Reason: {0}", DescribeBlockedReason(breakdown?.blockedReason ?? BreakdownBlockedReason.ContextNotResolved)));
+                return lines;
+            }
+
+            lines.Add("");
+            var baseFireControlTargetSpeedLabel = breakdown.targetSpeedKnots.HasValue
+                ? Localize("{0} knots", FormatNumber(breakdown.targetSpeedKnots.Value))
+                : Localize("N/A");
+            lines.Add(Localize("Base Fire Control Value ({0}/{1}/{2}) => {3}", breakdown.rangeBand, breakdown.targetAspect, baseFireControlTargetSpeedLabel, FormatNumber(breakdown.baseFireControlValue)));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.closeRangeOverrideDelta), "Close Range Override: {0}", FormatSigned(breakdown.closeRangeOverrideDelta));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.mountSubstateOffset), "Mount/Substate FC Offset: {0}", FormatSigned(breakdown.mountSubstateOffset));
+            AddModifierLine(lines, ShouldShowCoef(breakdown.mountSubstateCoef), "Mount/Substate FC Coef: x{0}", FormatNumber(breakdown.mountSubstateCoef));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.visibilityOffset), "Visibility ({0}): {1}", NavalGameState.Instance.scenarioState.visibility, FormatSigned(breakdown.visibilityOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.dawnDuskOffset), "Dawn/Dusk (Sun Bearing Sector): {0}", FormatSigned(breakdown.dawnDuskOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.nightMoonlightOffset), "Night/Moonlight: {0}", FormatSigned(breakdown.nightMoonlightOffset));
+            if (ShouldShowOffset(breakdown.illuminationOffset))
+            {
+                lines.Add(string.IsNullOrWhiteSpace(breakdown.illuminationReason)
+                    ? Localize("Illumination/Afire: {0}", FormatSigned(breakdown.illuminationOffset))
+                    : Localize("Illumination/Afire ({0}): {1}", breakdown.illuminationReason, FormatSigned(breakdown.illuminationOffset)));
+            }
+            AddModifierLine(lines, ShouldShowOffset(breakdown.evasiveActionOffset), "Evasive Action: {0}", FormatSigned(breakdown.evasiveActionOffset));
+            if (breakdown.trackingLocalControl)
+            {
+                lines.Add(Localize("Tracking (Local Control): x{0}", "0.5"));
+            }
+            else
+            {
+                AddModifierLine(lines, ShouldShowOffset(breakdown.trackingOffset), "Tracking State: {0}", FormatSigned(breakdown.trackingOffset));
+            }
+            AddModifierLine(lines, ShouldShowOffset(breakdown.underFireOffset), "Under Fire (3+ ships): {0}", FormatSigned(breakdown.underFireOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.overConcentrationOffset), "Over Concentration: {0}", FormatSigned(breakdown.overConcentrationOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.targetSizeOffset), "Target Size: {0}", FormatSigned(breakdown.targetSizeOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.seaStateOffset), "Sea State: {0}", FormatSigned(breakdown.seaStateOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.crewQualityBase), "Crew Quality: {0}", FormatSigned(breakdown.crewQualityBase));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.leaderNavalTacticalOffset), "Leader Naval Tactical ({0}): {1}", breakdown.leaderNavalTacticalLevel, FormatSigned(breakdown.leaderNavalTacticalOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.fireControlRadarOffset), "Fire Control Radar: {0}", FormatSigned(breakdown.fireControlRadarOffset));
+
+            lines.Add("");
+            lines.Add(Localize("Final Fire Control Score => {0}", FormatNumber(breakdown.finalFireControlScore)));
+            lines.Add(Localize("Hit Probability Table => {0}%", FormatNumber(breakdown.hitProbabilityTableP100)));
+            AddModifierLine(lines, ShouldShowCoef(breakdown.globalHitCoef), "Global Hit Coef => x{0}", FormatNumber(breakdown.globalHitCoef));
+            lines.Add(Localize("Final Hit Probability => {0}%", FormatNumber(breakdown.finalHitProbability * 100d)));
+
+            return lines;
+        }
+
+        AmmunitionType ResolvePreferredAmmunitionType(FullContext ctx, ShipLog target)
+        {
+            if (ctx == null || target == null)
+                return ammunitionType;
+
+            var selected = ammunitionType;
+            var isAmmoSwitchAuto = ctx.shipLog?.doctrine?.GetAmmunitionSwitchAutomaticType() == AutomaticType.Automatic;
+            if (isAmmoSwitchAuto)
+            {
+                var tgtArmorScore = target.EvaluateArmorScore();
+                selected = tgtArmorScore < 0.5
+                    ? ctx.batteryStatus.ChooseAmmunitionByPreferredType(AmmunitionType.HighExplosive)
+                    : ctx.batteryStatus.ChooseAmmunitionByPreferredType(AmmunitionType.ArmorPiercing);
+            }
+
+            return selected;
+        }
+
+        bool IsAmmunitionFireable(FullContext ctx, AmmunitionType ammo)
+        {
+            var ammoFallbackable = ctx.shipLog.doctrine.GetAmmunitionFallbackable();
+            var hasPreferredAmmo = ctx.batteryStatus.ammunition.GetValue(ammo) > 0;
+            var hasAnyAmmo = ctx.batteryStatus.ammunition.GetTotalValue() > 0;
+            return hasPreferredAmmo || (ammoFallbackable && hasAnyAmmo);
+        }
+
+        HitProbabilityBreakdown BuildResolvedHitProbabilityBreakdown(
+            GunneryFireContext fireCtx,
+            FullContext ctx,
+            ShipLog target,
+            MeasureStats stats,
+            PenetrationTableRecord penRecord,
+            GunneryFireContext.ShipLogSupplementary targetSup)
+        {
+            var breakdown = new HitProbabilityBreakdown()
+            {
+                canFire = false,
+                blockedReason = BreakdownBlockedReason.FireControlTableMissing,
+                targetObjectId = target.objectId,
+                targetName = target.namedShip?.name?.GetMergedName(),
+                hasMeasurement = true,
+                distanceYards = stats.distanceYards,
+                bearingDeg = stats.observerToTargetBearingRelativeToBowDeg,
+                targetSpeedKnots = target.speedKnots,
+                rangeBand = penRecord.rangeBand,
+                targetAspect = stats.targetPresentAspectFromObserver,
+                globalHitCoef = CoreParameter.Instance.globalHitCoef,
+            };
+
+            // Fire Control Value Resolution
+            var fireControlRow = ctx.batteryRecord.fireControlTableRecords.FirstOrDefault(r => target.speedKnots <= r.speedThresholdKnot);
+            if (fireControlRow == null)
+                return breakdown;
+
+            breakdown.blockedReason = BreakdownBlockedReason.None;
+            breakdown.canFire = true;
+
+            var fireControlScoreRaw = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
+            breakdown.baseFireControlValue = fireControlScoreRaw;
+
+            // Positive Modifier
+            if (stats.distanceYards <= 4500 && penRecord.rangeBand == RangeBand.Short)
+            {
+                var closeRangeFireControlScore = RuleChart.GetCloseRangeFireControlScore(stats.distanceYards, target.speedKnots, stats.targetPresentAspectFromObserver);
+                var adjusted = Math.Max(fireControlScoreRaw, closeRangeFireControlScore);
+                breakdown.closeRangeOverrideDelta = adjusted - fireControlScoreRaw;
+                fireControlScoreRaw = adjusted;
+            }
+
+            // Negative Modifiers
+            var fireControlValueModifiers = GetSubStates<IFireControlValueModifier>().ToList();
+            breakdown.mountSubstateOffset = fireControlValueModifiers.Select(m => m.GetFireControlValueOffset()).Sum();
+            // var mountLocation = ctx.mountLocationRecord.mountLocation;
+            breakdown.mountSubstateOffset += GetSubStates<ILocalizedDirectionalFireControlValueModifier>().Select(
+                m => m.GetFireControlValueOffset(ctx.mountLocationRecord.mountLocation, stats.observerToTargetBearingRelativeToBowDeg)
+            ).DefaultIfEmpty(0).Min();
+
+            breakdown.mountSubstateCoef = fireControlValueModifiers.Select(m => m.GetFireControlValueCoef()).DefaultIfEmpty(1).Min();
+            fireControlScoreRaw = Math.Max((fireControlScoreRaw + breakdown.mountSubstateOffset) * breakdown.mountSubstateCoef, 0);
+
+            // var firedAtTargetBatteriesCount = targetSup.batteriesFiredAtMe.Count; // over-concentration
+            var fireControlScore = fireControlScoreRaw;
+
+            // Visibility - apply to all conditions
+            var visibility = NavalGameState.Instance.scenarioState.visibility;
+            if (visibility >= VisibilityDescription.VeryClear1)
+            {
+                // Code 8-9 (very clear): +1
+                breakdown.visibilityOffset = 1;
+            }
+            else if (visibility >= VisibilityDescription.LightHaze)
+            {
+                // Code 6-7 (normal): +0
+                breakdown.visibilityOffset = 0;
+            }
+            else if (visibility >= VisibilityDescription.ThinFog)
+            {
+                // Code 4-5 (haze): -2
+                breakdown.visibilityOffset = -2;
+            }
+            else
+            {
+                // Patchy fog or squalls
+                breakdown.visibilityOffset = -4;
+            }
+            fireControlScore += breakdown.visibilityOffset;
+
+            // d: additional for illumination (1b or 1c)
+            var targetIlluminationSup = fireCtx.GetOrCalculateTargetIlluminationSupplementary(target);
+            var targetSunState = targetIlluminationSup?.targetSunState;
+            if (targetIlluminationSup?.targetAfire == true && targetIlluminationSup.targetIlluminatedBySearchlight)
+                breakdown.illuminationReason = "Afire + Illuminated";
+            else if (targetIlluminationSup?.targetAfire == true)
+                breakdown.illuminationReason = "Afire";
+            else if (targetIlluminationSup?.targetIlluminatedBySearchlight == true)
+                breakdown.illuminationReason = "Illuminated";
+            else if (targetIlluminationSup?.targetUsingSearchlight == true)
+                breakdown.illuminationReason = "Using Searchlight";
+
+            if ((targetIlluminationSup?.fireControlOffset ?? 0) <= 0)
+            {
+                // b: additional for dawn/dusk conditions
+                // Target silhouetted by horizon: +1
+                // Target in darkness: -2
+                // None of above: +0
+                breakdown.dawnDuskOffset = NavalUtils.GetDawnDuskFireControlOffset(targetSunState, stats.observerToTargetTrueBearingRelativeToNorthDeg);
+
+                // c: Additional for night conditions
+                // No moonlight: -4
+                // Moonlight: -2
+                if (targetSunState.GetDayNightLevel() == DayNightLevel.Night)
+                {
+                    breakdown.nightMoonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
+                }
+            }
+
+            breakdown.illuminationOffset = targetIlluminationSup?.fireControlOffset ?? 0;
+            fireControlScore += breakdown.dawnDuskOffset;
+            fireControlScore += breakdown.nightMoonlightOffset;
+            fireControlScore += breakdown.illuminationOffset;
+
+            // TODO: Blind Fire
+            // Firing ship is using Blind Fire (target cannot be seen): -5
+
+            // TODO: Smoke (cumulative and does not apply to Blind Fire using Radar)
+            // Target obscured by battle smoke: -1
+            // Target obscured by funnel smokescreen: -3
+
+            // Evasive Action / Emergency Turn
+            // Target only in EA: -3
+            // Firing ship only in EA: -2
+            // Target and firing ships in EA: -8
+            var firingShipEA = ctx.shipLog.IsEvasiveManeuvering();
+            var targetShipEA = target.IsEvasiveManeuvering();
+            if (firingShipEA && targetShipEA)
+                breakdown.evasiveActionOffset = -8;
+            else if (targetShipEA)
+                breakdown.evasiveActionOffset = -3;
+            else if (firingShipEA)
+                breakdown.evasiveActionOffset = -2;
+            fireControlScore += breakdown.evasiveActionOffset;
+
+            // Target Acquisition
+            // Firing on different ship from last turn: -2
+            // Target ship hit by firing ship last turn: +2
+            var trackingStates = ctx.batteryStatus.fireControlSystemStatusRecords.Where(
+                fcs => fcs.IsOperational() && fcs.targetObjectId == target.objectId
+            ).Select(fcs => fcs.trackingState).ToList();
+
+            if (trackingStates.Count == 0)
+            {
+                breakdown.trackingLocalControl = true;
+                fireControlScore /= 2; // No FCS is tracking target => Local Control: /2 FCS (DoB: -5)
+                // Well, so Local Control may be better than BeginTracking according to Rulebook.
+            }
+            else
+            {
+                if (trackingStates.Contains(TrackingSystemState.Hitting))
+                    breakdown.trackingOffset = 2;
+                else if (trackingStates.Contains(TrackingSystemState.BeginTracking))
+                    breakdown.trackingOffset = -2;
+
+                fireControlScore += breakdown.trackingOffset;
+            }
+
+            // Firing ship under fire
+            // Under fire from 3 or more ships during this turn: -2
+            if (fireCtx.shipLogSupplementaryMap.TryGetValue(ctx.shipLog, out var meShipLogSup) &&
+                meShipLogSup.shipLogsFiredAtMe.Count >= 3)
+            {
+                breakdown.underFireOffset = -2;
+            }
+            fireControlScore += breakdown.underFireOffset;
+
+            // Over-Concentration & Barrage
+            // 1 ship firing at target with 1 battery: 0
+            // For each additional primary, secondary or teriary battery of any ship firing at same target: -1
+            // For every primary, secondary or tertiary battery of any ship using barrage fire at same target: -2
+            breakdown.overConcentrationOffset = Math.Min(0, -(targetSup.batteriesFiredAtMe.Count - 1));
+            fireControlScore += breakdown.overConcentrationOffset;
+
+            // Size of target ship
+            // TS (from Ship Log of target ship)
+            breakdown.targetSizeOffset = target.shipClass.targetSizeModifier;
+            fireControlScore += breakdown.targetSizeOffset;
+
+            // Pending: Spotter Aircraft
+            // Spotter aircraft (target visible from firing ship): +2
+
+            // Battle factor
+            // Sea State + Crew Rating (from Ship Log)
+            breakdown.seaStateOffset = RuleChart.ResolveSeaStateOffset(
+                ctx.shipClass.damagePoint,
+                NavalGameState.Instance.scenarioState.seaStateBeaufort,
+                out bool blocked
+            );
+            fireControlScore += breakdown.seaStateOffset; // Use -100 to soft block
+
+            breakdown.crewQualityBase = ctx.shipLog.GetCrewQualityBaseForFloatUsageDisplay();
+            breakdown.leaderNavalTacticalLevel = ctx.shipLog.GetLeaderNavalTacticalLevelForDisplay();
+            breakdown.leaderNavalTacticalOffset = ctx.shipLog.GetLeaderNavalTacticalOffsetForCrewQualityDisplay();
+            fireControlScore += breakdown.crewQualityBase + breakdown.leaderNavalTacticalOffset;
+
+            // Fire Control Radar Modifier
+            if (ctx.batteryRecord.hasFireControlRadar && !GetSubStates<IElectronicSystemModifier>().Any(m => m.IsFireControlRadarDisabled()))
+            {
+                breakdown.fireControlRadarOffset = ctx.batteryRecord.fireControlRadarModifier;
+            }
+            fireControlScore += breakdown.fireControlRadarOffset;
+
+            breakdown.finalFireControlScore = fireControlScore;
+            breakdown.hitProbabilityTableP100 = RuleChart.GetHitProbP100(fireControlScore);
+            breakdown.finalHitProbability = breakdown.hitProbabilityTableP100 * 0.01d * breakdown.globalHitCoef;
+
+            return breakdown;
+        }
+
+        FullContext ResolveContextFromFireContext(GunneryFireContext fireCtx)
+        {
+            if (fireCtx != null &&
+                fireCtx.mountStatusRecordMap.TryGetValue(this, out var mntSup) &&
+                mntSup?.ctx != null)
+            {
+                return mntSup.ctx;
+            }
+
+            return GetFullContext();
+        }
+
+        public HitProbabilityBreakdown GetCurrentHitProbabilityBreakdown(GunneryFireContext fireCtx = null)
+        {
+            if (fireCtx == null)
+            {
+                using (var tempFireCtx = GunneryFireContext.Begin())
+                {
+                    return GetCurrentHitProbabilityBreakdown(tempFireCtx);
+                }
+            }
+
+            var target = GetFiringTarget();
+            var breakdown = new HitProbabilityBreakdown()
+            {
+                canFire = false,
+                blockedReason = BreakdownBlockedReason.NoTarget,
+                targetObjectId = target?.objectId,
+                targetName = target?.namedShip?.name?.GetMergedName(),
+                targetSpeedKnots = target?.speedKnots,
+                globalHitCoef = CoreParameter.Instance.globalHitCoef,
+            };
+
+            if (!IsOperational())
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.MountNotOperational;
+                return breakdown;
+            }
+            if (target == null)
+                return breakdown;
+
+            var ctx = ResolveContextFromFireContext(fireCtx);
+            if (ctx == null || !ctx.fullyResolved)
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.ContextNotResolved;
+                return breakdown;
+            }
+
+            var shooter = ctx.shipLog;
+            if (shooter == null || ctx.batteryRecord == null || ctx.mountLocationRecord == null)
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.ContextNotResolved;
+                return breakdown;
+            }
+
+            var shooterTargetSup = fireCtx.GetOrCalcualteShipLogPairSupplementary(shooter, target);
+            var stats = shooterTargetSup.stats;
+            breakdown.hasMeasurement = true;
+            breakdown.distanceYards = stats.distanceYards;
+            breakdown.bearingDeg = stats.observerToTargetBearingRelativeToBowDeg;
+            breakdown.targetAspect = stats.targetPresentAspectFromObserver;
+
+            if (stats.distanceYards > ctx.batteryRecord.rangeYards)
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.OutOfRange;
+                return breakdown;
+            }
+
+            if (!ctx.batteryStatus.IsMaxDistanceDoctrineRespected(stats.distanceYards))
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.DoctrineBlocked;
+                return breakdown;
+            }
+
+            if (!ctx.mountLocationRecord.IsInArc(stats.observerToTargetBearingRelativeToBowDeg))
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.OutOfArc;
+                return breakdown;
+            }
+
+            var chosenAmmoType = ResolvePreferredAmmunitionType(ctx, target);
+            if (!IsAmmunitionFireable(ctx, chosenAmmoType))
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.AmmunitionUnavailable;
+                return breakdown;
+            }
+
+            if (!fireCtx.shipLogSupplementaryMap.TryGetValue(target, out var targetSup))
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.TargetSupplementaryMissing;
+                return breakdown;
+            }
+
+            var isFireChecked = targetSup.batteriesFiredAtMe.Contains(ctx.batteryStatus);
+            if (!isFireChecked)
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.FireCheckFailed;
+                return breakdown;
+            }
+
+            var penRecord = ctx.batteryRecord.penetrationTableRecords.FirstOrDefault(r => stats.distanceYards <= r.distanceYards);
+            if (penRecord == null)
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.PenetrationTableMissing;
+                return breakdown;
+            }
+            breakdown.rangeBand = penRecord.rangeBand;
+
+            return BuildResolvedHitProbabilityBreakdown(fireCtx, ctx, target, stats, penRecord, targetSup);
+        }
+
+        public string DescribeFireControlDetail()
+        {
+            var lines = new List<string>() { $"Detail: {objectId}" };
+            var breakdown = GetCurrentHitProbabilityBreakdown();
+            lines.AddRange(BuildHitProbabilityBreakdownLines(breakdown));
+
+            var subStateDescriptions = subStates
+                .Select(s => s?.Describe())
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .ToList();
+
+            if (subStateDescriptions.Count > 0)
+            {
+                if (lines.Count > 0 && lines[^1] != "")
+                    lines.Add("");
+                lines.Add("SubStates:");
+                lines.AddRange(subStateDescriptions.Select(desc => $"- {desc}"));
+            }
+
+            return string.Join("\n", lines);
+        }
+
+        public string DescribeDetail()
+        {
+            var lines = new List<string>();
+            var fireControlDetail = DescribeFireControlDetail();
+            if (!string.IsNullOrWhiteSpace(fireControlDetail))
+                lines.Add(fireControlDetail);
+
+            if (logs.Count > 0)
+            {
+                if (lines.Count > 0 && lines[^1] != "")
+                    lines.Add("");
+            }
+            lines.AddRange(logs.Select(r => r.Summary()));
+
+            return string.Join("\n", lines);
+        }
+
+        public static bool disableAmmunitionCost = false;
+
+
+        public void Step(double deltaSeconds)
+        {
+            if (!IsOperational())
+                return;
+
+            var tgt = GetFiringTarget();
+            if (tgt != null)
+            {
+                var fireCtx = GunneryFireContext.GetCurrentOrCreateTemp();
+
+                // var shooter = GetPlatform();
+                var ctx = fireCtx.mountStatusRecordMap[this].ctx;
+                if (!ctx.fullyResolved)
+                    return;
+
+                var isAmmoSwitchAuto = ctx.shipLog.doctrine.GetAmmunitionSwitchAutomaticType() == AutomaticType.Automatic;
+                if (isAmmoSwitchAuto)
+                {
+                    var tgtArmorScore = tgt.EvaluateArmorScore();
+                    if (tgtArmorScore < 0.5)
+                    {
+                        // ctx.batteryStatus.
+                        ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(AmmunitionType.HighExplosive);
+                    }
+                    else
+                    {
+                        ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(AmmunitionType.ArmorPiercing);
+                    }
+                    // ammunitionType
+                }
+
+                var ammoFallbackable = ctx.shipLog.doctrine.GetAmmunitionFallbackable();
+                bool IsAmmoFireable()
+                {
+                    var hasPreferredAmmo = ctx.batteryStatus.ammunition.GetValue(ammunitionType) > 0;
+                    var hasAnyAmmo = ctx.batteryStatus.ammunition.GetTotalValue() > 0;
+                    return hasPreferredAmmo || (ammoFallbackable && hasAnyAmmo);
+                }
+                if (!IsAmmoFireable()) // Re-check will be required in the following code
+                    return;
+
+                var shooter = ctx.shipLog;
+
+                var targetSup = fireCtx.shipLogSupplementaryMap[tgt];
+                var isFireChecked = targetSup.batteriesFiredAtMe.Contains(ctx.batteryStatus);
+                if (!isFireChecked) // Include range / arc / Doctrine check (though ammo should be checked dynamiclly since this loop will update ammo state)
+                    return;
+                var shooterTargetSup = fireCtx.GetOrCalcualteShipLogPairSupplementary(shooter, tgt);
+                var stats = shooterTargetSup.stats;
+
+                var penRecord = ctx.batteryRecord.penetrationTableRecords.FirstOrDefault(r => stats.distanceYards <= r.distanceYards);
+                if (penRecord == null)
+                    return;
+
+                // Rate of Fire Resolution
+
+                var shootsPer2MinBase = penRecord.rateOfFire;
+                var shootsPer2Min = shootsPer2MinBase * GetSubStates<IRateOfFireModifier>().Select(m => m.GetRateOfFireCoef()).DefaultIfEmpty(1).Min();
+
+                if (shootsPer2Min == 0)
+                    return;
+                var secondsPerShoot = 120 / shootsPer2Min;
+
+                var maskCheckResult = shooterTargetSup.GetOrCalcualteMaskCheckResult();
+                if (maskCheckResult.isMasked)
+                {
+                    secondsPerShoot *= 2; // ROF / 2 if masked
+                }
+
+                processSeconds += deltaSeconds;
+
+                // skip to log ammo consumption and firing "result"
+                while (processSeconds >= secondsPerShoot &&
+                        IsAmmoFireable()
+                )
+                {
+                    processSeconds -= secondsPerShoot;
+
+                    if (ammoFallbackable)
+                    {
+                        ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(ammunitionType); // TODO: Use doctrine suggested value
+                    }
+                    if (ctx.batteryStatus.ammunition.GetValue(ammunitionType) <= 0)
+                    {
+                        break;
+                    }
+
+                    if(!disableAmmunitionCost)
+                    {
+                        ctx.batteryStatus.ammunition.CostOne(ammunitionType);
+                    }
+
+                    ctx.shipLog.firingRounds += 1;
+                    var breakdown = BuildResolvedHitProbabilityBreakdown(fireCtx, ctx, tgt, stats, penRecord, targetSup);
+                    if (!breakdown.canFire)
+                    {
+                        if (breakdown.blockedReason == BreakdownBlockedReason.FireControlTableMissing)
+                            return;
+                        continue;
+                    }
+
+                    var hitProb = breakdown.finalHitProbability;
+                    var hit = (double)RandomUtils.rand.NextDouble() < hitProb;
+
+                    var logRecord = new MountFiringRecord()
+                    {
+                        firingTargetObjectId = tgt.objectId,
+                        ammunitionType = ammunitionType,
+                        firingTime = NavalGameState.Instance.scenarioState.dateTime,
+                        distanceYards = stats.distanceYards,
+                        hitProb = hitProb,
+                        hit = hit,
+                        // hitPenDetType = hitPenDetType,
+                        // armorLocation = armorLocation,
+                        // shellDamageResult = shellDamageResult
+                    };
+                    logs.Add(logRecord); // logRecord could be further modified in the following code
+                    tgt.MarkAttackedAtCurrentMinute();
+
+                    if (hit)
+                    {
+                        ProcessHit(tgt, ctx, shooter, stats, penRecord, logRecord);
+                    }
+
+                    NavalGameState.Instance.PublishGunneryShotResolved(new GunneryShotResolvedEvent(
+                        logRecord.firingTime,
+                        shooter.objectId,
+                        tgt.objectId,
+                        objectId,
+                        GunneryWeaponKind.Battery,
+                        logRecord.distanceYards,
+                        ctx.batteryRecord.shellSizeInch,
+                        logRecord.hit,
+                        shooter.position.LatDeg,
+                        shooter.position.LonDeg,
+                        tgt.position.LatDeg,
+                        tgt.position.LonDeg));
+                }
+            }
+            else
+            {
+                processSeconds = 0;
+            }
+        }
+
+        private void ProcessHit(ShipLog tgt, FullContext ctx, ShipLog shooter, MeasureStats stats, PenetrationTableRecord penRecord, MountFiringRecord logRecord)
+        {
+            var damageSchema = tgt.shipClass.GetDamageSchema();
+            logRecord.DamageSchema = damageSchema;
+            ctx.batteryStatus?.NotifyHitOnTarget(tgt);
+
+            if (damageSchema == DamageSchema.Warship) // Warship
+            {
+                var armorLocation = RuleChart.RollArmorLocation(stats.targetPresentAspectFromObserver, penRecord.rangeBand);
+                if (armorLocation != ArmorLocation.Ineffective)
+                {
+                    var armorLocationAngleType = RuleChart.armorLocationToAngleType.GetValueOrDefault(armorLocation);
+                    var refPenInch = penRecord.GetValue(armorLocationAngleType);
+                    var penInch = RuleChart.GetAdjustedPenetrationByType(ctx.batteryRecord.penetrationTableBaseType, refPenInch, ctx.batteryRecord.shellSizeInch, ammunitionType);
+
+                    var armorEffInch = tgt.shipClass.armorRating.GetArmorEffectiveInch(armorLocation);
+
+                    if (armorLocation == ArmorLocation.MainBelt)
+                    {
+                        var armorCoef = tgt.GetSubStates<IArmorModifier>().Select(m => m.GetMainBeltArmorCoef()).DefaultIfEmpty(1).Min();
+                        armorEffInch *= armorCoef;
+                    }
+
+                    var hitPenDetType = RuleChart.ResolveHitPenDetType(penInch, armorEffInch, ammunitionType);
+
+                    var shellDamageResult = RuleChart.ResolveShellDamageResult(ctx.batteryRecord.damageRating, hitPenDetType, ammunitionType);
+
+                    var tgtLog = new ShipLogBatteryHitLog()
+                    {
+                        shooterId = shooter.objectId,
+                        time = NavalGameState.Instance.scenarioState.dateTime,
+                        damageSchema = DamageSchema.Warship
+                    };
+
+                    tgtLog.hitPenDetType = logRecord.HitPenDetType = hitPenDetType;
+                    tgtLog.ArmorLocation = logRecord.ArmorLocation = armorLocation;
+                    logRecord.ShellDamageResult = shellDamageResult;
+                    tgtLog.damagePoint = shellDamageResult.damagePoint;
+
+                    tgt.AddLog(tgtLog);
+
+                    tgt.AddDamagePoint(shellDamageResult.damagePoint);
+
+                    string damageEffectId = null;
+                    // Process Damage Effect
+                    if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
+                    {
+                        var damageEffectCause = RuleChart.GetDamageEffectCauseWarship(armorLocation);
+                        var damageEffectContext = new DamageEffectContext()
+                        {
+                            subject = tgt,
+                            baseDamagePoint = shellDamageResult.damagePoint,
+                            ammunitionType = ammunitionType,
+                            shellDiameterInch = ctx.batteryRecord.shellSizeInch,
+                            hitPenDetType = hitPenDetType,
+
+                            damageSchema = damageSchema,
+                            cause = damageEffectCause,
+                            addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
+                        };
+
+                        damageEffectId = DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+
+                        tgtLog.damageEffectId = logRecord.DamageEffectId = damageEffectId;
+                    }
+
+                    var logger = ServiceLocator.Get<ILoggerService>();
+                    logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()}) (DE: {damageEffectId})");
+                }
+            }
+            else if (damageSchema == DamageSchema.MerchantVessal)
+            {
+                var hitLocationMerchantVessel = RuleChart.SampleHitLocationMerchantVessel();
+
+                var hitPenDetType = RuleChart.ResolveHitPenDetType(1, 0, ammunitionType);
+                var shellDamageResult = RuleChart.ResolveShellDamageResult(ctx.batteryRecord.damageRating, hitPenDetType, ammunitionType);
+
+                var tgtLog = new ShipLogBatteryHitLog()
+                {
+                    shooterId = shooter.objectId,
+                    time = NavalGameState.Instance.scenarioState.dateTime,
+                    damageSchema = DamageSchema.MerchantVessal
+                };
+
+                tgtLog.hitPenDetType = logRecord.HitPenDetType = hitPenDetType;
+                tgtLog.HitLocationMerchantVessel = logRecord.HitLocationMerchantVessel = hitLocationMerchantVessel;
+                logRecord.ShellDamageResult = shellDamageResult;
+                tgtLog.damagePoint = shellDamageResult.damagePoint;
+
+                tgt.AddLog(tgtLog);
+
+                tgt.AddDamagePoint(shellDamageResult.damagePoint);
+
+                string damageEffectId = null;
+                // Process Damage Effect
+                if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
+                {
+                    var causeMerchantVessel = RuleChart.GetDamageEffectCauseMerchantVessel(hitLocationMerchantVessel, tgt.cargoAreas);
+                    var damageEffectContext = new DamageEffectContext()
+                    {
+                        subject = tgt,
+                        baseDamagePoint = shellDamageResult.damagePoint,
+                        ammunitionType = ammunitionType,
+                        shellDiameterInch = ctx.batteryRecord.shellSizeInch,
+                        hitPenDetType = hitPenDetType,
+
+                        damageSchema = damageSchema,
+                        causeMerchantVessel = causeMerchantVessel,
+                    };
+
+                    damageEffectId = DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+
+                    tgtLog.damageEffectId = logRecord.DamageEffectId = damageEffectId;
+                }
+
+                var logger = ServiceLocator.Get<ILoggerService>();
+                logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()}) (DE: {damageEffectId})");
+
+            }
+            else if (damageSchema == DamageSchema.LandBattery)
+            {
+                var armorLocation = RuleChart.RollArmorLocationLandBattery(penRecord.rangeBand);
+                if (armorLocation != ArmorLocation.Ineffective)
+                {
+                    var armorLocationAngleType = RuleChart.armorLocationToAngleType.GetValueOrDefault(armorLocation);
+                    var refPenInch = penRecord.GetValue(armorLocationAngleType);
+                    var penInch = RuleChart.GetAdjustedPenetrationByType(ctx.batteryRecord.penetrationTableBaseType, refPenInch, ctx.batteryRecord.shellSizeInch, ammunitionType);
+
+                    var armorEffInch = tgt.shipClass.armorRating.GetArmorEffectiveInch(armorLocation);
+                    if (armorLocation == ArmorLocation.MainBelt)
+                    {
+                        var armorCoef = tgt.GetSubStates<IArmorModifier>().Select(m => m.GetMainBeltArmorCoef()).DefaultIfEmpty(1).Min();
+                        armorEffInch *= armorCoef;
+                    }
+
+                    var hitPenDetType = RuleChart.ResolveHitPenDetType(penInch, armorEffInch, ammunitionType);
+                    var shellDamageResult = RuleChart.ResolveShellDamageResult(ctx.batteryRecord.damageRating, hitPenDetType, ammunitionType);
+
+                    var tgtLog = new ShipLogBatteryHitLog()
+                    {
+                        shooterId = shooter.objectId,
+                        time = NavalGameState.Instance.scenarioState.dateTime,
+                        damageSchema = DamageSchema.LandBattery
+                    };
+
+                    tgtLog.hitPenDetType = logRecord.HitPenDetType = hitPenDetType;
+                    tgtLog.ArmorLocation = logRecord.ArmorLocation = armorLocation;
+                    logRecord.ShellDamageResult = shellDamageResult;
+                    tgtLog.damagePoint = shellDamageResult.damagePoint;
+
+                    tgt.AddLog(tgtLog);
+                    tgt.AddDamagePoint(shellDamageResult.damagePoint);
+
+                    string damageEffectId = null;
+                    if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
+                    {
+                        var damageEffectContext = new DamageEffectContext()
+                        {
+                            subject = tgt,
+                            baseDamagePoint = shellDamageResult.damagePoint,
+                            ammunitionType = ammunitionType,
+                            shellDiameterInch = ctx.batteryRecord.shellSizeInch,
+                            hitPenDetType = hitPenDetType,
+                            damageSchema = damageSchema,
+                            causeLandBattery = RuleChart.GetDamageEffectCauseLandBattery(armorLocation),
+                            addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
+                        };
+
+                        damageEffectId = DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+                        tgtLog.damageEffectId = logRecord.DamageEffectId = damageEffectId;
+                    }
+
+                    var logger = ServiceLocator.Get<ILoggerService>();
+                    logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()}) (DE: {damageEffectId})");
+                }
+            }
+        }
+
+        public class FullContext
+        {
+            public BatteryStatus batteryStatus;
+            public ShipLog shipLog;
+            public ShipClass shipClass;
+            public int batteryIdx;
+            public BatteryRecord batteryRecord;
+            public GunMountRecord mountLocationRecord;
+            public bool fullyResolved;
+
+            public void Build(MountStatusRecord mountStatus) // FIXME: Well the code smell is too much
+            {
+                batteryStatus = EntityManager.Instance.GetParent<BatteryStatus>(mountStatus);
+                if (batteryStatus == null)
+                    return;
+
+                shipLog = EntityManager.Instance.GetParent<ShipLog>(batteryStatus);
+                if (shipLog == null)
+                    return;
+
+                shipClass = shipLog.shipClass;
+                if (shipClass == null)
+                    return;
+
+                batteryIdx = shipLog.batteryStatus.IndexOf(batteryStatus);
+                if (batteryIdx < 0 || batteryIdx >= shipClass.batteryRecords.Count)
+                    return;
+
+                batteryRecord = shipClass.batteryRecords[batteryIdx];
+
+                mountLocationRecord = mountStatus.MountRecord;
+                fullyResolved = mountLocationRecord != null;
+            }
+        }
+
+        public FullContext GetFullContext()
+        {
+            var ctx = new FullContext();
+            ctx.Build(this);
+            return ctx;
+        }
+
+        // UI/debug labels only. Combat reads MountRecord directly.
+        public MountRecordInfo<GunMountRecord> GetMountRecordInfo()
+        {
+            if (MountRecord == null) return null;
+            var records = EntityManager.Instance.GetParent<BatteryStatus>(this)?.GetBatteryRecord()?.mountLocationRecords;
+            return new() { record = MountRecord, recordIndex = records?.IndexOf(MountRecord) ?? -1 };
+        }
+
+        public void SetFiringTarget(ShipLog target)
+        {
+            if (target == null)
+            {
+                firingTargetObjectId = null;
+                processSeconds = 0;
+                return;
+            }
+            if (target.objectId == firingTargetObjectId)
+            {
+                return;
+            }
+            firingTargetObjectId = target.objectId;
+            processSeconds = 0;
+        }
+
+        public void ResetDamageExpenditureState()
+        {
+            status = MountStatus.Operational;
+            
+            ResetTargetting();
+            barrels = MountRecord.barrels;
+
+            logs.Clear();
+        }
+    }
+}

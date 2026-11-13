@@ -1,0 +1,460 @@
+{
+  "entries": [
+    {
+      "file": "SJH - Battle of Pundo.scen.xml",
+      "historical": true,
+      "startUtc": "1894-07-24T23:45:00Z",
+      "recommendation": "recommended",
+      "names": {
+        "english": "SJH - Battle of Pundo",
+        "japanese": "SJH - 豊島沖海戦",
+        "chineseSimplified": "SJH - 丰岛海战",
+        "chineseTraditional": "SJH - 豐島海戰"
+      }
+    },
+    {
+      "file": "SJH - Battle of Yalu River.scen.xml",
+      "historical": true,
+      "startUtc": "1894-09-17T04:30:00Z",
+      "recommendation": "recommended",
+      "names": {
+        "english": "SJH - Battle of Yalu River",
+        "japanese": "SJH - 大東溝海戦(日清黄海海戦)",
+        "chineseSimplified": "SJH - 大东沟海战(甲午黄海海战)",
+        "chineseTraditional": "SJH - 大東溝海戰(甲午黃海海戰)"
+      }
+    },
+    {
+      "file": "SJH - Diversionary Bombardment of Port Arthur.scen.xml",
+      "historical": true,
+      "startUtc": "1894-11-20T23:00:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJH - Diversionary Bombardment of Port Arthur",
+        "japanese": "SJH - 旅順への陽動砲撃",
+        "chineseSimplified": "SJH - 旅顺牵制炮击",
+        "chineseTraditional": "SJH - 旅順牽制炮擊"
+      }
+    },
+    {
+      "file": "SJH - Torpedo Attack Day 1, Weihaiwei.scen.xml",
+      "historical": true,
+      "startUtc": "1895-02-04T18:00:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "SJH - Torpedo Attack Day 1, Weihaiwei",
+        "japanese": "SJH - 魚雷攻撃 第1日、威海衛",
+        "chineseSimplified": "SJH - 鱼雷夜袭 第1天，威海卫",
+        "chineseTraditional": "SJH - 魚雷攻擊 第1天，威海衛"
+      }
+    },
+    {
+      "file": "SJH - Torpedo Attack Day 2, Weihaiwei.scen.xml",
+      "historical": true,
+      "startUtc": "1895-02-05T20:00:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "SJH - Torpedo Attack Day 2, Weihaiwei",
+        "japanese": "SJH - 魚雷攻撃 第2日、威海衛",
+        "chineseSimplified": "SJH - 鱼雷夜袭 第2天，威海卫",
+        "chineseTraditional": "SJH - 魚雷攻擊 第2天，威海衛"
+      }
+    },
+    {
+      "file": "SJH - Escaping Torpedo Boats.scen.xml",
+      "historical": true,
+      "startUtc": "1895-02-07T00:45:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJH - Escaping Torpedo Boats",
+        "japanese": "SJH - 逃亡する魚雷艇",
+        "chineseSimplified": "SJH - 逃跑的鱼雷艇",
+        "chineseTraditional": "SJH - 逃跑的魚雷艇"
+      }
+    },
+    {
+      "file": "BRH - Battle of the Taku Forts.scen.xml",
+      "historical": true,
+      "startUtc": "1900-06-16T16:50:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "BRH - Battle of the Taku Forts",
+        "japanese": "BRH - 大沽砲台の戦い",
+        "chineseSimplified": "BRH - 大沽炮台之战",
+        "chineseTraditional": "BRH - 大沽砲臺之戰"
+      }
+    },
+    {
+      "file": "RJH - Torpedo Attack, Port Arthur.scen.xml",
+      "historical": true,
+      "startUtc": "1904-02-08T16:20:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "RJH - Torpedo Attack, Port Arthur",
+        "japanese": "RJH - 旅順港雷撃戦",
+        "chineseSimplified": "RJH - 旅顺雷击战",
+        "chineseTraditional": "RJH - 旅順雷擊戰"
+      }
+    },
+    {
+      "file": "RJH - Battle of Port Arthur.scen.xml",
+      "historical": true,
+      "startUtc": "1904-02-09T03:10:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "RJH - Battle of Port Arthur",
+        "japanese": "RJH - 旅順港海戦",
+        "chineseSimplified": "RJH - 旅顺海战",
+        "chineseTraditional": "RJH - 旅順海戰"
+      }
+    },
+    {
+      "file": "RJH - Chemulpo.scen.xml",
+      "historical": true,
+      "startUtc": "1904-02-09T03:30:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "RJH - Chemulpo",
+        "japanese": "RJH - 仁川海戦",
+        "chineseSimplified": "RJH - 仁川海战",
+        "chineseTraditional": "RJH - 仁川海戰"
+      }
+    },
+    {
+      "file": "RJH - Admiral Bezobrazov Strikes.scen.xml",
+      "historical": true,
+      "startUtc": "1904-06-14T22:15:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "RJH - Admiral Bezobrazov Strikes",
+        "japanese": "RJH - ベズオブラゾフ提督の攻撃",
+        "chineseSimplified": "RJH - 贝佐布拉佐夫出击",
+        "chineseTraditional": "RJH - 貝佐布拉佐夫出擊"
+      }
+    },
+    {
+      "file": "RJH - Battle of the Yellow Sea.scen.xml",
+      "historical": true,
+      "startUtc": "1904-08-10T04:30:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "RJH - Battle of the Yellow Sea",
+        "japanese": "RJH - 日露黄海海戦",
+        "chineseSimplified": "RJH - 日俄黄海海战",
+        "chineseTraditional": "RJH - 日俄黃海海戰"
+      }
+    },
+    {
+      "file": "RJH - Battle of Ulsan.scen.xml",
+      "historical": true,
+      "startUtc": "1904-08-13T20:20:00Z",
+      "recommendation": "recommended",
+      "names": {
+        "english": "RJH - Battle of Ulsan",
+        "japanese": "RJH - 蔚山沖海戦",
+        "chineseSimplified": "RJH - 蔚山海战",
+        "chineseTraditional": "RJH - 蔚山海戰"
+      }
+    },
+    {
+      "file": "RJH - The Battle of Tsushima.scen.xml",
+      "historical": true,
+      "startUtc": "1905-05-27T04:39:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "RJH - The Battle of Tsushima",
+        "japanese": "RJH - 日本海海戦",
+        "chineseSimplified": "RJH - 对马海战",
+        "chineseTraditional": "RJH - 對馬海戰"
+      }
+    },
+    {
+      "file": "WWH - Battle of Coronel.scen.xml",
+      "historical": true,
+      "startUtc": "1914-11-02T00:00:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "WWH - Battle of Coronel",
+        "japanese": "WWH - コロネル沖海戦",
+        "chineseSimplified": "WWH - 科罗内尔海战",
+        "chineseTraditional": "WWH - 科羅內爾海戰"
+      }
+    },
+    {
+      "file": "WWH - Battle of the Falklands.scen.xml",
+      "historical": true,
+      "startUtc": "1914-12-08T14:50:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "WWH - Battle of the Falklands",
+        "japanese": "WWH - フォークランド沖海戦",
+        "chineseSimplified": "WWH - 福克兰群岛海战",
+        "chineseTraditional": "WWH - 福克蘭群島海戰"
+      }
+    },
+    {
+      "file": "WWH - Jutland - The Run to the South.scen.xml",
+      "historical": true,
+      "startUtc": "1916-05-31T15:30:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "WWH - Jutland - The Run to the South",
+        "japanese": "WWH - ユトランド沖海戦 - 南への追撃",
+        "chineseSimplified": "WWH - 日德兰海战 - 向南追击",
+        "chineseTraditional": "WWH - 日德蘭海戰 - 向南追擊"
+      }
+    },
+    {
+      "file": "WWH - Jutland - The Battle Fleets Engage.scen.xml",
+      "historical": true,
+      "startUtc": "1916-05-31T18:00:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "WWH - Jutland - The Battle Fleets Engage",
+        "japanese": "WWH - ユトランド沖海戦 - 主力艦隊の交戦",
+        "chineseSimplified": "WWH - 日德兰海战 - 主力舰队交战",
+        "chineseTraditional": "WWH - 日德蘭海戰 - 主力艦隊交戰"
+      }
+    },
+    {
+      "file": "SJS - Battle of Yalu River (Beiyang with foreign ships).scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T04:30:00Z",
+      "recommendation": "recommended",
+      "names": {
+        "english": "SJS - Battle of Yalu River (Beiyang with foreign ships)",
+        "japanese": "SJS - 大東溝海戦（北洋水師に外国購入艦を追加）",
+        "chineseSimplified": "SJS - 大东沟海战 (北洋水师增加外购军舰)",
+        "chineseTraditional": "SJS - 大東溝海戰（北洋水師增補外購軍艦）"
+      }
+    },
+    {
+      "file": "SJS - Pacific Fleet in the First Sino-Japanese War.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T04:30:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Pacific Fleet in the First Sino-Japanese War",
+        "japanese": "SJS - 日清戦争における太平洋艦隊",
+        "chineseSimplified": "SJS - 甲午战争中的太平洋舰队",
+        "chineseTraditional": "SJS - 甲午戰爭中的太平洋艦隊"
+      }
+    },
+    {
+      "file": "TT - Tutorial 6 - Hierarchical Automation & AI.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T04:30:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "TT - Tutorial 6 - Hierarchical Automation & AI",
+        "japanese": "TT - チュートリアル 6 - 階層型自動化とAI",
+        "chineseSimplified": "TT - 教程 6 - 分层自动化与AI",
+        "chineseTraditional": "TT - 教程 6 - 分層自動化與AI"
+      }
+    },
+    {
+      "file": "TT - Tutorial 7 - Custom Scenario.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T04:30:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "TT - Tutorial 7 - Custom Scenario",
+        "japanese": "TT - チュートリアル 7 - カスタムシナリオ",
+        "chineseSimplified": "TT - 教程 7 - 自定义剧本",
+        "chineseTraditional": "TT - 教學 7 - 自訂劇本"
+      }
+    },
+    {
+      "file": "SJS - Fu Lung vs Saikyo Maru.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T06:30:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Fu Lung vs Saikyo Maru",
+        "japanese": "SJS - 福龍対西京丸",
+        "chineseSimplified": "SJS - 福龙 vs 西京丸",
+        "chineseTraditional": "SJS - 福龍 vs 西京丸"
+      }
+    },
+    {
+      "file": "SJS - Manual Single Ship Duel.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T06:30:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Manual Single Ship Duel",
+        "japanese": "SJS - 手動操作での1対1戦闘",
+        "chineseSimplified": "SJS - 手动单舰对决",
+        "chineseTraditional": "SJS - 手動單艦對決"
+      }
+    },
+    {
+      "file": "SJS - Ting Yuen vs Three View.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T06:30:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Ting Yuen vs Three View",
+        "japanese": "SJS - 定遠対三景艦",
+        "chineseSimplified": "SJS - 定远 vs 三景舰",
+        "chineseTraditional": "SJS - 定遠 vs 三景艦"
+      }
+    },
+    {
+      "file": "TT - Tutorial 1 - Single Ship.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T06:30:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "TT - Tutorial 1 - Single Ship",
+        "japanese": "TT - チュートリアル1 - 単艦",
+        "chineseSimplified": "TT - 教程1 - 单舰船",
+        "chineseTraditional": "TT - 教學1 - 單一艦船"
+      }
+    },
+    {
+      "file": "TT - Tutorial 2 - Ship Group.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T06:30:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "TT - Tutorial 2 - Ship Group",
+        "japanese": "TT - チュートリアル2 - 艦隊",
+        "chineseSimplified": "TT - 教程2 - 舰船编组",
+        "chineseTraditional": "TT - 教學2 - 艦隊編組"
+      }
+    },
+    {
+      "file": "TT - Tutorial 3 - Combat.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T06:30:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "TT - Tutorial 3 - Combat",
+        "japanese": "TT - チュートリアル3 - 戦闘",
+        "chineseSimplified": "TT - 教程3 - 战斗",
+        "chineseTraditional": "TT - 教學3 - 戰鬥"
+      }
+    },
+    {
+      "file": "SJS - Chih Yuan vs Naniwa.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T07:00:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Chih Yuan vs Naniwa",
+        "japanese": "SJS - 致遠対浪速",
+        "chineseSimplified": "SJS - 致远 vs 浪速",
+        "chineseTraditional": "SJS - 致遠 vs 浪速"
+      }
+    },
+    {
+      "file": "SJS - Quick Firing Gun vs Armor Calibration.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T08:00:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Quick Firing Gun vs Armor Effect Calibration",
+        "japanese": "SJS - 速射砲対装甲効果の較正",
+        "chineseSimplified": "SJS - 速射炮对装甲效果校准",
+        "chineseTraditional": "SJS - 速射砲對裝甲效果校準"
+      }
+    },
+    {
+      "file": "TT - Tutorial 5 - Manual Firing.scen.xml",
+      "historical": false,
+      "startUtc": "1894-09-17T08:00:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "TT - Tutorial 5 - Manual Firing",
+        "japanese": "TT - チュートリアル5 - 手動射撃",
+        "chineseSimplified": "TT - 教程5 - 手动射击",
+        "chineseTraditional": "TT - 教學5 - 手動射擊"
+      }
+    },
+    {
+      "file": "SJS - Nanyang Fleet vs 2nd Flying Squadron.scen.xml",
+      "historical": false,
+      "startUtc": "1895-02-01T00:00:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Nanyang Fleet vs 2nd Flying Squadron",
+        "japanese": "SJS - 南洋艦隊 vs 第二遊撃隊",
+        "chineseSimplified": "SJS - 南洋水师 vs 第二游击队",
+        "chineseTraditional": "SJS - 南洋水師 vs 第二遊擊隊"
+      }
+    },
+    {
+      "file": "SJS - Nanyang Fleet vs 3rd Flying Squadron.scen.xml",
+      "historical": false,
+      "startUtc": "1895-02-01T00:00:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Nanyang Fleet vs 3rd Flying Squadron",
+        "japanese": "SJS - 南洋艦隊 vs 第三遊撃隊",
+        "chineseSimplified": "SJS - 南洋水师 vs 第三游击队",
+        "chineseTraditional": "SJS - 南洋水師 vs 第三遊擊隊"
+      }
+    },
+    {
+      "file": "SJS - Ting Yuen vs Fuji.scen.xml",
+      "historical": false,
+      "startUtc": "1897-12-01T00:00:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Ting Yuen vs Fuji",
+        "japanese": "SJS - 定遠対富士",
+        "chineseSimplified": "SJS - 定远 vs 富士",
+        "chineseTraditional": "SJS - 定遠 vs 富士"
+      }
+    },
+    {
+      "file": "SJS - Hai Yung vs Three Views.scen.xml",
+      "historical": false,
+      "startUtc": "1899-09-17T04:00:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SJS - Hai Yung vs Three Views",
+        "japanese": "SJS - 海容型三艦 vs 三景艦",
+        "chineseSimplified": "SJS - 海容级三舰 vs 三景舰",
+        "chineseTraditional": "SJS - 海容級三艦 vs 三景艦"
+      }
+    },
+    {
+      "file": "BRS - Battle of Taku Roadstead.scen.xml",
+      "historical": false,
+      "startUtc": "1900-06-16T16:50:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "BRS - Battle of Taku Roadstead",
+        "japanese": "BRS - 大沽泊地の戦い",
+        "chineseSimplified": "BRS - 大沽河口之战",
+        "chineseTraditional": "BRS - 大沽口外海錨地之戰"
+      }
+    },
+    {
+      "file": "RJS - Six-Six Fleet vs Combined Pacific Fleets.scen.xml",
+      "historical": false,
+      "startUtc": "1904-05-27T04:30:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "RJS - Six-Six Fleet vs Combined Pacific Fleets",
+        "japanese": "RJS - 六六艦隊 vs 合同太平洋艦隊",
+        "chineseSimplified": "RJS - 六六舰队 vs 合并太平洋舰队",
+        "chineseTraditional": "RJS - 六六艦隊 vs 合併太平洋艦隊"
+      }
+    },
+    {
+      "file": "TT - Tutorial 4 - Formation Control.scen.xml",
+      "historical": false,
+      "startUtc": "1904-08-10T04:53:00Z",
+      "recommendation": "discouraged",
+      "names": {
+        "english": "TT - Tutorial 4 - Formation Control",
+        "japanese": "TT - チュートリアル4 - 隊形制御",
+        "chineseSimplified": "TT - 教程4 - 队形控制",
+        "chineseTraditional": "TT - 教學4 - 隊形控制"
+      }
+    }
+  ]
+}

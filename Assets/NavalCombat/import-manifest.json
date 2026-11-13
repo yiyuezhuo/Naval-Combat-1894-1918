@@ -1,0 +1,568 @@
+{
+  "source_head": "e420f1478a1ca5accecf337fff838589dea61648",
+  "source_worktree_dirty": true,
+  "note": "Imported working-tree snapshot, including existing uncommitted naval changes; not strictly the HEAD tree. Hashes identify the imported files. Manifest excludes Unity glue without a source counterpart.",
+  "files": [
+    {
+      "target": "Assets/NavalCombat/Application/DisplayNames.cs",
+      "sha256": "ce4ebe6d916a6ffcd796a4d341e736550723acc0346098ec5e99ef20895710aa",
+      "source": "game/src/NavalCombat.Application/DisplayNames.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Application/Persistence/FileScenarioDataSource.cs",
+      "sha256": "844809313612ef16d4ad040967afbd671dedca5fe0284ac0362bd626ebd79099",
+      "source": "game/src/NavalCombat.Application/Persistence/FileScenarioDataSource.cs",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Application/Runtime/BattleSession.cs",
+      "sha256": "d6ccc9d4501e5420bc002bb0bcff5c85100cc477a3ab616cc56c93463cbf7b56",
+      "source": "game/src/NavalCombat.Application/Runtime/BattleSession.cs",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Application/Scenarios/ScenarioDataSource.cs",
+      "sha256": "f35c8593acdc042e6e886dfc71b7b118a874787b830b5c7d27beefd2ecba5c58",
+      "source": "game/src/NavalCombat.Application/Scenarios/ScenarioDataSource.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Application/Scenarios/ScenarioPackage.cs",
+      "sha256": "43007c83f6a19bb7e5b49cf09d0a5b5b15154357bd24da998be9cadf3c27b792",
+      "source": "game/src/NavalCombat.Application/Scenarios/ScenarioPackage.cs",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Application/ShipClassPlaceholderRenderAdapter.cs",
+      "sha256": "c90a1840fab81ef9ce66487b66c5310a9996636cfbb2b72e99652903f0e6ae67",
+      "source": "game/src/NavalCombat.Application/ShipClassPlaceholderRenderAdapter.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/CoreUtils/AbstractGameSate.cs",
+      "sha256": "638217251d8cddeacaddbeb10c7ea3a1b541033990d6603993b02c8a6dcc4b28",
+      "source": "game/src/NavalCombat.Core/CoreUtils/AbstractGameSate.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/CoreUtils/Commons.cs",
+      "sha256": "91619a724f52e68766e6b4b58764628975a802494d05156e3845818917c7cb1c",
+      "source": "game/src/NavalCombat.Core/CoreUtils/Commons.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/CoreUtils/EntityManager.cs",
+      "sha256": "e4bd1b3b0feb6a37ed578d1fadf61581a5b8946915677c3ed7cc0728ec57a6cb",
+      "source": "game/src/NavalCombat.Core/CoreUtils/EntityManager.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/CoreUtils/GlobalString.cs",
+      "sha256": "b4eacc5a32aa759dc35377f488a2fa9a3b9702cbb24a235abd7417f24b8667b7",
+      "source": "game/src/NavalCombat.Core/CoreUtils/GlobalString.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/CoreUtils/LazyLocalizedString.cs",
+      "sha256": "c50b41a2f06d1fa825a892155ea2a1cb8fa7e088f623052e8873818c7a28be0c",
+      "source": "game/src/NavalCombat.Core/CoreUtils/LazyLocalizedString.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/CoreUtils/PathReference.cs",
+      "sha256": "bca1a653265ab9024c2f8e79343cd4b424beb0ea80b9b811cd4836add7eb5548",
+      "source": "game/src/NavalCombat.Core/CoreUtils/PathReference.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/AutoDeployment.cs",
+      "sha256": "6ecb7c124ed4ea236d3b93134676f98dac8691b6bb5a476ff7ad7640d5adddc6",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/AutoDeployment.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/Ballistics/NaabLike/NaabLikeBallistics.cs",
+      "sha256": "cc1fd40b9712a39ba20bdc3394653714848e85024642218980125e544c603f2a",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/Ballistics/NaabLike/NaabLikeBallistics.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/Ballistics/NaabLike/NaabLikeEmbeddedData.cs",
+      "sha256": "9051129834fc2715885843526e3df8bbc9e096ec2bf658c4858569313892318c",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/Ballistics/NaabLike/NaabLikeEmbeddedData.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/BatteryStatus.cs",
+      "sha256": "37a9566301d1acfa644e789707c86be58e28e4963656df12f309a7324ce6063a",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/BatteryStatus.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/CoreParameter.cs",
+      "sha256": "e1af92273ea36cddfa52cbcf1acb9e58e8f4f8620e5d71a2c3716758be942f39",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/CoreParameter.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/DamageEffects.cs",
+      "sha256": "51964d02856aa9094fe8bde24c13eafa74ae7fd75a674620fbf7516155ff8d65",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/DamageEffects.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/Doctrine.cs",
+      "sha256": "14fd5c3609eca9f2f434c53cdc1b9aa12a3893618f2dd5b5a317835bd9b5a519",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/Doctrine.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/DoubleVector2.cs",
+      "sha256": "c5d4c71157f006d660b8acac61a7184d1fe5a13ed2e20bd9c47c21585c10b55f",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/DoubleVector2.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ElevationService.cs",
+      "sha256": "ba2204a3ead24de365e1b674c17de2edc5992baefc2fee22dcf92c7a96f58359",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ElevationService.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/EntityManagerExtension.cs",
+      "sha256": "ae1a92084ab7cbbe559735934a6a0facd5faa18d4fea503c5a4b319b9c477fc3",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/EntityManagerExtension.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ExternalBallistics.cs",
+      "sha256": "f7dd2417245f0cd2f8f82996c1d145830d1fae47c17adeed58bceb185a31fd8a",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ExternalBallistics.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/FireControlSystemStatusRecord.cs",
+      "sha256": "5dfcbbe45b8ce9f4f29b603d45769d73c25cc3f1a584ed2f3376e0c5260bc8b4",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/FireControlSystemStatusRecord.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/GunneryShotResolved.cs",
+      "sha256": "f688fa96c7ab7c7bc3a6ea0c0381568bf2734b473327f886c35d07a49083a912",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/GunneryShotResolved.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/LatLon.cs",
+      "sha256": "14bf8b068dfe2f1fafaac5a70bd4cce94292c1188712ac177fd3c6dd6e420c0e",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/LatLon.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/LaunchedTorpedo.cs",
+      "sha256": "8d1c0cca29b26533c93464b72541ec955e112ef7dc1788fd55d80e4bac9f1993",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/LaunchedTorpedo.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/Leader.cs",
+      "sha256": "9a5c213443ea78d65b5f5ef4cd099ea0da1fabc490f8f2d5c5bb15d18b03e2c5",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/Leader.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/LowLevelCoursePlanner.cs",
+      "sha256": "8c33da3857329a324cc3b5238aef66de06042008c7161f2c826c1a8780471ff7",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/LowLevelCoursePlanner.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/MeasureUtils.cs",
+      "sha256": "2a38d9ad80982a0e46b9c314a0db477b89323b6f44443b706e056e6775419a68",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/MeasureUtils.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/Modifier.cs",
+      "sha256": "546c6f7793907e49d16bfb6a7dc0fb731d8b9b077ef54ab4c3d15682dfc09659",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/Modifier.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/MountStatusRecord.cs",
+      "sha256": "59535718cf1cc66cfb814de0fbbdb89aad8333a0719ce53899aa24ce20f9882a",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/MountStatusRecord.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/NamedShip.cs",
+      "sha256": "59cad1ae80c3f5f0d94e807c3c90fbea9d9bf487dcce11bdaf2b38a0c709b62d",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/NamedShip.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/NavalCombatCoreUtils.cs",
+      "sha256": "e866080fdd9443caf5ebe5c47591d82789afff49e13e190803307566d2d2f371",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/NavalCombatCoreUtils.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/NavalGameState.cs",
+      "sha256": "20188e951e84c525843e451fb7f07ff9f3d0439565a796a0816b4126fae26e24",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/NavalGameState.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/NavalUtils.cs",
+      "sha256": "8a0371e9615e7e9bb7b4cfa95c077052115d1f4531e22c46f72f19be3fe9bccc",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/NavalUtils.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ObstacleAvoidChecker.cs",
+      "sha256": "20786ed284b1b38880ade72fec7ce1c8d52362dac332af34809307cd215c75cd",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ObstacleAvoidChecker.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/PrecalculationContext.cs",
+      "sha256": "4b4d8b7e1f8a19f8cdd9afcfa8a6f7962183f89a5e17a1761601c24c04a3a8f4",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/PrecalculationContext.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/RandomUtils.cs",
+      "sha256": "845c0deb74b56f84499b3338e0bcc288cf3302e1698542ec837a1da01f15f37a",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/RandomUtils.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/RapidFiringStatus.cs",
+      "sha256": "c622a90a14be4ef67fbc908a71657cccf9fac1ef391a1f9ea4abd9136df5e4db",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/RapidFiringStatus.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/RuleChart.cs",
+      "sha256": "efadfefa094dad55de7e6596d23b6a2232759a67998691a3c29e096e661edc87",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/RuleChart.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ScenarioDynamicSetupGenerator.cs",
+      "sha256": "709d0815b2ac9457d2aa45c118de20f21e5e50dc1039c36985987196065591a1",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ScenarioDynamicSetupGenerator.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ScenarioState.cs",
+      "sha256": "64df2f178e8b57a1becdde470b0969a2a873cf4ba8dccbe2f787ac93f998ba6d",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ScenarioState.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ScenarioState.LocationLabels.cs",
+      "sha256": "3cbfb32246670e35fc776eeb5ed7a32b4ca0808a1542318f547e993b2aec021b",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ScenarioState.LocationLabels.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ServiceLocatorAdapt.cs",
+      "sha256": "8e245b17a03df9a90e7e8ab2297bbe690eadd68679a4f0be16396fd5c7eb35f4",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ServiceLocatorAdapt.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ShipClass.cs",
+      "sha256": "59acdfb5ab34e61ec089c7b7d3a23d2fb050d9fbdc943d83a802a6949ebc8935",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ShipClass.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ShipClassGraphicLayout.cs",
+      "sha256": "5818dac007b4ab41eb519278119dc01d16dd0a439b82a1cdd56b5c19ae759308",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ShipClassGraphicLayout.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ShipClassPlaceholderRendererCore.cs",
+      "sha256": "f9332311d0443ff376d0a2e2f801b1ff21dbe02b29d4b3108cbdff3ead249018",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ShipClassPlaceholderRendererCore.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ShipGraphicLayoutBuilder.cs",
+      "sha256": "ff5b204df30f6a73ac3d411b975dfbb53fb4b9c0a0705ba4b0281a3a7e35ffe7",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ShipGraphicLayoutBuilder.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ShipGroup.cs",
+      "sha256": "ccb6e67b8c94f811730143b4a0f1fb793d6c277fed8c6b5d73b1bea250515f90",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ShipGroup.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/ShipLog.cs",
+      "sha256": "59e12174828b65369ddbf394ba8fe21513618aa6e8d47b82951c3ad895afd5e5",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/ShipLog.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/TerminalBallistics.cs",
+      "sha256": "2675f2307267e687733094553d481f9a637620e18458d420277c088c099792f1",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/TerminalBallistics.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/TorpedoFireEvaluation.cs",
+      "sha256": "637bf7563ba888887ef70af645b2ea9e15d1811855634d60b6a2b42a17d7951e",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/TorpedoFireEvaluation.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/TorpedoFirePolicy.cs",
+      "sha256": "792f1ca9bfec1bc5808f7f6aae897c998bdb93a2f0f848601e023b0bbe25a1ed",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/TorpedoFirePolicy.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/TorpedoLaunched.cs",
+      "sha256": "a942ac4054355463a75353f2f904ca4fc25c16a387f55a1914979401f5bb2990",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/TorpedoLaunched.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/UnitModule.cs",
+      "sha256": "92a1bb0a90ae12201c9ce5795c00f41bd37c521563faf7d02e0116d84c8e2bde",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/UnitModule.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/VictoryStatus.cs",
+      "sha256": "33e25f5dca0755945aa4bf8ffe8122bd38fb535214d236841711da6a29e0855f",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/VictoryStatus.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/NavalCombatCore/WeaponTargetAssignmentSolver.cs",
+      "sha256": "c878db18f9890efba0868b2c57d6582f959100d2180586619c062aba3dddb3f6",
+      "source": "game/src/NavalCombat.Core/NavalCombatCore/WeaponTargetAssignmentSolver.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/BallisticCommon.cs",
+      "sha256": "efff14509aafbc521c0cae72dddb028f15c79637a5b255274487f0cfdc02e777",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/BallisticCommon.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/BallisticOptions.cs",
+      "sha256": "52c12a1d78b0ab19144ee67e4d70dbab5003e553e06c7bc52404521bbb40f122",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/BallisticOptions.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/BallisticProgress.cs",
+      "sha256": "e775abf82d6448617b82d52d542ea984fae6b16e77d0bf677aff2758352dfd2e",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/BallisticProgress.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/Facehard69Legacy.cs",
+      "sha256": "233762c01b0e9e91f6b4309ab24ec32e39eb7c9e9ede95474337e3cf6d4bc1b8",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/Facehard69Legacy.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/FacehardBridge.cs",
+      "sha256": "f2361c538f0a8c1811b9d68a21c32bcae41796224ac93339397ba6fc290845c1",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/FacehardBridge.cs",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/FacehardCalculator.cs",
+      "sha256": "505d303950c42f452290be7cc93e3bc56728e9e573f77558bbe6a73c16206e78",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/FacehardCalculator.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/Jbm.cs",
+      "sha256": "23a6d328173eccb7fbc4f66096716460435c5dfd817680eb3bbf2fd3380680f8",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/Jbm.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/M79.cs",
+      "sha256": "cd1b22f8c6cdd0e82dd3243d7344364414762a40dec3aed43f434252b9e437a3",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/M79.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/McCoy.cs",
+      "sha256": "735995a077d87b85297226b74b93bac9cad7dc71e3a5fff7b1fc2bca5f3333ac",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/McCoy.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/McCoyPlus.cs",
+      "sha256": "63ab31126acdeee82700298e98b45101e9141125b65147e6c508139f20f4ca0d",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/McCoyPlus.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/McCoyPlusFacehard.cs",
+      "sha256": "c336b4cecac610e74828e0157eaf90936af5ce1749b9fd807bf43440f4352b32",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/McCoyPlusFacehard.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/McCoyPlusFacehardM79.cs",
+      "sha256": "fbbe7f6ae2874a69bbb7a1c1f7f313e9a4cdaa4b36a33da61bb9a3f297913353",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/McCoyPlusFacehardM79.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/Ballistic/McCoyPlusM79.cs",
+      "sha256": "6b3d745c2487b037c026f6050cfff5e02c7de91b387fd9aad6eeeb09ef6ed476",
+      "source": "game/src/NavalCombat.Core/YYZLib/Ballistic/McCoyPlusM79.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/ServiceLocator.cs",
+      "sha256": "d609b448ccf2378ab25a35529c6c403dcdc5b89e024180fde92c3a1545b15a81",
+      "source": "game/src/NavalCombat.Core/YYZLib/ServiceLocator.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Core/YYZLib/XmlUtils.cs",
+      "sha256": "aa1330ac3828cc60abbdcdcb85bbd5fa29bb306234f2faeeb98583129450c03e",
+      "source": "game/src/NavalCombat.Core/YYZLib/XmlUtils.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/GunneryVisualTracker.cs",
+      "sha256": "4872d706520cfa6b2ba10e9e842e0fec297801917649d7eebbc9b106e691e5fd",
+      "source": "game/src/NavalCombat.Avalonia/Services/GunneryVisualTracker.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/NavalSceneInstance.cs",
+      "sha256": "6074029ede1523b52f6d9ea1b82478c41f44a9b1cdbd8bddebddccb3fe576be7",
+      "source": "game/src/NavalCombat.Avalonia/Controls/NavalSceneInstance.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/NavalShipMesh.cs",
+      "sha256": "6f03d093cbd20f10e279531b0d4509219235120ff59652a954bdd9bb4c2c2c66",
+      "source": "game/src/NavalCombat.Avalonia/Controls/NavalShipMesh.cs",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/PlanarShipCollisionService.cs",
+      "sha256": "79574bc7e2f719889be8886e87b52926777876b55e209ce0b32dfe992c647393",
+      "source": "game/src/NavalCombat.Avalonia/Services/PlanarShipCollisionService.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/ShipDetailRenderer.cs",
+      "sha256": "6f4414bc1a3d016d1311c38989c00f29791ca9f4632818b6445f535cce9c3248",
+      "source": "game/src/NavalCombat.Avalonia/Services/ShipDetailRenderer.cs",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/ShipLayoutMesh.cs",
+      "sha256": "977b96b7fe4a753de00994d607eecd2b9e59e908fafe50b6a176ff1977a95575",
+      "source": "game/src/NavalCombat.Avalonia/Controls/ShipLayoutMesh.cs",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/SketchMesh.cs",
+      "sha256": "4ea0ae78cd5863c7f7ee84e6c012b455a0dc6ea4bcf9395788c60c4e20740a09",
+      "source": "game/src/Shared/SketchMesh.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/StraightLineOperationalRoutePlanner.cs",
+      "sha256": "f9a753e80f821a0adde299856a3ce2745bcc74f713685ceee6a9e18d329bade1",
+      "source": "game/src/NavalCombat.Avalonia/Services/StraightLineOperationalRoutePlanner.cs",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/Presentation/DossierModels.cs",
+      "source": "game/src/NavalCombat.Avalonia/ViewModels/DossierModels.cs",
+      "sha256": "2f94499b61911c39752dc36a19ba8330de91a767343e74beab69886e40b74ad0",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/Presentation/ShipHistoryBuilder.cs",
+      "source": "game/src/NavalCombat.Avalonia/ViewModels/ShipHistoryBuilder.cs",
+      "sha256": "6667c43677f1c5d5eafa3b11945630c3342623650c526f152aeeaca0ba5e6fad",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/Presentation/TorpedoAnalysisSnapshot.cs",
+      "source": "game/src/NavalCombat.Avalonia/ViewModels/TorpedoAnalysisSnapshot.cs",
+      "sha256": "1678311f6d5e6e160251204a1f51076dc62bcb2f2f0d9949824e07a360ae99e3",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/Presentation/NavalDisplayNames.cs",
+      "source": "game/src/NavalCombat.Avalonia/Resources/NavalDisplayNames.cs",
+      "sha256": "840034024b8c6e27273bff71c9f6fadee96c1ffbf43e8590c13ade010208e803",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/Presentation/NavalMapShipNames.cs",
+      "source": "game/src/NavalCombat.Avalonia/Resources/NavalMapShipNames.cs",
+      "sha256": "c4b80b62c9b36a2d252f3ee5401bc47d4e29c2abb77793e3e69abd4d41e53c2a",
+      "matches_current_source_bytes": true
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/NavalDamageReadout.cs",
+      "source": "game/src/NavalCombat.Avalonia/ViewModels/MainWindowViewModel.cs",
+      "sha256": "28c9631146f389e740b074ff32dd55fb77483a89fcfd53d0c7fd2404b6ebe3f9",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/NavalWeaponReadout.cs",
+      "source": "game/src/NavalCombat.Avalonia/ViewModels/MainWindowViewModel.cs",
+      "sha256": "2f921b5176e35c8edc5df4b029cfb1170dd2a2c106f511d8293e5e5cdd93c1ad",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/Presentation/WeaponStatusModels.cs",
+      "source": "game/src/NavalCombat.Avalonia/ViewModels/MainWindowViewModel.cs",
+      "sha256": "10852d0d248f6725bab56b1e9f00625be96cd6b774e2f2033637c4290671bd68",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/NavalPickMesh.cs",
+      "source": "game/src/NavalCombat.Avalonia/Controls/NavalPickMesh.cs",
+      "sha256": "53dd05d7a6763ce1c4d0947a384d451695068396026fef793894e4b90a6940a2",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/MarkdownRenderer.cs",
+      "source": "Assets/Scripts/Utils/MarkdownRenderer.cs",
+      "source_root": "D:/agent2/First Sino-Japanese War/Late-Qing-Naval-Combat-Demo",
+      "sha256": "643a3c6b5e28f329e0b26f2e71eaad45a0ece83f5b6b01ff98898f14008c83ed",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Runtime/Resources/Naval/Markdown.uss",
+      "source": "Assets/UIDocuments/styles/style.uss",
+      "source_root": "D:/agent2/First Sino-Japanese War/Late-Qing-Naval-Combat-Demo",
+      "sha256": "9239e03b8bddfc5487d466264b6cd4ad39268956b1d91aae58d6dd22ce142c59",
+      "matches_current_source_bytes": false
+    },
+    {
+      "target": "Assets/NavalCombat/Plugins/Markdig.dll",
+      "source": "Assets/Libs/Markdig.dll",
+      "source_root": "D:/agent2/First Sino-Japanese War/Late-Qing-Naval-Combat-Demo",
+      "sha256": "2c84875548215300f97cbf24ca2cc437b8474e994b260c142404fea11ec5d776",
+      "matches_current_source_bytes": true
+    }
+  ]
+}

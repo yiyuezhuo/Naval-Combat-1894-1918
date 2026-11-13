@@ -1,0 +1,102 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+  <ui:Style src="NavalScreen.uss" /><ui:Style src="Markdown.uss" />
+  <ui:VisualElement name="root" class="naval-root">
+    <ui:VisualElement class="masthead">
+      <ui:Label name="battleTitle" text="NAVAL OPERATIONS" class="brand" />
+      <ui:Label name="clock" class="clock" />
+      <ui:DropdownField name="language" class="language" />
+      <ui:Button name="menu" text="Menu" />
+    </ui:VisualElement>
+    <ui:Label name="status" class="status" />
+    <ui:VisualElement name="archive" class="page">
+      <ui:VisualElement class="toolbar"><ui:Label name="archiveTitle" text="Naval Combat 1894-1918" tooltip="Ui.Shell.ScenarioArchiveNavalCombat" class="title" /><ui:Label name="archiveVersion" /><ui:Label name="archiveSystemLanguage" class="hidden" /><ui:Label name="archiveCredit" text="by January Desk" /></ui:VisualElement>
+      <ui:TextField name="search" label="Search" />
+      <ui:VisualElement class="toolbar"><ui:DropdownField name="warFilter" /><ui:DropdownField name="historyFilter" /><ui:DropdownField name="recommendationFilter" /><ui:Toggle name="tutorialFilter" label="Debug" /><ui:Button name="archiveSettings" text="Settings" tooltip="Ui.Shell.Settings" /></ui:VisualElement>
+      <ui:VisualElement class="columns">
+        <ui:ListView name="scenarios" class="scenario-list" />
+        <ui:VisualElement class="preview">
+          <ui:Label name="scenarioTitle" class="title" />
+          <ui:ScrollView class="grow"><ui:VisualElement name="scenarioPreview" /></ui:ScrollView>
+          <ui:Button name="load" text="SELECT SCENARIO" tooltip="Ui.Shell.SelectScenario" class="primary" />
+        </ui:VisualElement>
+      </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="briefing" class="page hidden">
+      <ui:Label name="briefTitle" class="title" />
+      <ui:TreeView name="posts" class="grow" />
+      <ui:VisualElement class="toolbar">
+        <ui:Button name="fleet" text="ASSUME COMMAND" tooltip="Ui.Shell.AssumeCommand" class="primary" />
+        <ui:Button name="role" text="ASSUME SELECTED POST" tooltip="Ui.Shell.AssumeSelectedPost" />
+        <ui:Button name="observer" text="OBSERVE" tooltip="Ui.Shell.EnterAsObserverAllSidesUnderAiControl" />
+        <ui:Button name="back" text="BACK" tooltip="Ui.Shell.BackToScenarios" />
+      </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="battle" class="battle hidden">
+      <ui:VisualElement class="toolbar">
+        <ui:Button name="pause" text="Ⅱ" />
+        <ui:Button name="speed1" text="1×" /><ui:Button name="speed5" text="5×" /><ui:Button name="speed20" text="20×" /><ui:Button name="speed60" text="60×" /><ui:Button name="speed120" text="120×" />
+        <ui:Button name="chart" text="2D" /><ui:Button name="threeD" text="3D" />
+        <ui:Button name="bridge" text="Bridge" tooltip="Ui.Bridge.Enter" />
+        <ui:Button name="fit" text="Fit" tooltip="Ui.Shell.FitAllCurrentShipPositions" />
+        <ui:Toggle name="follow" label="Follow" tooltip="Ui.Shell.Follow" />
+        <ui:Slider name="scale" label="Scale" low-value="1" high-value="12" value="1" class="scale" />
+        <ui:Button name="report" text="Report" tooltip="Ui.Shell.ActionReport" />
+        <ui:DropdownField name="coastline" label="Coast" class="coast" />
+        <ui:Toggle name="music" label="Music" /><ui:Toggle name="sound" label="Sound" value="true" />
+      </ui:VisualElement>
+      <ui:VisualElement name="bridgeControls" class="toolbar hidden"><ui:Button name="bridgeExit" tooltip="Ui.Bridge.Exit" /><ui:Button name="bridgeAhead" tooltip="Ui.Bridge.Ahead" /><ui:Toggle name="bridgeLock" tooltip="Ui.Bridge.Lock" /><ui:Toggle name="bridgeLabels" tooltip="Ui.Bridge.Labels" value="true" /><ui:FloatField name="bridgeHeight" label="Height (m)" /></ui:VisualElement>
+      <ui:VisualElement class="toolbar"><ui:Button name="viewTop" tooltip="Ui.Scene.Top" /><ui:Button name="zoomIn" text="＋" /><ui:Button name="zoomOut" text="-" /><ui:Button name="resetView" tooltip="Ui.Shell.Reset" /></ui:VisualElement>
+      <ui:VisualElement class="columns grow">
+        <ui:VisualElement class="oob panel">
+          <ui:Label text="ORDER OF BATTLE" tooltip="Ui.Shell.PreBattleOob" class="section-title" />
+          <ui:VisualElement class="toolbar"><ui:Button name="dynamicTree" tooltip="Ui.Shell.DynamicControl" /><ui:Button name="oobTree" tooltip="Ui.Shell.PreBattleOob" /></ui:VisualElement><ui:TabView name="fleetTabs" class="grow"><ui:Tab name="dynamicTab" label="Dynamic control"><ui:TreeView name="dynamicUnits" class="grow" /></ui:Tab><ui:Tab name="oobTab" label="Pre-battle OOB"><ui:TreeView name="units" class="grow" /></ui:Tab></ui:TabView>
+        </ui:VisualElement>
+        <ui:VisualElement class="battle-center">
+        <ui:VisualElement name="viewport" class="viewport">
+          <ui:Label name="viewHint" class="view-hint" picking-mode="Ignore" />
+        </ui:VisualElement>
+        <ui:VisualElement class="combat-log"><ui:Label tooltip="Ui.Shell.CombatLog" class="section-title" /><ui:ScrollView name="battleLog" class="grow" /></ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="inspector-column">
+        <ui:ScrollView name="inspector" class="inspector panel">
+          <ui:Label name="selection" class="section-title" />
+          <ui:Label name="shipStats" class="prose" />
+          <ui:Button name="dossier" text="Ship record" tooltip="Ui.Shell.ShipClassTechnicalRecord" />
+          <ui:VisualElement name="orders">
+            <ui:VisualElement name="maneuverOrders">
+            <ui:VisualElement class="maneuver-row"><ui:Slider name="headingSlider" low-value="0" high-value="359" /><ui:FloatField name="heading" label="Course °" /></ui:VisualElement>
+            <ui:VisualElement class="maneuver-row"><ui:Slider name="speedSlider" low-value="0" high-value="40" /><ui:FloatField name="speed" label="Speed kn" /></ui:VisualElement>
+            <ui:Label name="currentManeuver" class="prose" /></ui:VisualElement>
+            <ui:ProgressBar name="damageBar" low-value="0" high-value="100" /><ui:Label name="damageReadout" class="hidden" /><ui:VisualElement name="damageTable" /><ui:Label name="damageAlerts" class="validation-error" />
+            <ui:Button name="applyOrder" class="hidden" text="Apply" tooltip="Ui.Shell.Apply" />
+            <ui:Foldout text="Doctrine" value="false"><ui:DropdownField name="maneuver" label="Maneuver" />
+            <ui:DropdownField name="fireDoctrine" label="Fire" />
+            <ui:DropdownField name="searchlight" label="Searchlight" /></ui:Foldout>
+            <ui:VisualElement name="shipTactical"><ui:DropdownField name="target" label="Target" />
+            <ui:Button name="attack" text="Attack constraint" tooltip="Ui.Shell.AttackConstraint" />
+            <ui:Button name="cancelAttack" text="Cancel attack" tooltip="Ui.Shell.CancelAttack" />
+            <ui:FloatField name="spacing" label="Spacing yd" value="500" />
+            <ui:Button name="followTarget" text="Follow target" tooltip="Ui.Shell.Follow" />
+            <ui:Button name="relativeTarget" tooltip="Ui.Shell.Relative" /><ui:Button name="followParameters" tooltip="Ui.Shell.EditFollowParameter" /><ui:Button name="relativeParameters" tooltip="Ui.Shell.EditRelativeParameter" />
+            <ui:Button name="lineAhead" text="Line ahead" tooltip="Ui.Shell.ArrangeFollowChain" />
+            <ui:Button name="lineAbreast" text="Line abreast" tooltip="Ui.Shell.ArrangeRelativeFormation" />
+            <ui:Button name="detach" text="Detach" tooltip="Ui.Shell.Detach" />
+            <ui:Button name="reverse" text="Reverse chain" /></ui:VisualElement>
+          </ui:VisualElement>
+          <ui:Label text="ARMAMENT" tooltip="Ui.Shell.Armament" class="section-title" />
+          <ui:VisualElement name="weaponReadout" /><ui:Foldout name="weaponCommands" text="Weapon controls" value="false"><ui:VisualElement name="weapons" /></ui:Foldout>
+
+          <ui:Label name="logs" class="prose" />
+        </ui:ScrollView><ui:Image name="vesselPlan" class="vessel-plan" scale-mode="ScaleToFit" />
+        </ui:VisualElement>
+      </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="modal" class="modal hidden">
+      <ui:VisualElement class="dialog">
+        <ui:Label name="modalTitle" class="title" />
+        <ui:VisualElement name="modalBody" class="grow" />
+        <ui:VisualElement name="modalActions" />
+      </ui:VisualElement>
+    </ui:VisualElement>
+  </ui:VisualElement>
+</ui:UXML>

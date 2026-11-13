@@ -1,0 +1,213 @@
+.markdown-renderer {
+    flex-grow: 1;
+    flex-shrink: 1;
+    color: #222222;
+    white-space: normal;
+}
+
+.markdown-text {
+    white-space: normal;
+    color: #222222;
+}
+
+.markdown-paragraph {
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+.markdown-heading {
+    -unity-font-style: bold;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    color: #222222;
+}
+
+.markdown-heading-1 {
+    font-size: 22px;
+}
+
+.markdown-heading-2 {
+    font-size: 18px;
+}
+
+.markdown-heading-3 {
+    font-size: 15px;
+}
+
+.markdown-heading-4,
+.markdown-heading-5,
+.markdown-heading-6 {
+    font-size: 13px;
+}
+
+.markdown-blockquote {
+    margin-top: 5px;
+    margin-bottom: 6px;
+    padding-left: 8px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: #f7f7f5;
+    border-left-width: 3px;
+    border-left-color: #222222;
+}
+
+.markdown-code-block {
+    margin-top: 5px;
+    margin-bottom: 6px;
+    padding-top: 5px;
+    padding-right: 6px;
+    padding-bottom: 5px;
+    padding-left: 6px;
+    background-color: #f7f7f5;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: #bbbbbb;
+    border-right-color: #bbbbbb;
+    border-top-color: #bbbbbb;
+    border-bottom-color: #bbbbbb;
+}
+
+.markdown-code-info {
+    color: #222222;
+    -unity-font-style: bold;
+    margin-bottom: 3px;
+}
+
+.markdown-code-text,
+.markdown-html,
+.markdown-unsupported {
+    color: #222222;
+    white-space: normal;
+}
+
+.markdown-hr {
+    height: 1px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: #bbbbbb;
+}
+
+.markdown-list {
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+.markdown-list-item {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.markdown-list-marker {
+    min-width: 18px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    color: #222222;
+    -unity-text-align: middle-right;
+    margin-right: 2px;
+}
+
+.markdown-list-bullet-marker {
+    height: 18px;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.markdown-list-bullet {
+    width: 5px;
+    height: 5px;
+    background-color: #222222;
+    border-top-left-radius: 999px;
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+    border-bottom-left-radius: 999px;
+}
+
+.markdown-list-content {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.markdown-list-content .markdown-paragraph {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.markdown-table-scroll {
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+
+.markdown-table {
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-top-color: #bbbbbb;
+    border-left-color: #bbbbbb;
+}
+
+.markdown-table-row {
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items: stretch;
+}
+
+.markdown-table-cell {
+    padding-top: 4px;
+    padding-right: 6px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: #f7f7f5;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-right-color: #bbbbbb;
+    border-bottom-color: #bbbbbb;
+}
+
+.markdown-table-header-cell {
+    background-color: #f7f7f5;
+}
+
+.markdown-table-header-cell .markdown-text {
+    -unity-font-style: bold;
+    color: #222222;
+}
+
+.markdown-image-root {
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+
+.markdown-image {
+    flex-grow: 0;
+    flex-shrink: 1;
+    min-height: 32px;
+    max-width: 100%;
+    background-color: #f7f7f5;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: #bbbbbb;
+    border-right-color: #bbbbbb;
+    border-top-color: #bbbbbb;
+    border-bottom-color: #bbbbbb;
+}
+
+.markdown-image-alt {
+    color: #222222;
+    font-size: 11px;
+    margin-top: 2px;
+}

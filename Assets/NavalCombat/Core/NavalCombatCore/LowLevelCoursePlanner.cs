@@ -1,0 +1,394 @@
+
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System;
+using GeographicLib;
+
+
+namespace NavalCombatCore
+{
+    public interface IExtrapolable : IDF4Model
+    {
+        // Firing Platform attributes
+        double EvaluateSurvivability();
+        double EvaluateFirepowerScore();
+        double EvaluateBowFirepowerScore();
+        double EvaluateStarboardFirepowerScore();
+        double EvaluateSternFirepowerScore();
+        double EvaluatePortFirepowerScore();
+
+        LowLevelCoursePlanner.ExtrapolatedRecord.Role GetRole();
+
+        // Control related
+        ControlMode GetControlMode();
+        IExtrapolable GetFollowedTarget();
+        double GetFollowDistanceYards();
+        IExtrapolable GetRelativeToTarget();
+        double GetRelativeToTargetDistanceYards();
+        double GetRelativeToTargetAzimuth();
+        bool GetRelativeToTargetAbsolute();
+
+        // Effect related
+        void SetDesiredHeadingDeg(double desiredHeadingDeg);
+    }
+
+    public class LowLevelCoursePlanner
+    {
+        public double angleStepDeg => CoreParameter.Instance.angleStepDeg; // 360 / 18 = 20 test angles => (0, 18, 36, 54, ...)
+        public double attackCoef => CoreParameter.Instance.attackCoef;
+        // public double defenceCoef = 1d;
+        public double defenceCoef => CoreParameter.Instance.defenceCoef;
+        public double distanceCoef => CoreParameter.Instance.distanceCoef;
+
+        public class ExtrapolatedRecord : IDF4Model
+        {
+            public IExtrapolable original;
+
+            public enum Role
+            {
+                Line, // normal scoring
+                Melee, // defense, distance score is disable for this unit. Mainly for torpedo boat in "charge" (RTW black flag) mode specified by doctrine.
+                Disengage // attack, distance score is disable for this unit. Mainly for damaged unit when doctrine enable this behaviour.
+            }
+
+            // Frozen States
+            public ControlMode controlMode;
+            public ExtrapolatedRecord followedTarget;
+            public double followDistanceYards;
+            public ExtrapolatedRecord relativeToTarget;
+            public double relativeToTargetDistanceYards;
+            public double relativeToTargetAzimuth;
+            public bool relativeToTargetAbsolute;
+
+            public Role role = Role.Line;
+
+            public double survivability;
+            public double firepowerScore;
+            public double bowFirepowerScore;
+            public double starboardFirepowerScore;
+            public double sternFirepowerScore;
+            public double portFirepowerScore;
+
+            // Planner State
+            public double latitudeDeg;
+            public double longitudeDeg;
+            public double headingDeg;
+            public double speedKnots;
+
+            public override string ToString()
+            {
+                return $"ExtrapolatedRecord({original})";
+            }
+
+            public double GetLatitudeDeg() => latitudeDeg;
+            public double GetLongitudeDeg() => longitudeDeg;
+            public double GetHeadingDeg() => headingDeg;
+            public double GetSpeedKnots() => speedKnots;
+
+            public ExtrapolatedRecord ResetDF4ToOriginal()
+            {
+                latitudeDeg = original.GetLatitudeDeg();
+                longitudeDeg = original.GetLongitudeDeg();
+                headingDeg = original.GetHeadingDeg();
+                speedKnots = original.GetSpeedKnots();
+                return this;
+            }
+
+            public void DoExtrapolate(double simulationSeconds)
+            {
+                if (controlMode == ControlMode.FollowTarget && followedTarget != null)
+                {
+                    var distanceMeter = followDistanceYards * MeasureUtils.yardToMeter;
+                    var inverseLine = Geodesic.WGS84.InverseLine(followedTarget.latitudeDeg, followedTarget.longitudeDeg, latitudeDeg, longitudeDeg);
+                    inverseLine.Position(distanceMeter, out var lat2, out var lon2, out var azi2);
+                    latitudeDeg = (double)lat2;
+                    longitudeDeg = (double)lon2;
+                    headingDeg = (double)azi2;
+                }
+                else if (controlMode == ControlMode.RelativeToTarget && relativeToTarget != null)
+                {
+                    var azi = relativeToTargetAbsolute
+                        ? MeasureUtils.NormalizeAngle(relativeToTargetAzimuth)
+                        : MeasureUtils.NormalizeAngle(relativeToTargetAzimuth + relativeToTarget.headingDeg);
+                    var distMeter = relativeToTargetDistanceYards * MeasureUtils.yardToMeter;
+                    Geodesic.WGS84.Direct(relativeToTarget.latitudeDeg, relativeToTarget.longitudeDeg, azi, distMeter, out var lat2, out var lon2);
+                    latitudeDeg = (double)lat2;
+                    longitudeDeg = (double)lon2;
+                    headingDeg = relativeToTarget.headingDeg;
+                }
+                else // (controlMode == ControlMode.Independent)
+                {
+                    var moveDistanceMeter = speedKnots / 3600 * simulationSeconds * MeasureUtils.navalMileToMeter;
+                    double arcLength = Geodesic.WGS84.Direct(latitudeDeg, longitudeDeg, headingDeg, moveDistanceMeter, out var lat2, out var lon2);
+                    latitudeDeg = (double)lat2;
+                    longitudeDeg = (double)lon2;
+                }
+            }
+
+            public ExtrapolatedRecord GetControlLead()
+            {
+                if (controlMode == ControlMode.RelativeToTarget)
+                {
+                    return relativeToTarget.GetControlLead();
+                }
+                else if (controlMode == ControlMode.FollowTarget)
+                {
+                    return followedTarget.GetControlLead();
+                }
+                return this; // Independent or unsupported mode control itself.
+            }
+
+            public double EvaluateSmoothedFirepower(double observerToTargetwBearingRelativeToBowDeg)
+            {
+                var angle = MeasureUtils.NormalizeAngle(observerToTargetwBearingRelativeToBowDeg);
+                if (angle <= 90)
+                {
+                    return bowFirepowerScore * (90 - angle) / 90 + starboardFirepowerScore * angle / 90;
+                }
+                else if (angle < 180)
+                {
+                    return starboardFirepowerScore * (180 - angle) / 90 + sternFirepowerScore * (angle - 90) / 90;
+                }
+                else if (angle < 270)
+                {
+                    return sternFirepowerScore * (270 - angle) / 90 + portFirepowerScore * (angle - 180) / 90;
+                }
+                else
+                {
+                    return portFirepowerScore * (360 - angle) / 90 + bowFirepowerScore * (angle - 270) / 90;
+                }
+            }
+        }
+
+        public (List<ExtrapolatedRecord>, Dictionary<IExtrapolable, ExtrapolatedRecord>, Dictionary<ExtrapolatedRecord, List<ExtrapolatedRecord>>) Setup(IEnumerable<IExtrapolable> objects)
+        {
+            var records = objects.Select(f => new ExtrapolatedRecord()
+            {
+                original = f,
+                controlMode = f.GetControlMode(),
+                followDistanceYards = f.GetFollowDistanceYards(), // Calculate the current distance or just use the setting distance?
+                relativeToTargetDistanceYards = f.GetRelativeToTargetDistanceYards(),
+                relativeToTargetAzimuth = f.GetRelativeToTargetAzimuth(),
+                relativeToTargetAbsolute = f.GetRelativeToTargetAbsolute(),
+                role = f.GetRole(),
+                survivability = f.EvaluateSurvivability(),
+                firepowerScore = f.EvaluateFirepowerScore(),
+                bowFirepowerScore = f.EvaluateBowFirepowerScore(),
+                starboardFirepowerScore = f.EvaluateStarboardFirepowerScore(),
+                sternFirepowerScore = f.EvaluateSternFirepowerScore(),
+                portFirepowerScore = f.EvaluatePortFirepowerScore(),
+                // followedTarget = f.GetFollowedTarget(),
+
+            }.ResetDF4ToOriginal()).ToList();
+
+            // Correct Invalid controlMode (E.X a unit is set to follow an invalid target would be treated as independent)
+
+            var originalToRecords = records.ToDictionary(r => r.original, r => r);
+
+            foreach (var record in records)
+            {
+                if (record.controlMode == ControlMode.FollowTarget)
+                {
+                    var followedTarget = record.original.GetFollowedTarget();
+                    if (followedTarget == null)
+                    {
+                        record.controlMode = ControlMode.Independent;
+                    }
+                    else
+                    {
+                        record.followedTarget = originalToRecords[followedTarget];
+                    }
+                }
+                else if (record.controlMode == ControlMode.RelativeToTarget)
+                {
+                    var relativeToTarget = record.original.GetRelativeToTarget();
+                    if (relativeToTarget == null)
+                    {
+                        record.controlMode = ControlMode.Independent;
+                    }
+                    else
+                    {
+                        record.relativeToTarget = originalToRecords[relativeToTarget];
+                    }
+                }
+            }
+
+            var _leadToSubInducedRecords = records.GroupBy(g =>
+            {
+                var ret = g.GetControlLead();
+                // System.Diagnostics.Debug.Assert(ret != null);
+                if (ret == null)
+                {
+                    throw new ArgumentException($"{g} => {ret}");
+                }
+                return ret;
+            }).ToList();
+            var leadToSubInducedRecords = _leadToSubInducedRecords.ToDictionary(g => g.Key, g => g.ToList());
+
+            return (records, originalToRecords, leadToSubInducedRecords);
+        }
+
+        public void DoExtrapolatePair(ExtrapolatedRecord leadRecord, List<ExtrapolatedRecord> subRecords, double extrapolateSeconds)
+        {
+            leadRecord.DoExtrapolate(extrapolateSeconds);
+            foreach (var subRecord in subRecords)
+            {
+                subRecord.DoExtrapolate(extrapolateSeconds);
+            }
+        }
+
+        public void DoExtrapolate(Dictionary<ExtrapolatedRecord, List<ExtrapolatedRecord>> leadToSubInducedRecords, double extrapolateSeconds)
+        {
+            foreach (var (leadRecord, subRecords) in leadToSubInducedRecords)
+            {
+                DoExtrapolatePair(leadRecord, subRecords, extrapolateSeconds);
+            }
+        }
+
+        public double EvaluateAttackScore(ExtrapolatedRecord shooter, ExtrapolatedRecord target)
+        {
+            // Exact method
+            // var stats = MeasureStats.Measure(shooter, target);
+            // var distanceYards = stats.distanceYards;
+            // var shooterToTargetBearingRelativeToBowDeg = stats.observerToTargetBearingRelativeToBowDeg;
+            // Approximation method
+            var distanceYards = (double)MeasureStats.Approximation.HaversineDistanceYards(shooter, target);
+            var shooterToTargetBearingRelativeToBowDeg = MeasureUtils.GetPositiveAngleDifference((double)MeasureStats.Approximation.CalculateInitialBearing(shooter, target), shooter.headingDeg);
+
+            var distanceScore = Math.Max(0, (36000 - distanceYards) / 36000); // 1 ~ 0 (0 yards ~ 36000 yards)
+            var angleScore = shooter.EvaluateSmoothedFirepower(shooterToTargetBearingRelativeToBowDeg);
+            var firepowerScore = distanceScore * angleScore;
+            // var valueScore = target.firepowerScore / target.survivability;
+            var valueScore = Math.Max(1, target.firepowerScore) / Math.Max(1, target.survivability);
+            return firepowerScore * valueScore;
+        }
+
+        // public enum AttackScoreMode
+        // {
+        //     Attacker,
+        //     Defender
+        // }
+
+        public double EvaluateAttackScore(ExtrapolatedRecord shooter, List<ExtrapolatedRecord> targets, bool attackScore)
+        {
+            if(attackScore && shooter.role == ExtrapolatedRecord.Role.Disengage)
+                return 0; // Disable attack score for disengage unit
+            
+            if(attackScore)
+            {
+                return targets.Select(t => EvaluateAttackScore(shooter, t)).DefaultIfEmpty(0).Max();
+            }
+            else
+            {
+                // For defence scoring, melee role unit is not valid target (so all melee group would get 0 score for defence score) 
+                return targets.Where(t => t.role != ExtrapolatedRecord.Role.Melee)
+                    .Select(t => EvaluateAttackScore(shooter, t)).DefaultIfEmpty(0).Max();
+            }
+            
+        }
+
+        public double EvaluateAttackScore(List<ExtrapolatedRecord> shooters, List<ExtrapolatedRecord> targets, bool attackScore)
+        {
+            return shooters.Sum(s => EvaluateAttackScore(s, targets, attackScore));
+        }
+
+        public static double expectedCombatRangeYardLow = 3500;
+        public static double expectedCombatRangeYardHigh = 12000;
+
+        public double EvaluateDistanceScore(ExtrapolatedRecord shooter, List<ExtrapolatedRecord> targets)
+        {
+            if(targets.Count == 0)
+                return 0;
+
+            // if(shooter.role == ExtrapolatedRecord.ExtrapolatedRecordRole.Disengage) // Disable dist score for disengage unit
+            //     return 0;
+
+            var minDistYard = targets.Min(target => (double)MeasureStats.Approximation.HaversineDistanceYards(shooter, target));
+            // var minDistYard = targets.Select(target => (double)MeasureStats.Approximation.HaversineDistanceYards(shooter, target)).DefaultIfEmpty(0).Max();
+            
+            // var distScore = 0d;
+            // if(minDistYard < expectedCombatRangeYardLow)
+            //     distScore = minDistYard / expectedCombatRangeYardLow; // Prefer to keep > 2000 yards
+            // if(minDistYard < expectedCombatRangeYardHigh)
+            //     distScore = 1; // Make no preference for (2000, 8000) yards
+            // distScore = (expectedCombatRangeYardHigh + expectedCombatRangeYardLow - minDistYard) / expectedCombatRangeYardLow; // 2000 ~ 0 (8000 yards ~ 10000 yards) (prefer at least keep contact)
+            var distScore = 0d;
+            if(minDistYard < expectedCombatRangeYardLow)
+            {
+                distScore = Math.Log(Math.Max(minDistYard, 1) / expectedCombatRangeYardLow); // Prefer to keep > 2000 yards
+            }
+            else if(minDistYard < expectedCombatRangeYardHigh)
+            {
+                distScore = 1; // Make no preference for (2000, 8000) yards
+            }
+            else
+            {
+                distScore = (expectedCombatRangeYardHigh - minDistYard) / expectedCombatRangeYardLow; // 2000 ~ 0 (8000 yards ~ 10000 yards) (prefer at least keep contact)
+            }
+
+            return distScore * shooter.survivability;
+        }
+
+        public double EvaluateDistanceScore(List<ExtrapolatedRecord> shooters, List<ExtrapolatedRecord> targets)
+        {
+            // return shooters.Sum(shooter => EvaluateDistanceScore(shooter, targets));
+            return shooters.Where(shooter => shooter.role == ExtrapolatedRecord.Role.Line)
+                .Sum(shooter => EvaluateDistanceScore(shooter, targets));
+        }
+
+        public double EvaluateFirefightScore(List<ExtrapolatedRecord> freidnly, List<ExtrapolatedRecord> enemy)
+        {
+            var attackScore = EvaluateAttackScore(freidnly, enemy, true);
+            var defenceScore = -EvaluateAttackScore(enemy, freidnly, false);
+            // return attackScore * attackCoef + defenceScore * defenceCoef;
+            var distanceScore = EvaluateDistanceScore(freidnly, enemy); // expected firefight position
+
+            return attackScore * attackCoef + defenceScore * defenceCoef + distanceScore * distanceCoef;
+        }
+
+        public class TrialRecord
+        {
+            public double headingDeg;
+            public double firefightScore;
+
+            public override string ToString()
+            {
+                return $"TrialRecord({headingDeg}, {firefightScore})";
+            }
+        }
+
+        public void Plan(IEnumerable<IExtrapolable> friendlyObjects, IEnumerable<IExtrapolable> enemyObjects, double extrapolateSeconds)
+        {
+            var (friendlyRecords, objectToFriendlyRecord, friendlyLeadToSubInducedRecords) = Setup(friendlyObjects);
+            var (enemyRecords, objectToEnemyRecord, enemyLeadToSubInducedRecords) = Setup(enemyObjects);
+
+            // Naive Enemy Extrapolation
+            DoExtrapolate(enemyLeadToSubInducedRecords, extrapolateSeconds);
+
+            // Greedy friendly extrapolation based search
+            foreach (var (friendlyLeadRecord, friendlySubRecords) in friendlyLeadToSubInducedRecords)
+            {
+                // TODO: Add speed change (-20%, 0%, +20%)
+                var trials = new List<TrialRecord>();
+                for (var angle = 0d; angle < 360; angle += angleStepDeg)
+                {
+                    friendlyLeadRecord.ResetDF4ToOriginal();
+                    friendlyLeadRecord.headingDeg = angle;
+                    DoExtrapolatePair(friendlyLeadRecord, friendlySubRecords, extrapolateSeconds);
+                    var firefightScore = EvaluateFirefightScore(friendlySubRecords, enemyRecords);
+                    // TODO: Add obstruct score?
+                    trials.Add(new()
+                    {
+                        headingDeg = angle,
+                        firefightScore = firefightScore
+                    });
+                }
+                var maxScore = trials.Max(t => t.firefightScore);
+                var bestTrial = trials.First(t => t.firefightScore == maxScore);
+                // Apply decision greedtly
+                friendlyLeadRecord.original.SetDesiredHeadingDeg(bestTrial.headingDeg);
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642feb0ce75fd404ea33cf8c4bde8213, type: 3}
+  m_Name: CombatAudio
+  m_EditorClassIdentifier: NavalCombat.Unity:NavalCombat.Unity:NavalAudioConfig
+  NearCannons:
+  - {fileID: 8300000, guid: 4d31cb5ee3633b04fa41420e48d979d7, type: 3}
+  - {fileID: 8300000, guid: 5529b2441a6d27642a1ceb1008de38eb, type: 3}
+  - {fileID: 8300000, guid: b53a5e6dd90e3074eb386cdff364aae0, type: 3}
+  - {fileID: 8300000, guid: 1f20fcf340f1b2a49ba4fb219f8d61d4, type: 3}
+  FarCannons:
+  - {fileID: 8300000, guid: 80757defb47a4a945a15c5ddb6d2eb07, type: 3}
+  - {fileID: 8300000, guid: d7f776950128ebe438580e14ec47a573, type: 3}
+  - {fileID: 8300000, guid: 43c9a7d501063cc498a9cdba3d2d5892, type: 3}
+  - {fileID: 8300000, guid: 8118101abaf38934a8346e5a4c7b3a7b, type: 3}
+  Torpedo: {fileID: 8300000, guid: 351456d9bb0e1ee4ebd5cc5546337711, type: 3}
+  EffectsGroup: {fileID: -5724136614052480099, guid: b29a7663ba9cd4045a9a2e098ca3bead, type: 2}
+  MaximumVoices: 10
+  ScheduleLeadSeconds: 0.05
+  TorpedoCooldownSeconds: 0.6
+  OffscreenGain: 0.39810717
+  MaximumInputPeak: 0.85

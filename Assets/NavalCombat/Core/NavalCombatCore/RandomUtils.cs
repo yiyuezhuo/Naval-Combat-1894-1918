@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace NavalCombatCore
+{
+    public static class RandomUtils
+    {
+        public static Random rand = new();
+        public static double D100F() => (double)(rand.NextDouble() * 100);
+        public static int D6() => rand.Next(6) + 1;
+        public static double NextFloat() => (double)rand.NextDouble();
+        public static double NextFloat(double low, double high) => (double)rand.NextDouble() * (high - low) + low;
+        public static T Sample<T>(List<T> list) => list[rand.Next(list.Count)];
+        
+        public static void SetSeed(int seed)
+        {
+            rand = new Random(seed);
+        }
+
+        // public static int ResampleSeed() // Used to sync multiplayer.
+        // {
+        //     var seed = rand.Next();
+        //     SetSeed(seed);
+        //     return seed;
+        // }
+
+        public static int SampleIndex(IReadOnlyList<double> weights, Random random = null)
+        {
+            if (weights == null || weights.Count == 0)
+                throw new ArgumentException("Weights cannot be null or empty");
+
+            random ??= rand;
+
+            var totalWeight = 0.0;
+            foreach (var weight in weights)
+            {
+                if (double.IsNaN(weight) || weight < 0)
+                    throw new ArgumentException("Weights cannot be negative or NaN");
+                totalWeight += weight;
+            }
+
+            if (totalWeight <= 0)
+                throw new ArgumentException("Total weight must be greater than 0");
+
+            var randomValue = random.NextDouble() * totalWeight;
+            var cumulativeWeight = 0.0;
+            for (var i = 0; i < weights.Count; i++)
+            {
+                cumulativeWeight += weights[i];
+                if (randomValue < cumulativeWeight)
+                    return i;
+            }
+
+            return weights.Count - 1;
+        }
+
+        public static int SampleIndex(IEnumerable<double> weights, Random random = null)
+        {
+            if (weights == null)
+                throw new ArgumentException("Weights cannot be null");
+            return SampleIndex(weights.ToArray(), random);
+        }
+
+        public static T Sample<T>(List<T> list, List<double> weights, Random random = null)
+        {
+            if (list == null || list.Count == 0)
+                throw new ArgumentException("List cannot be null or empty");
+            
+            if (weights == null || weights.Count != list.Count)
+                throw new ArgumentException("Weights list must have the same length as the input list");
+            
+            random ??= rand;
+            
+            // Calculate total weight
+            double totalWeight = 0d;
+            foreach (double weight in weights)
+            {
+                if (weight < 0)
+                    throw new ArgumentException("Weights cannot be negative");
+                totalWeight += weight;
+            }
+            
+            if (totalWeight <= 0)
+                throw new ArgumentException("Total weight must be greater than 0");
+            
+            double randomValue = (double)random.NextDouble() * totalWeight;
+            
+            double cumulativeWeight = 0d;
+            for (int i = 0; i < list.Count; i++)
+            {
+                cumulativeWeight += weights[i];
+                if (randomValue <= cumulativeWeight)
+                    return list[i];
+            }
+            
+            return list[list.Count - 1];
+        }
+
+        public static int RandomRoundToInt(double x)
+        {
+            var floor = (int)Math.Floor(x);
+            var r = x  - floor;
+            var resid = NextFloat() <= r ? 1 : 0;
+            return floor + resid;
+        }
+    }
+}

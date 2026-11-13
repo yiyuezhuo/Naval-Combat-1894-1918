@@ -1,0 +1,34 @@
+[
+  {
+    "id": "dvorak-new-world-iv",
+    "title": "ドヴォルザーク：交響曲第9番『新世界より』第4楽章",
+    "file": "dvorak-new-world-iv.mp3",
+    "source": "https://commons.wikimedia.org/wiki/File:Antonin_Dvorak_-_symphony_no._9_in_e_minor_'from_the_new_world',_op._95_-_iv._allegro_con_fuoco.ogg",
+    "artist": "Antonín Dvořák; Musopen (performer unspecified)",
+    "license": "Public domain (Musopen dedication)",
+    "license_url": "",
+    "changes": "Transcoded from the source OGG recording to MP3 (libmp3lame, quality 4) for Unity import. Runtime volume is user-controlled.",
+    "gain_db": -5.96,
+    "source_sha256": "977ab2a29bc99804328a293d57b4af66a5d09533d1c8dc872a4314da0e188866",
+    "sample_rate": 48000,
+    "channels": 2,
+    "duration_seconds": 702.888,
+    "scene": "battle"
+  },
+  {
+    "id": "ravel-bolero",
+    "title": "ラヴェル：ボレロ",
+    "file": "ravel-bolero.mp3",
+    "source": "https://commons.wikimedia.org/wiki/File:Boléro_–_Maurice_Ravel.ogg",
+    "artist": "Maurice Ravel; Omega13a (MuseScore 4 / MuseSounds)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Transcoded from the source OGG recording to MP3 (libmp3lame, quality 4) for Unity import. Runtime volume is user-controlled.",
+    "gain_db": -12.34,
+    "source_sha256": "f17865cfa7a0a6a6017289a628d72e79ee3982c248c60d64169d494acdd4aac7",
+    "sample_rate": 48000,
+    "channels": 2,
+    "duration_seconds": 852.0,
+    "scene": "battle"
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "name": "NavalCombat.Unity.Editor",
+  "references": ["NavalCombat.Unity", "NavalCombat.Core", "NavalCombat.Application"],
+  "includePlatforms": ["Editor"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "NavalCombat.Unity",
+  "references": [
+    "NavalCombat.Core",
+    "NavalCombat.Application",
+    "Unity.InputSystem"
+  ],
+  "autoReferenced": true
+}
