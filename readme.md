@@ -4,4 +4,8 @@ A naval combat subsystem prototype  extracted from my game in development, Meiji
 
 ## Screenshots
 
+<img src="https://img.itch.zone/aW1hZ2UvNTM1NDQ1NS8zMjIwNzE1MS5qcGc=/original/eXnLZN.jpg">
 
+<img src="https://img.itch.zone/aW1hZ2UvNTM1NDQ1NS8zMjIwNzE2MC5qcGc=/original/nawvvS.jpg">
+
+<img src="https://img.itch.zone/aW1hZ2UvNTM1NDQ1NS8zMjIwNzE2Mi5qcGc=/original/aHPPh%2F.jpg">
