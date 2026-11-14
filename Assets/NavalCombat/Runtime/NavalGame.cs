@@ -5,6 +5,7 @@ using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using FontAsset = UnityEngine.TextCore.Text.FontAsset;
 
 namespace NavalCombat.Unity
 {
@@ -18,6 +19,9 @@ public sealed partial class NavalGame : MonoBehaviour
     public bool Ready { get; private set; }
     public string LastError { get; private set; }
     VisualElement root;
+    PanelSettings panelSettings;
+    PanelTextSettings textSettings, previousTextSettings;
+    readonly Dictionary<string, FontAsset> fontAssets = new();
     UnityScenarioSource source;
     readonly CancellationTokenSource lifetime = new();
     List<ScenarioCatalogEntry> catalog = new(), filtered = new();
@@ -42,20 +46,58 @@ public sealed partial class NavalGame : MonoBehaviour
     void Execute(Action action) { try { action(); } catch(Exception e) when(e is ArgumentException or InvalidOperationException) { OpenCommandError(e.Message); } catch(Exception e) { Error(e); } }
     void Error(Exception e) { LastError=e.ToString();Q<Label>("status").text=e.Message;Debug.LogException(e); }
 
+    FontAsset GetFontAsset(string name, bool systemFont = false)
+    {
+        if (fontAssets.TryGetValue(name, out var fontAsset))
+            return fontAsset;
+
+        if (systemFont)
+            fontAsset = FontAsset.CreateFontAsset(name, "Regular", 32);
+        else if (Resources.Load<Font>("Naval/Fonts/" + name) is Font sourceFont)
+            fontAsset = FontAsset.CreateFontAsset(sourceFont);
+
+        fontAssets.Add(name, fontAsset);
+        return fontAsset;
+    }
+
+    void ApplyLanguageFont()
+    {
+        var english = GetFontAsset("NotoSans-Regular");
+        var japanese = GetFontAsset("NotoSansJP-Regular");
+        var simplifiedChinese = GetFontAsset("NotoSansSC-Regular");
+        var traditionalChinese = GetFontAsset("NotoSansTC-Regular");
+        var primary = NavalText.Instance.Culture switch
+        {
+            "ja-JP" => japanese,
+            "zh-CN" => simplifiedChinese,
+            "zh-TW" => traditionalChinese,
+            _ => english
+        };
+        primary = primary ?? simplifiedChinese ?? GetFontAsset("Microsoft JhengHei", systemFont: true)
+            ?? GetFontAsset("Arial", systemFont: true);
+
+        var fallbacks = new List<FontAsset>();
+        foreach (var font in new[] { english, japanese, simplifiedChinese, traditionalChinese })
+            if (font != null && font != primary)
+                fallbacks.Add(font);
+        if (simplifiedChinese == null && japanese == null && GetFontAsset("Yu Gothic", systemFont: true) is FontAsset systemJapanese)
+            fallbacks.Add(systemJapanese);
+
+        textSettings.fallbackFontAssets = fallbacks;
+        textSettings.defaultFontAsset = primary;
+        root.style.unityFontDefinition = primary != null ? FontDefinition.FromSDFFont(primary) : StyleKeyword.Null;
+    }
+
     async void Start()
     {
-        var textSettings=ScriptableObject.CreateInstance<PanelTextSettings>();
-        var embeddedFont=Resources.Load<Font>("Naval/Fonts/NotoSansSC-Regular");
-        textSettings.defaultFontAsset=embeddedFont!=null
-            ? UnityEngine.TextCore.Text.FontAsset.CreateFontAsset(embeddedFont)
-            : UnityEngine.TextCore.Text.FontAsset.CreateFontAsset("Microsoft JhengHei","Regular",32);
-        if(textSettings.defaultFontAsset==null)textSettings.defaultFontAsset=UnityEngine.TextCore.Text.FontAsset.CreateFontAsset("Arial","Regular",32);
-        textSettings.fallbackFontAssets=new();
-        var japanese=embeddedFont==null?UnityEngine.TextCore.Text.FontAsset.CreateFontAsset("Yu Gothic","Regular",32):null;
-        if(japanese!=null)textSettings.fallbackFontAssets.Add(japanese);
-        GetComponent<UIDocument>().panelSettings.textSettings=textSettings;
-        root=GetComponent<UIDocument>().rootVisualElement;
         NavalHostServices.InitializeLanguage();
+        var document = GetComponent<UIDocument>();
+        root = document.rootVisualElement;
+        panelSettings = document.panelSettings;
+        previousTextSettings = panelSettings.textSettings;
+        textSettings = ScriptableObject.CreateInstance<PanelTextSettings>();
+        ApplyLanguageFont();
+        panelSettings.textSettings = textSettings;
         NavalHostServices.Configure();
         source=new UnityScenarioSource(Path.Combine(UnityEngine.Application.streamingAssetsPath,"NavalCombat"));
         World=gameObject.AddComponent<NavalWorld>();
@@ -68,7 +110,15 @@ public sealed partial class NavalGame : MonoBehaviour
         Click("dossier",()=> {if(selection is ShipLog ship)OpenDossier(new(NavalCombat.Avalonia.ViewModels.DossierKind.ShipState,ship.objectId,""));});
         var language=Q<DropdownField>("language");language.choices=new(){"English","日本語","简体中文","繁體中文"};
         language.SetValueWithoutNotify(language.choices[Array.IndexOf(NavalText.Cultures,NavalText.Instance.Culture)]);
-        language.RegisterValueChangedCallback(e=> {NavalText.Instance.SetLanguage(NavalText.Cultures[language.index]);Localize();RefreshSelection(true);BuildUnits();if(chosen!=null)Preview(chosen);});
+        language.RegisterValueChangedCallback(_ =>
+        {
+            NavalText.Instance.SetLanguage(NavalText.Cultures[language.index]);
+            ApplyLanguageFont();
+            Localize();
+            RefreshSelection(true);
+            BuildUnits();
+            if (chosen != null) Preview(chosen);
+        });
         var list=Q<ListView>("scenarios");list.fixedItemHeight=28;
         list.makeItem=()=> {var label=new Label();label.AddToClassList("scenario-row");return label;};
         list.bindItem=(e,i)=>{((Label)e).text=CatalogLabel(filtered[i]);e.tooltip=CatalogLabel(filtered[i]);};
@@ -449,7 +499,31 @@ public sealed partial class NavalGame : MonoBehaviour
         }
         for(int i=usedLeaders;i<labelLeaders.Count;i++)labelLeaders[i].style.display=DisplayStyle.None;
     }
-    void OnDestroy(){previewCancellation?.Cancel();previewCancellation?.Dispose();World?.HideShipPreview();if(vesselPlan!=null)Destroy(vesselPlan);while(pages.Count>0)pages.Pop().Dispose?.Invoke();lifetime.Cancel();lifetime.Dispose();if(Session!=null){Session.SetSimulationSpeed(SimulationSpeed.Paused);Session.GunneryShotsResolved-=OnShots;}}
+    void OnDestroy()
+    {
+        previewCancellation?.Cancel();
+        previewCancellation?.Dispose();
+        World?.HideShipPreview();
+        if (vesselPlan != null)
+            Destroy(vesselPlan);
+        while (pages.Count > 0)
+            pages.Pop().Dispose?.Invoke();
+        lifetime.Cancel();
+        lifetime.Dispose();
+        if (Session != null)
+        {
+            Session.SetSimulationSpeed(SimulationSpeed.Paused);
+            Session.GunneryShotsResolved -= OnShots;
+        }
+
+        if (panelSettings != null && panelSettings.textSettings == textSettings)
+            panelSettings.textSettings = previousTextSettings;
+        if (textSettings != null)
+            Destroy(textSettings);
+        foreach (var fontAsset in fontAssets.Values)
+            if (fontAsset != null)
+                Destroy(fontAsset);
+    }
 }
 
 }

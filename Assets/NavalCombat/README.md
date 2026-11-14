@@ -8,7 +8,7 @@ The UI uses UI Toolkit: `Runtime/Resources/Naval/NavalScreen.uxml`, `NavalScreen
 
 - 38 standalone XML scenarios, ship/weapon/leader catalogs, original simulation, gunnery, torpedo, damage, AI, formation and victory rules.
 - Fleet/role/observer entry, pause and 1/5/20/60/120× simulation speed, 2D chart, 3D and bridge views, ship records, weapon targeting, ammunition selection, fire control detail, combat log and results.
-- Original procedural ship geometry, gun/torpedo effects, two optional music tracks, simplified/traditional Chinese, Japanese and English resources. Windows system fonts supply CJK glyphs.
+- Original procedural ship geometry, gun/torpedo effects, two optional music tracks, and simplified Chinese, traditional Chinese, Japanese and English resources. The UI uses the bundled Noto Sans font for the active language first. For missing glyphs, it checks the English, Japanese, simplified Chinese and traditional Chinese fonts in that order, skipping the active font.
 - Natural Earth 1:50m and 1:10m coastlines are visual only. Ships retain original ship collision rules; navigation does not avoid land.
 
 This is a one-time source import. There is no dependency on the source checkout at runtime, no political campaign/UMA integration, no content editor, and no in-battle save migration. Unity presents the existing combat rules through UI Toolkit, retaining the original tactical menus, parameter dialogs, dossier tabs and links, torpedo analysis and history/weapon diagrams. Windows are in-game overlays with nested back/close behavior rather than Avalonia OS windows; fonts and custom-rendered charts are not pixel-identical. Naval data and code are isolated under this folder and `StreamingAssets/NavalCombat`.
