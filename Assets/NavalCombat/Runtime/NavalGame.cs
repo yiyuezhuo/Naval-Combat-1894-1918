@@ -127,6 +127,13 @@ public sealed partial class NavalGame : MonoBehaviour
         Q<TextField>("search").RegisterValueChangedCallback(_=>Filter());
         Click("load",LoadChosen);Click("back",ReturnToArchive);
         Click("archiveSettings",OpenSettingsDialog);
+#if UNITY_EDITOR
+        Click("quitGame",()=>UnityEditor.EditorApplication.isPlaying=false);
+#elif UNITY_WEBGL
+        Q<Button>("quitGame").AddToClassList("hidden");
+#else
+        Click("quitGame",()=>UnityEngine.Application.Quit());
+#endif
         Click("fleet",()=>StartParticipation(BattleParticipationMode.FleetCommand));
         Click("role",()=>StartParticipation(BattleParticipationMode.RolePlaying));
         Click("observer",()=>StartParticipation(BattleParticipationMode.Observer));
@@ -175,6 +182,7 @@ public sealed partial class NavalGame : MonoBehaviour
         int lang=Array.IndexOf(NavalText.Cultures,NavalText.Instance.Culture);
         string T(string en,string ja,string cn,string tw)=>new[]{en,ja,cn,tw}[lang];
         Q<Button>("menu").text=T("Menu","メニュー","菜单","選單");LocalizeHud();LocalizeCatalog();
+        Q<Button>("quitGame").text=T("Exit Game","ゲームを終了","退出游戏","離開遊戲");
         Q<Button>("reverse").text=T("Reverse chain","隊列反転","反转队列","反轉隊列");
         Q<TextField>("search").label=T("Search","検索","搜索","搜尋");
         Q<Slider>("headingSlider").label=T("Course °","針路 °","航向 °","航向 °");Q<FloatField>("heading").label="";

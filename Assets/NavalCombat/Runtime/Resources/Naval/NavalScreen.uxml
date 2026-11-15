@@ -9,7 +9,13 @@
     </ui:VisualElement>
     <ui:Label name="status" class="status" />
     <ui:VisualElement name="archive" class="page">
-      <ui:VisualElement class="toolbar"><ui:Label name="archiveTitle" text="Naval Combat 1894-1918" tooltip="Ui.Shell.ScenarioArchiveNavalCombat" class="title" /><ui:Label name="archiveVersion" /><ui:Label name="archiveSystemLanguage" class="hidden" /><ui:Label name="archiveCredit" text="by January Desk" /></ui:VisualElement>
+      <ui:VisualElement class="toolbar">
+        <ui:Label name="archiveTitle" text="Naval Combat 1894-1918" tooltip="Ui.Shell.ScenarioArchiveNavalCombat" class="title" />
+        <ui:Label name="archiveVersion" />
+        <ui:Label name="archiveCredit" text="by January Desk" />
+        <ui:Label name="archiveSystemLanguage" class="hidden" />
+        <ui:Button name="quitGame" text="Exit Game" />
+      </ui:VisualElement>
       <ui:TextField name="search" label="Search" />
       <ui:VisualElement class="toolbar"><ui:DropdownField name="warFilter" /><ui:DropdownField name="historyFilter" /><ui:DropdownField name="recommendationFilter" /><ui:Toggle name="tutorialFilter" label="Debug" /><ui:Button name="archiveSettings" text="Settings" tooltip="Ui.Shell.Settings" /></ui:VisualElement>
       <ui:VisualElement class="columns">

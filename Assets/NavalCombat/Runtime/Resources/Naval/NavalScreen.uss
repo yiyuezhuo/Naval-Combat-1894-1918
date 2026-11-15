@@ -10,7 +10,8 @@
 .toolbar { flex-direction: row; flex-wrap: wrap; align-items: center; padding: 7px; flex-shrink: 0; }
 .title { font-size: 27px; margin-bottom: 14px; white-space: normal; flex-shrink: 0; }
 .subtitle { font-size: 17px; margin-bottom: 18px; white-space: normal; flex-shrink: 0; }
-#archiveCredit { margin-left: auto; flex-shrink: 0; white-space: nowrap; }
+#archiveCredit { margin-left: 8px; flex-shrink: 0; white-space: nowrap; }
+#quitGame { margin-left: auto; flex-shrink: 0; }
 .prose { white-space: normal; margin-bottom: 12px; flex-shrink: 0; }
 .section-title { margin-top: 12px; margin-bottom: 10px; -unity-font-style: bold; white-space: normal; flex-shrink: 0; }
 .validation-error { color: #a12525; white-space: normal; }
