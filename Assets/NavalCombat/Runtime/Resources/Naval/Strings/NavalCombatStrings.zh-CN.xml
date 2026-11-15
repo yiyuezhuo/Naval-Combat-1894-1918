@@ -6688,7 +6688,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>可用</value>
   </data>
   <data name="Ui.Shell.BackToScenarios" xml:space="preserve">
-    <value>←  返回场景列表</value>
+    <value>←  返回剧本列表</value>
   </data>
   <data name="Ui.Shell.Barrels" xml:space="preserve">
     <value>炮管</value>
@@ -6739,7 +6739,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>货舱爆炸风险</value>
   </data>
   <data name="Ui.Shell.ChooseAScenarioFromTheListToOpenItsRecord" xml:space="preserve">
-    <value>从列表中选择场景以打开档案。</value>
+    <value>从列表中选择剧本以打开档案。</value>
   </data>
   <data name="Ui.Shell.ChooseAnEntryFromTheOrderOfBattleOrTheChartToInspectItAndIssueOrders" xml:space="preserve">
     <value>从战斗序列或地图中选择目标，以查看信息并下达命令。</value>
@@ -6934,7 +6934,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>双击岗位，或选中后确认。</value>
   </data>
   <data name="Ui.Shell.DoubleClickTheScenarioOrUseSelectScenarioToProceed" xml:space="preserve">
-    <value>双击场景或点击“选择场景”继续。</value>
+    <value>双击剧本或点击“选择剧本”继续。</value>
   </data>
   <data name="Ui.Shell.DrawDirectionalArmorPiercingShellSilhouettesWithShortFadingTrails" xml:space="preserve">
     <value>绘制具有方向的穿甲弹轮廓，并显示短暂渐隐拖尾。</value>
@@ -7055,7 +7055,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>炮弹视觉效果</value>
   </data>
   <data name="Ui.Shell.HistoricalAndScenarioNotes" xml:space="preserve">
-    <value>历史与场景注记</value>
+    <value>历史与剧本注记</value>
   </data>
   <data name="Ui.Shell.HorizontalPenetration" xml:space="preserve">
     <value>水平装甲穿深</value>
@@ -7166,7 +7166,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>有月光</value>
   </data>
   <data name="Ui.Shell.MoreDetailedCoastlineDatasetForCloseInspectionOfScenarioPlacementAndProjection" xml:space="preserve">
-    <value>更详细的海岸线数据，可仔细检查场景位置和投影。</value>
+    <value>更详细的海岸线数据，可仔细检查剧本位置和投影。</value>
   </data>
   <data name="Ui.Shell.MountArrangement" xml:space="preserve">
     <value>炮座配置</value>
@@ -7199,7 +7199,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>海军战役</value>
   </data>
   <data name="Ui.Shell.NavalScenarioValue" xml:space="preserve">
-    <value>海战场景 · {0}</value>
+    <value>海战剧本 · {0}</value>
   </data>
   <data name="Ui.Shell.NavalStrategic" xml:space="preserve">
     <value>海军战略</value>
@@ -7247,7 +7247,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>无穿深表记录。</value>
   </data>
   <data name="Ui.Shell.NoScenarioFilesWereFound" xml:space="preserve">
-    <value>未找到场景文件。</value>
+    <value>未找到剧本文件。</value>
   </data>
   <data name="Ui.Shell.NoShipClassRecordIsAssociatedWithThisVessel" xml:space="preserve">
     <value>此舰船未关联舰级档案。</value>
@@ -7379,7 +7379,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>海军档案 · 只读</value>
   </data>
   <data name="Ui.Shell.ReadingScenarioRecord" xml:space="preserve">
-    <value>正在读取场景档案…</value>
+    <value>正在读取剧本档案…</value>
   </data>
   <data name="Ui.Shell.Record" xml:space="preserve">
     <value>档案</value>
@@ -7421,7 +7421,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>重新开始</value>
   </data>
   <data name="Ui.Shell.RestoreTheScenarioAuthorSView" xml:space="preserve">
-    <value>恢复场景作者设定的视图</value>
+    <value>恢复剧本作者设定的视图</value>
   </data>
   <data name="Ui.Shell.ReturnToBriefing" xml:space="preserve">
     <value>返回战前简报</value>
@@ -7445,16 +7445,16 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>角色扮演 · {0} · {1}</value>
   </data>
   <data name="Ui.Shell.ScanningTheScenarioFolder" xml:space="preserve">
-    <value>正在扫描场景文件夹…</value>
+    <value>正在扫描剧本文件夹…</value>
   </data>
   <data name="Ui.Shell.ScenarioArchiveNavalCombat" xml:space="preserve">
     <value>海战 1894-1918</value>
   </data>
   <data name="Ui.Shell.ScenarioCouldNotBeLoaded" xml:space="preserve">
-    <value>无法加载场景</value>
+    <value>无法加载剧本</value>
   </data>
   <data name="Ui.Shell.ScenarioRecord" xml:space="preserve">
-    <value>场景档案</value>
+    <value>剧本档案</value>
   </data>
   <data name="Ui.Shell.SearchlightControl" xml:space="preserve">
     <value>探照灯控制</value>
@@ -7466,7 +7466,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>选择部队指挥官或舰长</value>
   </data>
   <data name="Ui.Shell.SelectAScenario" xml:space="preserve">
-    <value>选择场景</value>
+    <value>选择剧本</value>
   </data>
   <data name="Ui.Shell.SelectAShipOrGroup" xml:space="preserve">
     <value>选择舰船或舰群</value>
@@ -7478,7 +7478,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>选择战斗</value>
   </data>
   <data name="Ui.Shell.SelectScenario" xml:space="preserve">
-    <value>选择场景  →</value>
+    <value>选择剧本  →</value>
   </data>
   <data name="Ui.Shell.SelectedVessel" xml:space="preserve">
     <value>所选舰船</value>
@@ -7642,7 +7642,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>原始资料将此舰级标记为佐证不足。</value>
   </data>
   <data name="Ui.Shell.ThisScenarioIsAnEmptyTemplateAndContainsNoCommandableShips" xml:space="preserve">
-    <value>此场景为空模板，没有可指挥的舰船。</value>
+    <value>此剧本为空模板，没有可指挥的舰船。</value>
   </data>
   <data name="Ui.Shell.ThisShipIsRestrictedToThisTarget" xml:space="preserve">
     <value>此舰仅可攻击该目标。</value>
@@ -7801,7 +7801,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>{0} 个航路点</value>
   </data>
   <data name="Ui.Shell.ValueScenariosFound" xml:space="preserve">
-    <value>找到 {0} 个场景</value>
+    <value>找到 {0} 个剧本</value>
   </data>
   <data name="Ui.Shell.ValueSeaStateValue" xml:space="preserve">
     <value>{0} · 海况 {1}</value>
@@ -7918,7 +7918,7 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>手动</value>
   </data>
   <data name="Ui.Message.The scenario end time has been reached." xml:space="preserve">
-    <value>已到达场景结束时间。</value>
+    <value>已到达剧本结束时间。</value>
   </data>
   <data name="Ui.Message.Only one operational fleet remains." xml:space="preserve">
     <value>仅剩一支可作战舰队。</value>
@@ -7933,10 +7933,10 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
     <value>请选择有效的指挥部或舰船。</value>
   </data>
   <data name="Ui.Message.The selected post does not belong to a scenario fleet." xml:space="preserve">
-    <value>所选岗位不属于场景中的舰队。</value>
+    <value>所选岗位不属于剧本中的舰队。</value>
   </data>
   <data name="Ui.Message.The scenario has no fleet to observe." xml:space="preserve">
-    <value>场景中没有可观察的舰队。</value>
+    <value>剧本中没有可观察的舰队。</value>
   </data>
   <data name="Ui.Message.Course and speed must be finite values." xml:space="preserve">
     <value>航向和航速必须为有限数值。</value>
