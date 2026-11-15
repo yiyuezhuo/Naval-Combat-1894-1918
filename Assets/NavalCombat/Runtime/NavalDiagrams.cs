@@ -113,30 +113,123 @@ public sealed class NavalHistoryChart : VisualElement
         Add(legend);
     }
 }
-public sealed class NavalWeaponDiagram : NavalDiagram
+public sealed class NavalWeaponDiagram : VisualElement
 {
-    readonly WeaponDiagramSnapshot snapshot;
     public NavalWeaponDiagram(WeaponDiagramSnapshot value)
     {
-        snapshot=value;AddToClassList("weapon-diagram");generateVisualContent+=Draw;
-        var data=new VisualElement();data.AddToClassList("weapon-data");Add(data);data.Add(new Label(value.Caption));
-        foreach(var sector in value.MountSectors)data.Add(new Label($"{NavalText.Instance.GetEnum(sector.Location)}: {sector.Mounts} × {sector.Barrels} · "+string.Join(" / ",sector.Arcs.Select(a=>$"{a.StartDeg:0}° + {a.CoverageDeg:0}°"))));
-        foreach(var point in value.PenetrationPoints)data.Add(new Label($"{point.DistanceYards:0} yd: {point.VerticalInches:0.##} / {point.HorizontalInches:0.##} in"));
+        AddToClassList("weapon-diagram");
+        Add(new WeaponPlot(value,false));
+        if(value.PenetrationPoints.Count>0)Add(new WeaponPlot(value,true));
     }
-    void Draw(MeshGenerationContext c)
+
+    sealed class WeaponPlot : NavalDiagram
     {
-        var p=c.painter2D;var at=new Vector2(110,115);
-        foreach(var sector in snapshot.MountSectors)foreach(var arc in sector.Arcs)Wedge(p,at,85,arc.StartDeg,arc.CoverageDeg,new Color(.2f,.4f,.7f,.15f));
-        Arrow(p,at,at+Vector2.up*-75,Ink);Caption(c,"0°",new(105,15));
-        if(snapshot.PenetrationPoints.Count>0)
+        readonly WeaponDiagramSnapshot snapshot;
+        readonly bool penetration;
+        static readonly Color Grid=new(.85f,.85f,.85f),Fill=new(.86f,.86f,.86f);
+        public WeaponPlot(WeaponDiagramSnapshot value,bool penetration)
         {
-            float x0=250,w=Mathf.Max(20,contentRect.width-x0-30),maxY=(float)Math.Max(1,snapshot.PenetrationPoints.Max(v=>Math.Max(v.VerticalInches,v.HorizontalInches)));
-            double maxX=Math.Max(1,snapshot.PenetrationPoints.Max(v=>v.DistanceYards));
-            Vector2 Point(DossierPenetrationPointSnapshot v,bool vertical)=>new(x0+(float)(v.DistanceYards/maxX)*w,190-(float)(vertical?v.VerticalInches:v.HorizontalInches)/maxY*150);
-            Line(p,new(x0,30),new(x0,190),Ink);Line(p,new(x0,190),new(x0+w,190),Ink);
-            for(int i=1;i<snapshot.PenetrationPoints.Count;i++){Line(p,Point(snapshot.PenetrationPoints[i-1],true),Point(snapshot.PenetrationPoints[i],true),Blue,2);Line(p,Point(snapshot.PenetrationPoints[i-1],false),Point(snapshot.PenetrationPoints[i],false),Orange,2);}
-            Caption(c,"Vertical / Horizontal (in)",new(x0,10));Caption(c,$"0 — {maxX:0} yd",new(x0,200));
+            snapshot=value;this.penetration=penetration;
+            AddToClassList(penetration?"weapon-penetration":"weapon-sectors");
+            generateVisualContent+=Draw;
         }
+        void TextAt(MeshGenerationContext c,string text,Vector2 at,float size=12,Color? color=null)
+            =>c.DrawText(text,at,size,color??Color.black,resolvedStyle.unityFontDefinition.fontAsset);
+        static string T(string key,params object[] args)=>NavalCombatStrings.Text("Ui.Shell."+key,args);
+        static void Dashed(Painter2D p,Vector2 a,Vector2 b,Color color,float dash=5,float width=1)
+        {
+            float length=Vector2.Distance(a,b);if(length<=0)return;
+            var direction=(b-a)/length;
+            for(float offset=0;offset<length;offset+=dash*1.6f)
+                Line(p,a+direction*offset,a+direction*Mathf.Min(length,offset+dash),color,width);
+        }
+        void Draw(MeshGenerationContext c)
+        {
+            if(contentRect.width<100||contentRect.height<100)return;
+            if(penetration)DrawPenetration(c);else DrawSectors(c);
+        }
+        void DrawSectors(MeshGenerationContext c)
+        {
+            var p=c.painter2D;
+            TextAt(c,snapshot.Caption,new(6,4),14);
+            float cw=(contentRect.width-12)/3,ch=(contentRect.height-32)/3;
+            foreach(var sector in snapshot.MountSectors)
+            {
+                var (row,column)=GridPosition(sector.Location);
+                var rect=new Rect(6+column*cw+4,28+row*ch+4,cw-8,ch-8);
+                Line(p,rect.min,new(rect.xMax,rect.yMin),Grid);Line(p,new(rect.xMax,rect.yMin),rect.max,Grid);
+                Line(p,rect.max,new(rect.xMin,rect.yMax),Grid);Line(p,new(rect.xMin,rect.yMax),rect.min,Grid);
+                float radius=Mathf.Max(8,Mathf.Min(rect.width,rect.height-18)*.33f);
+                var center=new Vector2(rect.center.x,rect.y+radius+9);
+                foreach(var arc in sector.Arcs)
+                {
+                    if(arc.CoverageDeg<=0)continue;
+                    Wedge(p,center,radius,arc.StartDeg,arc.CoverageDeg,Fill);
+                    var first=center+Direction(arc.StartDeg)*radius;
+                    var last=center+Direction(arc.StartDeg+arc.CoverageDeg)*radius;
+                    if(arc.IsCrossDeckFire){Dashed(p,center,first,Color.black,2);Dashed(p,center,last,Color.black,2);}
+                    else{Line(p,center,first,Color.black);Line(p,center,last,Color.black);}
+                }
+                p.strokeColor=Color.black;p.lineWidth=1;p.BeginPath();p.Arc(center,radius,0,360);p.Stroke();
+                Line(p,center,center+Vector2.down*(radius+4),Color.black);
+                if(sector.Barrels>0)TextAt(c,$"{sector.Mounts}× / {sector.Barrels} {snapshot.MountUnitLabel}",new(rect.x+3,rect.yMax-17),12);
+            }
+        }
+        void DrawPenetration(MeshGenerationContext c)
+        {
+            var p=c.painter2D;var points=snapshot.PenetrationPoints;
+            TextAt(c,T("PenetrationByRange"),new(42,4),14);
+            var bounds=new Rect(42,70,contentRect.width-64,contentRect.height-112);
+            double maxX=Math.Max(1,Math.Max(snapshot.MaximumRangeYards,points.Max(v=>v.DistanceYards)));
+            double rawMax=Math.Max(1,Math.Max(snapshot.MainBeltEffectiveInches,points.Max(v=>Math.Max(v.VerticalInches,v.HorizontalInches))))*1.1;
+            double magnitude=Math.Pow(10,Math.Floor(Math.Log10(rawMax))),normalized=rawMax/magnitude;
+            double maxY=(normalized<=1?1:normalized<=2?2:normalized<=5?5:10)*magnitude;
+            Vector2 Plot(double x,double y)=>new(bounds.x+(float)(x/maxX)*bounds.width,bounds.yMax-(float)(y/maxY)*bounds.height);
+            for(int i=0;i<=5;i++)
+            {
+                float fraction=i/5f,x=bounds.x+bounds.width*fraction,y=bounds.yMax-bounds.height*fraction;
+                if(i>0){Line(p,new(x,bounds.y),new(x,bounds.yMax),Grid);Line(p,new(bounds.x,y),new(bounds.xMax,y),Grid);}
+                Line(p,new(x,bounds.yMax),new(x,bounds.yMax+4),Color.black);
+                Line(p,new(bounds.x-4,y),new(bounds.x,y),Color.black);
+                double distance=maxX*fraction;
+                TextAt(c,distance>=1000?$"{distance/1000:0.#}k":$"{distance:0}",new(x-9,bounds.yMax+7),12);
+                if(i>0)TextAt(c,$"{maxY*fraction:0.#}",new(5,y-7),12);
+            }
+            Line(p,new(bounds.x,bounds.y),new(bounds.x,bounds.yMax),Color.black);
+            Line(p,new(bounds.x,bounds.yMax),bounds.max,Color.black);
+            for(int i=1;i<points.Count;i++)
+            {
+                var a=points[i-1];var b=points[i];
+                Line(p,Plot(a.DistanceYards,a.VerticalInches),Plot(b.DistanceYards,b.VerticalInches),Color.black,2);
+                Dashed(p,Plot(a.DistanceYards,a.HorizontalInches),Plot(b.DistanceYards,b.HorizontalInches),Color.gray,6,1.5f);
+            }
+            if(snapshot.MainBeltEffectiveInches>0)
+            {
+                var a=Plot(0,snapshot.MainBeltEffectiveInches);var b=Plot(maxX,snapshot.MainBeltEffectiveInches);
+                Dashed(p,a,b,Color.black,2);
+                TextAt(c,T("MainBeltEffValueIn",snapshot.MainBeltEffectiveInches),a+new Vector2(4,-17),12);
+            }
+            TextAt(c,T("PenetrationIn"),new(bounds.x,23),12);
+            Line(p,new(bounds.x,51),new(bounds.x+24,51),Color.black,2);
+            TextAt(c,T("VerticalPenetration"),new(bounds.x+30,43),12);
+            float legendX=bounds.x+bounds.width*.52f;
+            Dashed(p,new(legendX,51),new(legendX+24,51),Color.gray);
+            TextAt(c,T("HorizontalPenetration"),new(legendX+30,43),12,Color.gray);
+            TextAt(c,T("DistanceYd"),new(bounds.center.x-35,bounds.yMax+25),12);
+        }
+        static (int Row,int Column) GridPosition(NavalCombatCore.MountLocation location)=>location switch
+        {
+            NavalCombatCore.MountLocation.PortForward=>(0,0),
+            NavalCombatCore.MountLocation.Forward=>(0,1),
+            NavalCombatCore.MountLocation.StarboardForward=>(0,2),
+            NavalCombatCore.MountLocation.PortMidship=>(1,0),
+            NavalCombatCore.MountLocation.Midship=>(1,1),
+            NavalCombatCore.MountLocation.StarboardMidship=>(1,2),
+            NavalCombatCore.MountLocation.PortAfter=>(2,0),
+            NavalCombatCore.MountLocation.After=>(2,1),
+            NavalCombatCore.MountLocation.StarboardAfter=>(2,2),
+            _=>(1,1)
+        };
     }
 }
 }

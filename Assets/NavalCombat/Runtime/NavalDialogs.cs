@@ -189,17 +189,23 @@ public sealed partial class NavalGame
     public void OpenDossier(DossierReference reference)
     {
         var snapshot=DossierSnapshotFactory.Create(Session,reference);if(snapshot==null)return;
-        var body=new VisualElement();body.AddToClassList("grow");
-        body.Add(Text(snapshot.Eyebrow+" · "+snapshot.Subtitle));body.Add(Text(snapshot.SnapshotTime));
+        var body=new VisualElement();body.AddToClassList("grow");body.AddToClassList("dossier-body");
+        body.Add(Text(snapshot.Eyebrow,"dossier-eyebrow"));
+        if(!string.IsNullOrWhiteSpace(snapshot.Subtitle))body.Add(Text(snapshot.Subtitle,"dossier-subtitle"));
+        if(!string.IsNullOrWhiteSpace(snapshot.SnapshotTime))body.Add(Text(snapshot.SnapshotTime));
         var links=new VisualElement();links.AddToClassList("toolbar");body.Add(links);
         foreach(var link in snapshot.Links)ActionButton(links,link.Label+": "+link.Value,()=>OpenDossier(link.Reference),link.Reference!=null).tooltip=link.UnavailableReason;
-        var tabs=new TabView();tabs.AddToClassList("grow");body.Add(tabs);
+        TabView tabs=null;
+        if(snapshot.Tabs.Count>1){tabs=new TabView();tabs.AddToClassList("grow");body.Add(tabs);}
         void Show(DossierTabSnapshot tab)
         {
-            var page=new Tab(tab.Title);tabs.Add(page);var content=new ScrollView();content.AddToClassList("grow");page.Add(content);
+            var content=new ScrollView(ScrollViewMode.Vertical);content.AddToClassList("grow");content.AddToClassList("dossier-content");
+            if(tabs!=null){var page=new Tab(tab.Title);tabs.Add(page);page.Add(content);}else body.Add(content);
+            if(snapshot.WeaponDiagram!=null)content.Add(new NavalWeaponDiagram(snapshot.WeaponDiagram));
             foreach(var section in tab.Sections)
             {
-                content.Add(Text(section.Title,"section-title"));
+                var heading=new VisualElement();heading.AddToClassList("dossier-section-heading");
+                heading.Add(Text(section.Title,"dossier-eyebrow"));var rule=new VisualElement();rule.AddToClassList("dossier-rule");heading.Add(rule);content.Add(heading);
                 if(section.ShowShipPlan&&snapshot.PlanBitmap!=null){var plan=new Image{image=snapshot.PlanBitmap,scaleMode=ScaleMode.ScaleToFit};plan.AddToClassList("dossier-plan");content.Add(plan);}
                 var facts=new VisualElement();facts.AddToClassList("dossier-facts");content.Add(facts);
                 foreach(var fact in section.Facts??Array.Empty<DossierFactSnapshot>())
@@ -214,10 +220,13 @@ public sealed partial class NavalGame
                 if(section.HistoryChart!=null)content.Add(new NavalHistoryChart(section.HistoryChart));
                 void AddRow(VisualElement host,DossierRowSnapshot row)
                 {
-                    host.Add(Text(row.Heading,"section-title"));
-                    if(row.IsMarkdown)AddHistoricalText(host,row.Summary+"\n"+row.Detail);
-                    else host.Add(Text(row.Summary+"\n"+row.Detail));
-                    if(row.Reference!=null)ActionButton(host,row.Reference.Name,()=>OpenDossier(row.Reference));
+                    var record=new VisualElement();record.AddToClassList("dossier-record");host.Add(record);
+                    var line=new VisualElement();line.AddToClassList("dossier-record-line");record.Add(line);
+                    line.Add(Text(row.Heading,"dossier-record-name"));
+                    if(row.IsMarkdown){var prose=new VisualElement();prose.AddToClassList("dossier-record-summary");line.Add(prose);AddHistoricalText(prose,row.Summary+"\n"+row.Detail);}
+                    else if(!string.IsNullOrWhiteSpace(row.Summary))line.Add(Text(row.Summary,"dossier-record-summary"));
+                    if(row.Reference!=null)ActionButton(line,row.Reference.Name,()=>OpenDossier(row.Reference)).AddToClassList("dossier-inline-link");
+                    if(!row.IsMarkdown&&!string.IsNullOrWhiteSpace(row.Detail))record.Add(Text(row.Detail,"dossier-record-detail"));
                 }
                 if(section.UseVirtualizedRows && section.Rows?.Count>0)
                 {
@@ -228,7 +237,6 @@ public sealed partial class NavalGame
                 else foreach(var row in section.Rows??Array.Empty<DossierRowSnapshot>())AddRow(content,row);
                 if(!string.IsNullOrWhiteSpace(section.Note))content.Add(Text(section.Note));
             }
-            if(snapshot.WeaponDiagram!=null)content.Add(new NavalWeaponDiagram(snapshot.WeaponDiagram));
         }
         foreach(var tab in snapshot.Tabs)Show(tab);
         PushDialog(snapshot.Title,body,snapshot.Dispose,"large");
