@@ -389,6 +389,8 @@ namespace NavalCombatCore
         }
     }
 
+    public enum ObservedDamage { Undamaged, Light, Medium, Heavy, Sunk }
+
     public partial class ShipTypeLossItem
     {
         public ShipType shipType;
@@ -405,26 +407,35 @@ namespace NavalCombatCore
         public double lossVictoryPoint;
         public double commitVictroyPoint; // May be better to call it "strength"?
 
+        public static ObservedDamage ClassifyDamage(ShipLog ship)
+        {
+            if (ship.mapState == MapState.Destroyed) return ObservedDamage.Sunk;
+            if (ship.damagePoint == 0) return ObservedDamage.Undamaged;
+            var ratio = ship.damagePoint / Math.Max(1, ship.shipClass.damagePoint);
+            return ratio > 0.7 ? ObservedDamage.Heavy : ratio > 0.25 ? ObservedDamage.Medium : ObservedDamage.Light;
+        }
+
         public void AddToCount(ShipLog shipLog)
         {
             var shipLogScore = shipLog.shipClass.EvaluateGeneralScore();
             commitVictroyPoint += shipLogScore;
 
-            if (shipLog.mapState == MapState.Destroyed)
+            var damage = ClassifyDamage(shipLog);
+            if (damage == ObservedDamage.Sunk)
             {
                 sunk += 1;
                 lossVictoryPoint += shipLogScore;
             }
-            else if (shipLog.damagePoint == 0)
+            else if (damage == ObservedDamage.Undamaged)
             {
                 undamaged += 1;
             }
             else
             {
                 var dp = shipLog.damagePoint / Math.Max(1, shipLog.shipClass.damagePoint);
-                if (dp > 0.7d)
+                if (damage == ObservedDamage.Heavy)
                     heavy += 1;
-                else if (dp > 0.25)
+                else if (damage == ObservedDamage.Medium)
                     medium += 1;
                 else
                     light += 1;

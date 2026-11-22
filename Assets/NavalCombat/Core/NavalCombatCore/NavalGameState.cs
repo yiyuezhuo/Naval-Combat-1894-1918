@@ -78,7 +78,7 @@ namespace NavalCombatCore
         public ShipLogLog log;
     }
 
-    public class NavalGameState : AbstractGameState
+    public partial class NavalGameState : AbstractGameState
     {
         public event Action<GunneryShotResolvedEvent> GunneryShotResolved;
         public event Action<TorpedoLaunchedEvent> TorpedoLaunched;
@@ -360,13 +360,14 @@ namespace NavalCombatCore
                 if (owner == null || owner.GetAwaking())
                     continue;
 
-                if (dependentShips.Any(shipLog => shipLog.WasAttackedInMinute(previousMinuteKey) || IsWithinAwakeDistance(shipLog)))
+                if (dependentShips.Any(shipLog => FogOfWarEnabled ? sightedDuringMinute.Contains(shipLog) : shipLog.WasAttackedInMinute(previousMinuteKey) || IsWithinAwakeDistance(shipLog)))
                 {
                     owner.awaking.value = true;
                     awakingOwnersTriggeredThisMinute.Add(owner);
                 }
             }
 
+            sightedDuringMinute.Clear();
             foreach (var kv in countdownOwnerShipMap)
             {
                 var owner = kv.Key;
@@ -465,7 +466,7 @@ namespace NavalCombatCore
                         continue;
                     if (!projectedByShipObjectId.TryGetValue(enemy.objectId, out var projectedEnemy))
                         continue;
-                    if (projectedShip.rootGroup == projectedEnemy.rootGroup)
+                    if (projectedShip.rootGroup == projectedEnemy.rootGroup || !SideHasContact(projectedShip.rootGroup.objectId, enemy))
                         continue;
 
                     var dx = projectedShip.xYards - projectedEnemy.xYards;
@@ -646,6 +647,7 @@ namespace NavalCombatCore
                 }
                 else
                 {
+                    if (FogOfWarEnabled && proximityInfo.nearestEnemy == null) continue;
                     shipLog.ClearManualRoute();
                     shipLog.ClearAutomaticOperationalRouteState();
                     ApplyOperationalRetreatHeading(shipLog, proximityInfo);
@@ -1143,10 +1145,14 @@ namespace NavalCombatCore
                 var tacticalControlRoots = ApplyAutomaticManeuverModes(autoOperationalShipLogs);
                 foreach ((var meShipLogs, var otherShipLogs) in GetOpposeSidePairs())
                 {
+                    var enemies = FogOfWarEnabled
+                        ? otherShipLogs.Where(s => SideHasContact(((IShipGroupMember)meShipLogs[0]).GetRootParent().objectId, s)).ToList()
+                        : otherShipLogs;
+                    if (FogOfWarEnabled && enemies.Count == 0) continue;
                     var solver = new WeaponTargetAssignmentSolver();
                     solver.Solve(
                         meShipLogs.Where(s => s.doctrine.GetFireAutomaticType() == AutomaticType.Automatic && !s.IsSurpriseRestricted()),
-                        otherShipLogs
+                        enemies
                     );
 
                     var planner = new LowLevelCoursePlanner();
@@ -1155,7 +1161,7 @@ namespace NavalCombatCore
                             s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
                             && s.GetControlRoot().doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
                             && tacticalControlRoots.Contains(s.GetControlRoot())),
-                        otherShipLogs,
+                        enemies,
                         CoreParameter.Instance.extrapolateSeconds
                     ); // Extrapolate 360s
                 }
@@ -1261,6 +1267,7 @@ namespace NavalCombatCore
             foreach (var shipLog in shipLogsOnMapList)
                 shipLog.StepTryMoveToNewPosition(deltaSeconds); // update position
 
+            RefreshVisualContacts();
             // PrecalculationContext.Instance.gunneryFireContext.Calculate();
             using (GunneryFireContext.Begin())
             {
@@ -1287,6 +1294,7 @@ namespace NavalCombatCore
                 shipLog.StepLogging();
 
             EnsureHostileProximitySnapshotCurrent();
+            if (FogOfWarEnabled && shipLogsOnMapList.Any(ship => !ship.IsOnMap())) RefreshVisualContacts();
             scenarioState.doingStep = false;
         }
 

@@ -575,6 +575,8 @@ namespace NavalCombatCore
             get => namedShip?.defaultLeaderReference?.Get();
         }
 
+        public List<EmbarkedLeader> embarkedLeaders = new();
+
         public bool emergencyRudder;
         public bool assistedDeceleration = true;
         public ControlMode controlMode;

@@ -524,7 +524,7 @@ namespace NavalCombatCore
             foreach (var tgtRec in targettingRecords)
             {
                 var tgt = tgtRec.GetTarget();
-                if (tgt != null)
+                if (tgt != null && NavalGameState.Instance.CanSee(shooter, tgt))
                 {
                     tgtRec.processingSeconds += deltaSeconds;
 

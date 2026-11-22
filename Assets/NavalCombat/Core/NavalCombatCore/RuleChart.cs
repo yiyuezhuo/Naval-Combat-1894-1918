@@ -1293,14 +1293,9 @@ namespace NavalCombatCore
                 };
             }
             
-            var row = Enumerable.Range(0, tb.rows.Length)
-                .Where(r => obsSize <= tb.rows[r])
-                .DefaultIfEmpty(tb.rows.Length - 1)
-                .First();
-            var col = Enumerable.Range(0, tb.cols.Length)
-                .Where(c => tgtSize <= tb.cols[c])
-                .DefaultIfEmpty(tb.cols.Length - 1)
-                .First();
+            int row = 0, col = 0;
+            while (row + 1 < tb.rows.Length && obsSize > tb.rows[row]) row++;
+            while (col + 1 < tb.cols.Length && tgtSize > tb.cols[col]) col++;
             var rangeYards = tb.cells[row, col];
             // var rangeYards = selectedTable.cells[obsSize, tgtSize];
 

@@ -191,7 +191,7 @@ namespace NavalCombatCore
                 if (record.controlMode == ControlMode.FollowTarget)
                 {
                     var followedTarget = record.original.GetFollowedTarget();
-                    if (followedTarget == null)
+                    if (followedTarget == null || !originalToRecords.ContainsKey(followedTarget))
                     {
                         record.controlMode = ControlMode.Independent;
                     }
@@ -203,7 +203,7 @@ namespace NavalCombatCore
                 else if (record.controlMode == ControlMode.RelativeToTarget)
                 {
                     var relativeToTarget = record.original.GetRelativeToTarget();
-                    if (relativeToTarget == null)
+                    if (relativeToTarget == null || !originalToRecords.ContainsKey(relativeToTarget))
                     {
                         record.controlMode = ControlMode.Independent;
                     }

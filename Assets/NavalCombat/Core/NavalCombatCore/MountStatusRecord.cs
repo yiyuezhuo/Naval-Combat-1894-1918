@@ -1076,7 +1076,7 @@ namespace NavalCombatCore
 
                 // var shooter = GetPlatform();
                 var ctx = fireCtx.mountStatusRecordMap[this].ctx;
-                if (!ctx.fullyResolved)
+                if (!ctx.fullyResolved || !NavalGameState.Instance.CanSee(ctx.shipLog, tgt))
                     return;
 
                 var isAmmoSwitchAuto = ctx.shipLog.doctrine.GetAmmunitionSwitchAutomaticType() == AutomaticType.Automatic;

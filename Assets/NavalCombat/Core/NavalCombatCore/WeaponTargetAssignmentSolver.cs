@@ -241,6 +241,8 @@ namespace NavalCombatCore
 
                 foreach (var target in targets)
                 {
+                    if (shooter.original is ShipLog firingShip && target.original is ShipLog enemy &&
+                        !NavalGameState.Instance.CanSee(firingShip, enemy)) continue;
                     var stats = shooter.measurements[target] = MeasureStats.Measure(shooter.original, target.original);
                     var pairShortTermThreat = target.selfFirepowerScore * GetThreatDistanceFactor(stats.distanceYards);
                     if (pairShortTermThreat > target.shortTermThreatScore)
@@ -280,7 +282,7 @@ namespace NavalCombatCore
                     if (battery.assignedTarget != null)
                         continue;
 
-                    if (battery.currentTarget != null && battery.isChangeTargetBlocked)
+                    if (battery.currentTarget != null && battery.isChangeTargetBlocked && shooter.measurements.ContainsKey(battery.currentTarget))
                     {
                         battery.assignedTarget = battery.currentTarget; // TODO: Is it too harsh to a battery which is capable to shoot multiply targets?
                         battery.currentTarget.underFirepower += battery.firepowerScoreMap[battery.currentTarget] * battery.currentTargetFireEffectivenessFactor;
@@ -307,7 +309,7 @@ namespace NavalCombatCore
 
                     foreach (var target in state.targets)
                     {
-                        if (shooter.manualFireTarget != null && shooter.manualFireTarget != target)
+                        if (!shooter.measurements.ContainsKey(target) || (shooter.manualFireTarget != null && shooter.manualFireTarget != target))
                             continue;
 
                         var evaluation = EvaluateCandidate(shooter, battery, target);
@@ -343,7 +345,7 @@ namespace NavalCombatCore
 
                     foreach (var target in state.targets)
                     {
-                        if (shooter.manualFireTarget != null && shooter.manualFireTarget != target)
+                        if (!shooter.measurements.ContainsKey(target) || (shooter.manualFireTarget != null && shooter.manualFireTarget != target))
                             continue;
 
                         scanOrder++;

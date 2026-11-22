@@ -9,7 +9,7 @@ public enum TorpedoFireBlock
 {
     None = 0, MountUnavailable = 1, Empty = 2, Doctrine = 4, Unsafe = 8,
     NoSolution = 16, Range = 32, Arc = 64, Surprise = 128,
-    Salvo = 256, Score = 512, Reserve = 1024
+    Salvo = 256, Score = 512, Reserve = 1024, NoVisualContact = 2048
 }
 
 /// <summary>Read-only evaluation shared by launch execution and inspection.</summary>
@@ -28,6 +28,10 @@ public sealed record TorpedoFireEvaluation(
         var distance = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(
             shooter.position.LatDeg, shooter.position.LonDeg, target.position.LatDeg, target.position.LonDeg).Item1
             * 1000 * MeasureUtils.meterToYard;
+        if (!NavalGameState.Instance.CanSee(shooter, target))
+            return shooter.shipClass.torpedoSector.torpedoSettings.Select(setting => new TorpedoFireEvaluation(
+                setting.speedKnots, setting.rangeYards, distance, false, 0, 0, 0, 0, 0, 0,
+                TorpedoFirePolicy.Threshold(remaining), TorpedoFireBlock.NoVisualContact)).ToList();
         var common = TorpedoFireBlock.None;
         if (!mount.IsOperational()) common |= TorpedoFireBlock.MountUnavailable;
         if (mount.currentLoad <= 0 || remaining <= 0) common |= TorpedoFireBlock.Empty;

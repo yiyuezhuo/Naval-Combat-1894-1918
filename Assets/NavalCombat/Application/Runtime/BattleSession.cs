@@ -178,6 +178,7 @@ public sealed class BattleSession
         SelectedObjectId = playerGroup.objectId;
         Speed = SimulationSpeed.Paused;
         LastNonPausedSpeed = null;
+        GameState.InitializeLeaderEmbarkation();
         Phase = BattlePhase.Running;
         NotifyChanged();
     }
@@ -211,6 +212,7 @@ public sealed class BattleSession
         SelectedObjectId = command.objectId;
         Speed = SimulationSpeed.Paused;
         LastNonPausedSpeed = null;
+        GameState.InitializeLeaderEmbarkation();
         Phase = BattlePhase.Running;
         NotifyChanged();
     }
@@ -233,6 +235,7 @@ public sealed class BattleSession
         SelectedObjectId = null;
         Speed = SimulationSpeed.Paused;
         LastNonPausedSpeed = null;
+        GameState.InitializeLeaderEmbarkation();
         Phase = BattlePhase.Running;
         NotifyChanged();
     }
@@ -484,6 +487,7 @@ public sealed class BattleSession
             throw new InvalidOperationException("The target ship is not currently available for attack.");
         if (GetSideId(target) == GetSideId(ship))
             throw new InvalidOperationException("A friendly ship cannot be selected as an attack target.");
+        if (!GameState.CanSee(ship, target)) throw new InvalidOperationException("No visual contact from the firing ship.");
         ship.shipLevelFiringTargetObjectId = target.objectId;
         NotifyChanged();
     }
@@ -565,22 +569,55 @@ public sealed class BattleSession
         return false;
     }
 
+    public bool HasPlayerFog => GameState?.FogOfWarEnabled == true && PlayerRootGroupId != null && !IsObserverMode;
+    public bool CanInspect(IShipGroupMember member) => !HasPlayerFog || IsPlayerSideMember(member);
+    public bool CanDisplay(ShipLog ship) => !HasPlayerFog || ship != null &&
+        (IsPlayerSideMember(ship) || GameState.SideHasContact(PlayerRootGroupId, ship));
+    public bool IsContact(ShipLog ship) => HasPlayerFog && ship != null && !IsPlayerSideMember(ship);
+
+    public bool CanPresentShot(GunneryShotResolvedEvent shot) => !HasPlayerFog ||
+        (CanDisplay(EntityManager.Instance.Get<ShipLog>(shot.ShooterId)) &&
+         CanDisplay(EntityManager.Instance.Get<ShipLog>(shot.TargetId)));
+
     public bool IsPlayerShip(ShipLog ship) => IsPlayerMember(ship);
+
+    public ShipLog GetInitialSelectedShip(string observerCommandObjectId = null)
+    {
+        var candidates = GameState.shipLogs.Where(IsPlayerShip).ToList();
+        if (candidates.Count == 0) candidates = GameState.shipLogsOnMap.ToList();
+        var commandId = IsObserverMode ? observerCommandObjectId : PlayerCommandObjectId;
+        var command = EntityManager.Instance.Get<ShipGroup>(commandId);
+        if (command != null)
+        {
+            var flagship = candidates
+                .Where(ship => GameState.shipLogsOnMap.Contains(ship))
+                .SelectMany(ship => ship.embarkedLeaders
+                    .Where(entry => entry.commandObjectId == commandId && entry.post == LeaderPost.Commander)
+                    .Select(entry => new { ship, entry }))
+                .OrderByDescending(candidate => candidate.entry.leaderObjectId == command.leader?.objectId)
+                .ThenBy(candidate => candidate.entry.GetDisplayPriority())
+                .ThenBy(candidate => candidate.ship.objectId, StringComparer.Ordinal)
+                .Select(candidate => candidate.ship).FirstOrDefault();
+            if (flagship != null) return flagship;
+        }
+        return candidates.OrderByDescending(ship => ship.GetEffectiveControlMode() == ControlMode.Independent)
+            .ThenByDescending(ship => ship.shipClass.displacementTons).FirstOrDefault();
+    }
     public bool IsPlayerSideMember(IShipGroupMember member) => member != null
         && PlayerRootGroupId != null
         && member.GetRootParent()?.objectId == PlayerRootGroupId;
     public string GetSideId(IShipGroupMember member) => member?.GetRootParent()?.objectId;
     public IEnumerable<ShipLog> GetShipsForGroup(ShipGroup group) => group?.Walk<ShipLog>() ?? [];
 
-    public IEnumerable<(ShipLog ship, ShipLogLog log)> GetBattleLogs()
+    public IEnumerable<(ShipLog ship, ShipLogLog log)> GetBattleLogs(int limit = 80)
     {
         if (GameState?.shipLogs == null)
             yield break;
         foreach (var entry in GameState.shipLogs
-            .Where(ship => ship != null)
+            .Where(ship => ship != null && CanInspect(ship))
             .SelectMany(ship => ship.logs.Select(log => (ship, log)))
             .OrderByDescending(entry => entry.log.time)
-            .Take(80))
+            .Take(limit))
         {
             yield return entry;
         }
@@ -605,6 +642,7 @@ public sealed class BattleSession
         ship.followedTargetObjectId = null;
         ship.relativeTargetObjectId = null;
         ship.ClearManualRoute();
+        ship.ClearAutomaticOperationalRouteState();
         SetManualManeuverDoctrine(ship);
     }
 
@@ -787,11 +825,14 @@ public sealed class BattleSession
         }
     }
 
-    void OnTorpedoLaunched(TorpedoLaunchedEvent launched) => pendingTorpedoLaunches.Add(launched);
+    void OnTorpedoLaunched(TorpedoLaunchedEvent launched)
+    {
+        if (!HasPlayerFog || CanDisplay(EntityManager.Instance.Get<ShipLog>(launched.ShooterId))) pendingTorpedoLaunches.Add(launched);
+    }
 
     void OnGunneryShotResolved(GunneryShotResolvedEvent resolvedEvent)
     {
-        if (resolvedEvent != null)
+        if (resolvedEvent != null && CanPresentShot(resolvedEvent))
             pendingGunneryShots.Add(resolvedEvent);
     }
 
