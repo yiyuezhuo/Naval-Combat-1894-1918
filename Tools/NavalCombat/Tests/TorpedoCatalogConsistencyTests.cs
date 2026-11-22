@@ -1,7 +1,52 @@
+using NavalCombat.Application;
+
 namespace NavalCombat.Tests;
 
 public sealed class TorpedoCatalogConsistencyTests
 {
+    [Theory]
+    [InlineData(TorpedoInstallation.Automatic,false,ShipGraphicPartKind.SubmergedTorpedo)]
+    [InlineData(TorpedoInstallation.Automatic,true,ShipGraphicPartKind.DeckTorpedo)]
+    [InlineData(TorpedoInstallation.Surface,false,ShipGraphicPartKind.DeckTorpedo)]
+    [InlineData(TorpedoInstallation.Underwater,true,ShipGraphicPartKind.SubmergedTorpedo)]
+    [InlineData(TorpedoInstallation.AboveWaterInHull,false,ShipGraphicPartKind.HullTorpedoPort)]
+    [InlineData(TorpedoInstallation.AboveWaterUnspecified,true,ShipGraphicPartKind.UnspecifiedTorpedo)]
+    public void InstallationControlsAppearanceIndependentlyOfTrainability(
+        TorpedoInstallation installation,bool trainable,ShipGraphicPartKind expected)
+    {
+        var input=new ShipClassPlaceholderRenderInput { type=PlaceholderShipType.ArmoredCruiser };
+        input.torpedoMountRecords.Add(new PlaceholderMountRenderRecord {
+            objectId="tube",mountLocation=PlaceholderMountLocation.PortMidship,trainable=trainable,
+            torpedoGraphic=installation==TorpedoInstallation.Automatic?null:new() {installation=installation}
+        });
+        var part=ShipGraphicLayoutBuilder.Build(input).Parts.Single(p=>p.MountRecordId=="tube");
+        Assert.Equal(expected,part.Kind);
+        Assert.Equal(trainable,part.Trainable);
+    }
+
+    [Fact]
+    public void ChihYuanKeepsFourScenarioMountsWithOnlyTwoVisibleHullPorts()
+    {
+        var session=ScenarioFixture.LoadSession("SJS - Chih Yuan vs Naniwa.scen.xml");
+        var ship=session.GameState.shipLogs.Single(s=>s.shipClass.name.english=="Chih Yuan");
+        var input=ShipClassPlaceholderRenderAdapter.CreateRenderInput(ship.shipClass);
+        var layout=ShipGraphicLayoutBuilder.Build(input);
+        var parts=layout.Parts.Where(p=>p.RecordIndex>=0 && p.BatteryIndex<0).ToList();
+        Assert.Equal(4,parts.Count);
+        Assert.Equal(ship.torpedoSectorStatus.mountStatus.Select(s=>s.mountRecordId),parts.Select(p=>p.MountRecordId));
+        Assert.Equal(2,parts.Count(p=>p.Kind==ShipGraphicPartKind.UnspecifiedTorpedo));
+        var ports=parts.Where(p=>p.Kind==ShipGraphicPartKind.HullTorpedoPort).OrderBy(p=>p.X).ToList();
+        Assert.Equal(2,ports.Count);
+        Assert.True(ports[0].X<0 && ports[1].X>0);
+        Assert.All(ports,p=>
+        {
+            Assert.True(p.Z>0 && p.Z<layout.Freeboard);
+            Assert.True(p.Trainable);
+            input.torpedoMountRecords[p.RecordIndex].mountDirectionDeg=45;
+            Assert.Equal(p.RestAngle,ShipGraphicLayoutBuilder.Direction(p,input));
+        });
+    }
+
     [Fact]
     public void AuthoredScenariosHaveOneStatusPerPhysicalTorpedoMount()
     {

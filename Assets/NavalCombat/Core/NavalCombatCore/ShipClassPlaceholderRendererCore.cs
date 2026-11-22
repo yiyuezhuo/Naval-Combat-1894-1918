@@ -570,7 +570,8 @@ public static class ShipClassPlaceholderImageRendererCore
         }
         foreach(var part in physical.Parts.OrderBy(p=>p.Kind==ShipGraphicPartKind.Mast?double.MaxValue:p.Z))
         {
-            var weapon=part.Kind is ShipGraphicPartKind.Gun or ShipGraphicPartKind.DeckTorpedo or ShipGraphicPartKind.SubmergedTorpedo;
+            if(part.Kind==ShipGraphicPartKind.UnspecifiedTorpedo) continue;
+            var weapon=part.Kind is ShipGraphicPartKind.Gun or ShipGraphicPartKind.DeckTorpedo or ShipGraphicPartKind.SubmergedTorpedo or ShipGraphicPartKind.HullTorpedoPort;
             if((layers & (weapon?RenderLayer.WeaponsAndDetails:RenderLayer.StaticShip))==0) continue;
             var pos=new PixelVector2(shipPixelRect.xMin+(part.Y+.5)*shipPixelRect.width,centerY+part.X*shipPixelRect.height);
             var w=part.Width*shipPixelRect.height; var l=part.Length*shipPixelRect.width;
@@ -579,6 +580,17 @@ public static class ShipClassPlaceholderImageRendererCore
             if(part.Kind==ShipGraphicPartKind.Gun)
                 DrawPhysicalGunMount(canvas,pos,direction,part,w,l,shipPixelRect.width/ShipGraphicLayoutBuilder.Dimensions(shipClass).Length,
                     settings.weaponScale,palette.detailFill,palette.hullOutline);
+            else if(part.Kind==ShipGraphicPartKind.HullTorpedoPort)
+            {
+                var broadside=part.DirectionX!=0;
+                var scale=shipPixelRect.width/ShipGraphicLayoutBuilder.Dimensions(shipClass).Length;
+                for(var i=0;i<part.Barrels;i++)
+                {
+                    var offset=(i-(part.Barrels-1)*.5)*part.TubeSpacing*scale;
+                    canvas.FillEllipse(new(pos.x+(broadside?offset:0),pos.y+(broadside?0:offset)),
+                        broadside?Math.Max(1,l/2):1,broadside?1:Math.Max(1,w/2),palette.hullOutline);
+                }
+            }
             else if(part.Kind==ShipGraphicPartKind.SubmergedTorpedo)
                 DrawSubmergedTorpedoMount(canvas,pos,direction,part.Barrels,8*settings.weaponScale,palette.hullOutline,palette.detailFill);
             else if(part.Kind==ShipGraphicPartKind.DeckTorpedo)

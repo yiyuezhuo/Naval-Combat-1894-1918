@@ -8321,7 +8321,13 @@ Threshold {3:0.00} (not a hit probability)</value>
     <value>Automatic</value>
   </data>
   <data name="Core.TorpedoInstallation.Surface" xml:space="preserve">
-    <value>Surface</value>
+    <value>Exposed deck</value>
+  </data>
+  <data name="Core.TorpedoInstallation.AboveWaterInHull" xml:space="preserve">
+    <value>Above water, in hull</value>
+  </data>
+  <data name="Core.TorpedoInstallation.AboveWaterUnspecified" xml:space="preserve">
+    <value>Above water, location unspecified</value>
   </data>
   <data name="Core.TorpedoInstallation.Underwater" xml:space="preserve">
     <value>Underwater</value>

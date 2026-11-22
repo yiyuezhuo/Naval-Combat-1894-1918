@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 
-public enum ShipGraphicPartKind { Deckhouse, Funnel, Mast, Gun, RapidFire, DeckTorpedo, SubmergedTorpedo, Bridge, Deck }
+public enum ShipGraphicPartKind { Deckhouse, Funnel, Mast, Gun, RapidFire, DeckTorpedo, SubmergedTorpedo, Bridge, Deck, HullTorpedoPort, UnspecifiedTorpedo }
 public enum ShipGunAppearance { Open, Shield, Turret, Casemate, FixedMount }
-public enum TorpedoInstallation { Automatic, Surface, Underwater }
+public enum TorpedoInstallation { Automatic, Surface, Underwater, AboveWaterInHull, AboveWaterUnspecified }
 
 /// <summary>Appearance only. Positions use beam/length fractions, dimensions use metres.
 /// Zero dimensions infer defaults; tubePivot is the fraction of tube length behind its pivot.</summary>
@@ -104,4 +105,24 @@ public sealed class ShipClassGraphicLayout
     public double Freeboard { get; set; }
     public (double X, double Y, double Z) Observer { get; set; }
     public List<string> Warnings { get; } = new();
+
+    // Intersect a transverse or longitudinal line with the shell at the opening's height.
+    public (double X,double Y) HullPortPosition(bool broadside,int sign,double along,double z)
+    {
+        var depth=Math.Clamp((Freeboard-z)/(Freeboard-ShipGraphicLayoutBuilder.HullBottomZ),0,1);
+        var sx=1-depth*(1-ShipGraphicLayoutBuilder.HullBottomBeamScale);
+        var sy=1-depth*(1-ShipGraphicLayoutBuilder.HullBottomLengthScale);
+        var station=Math.Clamp(along/(broadside?sy:sx),-.499999,.499999);
+        double furthest=0;
+        for(var i=0;i<Hull.Count;i++)
+        {
+            var a=Hull[i]; var b=Hull[(i+1)%Hull.Count];
+            var start=broadside?a.Y:a.X; var end=broadside?b.Y:b.X;
+            if(start==end || station<Math.Min(start,end) || station>Math.Max(start,end)) continue;
+            var t=(station-start)/(end-start);
+            var cross=broadside?a.X+t*(b.X-a.X):a.Y+t*(b.Y-a.Y);
+            furthest=Math.Max(furthest,sign*cross);
+        }
+        return broadside?(sign*furthest*sx,station*sy):(station*sx,sign*furthest*sy);
+    }
 }

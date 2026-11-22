@@ -160,12 +160,35 @@ public static class ShipGraphicLayoutBuilder
         {
             var rec=input.torpedoMountRecords[r];
             {
-                var (x,y)=Position(rec.mountLocation, input.torpedoMountRecords.Take(r).Count(t=>t.mountLocation==rec.mountLocation), input.torpedoMountRecords.Count(t=>t.mountLocation==rec.mountLocation));
+                var index=input.torpedoMountRecords.Take(r).Count(t=>t.mountLocation==rec.mountLocation);
+                var count=input.torpedoMountRecords.Count(t=>t.mountLocation==rec.mountLocation);
+                var (x,y)=Position(rec.mountLocation,index,count);
                 var g=rec.torpedoGraphic??new TorpedoGraphicParameters();
                 var small=input.type is PlaceholderShipType.TorpedoBoat or PlaceholderShipType.Destroyer;
                 var submerged=g.installation==TorpedoInstallation.Underwater ||
                     (g.installation==TorpedoInstallation.Automatic && !rec.trainable && !small && rec.mountLocation!=PlaceholderMountLocation.Midship);
                 var diameter=Positive(g.tubeDiameter,Positive(input.torpedoDiameterIn,18)*.0254+.06);
+                if(g.installation is TorpedoInstallation.AboveWaterInHull or TorpedoInstallation.AboveWaterUnspecified)
+                {
+                    var side=x;
+                    if(rec.mountLocation==PlaceholderMountLocation.Midship && g.customPosition) side=Finite(g.x);
+                    var broadside=side!=0;
+                    var sign=(broadside?side:y)<0?-1:1;
+                    var radius=Math.Min(diameter/2,deck*.4);
+                    var axisZ=Math.Clamp(g.customPosition?Finite(g.z,deck*.55):deck*.55,radius,deck-radius);
+                    var barrels=Math.Max(1,rec.barrels);
+                    var portSpacing=Math.Max(diameter*1.15,Positive(g.tubeSpacing,diameter*1.4));
+                    var along=broadside?y:(index-(count-1)*.5)*barrels*portSpacing/beam;
+                    if(g.customPosition) along=Finite(broadside?g.y:g.x,along);
+                    var known=g.installation==TorpedoInstallation.AboveWaterInHull;
+                    if(known) (x,y)=result.HullPortPosition(broadside,sign,along,axisZ);
+                    else if(g.customPosition) (x,y)=(Finite(g.x,x),Finite(g.y,y));
+                    result.Parts.Add(new(known?ShipGraphicPartKind.HullTorpedoPort:ShipGraphicPartKind.UnspecifiedTorpedo,
+                        x,y,diameter/beam,diameter/length,broadside?sign:0,broadside?0:sign,barrels)
+                    { Z=axisZ,Height=radius*2,Caliber=diameter,TubeSpacing=portSpacing,Trainable=rec.trainable,
+                        RecordIndex=r,MountRecordId=rec.objectId??"",RestAngle=broadside?(sign>0?90:270):(sign>0?0:180) });
+                    continue;
+                }
                 var tubeLength=Positive(g.tubeLength,submerged?.7:input.torpedoDiameterIn>0 && input.torpedoDiameterIn<=14?4.5:5);
                 var splay=Math.Clamp(Finite(g.tubeSplay),-45,45);
                 var pivot=Math.Clamp(Finite(g.tubePivot,.5),0,1);

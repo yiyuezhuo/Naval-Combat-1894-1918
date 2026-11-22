@@ -8320,7 +8320,13 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo</value>
     <value>自動</value>
   </data>
   <data name="Core.TorpedoInstallation.Surface" xml:space="preserve">
-    <value>水面</value>
+    <value>露天甲板</value>
+  </data>
+  <data name="Core.TorpedoInstallation.AboveWaterInHull" xml:space="preserve">
+    <value>水上舷內</value>
+  </data>
+  <data name="Core.TorpedoInstallation.AboveWaterUnspecified" xml:space="preserve">
+    <value>水上（位置未詳）</value>
   </data>
   <data name="Core.TorpedoInstallation.Underwater" xml:space="preserve">
     <value>水下</value>

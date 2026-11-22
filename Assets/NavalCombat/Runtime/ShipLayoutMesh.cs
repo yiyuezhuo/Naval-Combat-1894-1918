@@ -84,7 +84,7 @@ internal static class ShipLayoutMesh
         internal float[] StaticGeometry => staticPrepared;
         internal float[] DestroyedGeometry => hullPrepared;
         internal IReadOnlyList<(float[] Housing,float[][] Barrels)> WeaponGeometry => weaponPieces;
-        internal IEnumerable<(ShipGraphicPart Part,float[] Raw)> StructureGeometry => structureRanges.Select(r=>(r.Part,structureRaw.Skip(r.Start).Take(r.Count).ToArray()));
+        internal IEnumerable<(ShipGraphicPart Part,float[] Raw)> StructureGeometry => structureRanges.Where(r=>ShipGraphicLayoutBuilder.IsStructure(r.Part.Kind)).Select(r=>(r.Part,structureRaw.Skip(r.Start).Take(r.Count).ToArray()));
         internal NavalPickMesh PickMesh {get;private set;}
         internal NavalPickMesh DestroyedPickMesh {get;private set;}
         readonly float length, beam;
@@ -115,10 +115,10 @@ internal static class ShipLayoutMesh
             {
                 // This is a waterline model, not a full underwater hull. Submerged
                 // fixed tubes remain in the semantic/2D layout, but have no exposed mesh.
-                if(p.Kind is ShipGraphicPartKind.RapidFire or ShipGraphicPartKind.SubmergedTorpedo) continue;
+                if(p.Kind is ShipGraphicPartKind.RapidFire or ShipGraphicPartKind.SubmergedTorpedo or ShipGraphicPartKind.UnspecifiedTorpedo) continue;
                 var pos=new Vector3((float)p.X*beam,(float)p.Y*length,(float)p.Z);
                 var w=(float)p.Width*beam; var l=(float)p.Length*length; var h=(float)p.Height;
-                if(p.Kind is ShipGraphicPartKind.Gun or ShipGraphicPartKind.DeckTorpedo or ShipGraphicPartKind.SubmergedTorpedo)
+                if(p.Kind is ShipGraphicPartKind.Gun or ShipGraphicPartKind.DeckTorpedo)
                 {
                     if(p.Kind==ShipGraphicPartKind.Gun && p.Z>Layout.Freeboard+.1
                         && !Layout.Parts.Any(s=>s.Kind is ShipGraphicPartKind.Deck or ShipGraphicPartKind.Deckhouse
@@ -161,6 +161,9 @@ internal static class ShipLayoutMesh
                 var structureStart=structure.Vertices.Count;
                 switch(p.Kind)
                 {
+                    case ShipGraphicPartKind.HullTorpedoPort:
+                        HullTorpedoPorts(structure,p);
+                        break;
                     case ShipGraphicPartKind.Deck:
                         var polygon=Layout.Hull.ToList();
                         foreach(var boundary in new[]{(Axis:0,Limit:p.X-p.Width/2,Sign:1),(Axis:0,Limit:p.X+p.Width/2,Sign:-1),
@@ -244,6 +247,34 @@ internal static class ShipLayoutMesh
             DestroyedPickMesh=new NavalPickMesh(hullRaw.ToArray(),9);
             hullPrepared=NavalMesh.Prepare(hullRaw.ToArray());
             staticPrepared=NavalMesh.Prepare(hullRaw.Concat(structureRaw).ToArray());
+        }
+        void HullTorpedoPorts(NavalMesh mesh,ShipGraphicPart part)
+        {
+            var broadside=part.DirectionX!=0;
+            var sign=Math.Sign(broadside?part.DirectionX:part.DirectionY);
+            var dark=new Vector3(.07f,.09f,.10f);
+            var rim=new Vector3(.39f,.43f,.46f);
+            for(var tube=0;tube<part.Barrels;tube++)
+            {
+                var center=(tube-(part.Barrels-1)*.5)*part.TubeSpacing;
+                Vector3 Point(double radius,int segment)
+                {
+                    var angle=segment*Math.PI/8;
+                    var offset=center+radius*part.Caliber*.5*Math.Cos(angle);
+                    var along=broadside?part.Y+offset/length:part.X+offset/beam;
+                    var z=part.Z+radius*part.Height*.5*Math.Sin(angle);
+                    var (x,y)=Layout.HullPortPosition(broadside,sign,along,z);
+                    return new((float)(x*beam+.025*part.DirectionX),(float)(y*length+.025*part.DirectionY),(float)z);
+                }
+                var hub=Point(0,0);
+                var winding=broadside?sign:-sign;
+                for(var i=0;i<16;i++)
+                {
+                    var a=i*winding; var b=(i+1)*winding;
+                    mesh.Triangle(hub,Point(.82,a),Point(.82,b),dark);
+                    mesh.Quad(Point(.82,a),Point(1,a),Point(1,b),Point(.82,b),rim);
+                }
+            }
         }
         internal static float[] Weapon(ShipGraphicPart p,float width,float length,float height,int barrelFilter=-1)
         {
