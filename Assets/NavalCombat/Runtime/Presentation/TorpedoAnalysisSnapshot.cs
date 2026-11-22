@@ -23,7 +23,7 @@ public sealed record TorpedoAnalysisSnapshot(string ShooterName, DateTime Time, 
         var targets = new List<TorpedoTargetSnapshot>();
         using var gunnery = GunneryFireContext.Begin();
         using var context = TorpedoAttackContext.Begin();
-        foreach (var target in session.GameState.shipLogsOnMap.Where(t => session.GetSideId(t) != session.GetSideId(shooter)))
+        foreach (var target in session.GameState.shipLogsOnMap.Where(t => session.GetSideId(t) != session.GetSideId(shooter) && session.CanDisplay(t)))
         {
             var options = new List<TorpedoMountOption>();
             for (var i = 0; i < shooter.torpedoSectorStatus.mountStatus.Count; i++)

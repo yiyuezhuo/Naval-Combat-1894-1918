@@ -63,6 +63,7 @@ public sealed partial class NavalWorld : MonoBehaviour
         foreach(var mesh in meshes.Values)Destroy(mesh);meshes.Clear();
         Session = session; Gunfire.Reset();
         ResetTracks();
+        ResetRangeOverlays();
         var ships=session.GameState.shipLogsOnMap.ToList();
         originLat=ships.Count>0?ships.Average(s=>s.position.LatDeg):0;
         originLon=ships.Count>0?ships[0].position.LonDeg:0;
@@ -70,12 +71,27 @@ public sealed partial class NavalWorld : MonoBehaviour
     }
     public void Fit()
     {
-        var points=Session?.GameState?.shipLogsOnMap.Select(s=>Project(s.position.LatDeg,s.position.LonDeg)).ToList();
+        var points=Session?.GameState?.shipLogsOnMap.Where(Session.CanDisplay).Select(s=>Project(s.position.LatDeg,s.position.LonDeg)).ToList();
         if(points==null || points.Count==0)return;
         var bounds=new Bounds(points[0],Vector3.zero); foreach(var p in points)bounds.Encapsulate(p);
         focus=bounds.center; distance=Mathf.Clamp(Mathf.Max(bounds.size.x/ViewCamera.aspect,bounds.size.z)*1.3f+1500,500,150000);
     }
-    public void SetMode(string mode) { if(mode=="Bridge")BridgeObserverId=SelectedId;ViewMode=mode; bridgeYaw=bridgePitch=0; }
+    public void OnVisibilityChanged()
+    {
+        Gunfire.Reset();ResetGunneryEffects();
+        if(ViewMode=="Bridge" && Session.HasPlayerFog && !Session.IsPlayerSideMember(Session.GameState.shipLogs.FirstOrDefault(s=>s.objectId==BridgeObserverId)))SetMode("Chart");
+        BridgeTargetId=null;
+    }
+    public void SetMode(string mode)
+    {
+        if(mode=="Bridge")
+        {
+            var ship=Session?.GameState?.shipLogs.FirstOrDefault(s=>s.objectId==SelectedId);
+            if(Session?.HasPlayerFog==true && !Session.CanInspect(ship))return;
+            BridgeObserverId=SelectedId;
+        }
+        ViewMode=mode;bridgeYaw=bridgePitch=0;
+    }
     public void BridgeAhead(){bridgeYaw=bridgePitch=0;}
     public void TopDown(){SetMode("3D");pitch=89;yaw=0;}
     public void ResetView()
@@ -100,6 +116,7 @@ public sealed partial class NavalWorld : MonoBehaviour
         ShipLog best=null;float nearest=float.PositiveInfinity,nearestDepth=float.PositiveInfinity;
         foreach(var ship in Session?.GameState?.shipLogsOnMap ?? Enumerable.Empty<ShipLog>())
         {
+            if(!Session.CanDisplay(ship))continue;
             var center=Project(ship.position.LatDeg,ship.position.LonDeg)+Vector3.up*3;
             var projected=ViewCamera.WorldToScreenPoint(center);
             if(projected.z<=ViewCamera.nearClipPlane)continue;
@@ -151,6 +168,7 @@ public sealed partial class NavalWorld : MonoBehaviour
         UpdateOcean();
         shipMaterial.SetFloat("_Style",SceneStyle);
         var selected=Session.GameState.shipLogs.FirstOrDefault(s=>s.objectId==(ViewMode=="Bridge"?BridgeObserverId:SelectedId));
+        if(selected!=null && !Session.CanDisplay(selected))selected=null;
         if(Follow && selected!=null)focus=Project(selected.position.LatDeg,selected.position.LonDeg);
         if(ViewMode=="Bridge" && selected==null)ViewMode="Chart";
         ViewCamera.orthographic=ViewMode=="Chart";
@@ -161,6 +179,7 @@ public sealed partial class NavalWorld : MonoBehaviour
             ViewCamera.transform.position=Project(selected.position.LatDeg,selected.position.LonDeg)+rotation*new Vector3(eye.X,eye.Z+BridgeHeight,eye.Y);
             ViewCamera.transform.rotation=Quaternion.Euler(bridgePitch,(float)selected.headingDeg+bridgeYaw,0);
             var target=Session.GameState.shipLogsOnMap.FirstOrDefault(s=>s.objectId==BridgeTargetId);
+            if(target!=null && !Session.CanDisplay(target)){BridgeTargetId=null;target=null;}
             if(BridgeLock&&target!=null)ViewCamera.transform.LookAt(Project(target.position.LatDeg,target.position.LonDeg)+Vector3.up*8);
         }
         else
@@ -172,6 +191,7 @@ public sealed partial class NavalWorld : MonoBehaviour
         UpdateShipViews();
         UpdateWakes();
         UpdateTracks();
+        UpdateRangeOverlay(selected);
         usedEffects=0;
         var lineWidth=Mathf.Max(1,distance/1600);
         if(ViewMode=="Chart")
@@ -181,18 +201,19 @@ public sealed partial class NavalWorld : MonoBehaviour
         if(selected!=null)
         {
             var p=Project(selected.position.LatDeg,selected.position.LonDeg)+Vector3.up*3;
-            if(ViewMode=="Chart")DrawSelectedFireLines(selected,p);
+            if(ViewMode=="Chart" && Session.CanInspect(selected))DrawSelectedFireLines(selected,p);
             if(ViewMode!="Bridge")
             {
                 var radius=SelectionRadius(selected);
                 for(int i=0;i<32;i++){float a=i*Mathf.PI/16,b=(i+1)*Mathf.PI/16;Line(p+new Vector3(Mathf.Sin(a),0,Mathf.Cos(a))*radius,p+new Vector3(Mathf.Sin(b),0,Mathf.Cos(b))*radius,new Color(.9f,.79f,.4f),lineWidth,ChartOverlayLayer);}
             }
-            foreach(var waypoint in selected.manualRoute){var q=Project(waypoint.LatDeg,waypoint.LonDeg)+Vector3.up*3;Line(p,q,Color.white,lineWidth,ChartOverlayLayer);p=q;}
+            if(Session.CanInspect(selected))foreach(var waypoint in selected.manualRoute){var q=Project(waypoint.LatDeg,waypoint.LonDeg)+Vector3.up*3;Line(p,q,Color.white,lineWidth,ChartOverlayLayer);p=q;}
         }
         if(Session.Speed!=SimulationSpeed.Paused)Gunfire.Advance(Time.unscaledDeltaTime);
         UpdateGunneryEffects();
         foreach(var shot in Gunfire.ActiveShells.Take(ProjectileMode==GunneryVisualMode.None?0:300))
         {
+            if(!Session.CanPresentShot(shot.Shot))continue;
             var a=Project(shot.Shot.ShooterLatitudeDeg,shot.Shot.ShooterLongitudeDeg)+Vector3.up*10;
             var b=Project(shot.Shot.TargetLatitudeDeg,shot.Shot.TargetLongitudeDeg)+Vector3.up*10;
             if(shotEffects.TryGetValue(shot,out var effect)){a=effect.Start;b=effect.End;}
@@ -200,6 +221,7 @@ public sealed partial class NavalWorld : MonoBehaviour
         }
         foreach(var torpedo in Session.GameState.launchedTorpedosOnMap)
         {
+            if(Session.HasPlayerFog && !Session.IsPlayerSideMember(torpedo.GetShooter()))continue;
             var p=Project(torpedo.position.LatDeg,torpedo.position.LonDeg)+Vector3.up*2;
             var direction=Quaternion.Euler(0,(float)torpedo.headingDeg,0)*Vector3.forward;
             Line(p,p-direction*Mathf.Max(30,distance*.004f),new Color(.6f,.9f,.9f),Mathf.Max(1,lineWidth*.7f));
@@ -227,7 +249,7 @@ public sealed partial class NavalWorld : MonoBehaviour
         float pixel=ChartMetersPerPixel;
         foreach(var target in ship.GetFiringToTargets())
         {
-            if(!target.IsOnMap())continue;
+            if(!target.IsOnMap() || !Session.CanDisplay(target))continue;
             var end=Project(target.position.LatDeg,target.position.LonDeg)+Vector3.up*3;
             var delta=end-origin;float distance=delta.magnitude;
             var step=delta.normalized;

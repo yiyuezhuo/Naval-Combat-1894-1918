@@ -23,11 +23,47 @@ public static class NavalUiValidation
         var root=game.GetComponent<UIDocument>().rootVisualElement;var results=new List<string>();
         void Check(bool ok,string message){if(!ok)throw new Exception(message);results.Add(message);}
         void Invoke(string name,params object[] args)=>typeof(NavalGame).GetMethod(name,BindingFlags.Instance|BindingFlags.NonPublic).Invoke(game,args);
-        var tabs=root.Q<TabView>("fleetTabs");tabs.selectedTabIndex=1;await Task.Delay(80);
-        Check(root.Q<Tab>("dynamicTab").resolvedStyle.display==DisplayStyle.None&&root.Q<Tab>("oobTab").resolvedStyle.display==DisplayStyle.Flex,"Native TabView shows only its active page");
-        var tree=root.Q<TreeView>("units");tree.ExpandAll();var item=tree.GetItemDataForIndex<IShipGroupMember>(1);tree.SetSelection(1);await Task.Delay(50);
+        void Click(Button button){button.Focus();using var evt=NavigationSubmitEvent.GetPooled();button.SendEvent(evt);}
+        Invoke("ClearDialogs",false);
+        Click(root.Q<Button>("fleetDynamic"));await Task.Delay(80);
+        var dynamicTree=root.Q<TreeView>("dynamicUnits");
+        Check(dynamicTree?.selectedItem is ShipLog,"Dynamic command dialog selects the current ship");
+        Check(root.Q<Button>("fleetDoctrine")==null,"Dynamic command dialog has no doctrine action");
+        dynamicTree.ExpandAll();
+        var shipIndex=Enumerable.Range(0,dynamicTree.viewController.GetItemsCount()).First(i=>
+            dynamicTree.GetItemDataForIndex<IShipGroupMember>(i) is ShipLog s && game.Session.IsPlayerShip(s) && s!=dynamicTree.selectedItem);
+        dynamicTree.SetSelection(shipIndex);dynamicTree.ScrollToItem(shipIndex);await Task.Delay(80);
+        var selectedShip=(ShipLog)dynamicTree.selectedItem;
+        var dynamicRow=dynamicTree.GetRootElementForIndex(shipIndex);
+        Check(game.Session.SelectedObjectId==selectedShip.objectId && dynamicRow.Q<Label>(className:"fleet-name").text==selectedShip.GetMemberName() &&
+            dynamicRow.Q<Label>(className:"fleet-speed").text==$"{selectedShip.speedKnots:0.0} kn","Dynamic rows select ships and display name and speed in separate columns");
+        Invoke("CloseDialog");
+        Click(root.Q<Button>("fleetOob"));await Task.Delay(80);
+        var tree=root.Q<TreeView>("units");
+        Check(tree.selectedItem==selectedShip,"Order of battle opens on the current ship");
+        Click(root.Q<Button>("fleetDoctrine"));
+        var editor=root.Q<ScrollView>("doctrineEditor");
+        Check(editor!=null && root.Q<Label>("modalTitle").text.Contains(selectedShip.GetMemberName()),"Doctrine dialog identifies the selected ship");
+        var maneuver=editor.Q<DropdownField>();maneuver.index=2;
+        Click(root.Q<Button>("applyDoctrine"));
+        Check(selectedShip.doctrine.GetManeuverAutomaticType()==AutomaticType.Automatic,"Apply delegates maneuver to AI");
+        tree.ExpandAll();var item=tree.GetItemDataForIndex<IShipGroupMember>(0);tree.SetSelection(0);await Task.Delay(50);
         Check(game.Session.SelectedObjectId==item.objectId,"Native TreeView selection updates the battle selection");
-        Check(root.Q<MultiColumnListView>("battleLog").columns.Count==3,"Battle log uses three native columns");
+        Click(root.Q<Button>("fleetDoctrine"));
+        Check(item is ShipGroup && root.Q<Button>("applyDoctrine")!=null,"Fleet command can edit a formation's doctrine");
+        Invoke("CloseDialog");Invoke("CloseDialog");
+        var target=game.Session.GameState.shipLogs.Last(s=>!game.Session.IsPlayerShip(s));
+        game.ShowTacticalMenu(target,new Vector2(200,200));
+        Click(root.Q<VisualElement>("tacticalContextMenu").Query<Button>().ToList().Last());
+        await Task.Delay(100);
+        tree=root.Q<TreeView>("units");
+        var row=tree.GetRootElementForIndex(tree.selectedIndex);
+        Check(tree.selectedItem==target && game.Session.SelectedObjectId==target.objectId &&
+            row!=null && tree.Q<ScrollView>().contentViewport.worldBound.Overlaps(row.worldBound),"Context menu reveals and selects the target in the order of battle");
+        Click(root.Q<Button>("fleetDoctrine"));
+        Check(!root.Q<ScrollView>("doctrineEditor").Q<DropdownField>().enabledInHierarchy && root.Q<Button>("applyDoctrine")==null,"Enemy doctrine is read-only");
+        Invoke("CloseDialog");Invoke("CloseDialog");
+        Check(root.Q<ScrollView>("battleLog").contentContainer.childCount>0,"Combat log shows its HUD summary");
         Invoke("OpenPause");await Task.Delay(50);var dialog=root.Q<VisualElement>(className:"dialog");
         Check(dialog.layout.height<root.layout.height*.6f&&dialog.layout.width<root.layout.width*.6f,"Pause dialog fits its contents instead of filling the screen");Invoke("CloseDialog");
         var own=game.Session.GameState.shipLogsOnMap.First(s=>game.Session.IsPlayerShip(s));game.Select(own);
@@ -47,7 +83,7 @@ public static class NavalUiValidation
             maxError=Math.Max(maxError,Vector2.Distance(local,new Vector2(actual.x,actual.y)));
         }
         Check(maxError<1,"Map labels track camera movement within one pixel between status refreshes");
-        game.World.Fit();tabs.selectedTabIndex=0;
+        game.World.Fit();
         var result="PASS\n"+string.Join("\n",results)+"\nMaximum label error: "+maxError;System.IO.File.WriteAllText(".artifacts/naval-native-ui-validation.txt",result);return result;
     }
     public static async Task<string> Run()
@@ -62,7 +98,21 @@ public static class NavalUiValidation
         void Close()=>typeof(NavalGame).GetMethod("CloseDialog",BindingFlags.NonPublic|BindingFlags.Instance).Invoke(game,null);
         void Click(Button button){if(button==null)throw new Exception("Missing button");button.Focus();using var e=NavigationSubmitEvent.GetPooled();button.SendEvent(e);}
         void Clear()=>typeof(NavalGame).GetMethod("ClearDialogs",BindingFlags.NonPublic|BindingFlags.Instance).Invoke(game,new object[]{false});
+        void CheckPage(string pageName)
+        {
+            var page=root.Q<VisualElement>(pageName);
+            Check(game.CurrentScreen==pageName && page.resolvedStyle.display==DisplayStyle.Flex
+                && Mathf.Abs(page.worldBound.yMax-root.Q<VisualElement>("root").worldBound.yMax)<2,
+                pageName+" fills the screen down to its bottom edge");
+            Check(root.Q<VisualElement>("shipTactical")==null && root.Q<DropdownField>("target")==null,
+                pageName+" contains no obsolete tactical target controls");
+        }
+        game.ReturnToArchive();
+        await Task.Delay(100);
+        CheckPage("archive");
         await game.OpenScenarioAsync("RJH - Battle of Ulsan.scen.xml");
+        await Task.Delay(100);
+        CheckPage("briefing");
         game.StartParticipation(BattleParticipationMode.FleetCommand);
         var own=game.Session.GameState.shipLogsOnMap.First(s=>game.Session.IsPlayerShip(s));
         var friend=game.Session.GameState.shipLogsOnMap.First(s=>s!=own&&game.Session.IsPlayerShip(s));

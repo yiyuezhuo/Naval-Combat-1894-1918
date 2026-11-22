@@ -43,8 +43,7 @@ namespace NavalCombat.Unity
                 game.StartParticipation(BattleParticipationMode.Observer);
                 game.Session.SetSimulationSpeed(SimulationSpeed.Paused);
                 yield return null;
-                foreach(var control in new[]{"maneuver","fireDoctrine","searchlight"})
-                    if(GetComponent<UIDocument>().rootVisualElement.Q<DropdownField>(control).enabledInHierarchy){Finish("FAIL: observer command enabled: "+control);yield break;}
+                if(GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("maneuverOrders").enabledInHierarchy){Finish("FAIL: observer maneuver orders enabled");yield break;}
                 if(game.TryIssueMapCourse(0,0)){Finish("FAIL: observer course order accepted");yield break;}
                 var start=game.Session.GameState.scenarioState.dateTime;
                 game.Session.SetSimulationSpeed(SimulationSpeed.Realtime);

@@ -5,7 +5,8 @@ namespace NavalCombat.Unity
 public sealed partial class NavalGame
 {
     ShipLog SelectedShip=>selection as ShipLog;
-    double DamagePercent=>SelectedShip==null?0:SelectedShip.damagePoint/System.Math.Max(1,SelectedShip.shipClass.damagePoint)*100;
+    static double ShipDamagePercent(ShipLog ship)=>ship.damagePoint/System.Math.Max(1,ship.shipClass.damagePoint)*100;
+    double DamagePercent=>SelectedShip==null?0:ShipDamagePercent(SelectedShip);
     IEnumerable<ShipLog> GetControlledFormationShips()
     {
         if(SelectedShip==null)yield break;

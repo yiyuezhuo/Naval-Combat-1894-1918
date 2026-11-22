@@ -43,17 +43,25 @@ public sealed partial class NavalWorld
         foreach(var pair in tracks)
         {
             var ship=EntityManager.Instance.Get<ShipLog>(pair.Key);var line=pair.Value;
-            if(ship==null){line.gameObject.SetActive(false);continue;}
-            int count=ship.timeLocLogs.Count;bool append=ship.IsOnMap();
+            if(ship==null || !Session.CanDisplay(ship)){line.gameObject.SetActive(false);line.positionCount=0;continue;}
+            bool contact=Session.IsContact(ship);
+            int first=0;
+            if(contact)
+            {
+                var since=Session.GameState.ContactSince(Session.PlayerRootGroupId,ship);
+                first=ship.timeLocLogs.FindIndex(point=>point.time>=since);
+                if(first<0)first=ship.timeLocLogs.Count;
+            }
+            int count=ship.timeLocLogs.Count-first;bool append=ship.IsOnMap();
             line.gameObject.SetActive(ViewMode!="Bridge"&&count+(append?1:0)>1);
             line.startWidth=line.endWidth=Mathf.Max(.5f,ChartMetersPerPixel*1.5f);
             int pointCount=count+(append?1:0);
-            if(line.positionCount!=pointCount)
+            if(contact || line.positionCount!=pointCount)
             {
                 line.positionCount=pointCount;
                 for(int i=0;i<count;i++)
                 {
-                    var point=ship.timeLocLogs[i];line.SetPosition(i,Project(point.latDeg,point.lonDeg)+Vector3.up*3);
+                    var point=ship.timeLocLogs[first+i];line.SetPosition(i,Project(point.latDeg,point.lonDeg)+Vector3.up*3);
                 }
             }
             if(append)line.SetPosition(count,Project(ship.position.LatDeg,ship.position.LonDeg)+Vector3.up*3);
@@ -73,7 +81,7 @@ public sealed partial class NavalGame
         var dynamicLeaders=new Toggle(Message("Dynamic formation leaders (Independent)","動的編成の先頭艦（独立）","动态编制领舰（Independent）","動態編制領艦（Independent）")){value=trackDynamicLeaders};body.Add(dynamicLeaders);
         var staticLeaders=new Toggle(Message("Pre-battle OOB leaders","戦闘前編成の先頭艦","静态编制领舰（战前 OOB）","靜態編制領艦（戰前 OOB）")){value=trackStaticLeaders};body.Add(staticLeaders);
         var controls=new VisualElement();controls.AddToClassList("toolbar");body.Add(controls);
-        var ships=Session.GameState.shipLogs.ToList();
+        var ships=Session.GameState.shipLogs.Where(Session.CanDisplay).ToList();
         var list=new ListView{itemsSource=ships,virtualizationMethod=CollectionVirtualizationMethod.DynamicHeight,selectionType=SelectionType.None};list.AddToClassList("grow");
         list.makeItem=()=>
         {
@@ -90,7 +98,7 @@ public sealed partial class NavalGame
             trackMinTons=float.IsFinite(tons.value)?Mathf.Max(0,tons.value):0;tons.SetValueWithoutNotify(trackMinTons);
             trackDynamicLeaders=dynamicLeaders.value;trackStaticLeaders=staticLeaders.value;
             foreach(var ship in ships)
-                if(ship.shipClass.displacementTons>=trackMinTons&&(!trackDynamicLeaders||ship.GetEffectiveControlMode()==ControlMode.Independent)&&(!trackStaticLeaders||World.IsStaticTrackLeader(ship.objectId)))World.SetTrack(ship,true);
+                if((!Session.IsContact(ship)||!trackDynamicLeaders&&!trackStaticLeaders)&&ship.shipClass.displacementTons>=trackMinTons&&(!trackDynamicLeaders||ship.GetEffectiveControlMode()==ControlMode.Independent)&&(!trackStaticLeaders||World.IsStaticTrackLeader(ship.objectId)))World.SetTrack(ship,true);
             list.RefreshItems();
         });
         ActionButton(controls,Message("Clear all tracks","全航跡を消去","清除所有航迹","清除所有航跡"),()=>{World.ClearTracks();list.RefreshItems();});

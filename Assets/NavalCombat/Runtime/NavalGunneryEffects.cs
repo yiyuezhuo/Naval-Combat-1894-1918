@@ -128,6 +128,7 @@ public sealed partial class NavalWorld
         int flashBudget=96,splashBudget=96;
         foreach(var shell in Gunfire.BridgeShells)
         {
+            if(!Session.CanPresentShot(shell.Shot))continue;
             retainedShots.Add(shell);
             if(!shotEffects.TryGetValue(shell,out var effect))
             {

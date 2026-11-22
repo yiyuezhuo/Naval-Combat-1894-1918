@@ -61,6 +61,7 @@ public sealed partial class NavalWorld
         visibleShips.Clear();
         foreach(var ship in Session.GameState.shipLogsOnMapOrDestroyed)
         {
+            if(!Session.CanDisplay(ship))continue;
             visibleShips.Add(ship);var view=GetShipView(ship);view.Root.gameObject.SetActive(true);
             var position=Project(ship.position.LatDeg,ship.position.LonDeg);
             bool marker=RenderChartMarker(ship,position);

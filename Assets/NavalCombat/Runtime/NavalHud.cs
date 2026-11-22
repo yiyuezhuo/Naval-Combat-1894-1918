@@ -1,4 +1,5 @@
 using NavalCombat.Avalonia.Services;
+using NavalCombat.Avalonia.ViewModels;
 using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -7,9 +8,44 @@ namespace NavalCombat.Unity
 {
 public sealed partial class NavalGame
 {
-    Toggle fleetDynamic,fleetOob;
-    VisualElement fleetPanel,previewSquare;
-    VisualElement hudRight,hudLog;
+    Button fleetDynamic,fleetOob;
+    Label battleClock, battleClockTooltip;
+    VisualElement previewSquare;
+    VisualElement hudRight,hudLog,contactPanel;
+    Label contactName,contactType,contactCourse,contactDamage,contactArmament;
+    bool IsSelectedContact=>Session?.IsContact(SelectedShip)==true;
+    static string ContactTitle()=>Message("Contact","接触艦","接触目标","接觸目標");
+
+    void RefreshContactPresentation()
+    {
+        bool contact=IsSelectedContact;
+        contactPanel.style.display=contact?DisplayStyle.Flex:DisplayStyle.None;
+        Q<ScrollView>("inspector").style.display=contact?DisplayStyle.None:DisplayStyle.Flex;
+        previewMode.style.display=contact?DisplayStyle.None:DisplayStyle.Flex;
+        if(!contact)return;
+        var ship=SelectedShip;
+        contactName.text=ContactTitle()+" · "+ship.GetMemberName();
+        contactType.text=Q<Label>("shipStats").text;
+        contactCourse.text=L("CurrentCourseValue",ship.headingDeg)+" · "+Message("Speed","速力","航速","航速")+$" {ship.speedKnots:0.0} kn";
+        var severity=ShipTypeLossItem.ClassifyDamage(ship) switch
+        {
+            ObservedDamage.Light=>Message("Light","小破","轻伤","輕傷"),
+            ObservedDamage.Medium=>Message("Medium","中破","中伤","中傷"),
+            ObservedDamage.Heavy=>Message("Heavy","大破","重伤","重傷"),
+            ObservedDamage.Sunk=>U("Ui.Sunk"),
+            _=>Message("Undamaged","無傷","完好","完好")
+        };
+        contactDamage.text=L("DamageCondition")+" · "+severity;
+        contactArmament.text=L("Armament")+" · "+DesignGuns(ship);
+    }
+
+    static string DesignGuns(ShipLog ship)
+    {
+        var guns=ship.shipClass.batteryRecords.Select(b=>(Caliber:b.shellSizeInch,Count:b.mountLocationRecords.Sum(m=>m.barrels)))
+            .Concat(ship.shipClass.rapidFireBatteryRecords.Select(b=>(Caliber:b.GetShellSizeInch(),Count:b.barrelsLevelPort.FirstOrDefault()+b.barrelsLevelStarboard.FirstOrDefault())));
+        return string.Join(" · ",guns.GroupBy(b=>b.Caliber).Select(g=>$"{g.Key:0.##}″ ×{g.Sum(b=>b.Count)}"));
+    }
+
     Foldout shipSection,damageSection,armamentSection;
     Label armamentCompact;
     DropdownField previewMode;
@@ -20,7 +56,7 @@ public sealed partial class NavalGame
     void SetupBattleHud()
     {
         var parked=new VisualElement{name="hudLegacyControls"};parked.style.display=DisplayStyle.None;root.Add(parked);
-        parked.Add(Q<Label>("battleTitle"));parked.Add(Q<DropdownField>("language"));
+        parked.Add(Q<DropdownField>("language"));
         var mast=root.Q<VisualElement>(className:"masthead");
         var leftToolbar=new VisualElement{name="hudLeftToolbar"};mast.Insert(0,leftToolbar);
         var toolbarSurface=new VisualElement{name="hudToolbarSurface"};leftToolbar.Add(toolbarSurface);
@@ -29,18 +65,28 @@ public sealed partial class NavalGame
         actions.Add(new Button(OpenSettingsDialog){name="settingsButton",text=L("Settings")});
         var timePanel=new VisualElement{name="hudTimePanel"};mast.Add(timePanel);
         var timeControls=new VisualElement{name="hudTimeControls"};timePanel.Add(timeControls);
-        timeControls.Add(Q<Label>("clock"));
+        battleClock=Q<Label>("clock");
+        timeControls.Add(battleClock);
+        battleClockTooltip=new Label{name="battleClockTooltip",pickingMode=PickingMode.Ignore};
+        battleClockTooltip.AddToClassList("hidden");
+        Q<VisualElement>("root").Add(battleClockTooltip);
+        battleClock.RegisterCallback<PointerEnterEvent>(evt=>{
+            if(evt.pointerType!=UnityEngine.UIElements.PointerType.mouse || !HasBattleTimeRange())return;
+            var state=Session.GameState.scenarioState;
+            battleClockTooltip.text=L("BattleTimeRange",
+                Session.ToScenarioTime(state.beginDateTime),Session.ToScenarioTime(state.endDateTime));
+            battleClockTooltip.style.top=battleClockTooltip.parent.WorldToLocal(battleClock.worldBound.max).y;
+            battleClockTooltip.BringToFront();
+            battleClockTooltip.RemoveFromClassList("hidden");
+        });
+        battleClock.RegisterCallback<PointerLeaveEvent>(_=>battleClockTooltip.AddToClassList("hidden"));
         var speedControls=new VisualElement{name="hudSpeedControls"};timeControls.Add(speedControls);
         foreach(var n in new[]{"pause","speed1","speed5","speed20","speed60","speed120"})speedControls.Add(Q<Button>(n));
         timePanel.Add(Q<Button>("menu"));
-        fleetDynamic=new Toggle{name="fleetDynamic",text=""};fleetOob=new Toggle{name="fleetOob",text=""};
-        void FleetSwitch(string name,Toggle toggle)
-        {
-            var group=new VisualElement();group.AddToClassList("fleet-switch");
-            var label=new Label{name=name};group.Add(label);group.Add(toggle);actions.Add(group);
-            label.RegisterCallback<ClickEvent>(_=>toggle.value=!toggle.value);
-        }
-        FleetSwitch("fleetDynamicLabel",fleetDynamic);FleetSwitch("fleetOobLabel",fleetOob);
+        fleetDynamic=new Button(()=>OpenFleetDialog(true)){name="fleetDynamic"};
+        fleetOob=new Button(()=>OpenFleetDialog(false)){name="fleetOob"};
+        actions.Add(fleetDynamic);actions.Add(fleetOob);
+        actions.Add(new Button(OpenRangeDialog){name="rangesButton",text=RangeTitle()});
         var bridgeTools=Q<VisualElement>("bridgeControls");
         toolbarSurface.Add(bridgeTools);
         foreach(var name in new[]{"bridgeLock","bridgeLabels"})
@@ -55,40 +101,26 @@ public sealed partial class NavalGame
         var heightGroup=new VisualElement();heightGroup.AddToClassList("bridge-height");bridgeTools.Add(heightGroup);
         heightGroup.Add(new Label{name="bridgeHeightLabel"});heightGroup.Add(height);
         foreach(var n in new[]{"chart","threeD","bridge","report","viewTop","zoomIn","zoomOut","fit","resetView"})actions.Add(Q<Button>(n));
-        fleetPanel=root.Q<VisualElement>(className:"oob");
-        var dynamicUnits=Q<TreeView>("dynamicUnits");var units=Q<TreeView>("units");
-        // Preserve controls that existing command/localization adapters still reference.
-        foreach(var child in fleetPanel.Children().ToList())parked.Add(child);
-        fleetPanel.Add(dynamicUnits);fleetPanel.Add(units);
-        void Fleet(bool dynamic,bool enabled)
-        {
-            if(dynamic){fleetDynamic.SetValueWithoutNotify(enabled);if(enabled)fleetOob.SetValueWithoutNotify(false);}
-            else{fleetOob.SetValueWithoutNotify(enabled);if(enabled)fleetDynamic.SetValueWithoutNotify(false);}
-            dynamicTree=fleetDynamic.value;fleetPanel.style.display=fleetDynamic.value||fleetOob.value?DisplayStyle.Flex:DisplayStyle.None;
-            if(enabled&&root.ClassListContains("touch-input")){touchActionsVisible=false;RefreshTouchControls();}
-            dynamicUnits.style.display=fleetDynamic.value?DisplayStyle.Flex:DisplayStyle.None;units.style.display=fleetOob.value?DisplayStyle.Flex:DisplayStyle.None;
-            if(Session?.GameState!=null)BuildUnits();
-        }
-        fleetDynamic.RegisterValueChangedCallback(e=>Fleet(true,e.newValue));fleetOob.RegisterValueChangedCallback(e=>Fleet(false,e.newValue));Fleet(true,false);
         var viewport=Q<VisualElement>("viewport");
-        viewport.Add(fleetPanel);fleetPanel.AddToClassList("hud-overlay");
         SetupTouchControls();
         actions.Add(new Button(OpenTracks){name="tracksButton",text=TracksTitle()});
         var log=hudLog=root.Q<VisualElement>(className:"combat-log");Q<VisualElement>("battle").Add(log);log.AddToClassList("hud-overlay");
         log.Query<Label>(className:"section-title").ForEach(l=>l.style.display=DisplayStyle.None);
         log.Add(new Button(OpenLogDetails){name="logDetails",text=Message("Details","詳細","显示详情","顯示詳情")});
         var right=hudRight=root.Q<VisualElement>(className:"inspector-column");viewport.Add(right);right.AddToClassList("hud-overlay");
+        contactPanel=new VisualElement{name="contactPanel"};contactPanel.AddToClassList("hud-section");
+        right.Insert(0,contactPanel);contactPanel.style.display=DisplayStyle.None;
+        contactPanel.Add(contactName=Text("","section-title"));contactPanel.Add(contactType=Text(""));
+        contactPanel.Add(contactCourse=Text(""));contactPanel.Add(contactDamage=Text(""));contactPanel.Add(contactArmament=Text(""));
         var inspector=Q<ScrollView>("inspector");
         inspector.horizontalScrollerVisibility=ScrollerVisibility.Hidden;
         inspector.contentContainer.style.width=Length.Percent(100);
         shipSection=new Foldout{name="shipSection",value=true};damageSection=new Foldout{name="damageSection",value=true};armamentSection=new Foldout{name="armamentSection",value=true};
         foreach(var section in new[]{shipSection,damageSection,armamentSection})section.AddToClassList("hud-section");
-        var selection=Q<Label>("selection");var stats=Q<Label>("shipStats");var maneuver=Q<VisualElement>("maneuverOrders");
+        var stats=Q<Label>("shipStats");var maneuver=Q<VisualElement>("maneuverOrders");
         var damage=Q<ProgressBar>("damageBar");var table=Q<VisualElement>("damageTable");var alerts=Q<Label>("damageAlerts");var weapons=Q<VisualElement>("weaponReadout");
         foreach(var child in inspector.contentContainer.Children().ToList())parked.Add(child);
         shipSection.contentContainer.Add(stats);shipSection.Add(maneuver);inspector.Add(shipSection);
-        // Persistent headers remain outside Foldout content, so collapsing never hides them.
-        shipSection.Insert(0,selection);selection.style.display=DisplayStyle.None;
         inspector.Add(damageSection);damageSection.Add(table);damageSection.Add(alerts);
         var damageHeader=new VisualElement{name="damageHeader"};
         damageSection.hierarchy.Insert(1,damageHeader);damageHeader.Add(damage);
@@ -100,6 +132,7 @@ public sealed partial class NavalGame
         right.Add(previewSquare);previewSquare.Add(preview);right.Add(previewMode);
         previewMode.RegisterValueChangedCallback(_=>{previewShip=null;UpdateHudPreview();});
         previewSquare.RegisterCallback<GeometryChangedEvent>(_=>UpdateHudPreview());
+        SetupLeaderPreview();
         LocalizeHud();
         var compassSpace=new VisualElement{name="mapCompass",pickingMode=PickingMode.Ignore};viewport.Add(compassSpace);
         var compass=new Label("N ↑"){name="mapNorth",pickingMode=PickingMode.Ignore};compassSpace.Add(compass);
@@ -107,15 +140,34 @@ public sealed partial class NavalGame
         scaleBar.Add(new Label{name="mapScaleText",pickingMode=PickingMode.Ignore});viewport.Add(scaleBar);
         viewport.Add(new Label{name="cursorRange",pickingMode=PickingMode.Ignore});
     }
+    bool HasBattleTimeRange()
+    {
+        var state=Session?.GameState?.scenarioState;
+        return state!=null && state.hasEndDateTime && state.beginDateTime!=default && state.endDateTime>state.beginDateTime;
+    }
+    void RefreshBattleClock()
+    {
+        var state=Session.GameState.scenarioState;
+        var text=$"{Session.ToScenarioTime(state.dateTime):yyyy-MM-dd HH:mm:ss} ({Session.TimeZoneOffset.TotalHours:+0.##;-0.##;0})";
+        if(HasBattleTimeRange())
+        {
+            var elapsed=(state.dateTime-state.beginDateTime).TotalSeconds;
+            var duration=(state.endDateTime-state.beginDateTime).TotalSeconds;
+            text+=$"  {elapsed/duration:0.#%}";
+        }
+        else battleClockTooltip.AddToClassList("hidden");
+        battleClock.text=text;
+    }
     void LocalizeHud()
     {
         if(fleetDynamic==null)return;
+        LocalizeLeaderPreview();
         LocalizeTouchControls();
-        Q<Label>("fleetDynamicLabel").text=L("DynamicControl");Q<Label>("fleetOobLabel").text=L("PreBattleOob");
-        fleetDynamic.tooltip=L("DynamicControl");fleetOob.tooltip=L("PreBattleOob");
+        fleetDynamic.text=L("DynamicControl");fleetOob.text=U("Ui.Order of Battle");
         damageSection.text=L("DamageCondition");armamentSection.text=L("Armament");
         Q<Button>("settingsButton").text=L("Settings");
         Q<Button>("tracksButton").text=TracksTitle();
+        Q<Button>("rangesButton").text=RangeTitle();
         Q<Button>("logDetails").text=Message("Details","詳細","显示详情","顯示詳情");
         Q<Label>("bridgeHeightLabel").text=Message("Height (m)","高さ (m)","观察高度（米）","觀察高度（米）");
         if(previewMode!=null){int mode=previewMode.index;previewMode.choices=new(){"2D","3D",Message("Hidden","非表示","隐藏","隱藏")};previewMode.SetValueWithoutNotify(previewMode.choices[Mathf.Clamp(mode,0,2)]);}
@@ -126,12 +178,10 @@ public sealed partial class NavalGame
         foreach(var row in battleTableRows.Take(6))scroll.Add(Text($"{row[0]}  {row[1]}  {row[2]}","hud-log-line"));
         if(battleTableRows.Count==0)scroll.Add(Text(Message("No combat events","戦闘記録なし","暂无战斗记录","暫無戰鬥記錄"),"hud-log-line"));
         if(selection!=null)shipSection.text=selection.GetMemberName();
-        if(SelectedShip!=null)
+        if(SelectedShip!=null && !IsSelectedContact)
         {
             Q<ProgressBar>("damageBar").title=$"{DamagePercent:0.0}%";
-            var guns=SelectedShip.shipClass.batteryRecords.Select(b=>(Caliber:b.shellSizeInch,Count:b.mountLocationRecords.Sum(m=>m.barrels)))
-                .Concat(SelectedShip.shipClass.rapidFireBatteryRecords.Select(b=>(Caliber:b.GetShellSizeInch(),Count:b.barrelsLevelPort.FirstOrDefault()+b.barrelsLevelStarboard.FirstOrDefault())));
-            armamentCompact.text=string.Join(" · ",guns.GroupBy(b=>b.Caliber).Select(g=>$"{g.Key:0.##}″ ×{g.Sum(b=>b.Count)}"));
+            armamentCompact.text=DesignGuns(SelectedShip);
             var tubes=SelectedShip.shipClass.torpedoSector.mountLocationRecords.Sum(m=>m.barrels);
             armamentCompact.text+=$" · {Message("Tubes","発射管","鱼雷管","魚雷管")} ×{tubes}";
         }
@@ -140,8 +190,8 @@ public sealed partial class NavalGame
     void OpenLogDetails()
     {
         if(Session==null)return;
-        var rows=Session.GameState.shipLogs.SelectMany(ship=>ship.logs.Select(log=>(ship,log))).OrderByDescending(x=>x.log.time)
-            .Select(x=>$"{Session.ToScenarioTime(x.log.time):HH:mm:ss}  {x.ship.GetMemberName()}\n{x.log.SummaryContent()}").ToList();
+        var rows=Session.GetBattleLogs(int.MaxValue)
+            .Select(x=>$"{Session.ToScenarioTime(x.log.time):HH:mm:ss}  {x.ship.GetMemberName()}\n{ShipHistoryBuilder.LogSummary(Session,x.log)}").ToList();
         var list=new ListView{name="logDetailList",itemsSource=rows,virtualizationMethod=CollectionVirtualizationMethod.DynamicHeight,selectionType=SelectionType.None};
         list.makeItem=()=>Text("","log-detail-line");list.bindItem=(e,i)=>((Label)e).text=rows[i];list.AddToClassList("grow");
         PushDialog(L("CombatLog"),list,size:"large");
@@ -156,10 +206,11 @@ public sealed partial class NavalGame
         if(root.ClassListContains("touch-input"))Q<Label>("viewHint").text=World.ViewMode=="Bridge"
             ?Message("Drag: look around · Pinch: zoom · Hold: ship menu / sea course","ドラッグ：見回す · ピンチ：ズーム · 長押し：艦メニュー／針路","单指拖动环顾 · 双指捏合缩放 · 长按舰船菜单／海面设置航向","單指拖動環顧 · 雙指捏合縮放 · 長按艦船選單／海面設定航向")
             :Message("Tap: select · Drag: pan · Pinch: zoom · Two-finger drag: 3D orbit · Hold: ship menu / sea course","タップ：選択 · ドラッグ：移動 · ピンチ：ズーム · 2本指：3D回転 · 長押し：命令","轻点选择 · 单指拖动平移 · 双指捏合缩放／拖动环绕3D · 长按舰船菜单／海面设置航向","輕點選擇 · 單指拖動平移 · 雙指捏合縮放／拖動環繞3D · 長按艦船選單／海面設定航向");
-        fleetPanel.BringToFront();hudLog.BringToFront();hudRight.BringToFront();
+        hudLog.BringToFront();hudRight.BringToFront();
         touchActions.BringToFront();touchToggle.BringToFront();
         if(selection!=null)shipSection.text=selection.GetMemberName();
-        bool show=SelectedShip!=null&&previewMode.index!=2;previewSquare.style.display=show?DisplayStyle.Flex:DisplayStyle.None;
+        bool show=SelectedShip!=null&&!IsSelectedContact&&previewMode.index!=2;previewSquare.style.display=show?DisplayStyle.Flex:DisplayStyle.None;
+        UpdateLeaderPreview(show);
         previewMode.style.bottom=show?Mathf.Min(280,Mathf.Max(120,root.layout.height*.32f))-24:0;
         if(!show){World.HideShipPreview();return;}
         float size=Mathf.Min(280,Mathf.Max(120,root.layout.height*.32f));previewSquare.style.width=size;previewSquare.style.height=size;

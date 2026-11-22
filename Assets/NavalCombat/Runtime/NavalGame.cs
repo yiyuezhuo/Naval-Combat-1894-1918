@@ -1,6 +1,7 @@
 using System.Text;
 using CoreUtils;
 using NavalCombat.Application;
+using NavalCombat.Avalonia.Resources;
 using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -25,7 +26,6 @@ public sealed partial class NavalGame : MonoBehaviour
     UnityScenarioSource source;
     readonly CancellationTokenSource lifetime = new();
     List<ScenarioCatalogEntry> catalog = new(), filtered = new();
-    List<ShipLog> targets = new();
     ScenarioCatalogEntry chosen;
     IShipGroupMember selectedPost, selection;
     int previewRevision;
@@ -107,7 +107,6 @@ public sealed partial class NavalGame : MonoBehaviour
         coast.RegisterValueChangedCallback(e=> {if(e.target==coast && e.newValue==coast.value && Session?.GameState!=null)coastline.Load(World,e.newValue);});
         Q<Toggle>("music").style.display=DisplayStyle.None;
         Q<Toggle>("sound").RegisterValueChangedCallback(e=>audioPlayer.EffectsEnabled=e.newValue);
-        Click("dossier",()=> {if(selection is ShipLog ship)OpenDossier(new(NavalCombat.Avalonia.ViewModels.DossierKind.ShipState,ship.objectId,""));});
         var language=Q<DropdownField>("language");language.choices=new(){"English","日本語","简体中文","繁體中文"};
         language.SetValueWithoutNotify(language.choices[Array.IndexOf(NavalText.Cultures,NavalText.Instance.Culture)]);
         language.RegisterValueChangedCallback(_ =>
@@ -116,7 +115,7 @@ public sealed partial class NavalGame : MonoBehaviour
             ApplyLanguageFont();
             Localize();
             RefreshSelection(true);
-            BuildUnits();
+            if(CurrentScreen=="briefing")BuildPosts();
             if (chosen != null) Preview(chosen);
         });
         var list=Q<ListView>("scenarios");list.fixedItemHeight=28;
@@ -146,25 +145,6 @@ public sealed partial class NavalGame : MonoBehaviour
         Q<Slider>("scale").RegisterValueChangedCallback(e=>World.DisplayScale=e.newValue);
         Click("menu",()=>{if(CurrentScreen=="battle")OpenPause();else OpenSettingsDialog();});
         Click("report",OpenReport);
-        Click("applyOrder",()=> {var ship=CommandShip();var heading=Q<FloatField>("heading").value;var speed=Q<FloatField>("speed").value;if(!float.IsFinite(heading)||!float.IsFinite(speed)||speed<0)throw new ArgumentException("Enter a finite course and a non-negative speed.");Session.IssueIndependentOrder(ship.objectId,heading,speed);});
-        foreach(var pair in new[]{("maneuver",DoctrineDomain.Maneuver),("fireDoctrine",DoctrineDomain.Fire),("searchlight",DoctrineDomain.Searchlight)})
-        {
-            var domain=pair.Item2;var field=Q<DropdownField>(pair.Item1);field.choices=new(){"Inherited","Manual","Automatic"};
-            field.RegisterValueChangedCallback(e=>
-            {
-                // Choice relabeling can queue ChangeEvents until after Localize returns.
-                if(refreshing || e.newValue!=field.value || field.index<0 || !field.enabledInHierarchy
-                    || Session?.Phase!=BattlePhase.Running || selection==null || !Session.IsPlayerMember(selection))return;
-                Execute(()=>SetDoctrine(domain,(DoctrineSetting)field.index));
-            });
-        }
-        Click("attack",()=>Session.SetAttackConstraint(CommandShip().objectId,Target().objectId));
-        Click("cancelAttack",()=>Session.CancelAttackConstraint(CommandShip().objectId));
-        Click("followTarget",()=>Session.SetFollowTarget(CommandShip().objectId,Target().objectId));
-        Click("detach",()=>Session.DetachShip(CommandShip().objectId));
-        Click("reverse",()=>Session.ReverseControlChain(CommandShip().objectId));
-        Click("lineAhead",()=>OpenFormation(CommandShip(),"FollowFormation"));
-        Click("lineAbreast",()=>OpenFormation(CommandShip(),"RelativeFormation"));
         SetupMapInput();
         root.RegisterCallback<PointerDownEvent>(e=>{if(contextMenu!=null && e.target is VisualElement target && !contextMenu.Contains(target))CloseContext();},TrickleDown.TrickleDown);
         SetupPanels();Localize();ShowScreen("archive");
@@ -183,27 +163,13 @@ public sealed partial class NavalGame : MonoBehaviour
         string T(string en,string ja,string cn,string tw)=>new[]{en,ja,cn,tw}[lang];
         Q<Button>("menu").text=T("Menu","メニュー","菜单","選單");LocalizeHud();LocalizeCatalog();
         Q<Button>("quitGame").text=T("Exit Game","ゲームを終了","退出游戏","離開遊戲");
-        Q<Button>("reverse").text=T("Reverse chain","隊列反転","反转队列","反轉隊列");
         Q<TextField>("search").label=T("Search","検索","搜索","搜尋");
         Q<Slider>("headingSlider").label=T("Course °","針路 °","航向 °","航向 °");Q<FloatField>("heading").label="";
         Q<Slider>("speedSlider").label=T("Speed kn","速力 kn","航速 kn","航速 kn");Q<FloatField>("speed").label="";
-        Q<FloatField>("spacing").label=T("Spacing yd","間隔 yd","间距 yd","間距 yd");
         Q<Slider>("scale").label=T("Scale","縮尺","比例","比例");
         Q<DropdownField>("coastline").label=T("Coast","海岸","海岸","海岸");
         Q<Toggle>("music").label=T("Music","音楽","音乐","音樂");
         Q<Toggle>("sound").label=T("Sound","効果音","音效","音效");
-        Q<DropdownField>("target").label=T("Target","目標","目标","目標");
-        Q<DropdownField>("maneuver").label=T("Maneuver","操艦","操舰","操艦");
-        Q<DropdownField>("fireDoctrine").label=T("Fire","射撃","射击","射擊");
-        Q<DropdownField>("searchlight").label=T("Searchlight","探照灯","探照灯","探照燈");
-        foreach(var name in new[]{"maneuver","fireDoctrine","searchlight"})
-        {
-            var field=Q<DropdownField>(name);var index=Math.Max(0,field.index);
-            var choices=new List<string>{T("Inherited","継承","继承","繼承"),T("Manual","手動","手动","手動"),T("Automatic","自動","自动","自動")};
-            field.SetValueWithoutNotify(choices[index]);
-            field.choices=choices;
-        }
-        Q<Tab>("dynamicTab").label=L("DynamicControl");Q<Tab>("oobTab").label=L("PreBattleOob");
         Q<Label>("viewHint").text=NavalText.Instance.Culture.StartsWith("zh")?"左键选择 · 右键舰只菜单／空海面下达航向 · 中键拖动 · Shift+中键旋转 · 滚轮缩放 · 空格暂停":"Select: left click · Right click: ship menu / sea course · Pan: middle drag · Orbit: Shift+middle drag · Zoom: wheel · Pause: Space";
         }
         finally {refreshing=wasRefreshing;}
@@ -239,6 +205,7 @@ public sealed partial class NavalGame : MonoBehaviour
     async Task LoadSelectedAsync()
     {
         if(chosen==null || busy)return;
+        ClearDialogs();
         previewCancellation?.Cancel();previewRevision++;
         busy=true;Q<Button>("load").SetEnabled(false);Q<Label>("status").text="…";
         try
@@ -248,6 +215,8 @@ public sealed partial class NavalGame : MonoBehaviour
             var loaded=await Session.LoadScenarioAsync(chosen.Id,lifetime.Token);if(this==null)return;
             if(!loaded)throw new InvalidOperationException(Session.ErrorMessage+"\n"+Session.ErrorDetails);
             Session.GunneryShotsResolved += OnShots;
+            Session.GameState.InitializeLeaderEmbarkation();
+            IndexCommanders();
             World.Attach(Session);selection=null;selectedPost=Session.RootGroups.FirstOrDefault();
             foreach(var label in mapLabels.Values)label.RemoveFromHierarchy();mapLabels.Clear();
             foreach(var ship in Session.GameState.shipLogs)
@@ -268,27 +237,23 @@ public sealed partial class NavalGame : MonoBehaviour
         if(mode==BattleParticipationMode.Observer)Session.StartObserverBattle();
         else if(mode==BattleParticipationMode.RolePlaying)Session.StartRolePlayingBattle(selectedPost.objectId);
         else Session.StartBattle(selectedPost.GetRootParent().objectId);
-        var candidates=Session.GameState.shipLogs.Where(s=>Session.IsPlayerShip(s)).ToList();
-        if(candidates.Count==0)candidates=Session.GameState.shipLogsOnMap.ToList();
-        var initialShip=candidates.OrderByDescending(s=>s.GetEffectiveControlMode()==ControlMode.Independent)
-            .ThenByDescending(s=>s.shipClass.displacementTons).FirstOrDefault();
-        BuildUnits();ShowScreen("battle");Select(initialShip);
+        Session.GameState.SetFogOfWar(fogOfWar);
+        var initialShip=Session.GetInitialSelectedShip(selectedPost?.objectId);
+        ShowScreen("battle");Select(initialShip);
         if(!PlayerPrefs.HasKey(HelpSeenKey))OpenHelp(true);
         World.Fit();lastPhase=Session.Phase;
     }
-    void BuildUnits()=>BuildNativeTrees();
     public void Select(IShipGroupMember member)
     {
+        if((member is ShipLog ship && !Session.CanDisplay(ship)) || (member is ShipGroup && !Session.CanInspect(member)))
+            member=null;
         selection=member;Session.SelectedObjectId=member?.objectId;
+        World.SelectedRangeShip=member as ShipLog;
         World.SelectedId=member is ShipLog?member.objectId:(member as ShipGroup)?.Walk<ShipLog>().FirstOrDefault()?.objectId;
+        hudRight.style.display=member==null?DisplayStyle.None:DisplayStyle.Flex;
         RefreshSelection(true);
+        RefreshContactPresentation();
         SyncTreeSelection(member);
-    }
-    ShipLog CommandShip()
-    {
-        if(Session?.Phase!=BattlePhase.Running || selection==null || !Session.IsPlayerMember(selection))throw new InvalidOperationException(L("EnemyShipInformationOnly"));
-        var ship=selection as ShipLog;
-        return ship ?? throw new InvalidOperationException(L("SelectAShipOrGroup"));
     }
     static string Message(string en,string ja,string cn,string tw)=>NavalText.Instance.Culture switch {"ja-JP"=>ja,"zh-CN"=>cn,"zh-TW"=>tw,_=>en};
     void NotifyUser(string message){notice=message;noticeUntil=Time.unscaledTime+5;Q<Label>("status").text=message;}
@@ -309,68 +274,31 @@ public sealed partial class NavalGame : MonoBehaviour
         Session.IssueIndependentCourseOrder(ship.objectId,latitude,longitude);
         return true;
     }
-    ShipLog Target()=>Q<DropdownField>("target").index>=0 && Q<DropdownField>("target").index<targets.Count?targets[Q<DropdownField>("target").index]:throw new InvalidOperationException(L("UnknownTarget"));
-    void SetDoctrine(DoctrineDomain domain,DoctrineSetting setting)
-    {
-        if(Session?.Phase!=BattlePhase.Running||selection==null||!Session.IsPlayerMember(selection))return;
-        if(selection is ShipGroup group){Session.SetGroupDoctrine(group.objectId,domain,setting);return;}
-        var d=domain switch {DoctrineDomain.Maneuver=>selection.doctrine.maneuverAutomaticType,DoctrineDomain.Fire=>selection.doctrine.fireAutomaticType,_=>selection.doctrine.searchlightAutomaticType};
-        d.isInherited=setting==DoctrineSetting.Inherited;d.value=setting==DoctrineSetting.Automatic?AutomaticType.Automatic:AutomaticType.Manual;
-    }
     void RefreshSelection(bool rebuild)
     {
-        if(root==null || selection==null)return;
+        if(root==null)return;
+        Q<Button>("bridge").SetEnabled(selection is ShipLog s && s.IsOnMap() && !IsSelectedContact);
+        if(selection==null)return;
         refreshing=true;
-        Q<Label>("selection").text=selection.GetMemberName();
-        bool can=Session.Phase==BattlePhase.Running && Session.IsPlayerMember(selection);
-        Q<VisualElement>("orders").SetEnabled(true);
-        foreach(var field in new[]{"maneuver","fireDoctrine","searchlight"})Q<DropdownField>(field).SetEnabled(can);Q<Button>("bridge").SetEnabled(selection is ShipLog s && s.IsOnMap());
         if(selection is ShipLog ship)
         {
-            Q<Label>("shipStats").text=NavalText.Instance.GetEnum(ship.shipClass.type)+$" · {ship.shipClass.displacementTons:N0} t";
-            Q<Label>("logs").text=string.Join("\n",ship.logs.TakeLast(20).Reverse().Select(l=>l.Summary()));
-            if(rebuild){Q<FloatField>("heading").SetValueWithoutNotify((float)ship.desiredHeadingDeg);Q<FloatField>("speed").SetValueWithoutNotify((float)ship.desiredSpeedKnots);BuildWeapons(ship,can);}
+            var shipClass=ship.shipClass;
+            var classLabel=L("ValueClass",NavalDisplayNames.Global(shipClass.name));
+            Q<Label>("shipStats").text=$"{NavalMapShipNames.FormatShipType(shipClass,shipNamePrefix)} · {shipClass.displacementTons:N0} t · {classLabel}";
+            if(rebuild && !IsSelectedContact){Q<FloatField>("heading").SetValueWithoutNotify((float)ship.desiredHeadingDeg);Q<FloatField>("speed").SetValueWithoutNotify((float)ship.desiredSpeedKnots);}
         }
         else
         {
             var ships=((ShipGroup)selection).Walk<ShipLog>().ToList();
             Q<Label>("shipStats").text=L("ValueShips",ships.Count)+"\n"+string.Join("\n",ships.Select(s=>$"{s.GetMemberName()} · {s.speedKnots:0.0} kn · {s.mapState}"));
-            Q<Label>("logs").text="";if(rebuild)Q<VisualElement>("weapons").Clear();
             if(rebuild && ships.Count>0){Q<FloatField>("heading").SetValueWithoutNotify((float)ships[0].desiredHeadingDeg);Q<FloatField>("speed").SetValueWithoutNotify((float)ships[0].desiredSpeedKnots);}
         }
-        if(rebuild)
-        {
-            var field=Q<DropdownField>("target");var previousTarget=field.index>=0&&field.index<targets.Count?targets[field.index].objectId:null;
-            targets=Session.GameState.shipLogsOnMap.Where(s=>s!=selection).ToList();field.choices=targets.Select(s=>s.GetMemberName()).ToList();
-            if(targets.Count>0)field.SetValueWithoutNotify(field.choices[Math.Max(0,targets.FindIndex(s=>s.objectId==previousTarget))]);
-            SetField("maneuver",selection.doctrine.maneuverAutomaticType);SetField("fireDoctrine",selection.doctrine.fireAutomaticType);SetField("searchlight",selection.doctrine.searchlightAutomaticType);
-        }
         refreshing=false;
-        void SetField(string name,Inheriable<AutomaticType> value)=>Q<DropdownField>(name).SetValueWithoutNotify(Q<DropdownField>(name).choices[value.isInherited?0:value.value==AutomaticType.Manual?1:2]);
-    }
-    void BuildWeapons(ShipLog ship,bool can)
-    {
-        var panel=Q<VisualElement>("weapons");panel.Clear();
-        foreach(var battery in ship.batteryStatus)
-        {
-            var record=battery.GetBatteryRecord();var label=new Label($"{record?.name?.GetMergedName()} · {battery.ammunition.Summary()}");label.AddToClassList("prose");panel.Add(label);
-            foreach(var mount in battery.mountStatus)
-            {
-                var row=new VisualElement();panel.Add(row);
-                var name=new Label($"{mount.barrels} × {record?.shellSizeInch:0.##} in · {mount.status}");row.Add(name);
-                var ammo=new EnumField(mount.ammunitionType);row.Add(ammo);ammo.SetEnabled(can);
-                ammo.RegisterValueChangedCallback(e=>Execute(()=> {CommandShip();mount.ammunitionType=(AmmunitionType)e.newValue;}));
-                var fire=new Button(()=>Execute(()=> {CommandShip();var target=Target();Session.SetAttackConstraint(ship.objectId,target.objectId);ship.doctrine.fireAutomaticType.isInherited=false;ship.doctrine.fireAutomaticType.value=AutomaticType.Manual;mount.SetFiringTarget(target);})){text=L("CurrentTarget")};fire.SetEnabled(can);row.Add(fire);
-                var details=new Button(()=>Execute(()=> {PushDialog(L("FireControl"),Text(mount.DescribeFireControlDetail()));})){text=L("FireControl")};row.Add(details);
-            }
-        }
-        foreach(var tube in ship.torpedoSectorStatus.mountStatus)
-        {
-            var b=new Button(()=>Execute(()=> {CommandShip();var target=Target();Session.SetAttackConstraint(ship.objectId,target.objectId);tube.SetFiringTarget(target);})){text=$"{L("Torpedoes")} · {tube.currentLoad}/{tube.barrels} · {tube.status}"};b.SetEnabled(can);panel.Add(b);
-        }
     }
     void ShowScreen(string name)
     {
+        battleClockTooltip.AddToClassList("hidden");
+        if(name=="battle")RefreshBattleClock();
         audioPlayer.SetPresentationState(name=="battle",modal,World);
         CancelMapGestures();
         CurrentScreen=name;foreach(var screen in new[]{"archive","briefing","battle"})Q<VisualElement>(screen).EnableInClassList("hidden",screen!=name);
@@ -410,19 +338,36 @@ public sealed partial class NavalGame : MonoBehaviour
         audioPlayer.SetPresentationState(CurrentScreen=="battle",modal,World);
         UpdateMapTouch();
         var keyboard=Keyboard.current;
-        if(keyboard?.escapeKey.wasPressedThisFrame==true){if(contextMenu!=null)CloseContext();else if(modal)CloseModal();else if(CurrentScreen=="battle")OpenModal(false);}
+        if(keyboard?.escapeKey.wasPressedThisFrame==true)
+        {
+            if(contextMenu!=null)CloseContext();
+            else if(modal)CloseModal();
+            else if(CurrentScreen=="battle")
+            {
+                if(selection!=null)Select(null);
+                else OpenModal(false);
+            }
+        }
         if(busy || Session?.GameState==null || CurrentScreen!="battle")return;
         var focused=root.focusController?.focusedElement as VisualElement;
         bool editing=focused!=null && (focused is TextField || focused.GetFirstAncestorOfType<TextField>()!=null || focused.GetFirstAncestorOfType<FloatField>()!=null);
         if(!modal && contextMenu==null && !editing && keyboard?.spaceKey.wasPressedThisFrame==true)Session.TogglePause();
+        var beforeAdvance=Session.GameState.scenarioState.dateTime;
         if(!modal)Session.AdvanceWallClock(Time.unscaledDeltaTime);
+        if(Session.HasPlayerFog)
+        {
+            if(IsSelectedContact && (!Session.CanDisplay(SelectedShip) ||
+                Session.GameState.ContactSince(Session.PlayerRootGroupId,SelectedShip)>beforeAdvance))Select(null);
+            if(contextMenu?.userData is ShipLog hit && !Session.CanDisplay(hit))CloseContext();
+        }
         if(Session.Phase!=lastPhase){lastPhase=Session.Phase;if(Session.Phase==BattlePhase.Ended)ShowReport();if(Session.Phase==BattlePhase.Faulted)OpenFault(Session.ErrorMessage,Session.ErrorDetails);}
         if(Time.unscaledTime<nextRefresh)return;nextRefresh=Time.unscaledTime+.25f;
-        Q<Label>("clock").text=$"{Session.ToScenarioTime(Session.GameState.scenarioState.dateTime):yyyy-MM-dd HH:mm:ss} ({Session.TimeZoneOffset.TotalHours:+0.##;-0.##;0})";
+        RefreshBattleClock();
         Q<Button>("pause").EnableInClassList("speed-selected",(int)Session.Speed==0);
         foreach(var speed in new[]{1,5,20,60,120})Q<Button>("speed"+speed).EnableInClassList("speed-selected",(int)Session.Speed==speed);
         Q<Label>("status").text=Time.unscaledTime<noticeUntil?notice:$"{Session.ScenarioTitle} · {Session.ParticipationMode} · {Session.Phase}";
         RefreshSelection(false);
+        if(IsSelectedContact)RefreshContactPresentation();
 
         var wasRefreshing=refreshing;refreshing=true;try{RefreshPanels();}finally{refreshing=wasRefreshing;}
     }
@@ -436,7 +381,7 @@ public sealed partial class NavalGame : MonoBehaviour
         var viewport=Q<VisualElement>("viewport");
         var occupied=new List<Rect>();
         var panels=new List<Rect>();
-        foreach(var panel in new VisualElement[]{fleetPanel,hudRight,hudLog,touchActions,touchToggle})
+        foreach(var panel in new VisualElement[]{hudRight,hudLog,leaderPreview,touchActions,touchToggle})
             if(panel!=null && panel.resolvedStyle.display!=DisplayStyle.None)
             {
                 var bounds=panel.worldBound;
@@ -447,7 +392,8 @@ public sealed partial class NavalGame : MonoBehaviour
         foreach(var pair in mapLabels.OrderByDescending(p=>p.Key.objectId==World.SelectedId))
         {
             var ship=pair.Key;var label=pair.Value;
-            label.text=NavalCombat.Avalonia.Resources.NavalMapShipNames.Format(ship,shipNamePrefix,trimShipSuffix);
+            if(!Session.CanDisplay(ship)){label.AddToClassList("hidden");continue;}
+            label.text=NavalMapShipNames.Format(ship,shipNamePrefix,trimShipSuffix);
             var p=World.ViewCamera.WorldToScreenPoint(World.Project(ship.position.LatDeg,ship.position.LonDeg));
             var panel=RuntimePanelUtils.ScreenToPanel(root.panel,new Vector2(p.x,Screen.height-p.y));
             var local=viewport.WorldToLocal(panel);
@@ -512,6 +458,7 @@ public sealed partial class NavalGame : MonoBehaviour
         previewCancellation?.Cancel();
         previewCancellation?.Dispose();
         World?.HideShipPreview();
+        DisposeLeaderPreview();
         if (vesselPlan != null)
             Destroy(vesselPlan);
         while (pages.Count > 0)

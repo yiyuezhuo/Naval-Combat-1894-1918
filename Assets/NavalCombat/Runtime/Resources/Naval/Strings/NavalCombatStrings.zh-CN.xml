@@ -8281,4 +8281,88 @@ https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
   <data name="Ui.Shell.Time" xml:space="preserve">
     <value>时间</value>
   </data>
+  <data name="Core.PenetrationModel.Mixed" xml:space="preserve">
+    <value>混合</value>
+  </data>
+  <data name="Core.PenetrationModel.Facehard" xml:space="preserve">
+    <value>Facehard</value>
+  </data>
+  <data name="Core.PenetrationModel.M79" xml:space="preserve">
+    <value>M79</value>
+  </data>
+  <data name="Core.GunMountType.Unspecified" xml:space="preserve">
+    <value>未指定</value>
+  </data>
+  <data name="Core.GunMountType.FixedMlrBlr" xml:space="preserve">
+    <value>固定炮架（MLR/BLR）</value>
+  </data>
+  <data name="Core.ShipGunAppearance.FixedMount" xml:space="preserve">
+    <value>固定炮架</value>
+  </data>
+  <data name="Core.ShipGunAppearance.Open" xml:space="preserve">
+    <value>露天炮架</value>
+  </data>
+  <data name="Core.ShipGunAppearance.Shield" xml:space="preserve">
+    <value>炮盾</value>
+  </data>
+  <data name="Core.ShipGunAppearance.Turret" xml:space="preserve">
+    <value>炮塔</value>
+  </data>
+  <data name="Core.ShipGunAppearance.Casemate" xml:space="preserve">
+    <value>炮廓</value>
+  </data>
+  <data name="Core.ShipGunHousingShape.Beveled" xml:space="preserve">
+    <value>斜面</value>
+  </data>
+  <data name="Core.ShipGunHousingShape.Circular" xml:space="preserve">
+    <value>圆形</value>
+  </data>
+  <data name="Core.TorpedoInstallation.Automatic" xml:space="preserve">
+    <value>自动</value>
+  </data>
+  <data name="Core.TorpedoInstallation.Surface" xml:space="preserve">
+    <value>水面</value>
+  </data>
+  <data name="Core.TorpedoInstallation.Underwater" xml:space="preserve">
+    <value>水下</value>
+  </data>
+  <data name="Core.FCSCode.Custom" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="Core.FacehardCapType.None" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="Core.FacehardCapType.Hood" xml:space="preserve">
+    <value>帽罩</value>
+  </data>
+  <data name="Core.FacehardCapType.Soft" xml:space="preserve">
+    <value>软被帽</value>
+  </data>
+  <data name="Core.FacehardCapType.Hard" xml:space="preserve">
+    <value>硬被帽</value>
+  </data>
+  <data name="Core.FacehardCapType.ThinHard" xml:space="preserve">
+    <value>薄硬被帽</value>
+  </data>
+  <data name="Core.FacehardNoseSchema.Standard" xml:space="preserve">
+    <value>标准</value>
+  </data>
+  <data name="Core.FacehardNoseSchema.JapaneseCapHead" xml:space="preserve">
+    <value>日式被帽头部</value>
+  </data>
+  <data name="Ui.Contact.ShellHit" xml:space="preserve">
+    <value>炮弹命中 · {0:0.#} DP</value>
+  </data>
+  <data name="Ui.Contact.RapidHit" xml:space="preserve">
+    <value>速射炮命中 · {0:0.#} DP</value>
+  </data>
+  <data name="Ui.Contact.TorpedoHit" xml:space="preserve">
+    <value>鱼雷命中 · {0:0.#} DP</value>
+  </data>
+  <data name="Ui.Contact.ShotsFired" xml:space="preserve">
+    <value>发射数</value>
+  </data>
+  <data name="Ui.Shell.BattleTimeRange" xml:space="preserve">
+    <value>开始  {0:yyyy-MM-dd HH:mm:ss zzz}&#10;结束  {1:yyyy-MM-dd HH:mm:ss zzz}</value>
+  </data>
 </root>

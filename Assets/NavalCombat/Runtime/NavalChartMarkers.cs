@@ -11,8 +11,7 @@ public sealed partial class NavalWorld
     public const float ChartModelThresholdPixels=72;
     public const float ChartDotThresholdPixels=2;
     readonly Dictionary<ShipLog,ChartRepresentation> chartRepresentations=new();
-    readonly Dictionary<(bool dot,bool friendly),Mesh> markerMeshes=new();
-    Material markerMaterial;
+    readonly Dictionary<(bool dot,bool friendly,bool sunk),Mesh> markerMeshes=new();
     float ChartMetersPerPixel=>2*ViewCamera.orthographicSize/Mathf.Max(1,ViewCamera.pixelHeight);
     public bool IsBlueSide(ShipLog ship)=>Session.IsObserverMode
         ? Session.GetSideId(ship)==Session.RootGroups.FirstOrDefault()?.objectId
@@ -55,20 +54,20 @@ public sealed partial class NavalWorld
     {
         var representation=ResolveRepresentation(ship);if(representation==ChartRepresentation.Model)return false;
         bool dot=representation==ChartRepresentation.Dot,friendly=IsBlueSide(ship);
-        if(markerMaterial==null){markerMaterial=new Material(Resources.Load<Shader>("Naval/ShipVertexColor"));markerMaterial.SetFloat("_Style",4);}
-        if(!markerMeshes.TryGetValue((dot,friendly),out var mesh))markerMeshes[(dot,friendly)]=mesh=MakeMarkerMesh(dot,friendly);
+        bool sunk=ship.mapState==MapState.Destroyed;
+        if(!markerMeshes.TryGetValue((dot,friendly,sunk),out var mesh))markerMeshes[(dot,friendly,sunk)]=mesh=MakeMarkerMesh(dot,friendly,sunk);
         var view=GetShipView(ship);
         if(view.Marker==null)
         {
             var obj=new GameObject("Chart marker",typeof(MeshFilter),typeof(MeshRenderer));obj.transform.SetParent(view.Root,false);obj.layer=ChartOverlayLayer;
-            obj.GetComponent<MeshRenderer>().sharedMaterial=markerMaterial;view.Marker=obj.GetComponent<MeshFilter>();
+            obj.GetComponent<MeshRenderer>().sharedMaterial=lineMaterial;view.Marker=obj.GetComponent<MeshFilter>();
         }
         var go=view.Marker.gameObject;go.SetActive(true);view.Marker.sharedMesh=mesh;
         go.name=$"{ship.GetMemberName()} — {representation}";
         go.transform.SetPositionAndRotation(position+Vector3.up*5,Quaternion.Euler(0,(float)ship.headingDeg,0));go.transform.localScale=Vector3.one*ChartMetersPerPixel;
         return true;
     }
-    static Mesh MakeMarkerMesh(bool dot,bool friendly)
+    static Mesh MakeMarkerMesh(bool dot,bool friendly,bool sunk)
     {
         var outline=dot?Enumerable.Range(0,20).Select(i=>new Vector2(Mathf.Sin(i*Mathf.PI/10)*3,Mathf.Cos(i*Mathf.PI/10)*3)).ToArray():new[]{new Vector2(0,12),new Vector2(4,4),new Vector2(4,-10),new Vector2(-4,-10),new Vector2(-4,4)};
         var vertices=new List<Vector3>();var colors=new List<Color>();var triangles=new List<int>();
@@ -83,9 +82,21 @@ public sealed partial class NavalWorld
         Color color=friendly?new Color32(0,59,115,255):new Color32(217,0,0,255);
         var border=new Color(color.r*.45f,color.g*.45f,color.b*.45f,1);
         if(QualitySettings.activeColorSpace==ColorSpace.Linear){color=color.linear;border=border.linear;}
-        Fill(1,0,border);Fill(dot?.65f:.76f,.02f,color);
+        if(sunk){border.a=.38f;color.a=.38f;}
+        float inner=dot?.65f:.76f;
+        Fill(inner,.02f,color);
+        int outerStart=vertices.Count;
+        foreach(var p in outline){vertices.Add(new(p.x,0,p.y));colors.Add(border);}
+        int innerStart=vertices.Count;
+        foreach(var p in outline){vertices.Add(new(p.x*inner,.02f,p.y*inner));colors.Add(border);}
+        for(int i=0;i<outline.Length;i++)
+        {
+            int j=(i+1)%outline.Length;
+            triangles.Add(outerStart+i);triangles.Add(outerStart+j);triangles.Add(innerStart+i);
+            triangles.Add(innerStart+i);triangles.Add(outerStart+j);triangles.Add(innerStart+j);
+        }
         var mesh=new Mesh{name=dot?"Fixed 6px chart point":"Fixed 22x8px chart symbol"};mesh.SetVertices(vertices);mesh.SetColors(colors);mesh.SetTriangles(triangles,0);mesh.RecalculateNormals();mesh.RecalculateBounds();return mesh;
     }
-    void DisposeChartMarkers(){foreach(var mesh in markerMeshes.Values)Destroy(mesh);Destroy(markerMaterial);}
+    void DisposeChartMarkers(){foreach(var mesh in markerMeshes.Values)Destroy(mesh);}
 }
 }

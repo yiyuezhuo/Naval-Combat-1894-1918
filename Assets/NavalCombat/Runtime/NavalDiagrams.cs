@@ -66,7 +66,11 @@ public sealed class NavalHistoryChart : VisualElement
     public NavalHistoryChart(HistoryChartSnapshot value)
     {
         AddToClassList("history-card");
+        bool fire=value.Bars.Count>0&&value.Bars[0].Segments.Count==2;
+        Color32[] barColors=fire?new Color32[]{new(50,118,64,255),new(112,112,112,255)}:new Color32[]{new(154,68,30,255),new(142,112,28,255),new(63,88,118,255)};
         var legend=new VisualElement();legend.AddToClassList("history-legend");
+        VisualElement barColumn=null;
+        HistoryStackedBarChart barChart=null;
         void Entry(Color color,string text)
         {
             var row=new VisualElement();row.AddToClassList("history-legend-row");
@@ -98,10 +102,12 @@ public sealed class NavalHistoryChart : VisualElement
         else
         {
             legend.AddToClassList("history-bar-legend");
-            bool fire=value.Bars.Count>0&&value.Bars[0].Segments.Count==2;
-            Color32[] colors=fire?new Color32[]{new(50,118,64,255),new(112,112,112,255)}:new Color32[]{new(154,68,30,255),new(142,112,28,255),new(63,88,118,255)};
+            var colors=barColors;
             var chart=new HistoryStackedBarChart();chart.AddToClassList("history-bars");
-            chart.SetBars(value.Bars.Select(b=>new HistoryBarItem{label=b.Label,segments=b.Segments.Select((v,i)=>new HistoryBarSegment{label=v.Label,count=(int)v.Value,color=colors[i%colors.Length]}).ToList()}));Add(chart);
+            chart.SetBars(value.Bars.Select(b=>new HistoryBarItem{label=b.Label,segments=b.Segments.Select((v,i)=>new HistoryBarSegment{label=v.Label,count=(int)v.Value,color=colors[i%colors.Length]}).ToList()}));
+            barChart=chart;
+            barColumn=new VisualElement();barColumn.AddToClassList("history-bar-column");
+            barColumn.Add(chart);Add(barColumn);
             double total=value.Bars.Sum(b=>b.Segments.Sum(v=>v.Value));
             if(total<=0)legend.Add(new Label(value.EmptyMessage));
             else for(int i=0;i<value.Bars[0].Segments.Count;i++)
@@ -111,6 +117,42 @@ public sealed class NavalHistoryChart : VisualElement
             }
         }
         Add(legend);
+        if(value.IsBarChart)
+        {
+            var colors=barColors;
+            var details=new VisualElement();details.AddToClassList("history-bar-details");
+            foreach(var bar in value.Bars)
+            {
+                var column=new VisualElement();column.AddToClassList("history-bar-detail");
+                var title=new Label(bar.Label);title.AddToClassList("history-bar-detail-title");column.Add(title);
+                double total=bar.Segments.Sum(s=>s.Value);
+                for(int i=0;i<bar.Segments.Count;i++)
+                {
+                    var segment=bar.Segments[i];
+                    var text=$"{segment.Label}: {segment.Value:0} ({(total>0?segment.Value/total:0):P0})";
+                    var row=new VisualElement();row.AddToClassList("history-legend-row");
+                    var swatch=new VisualElement();swatch.AddToClassList("history-swatch");swatch.style.backgroundColor=(Color)colors[i%colors.Length];row.Add(swatch);
+                    var label=new Label(text){tooltip=text};label.style.whiteSpace=WhiteSpace.Normal;label.style.flexShrink=1;row.Add(label);
+                    column.Add(row);
+                }
+                details.Add(column);
+                column.RegisterCallback<GeometryChangedEvent>(_=>
+                    details.style.height=details.Children().Max(c=>c.layout.height)+8f);
+            }
+            barColumn.Add(details);
+            void AlignDetails()
+            {
+                var rects=barChart.GetColumnRects();
+                for(int i=0;i<details.childCount&&i<rects.Count;i++)
+                {
+                    var column=details[i];
+                    column.style.width=rects[i].width;
+                    column.style.left=rects[i].x;
+                }
+            }
+            barChart.RegisterCallback<GeometryChangedEvent>(_=>AlignDetails());
+            AlignDetails();
+        }
     }
 }
 public sealed class NavalWeaponDiagram : VisualElement

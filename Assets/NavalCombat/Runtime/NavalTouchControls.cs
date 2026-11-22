@@ -32,7 +32,6 @@ public sealed partial class NavalGame
         touchToggle=new Button(()=>
         {
             touchActionsVisible=!touchActionsVisible;
-            if(touchActionsVisible){fleetDynamic.value=false;fleetOob.value=false;}
             RefreshTouchControls();
         }){name="touchToggle"};
         touchToggle.AddToClassList("hud-overlay");touchToggle.AddToClassList("touch-action");viewport.Add(touchToggle);
@@ -87,7 +86,7 @@ public sealed partial class NavalGame
         var body=TouchChoices();PushDialog(Message("View","視点","视角","視角"),body,size:"medium");
         TouchChoice(body,"2D",()=>{World.SetMode("Chart");CloseDialog();});
         TouchChoice(body,"3D",()=>{World.SetMode("3D");CloseDialog();});
-        TouchChoice(body,U("Ui.Bridge.Enter"),()=>{World.SetMode("Bridge");CloseDialog();},SelectedShip!=null);
+        TouchChoice(body,U("Ui.Bridge.Enter"),()=>{World.SetMode("Bridge");CloseDialog();},SelectedShip!=null && !IsSelectedContact);
         if(SelectedShip==null)body.Add(Text(Message("Select a ship to enter bridge view.","艦橋視点に切り替えるには艦を選択してください。","请先选中舰船，再进入舰桥视角。","請先選中艦船，再進入艦橋視角。")));
     }
     void OpenTouchMap()

@@ -15,17 +15,27 @@ public static class NavalMapShipNames
         string prefix = null;
         if (mode != ShipNamePrefixMode.None && shipClass != null)
         {
-            ShipClass.acronymForShipType.TryGetValue(shipClass.type, out prefix);
-            if (mode == ShipNamePrefixMode.Extended)
-                prefix = shipClass.extraShipType switch
-                {
-                    ExtraShipType.ProtectedCruiser => "CP",
-                    ExtraShipType.UnprotectedCruiser => "CU",
-                    _ => prefix
-                };
+            prefix = ExtendedPrefix(shipClass, mode);
+            if (prefix == null)
+                ShipClass.acronymForShipType.TryGetValue(shipClass.type, out prefix);
         }
         return string.IsNullOrEmpty(prefix) ? label : $"{prefix} {label}";
     }
+
+    public static string FormatShipType(ShipClass shipClass, ShipNamePrefixMode mode)
+    {
+        var prefix = ExtendedPrefix(shipClass, mode);
+        return prefix == null ? NavalCombatStrings.EnumLabel(shipClass.type)
+            : $"{NavalCombatStrings.EnumLabel(shipClass.extraShipType)} ({prefix})";
+    }
+
+    static string ExtendedPrefix(ShipClass shipClass, ShipNamePrefixMode mode) =>
+        mode == ShipNamePrefixMode.Extended ? shipClass.extraShipType switch
+        {
+            ExtraShipType.ProtectedCruiser => "CP",
+            ExtraShipType.UnprotectedCruiser => "CU",
+            _ => null
+        } : null;
 
     static string TrimSuffix(string name)
     {

@@ -8281,4 +8281,88 @@ Threshold {3:0.00} (not a hit probability)</value>
   <data name="Ui.Shell.Time" xml:space="preserve">
     <value>Time</value>
   </data>
+  <data name="Core.PenetrationModel.Mixed" xml:space="preserve">
+    <value>Mixed</value>
+  </data>
+  <data name="Core.PenetrationModel.Facehard" xml:space="preserve">
+    <value>Facehard</value>
+  </data>
+  <data name="Core.PenetrationModel.M79" xml:space="preserve">
+    <value>M79</value>
+  </data>
+  <data name="Core.GunMountType.Unspecified" xml:space="preserve">
+    <value>Unspecified</value>
+  </data>
+  <data name="Core.GunMountType.FixedMlrBlr" xml:space="preserve">
+    <value>Fixed mounting (MLR/BLR)</value>
+  </data>
+  <data name="Core.ShipGunAppearance.FixedMount" xml:space="preserve">
+    <value>Fixed carriage</value>
+  </data>
+  <data name="Core.ShipGunAppearance.Open" xml:space="preserve">
+    <value>Open mount</value>
+  </data>
+  <data name="Core.ShipGunAppearance.Shield" xml:space="preserve">
+    <value>Shield</value>
+  </data>
+  <data name="Core.ShipGunAppearance.Turret" xml:space="preserve">
+    <value>Turret</value>
+  </data>
+  <data name="Core.ShipGunAppearance.Casemate" xml:space="preserve">
+    <value>Casemate</value>
+  </data>
+  <data name="Core.ShipGunHousingShape.Beveled" xml:space="preserve">
+    <value>Beveled</value>
+  </data>
+  <data name="Core.ShipGunHousingShape.Circular" xml:space="preserve">
+    <value>Circular</value>
+  </data>
+  <data name="Core.TorpedoInstallation.Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Core.TorpedoInstallation.Surface" xml:space="preserve">
+    <value>Surface</value>
+  </data>
+  <data name="Core.TorpedoInstallation.Underwater" xml:space="preserve">
+    <value>Underwater</value>
+  </data>
+  <data name="Core.FCSCode.Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Core.FacehardCapType.None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Core.FacehardCapType.Hood" xml:space="preserve">
+    <value>Hood</value>
+  </data>
+  <data name="Core.FacehardCapType.Soft" xml:space="preserve">
+    <value>Soft cap</value>
+  </data>
+  <data name="Core.FacehardCapType.Hard" xml:space="preserve">
+    <value>Hard cap</value>
+  </data>
+  <data name="Core.FacehardCapType.ThinHard" xml:space="preserve">
+    <value>Thin hard cap</value>
+  </data>
+  <data name="Core.FacehardNoseSchema.Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Core.FacehardNoseSchema.JapaneseCapHead" xml:space="preserve">
+    <value>Japanese cap head</value>
+  </data>
+  <data name="Ui.Contact.ShellHit" xml:space="preserve">
+    <value>Shell hit · {0:0.#} DP</value>
+  </data>
+  <data name="Ui.Contact.RapidHit" xml:space="preserve">
+    <value>Rapid-fire hit · {0:0.#} DP</value>
+  </data>
+  <data name="Ui.Contact.TorpedoHit" xml:space="preserve">
+    <value>Torpedo hit · {0:0.#} DP</value>
+  </data>
+  <data name="Ui.Contact.ShotsFired" xml:space="preserve">
+    <value>Shots fired</value>
+  </data>
+  <data name="Ui.Shell.BattleTimeRange" xml:space="preserve">
+    <value>Start  {0:yyyy-MM-dd HH:mm:ss zzz}&#10;End  {1:yyyy-MM-dd HH:mm:ss zzz}</value>
+  </data>
 </root>

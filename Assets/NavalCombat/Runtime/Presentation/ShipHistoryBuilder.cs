@@ -18,6 +18,14 @@ public static class ShipHistoryBuilder
     static string Name(string id) => EntityManager.Instance.Get<ShipLog>(id) is { } ship ? NavalDisplayNames.Ship(ship) : NavalCombatStrings.GetCore("Unknown");
     static string Weapon(string name, string fallback) => string.IsNullOrWhiteSpace(name) ? NavalCombatStrings.GetCore(fallback) : name;
     static string EnumName<T>(T value) => NavalCombat.Unity.NavalText.Instance.GetEnum(value);
+    internal static string LogSummary(BattleSession session, ShipLogLog log) => session.HasPlayerFog ? log switch
+    {
+        ShipLogBatteryHitLog hit => NavalCombatStrings.Text("Ui.Contact.ShellHit", hit.damagePoint),
+        ShipLogRapidFiringGunHitLog hit => NavalCombatStrings.Text("Ui.Contact.RapidHit", hit.damagePoint),
+        ShipLogTorpedoHitLog hit => NavalCombatStrings.Text("Ui.Contact.TorpedoHit", hit.damagePoint),
+        _ => log.SummaryContent()
+    } : log.SummaryContent();
+
     static IEnumerable<Shot> Shots(ShipLog ship)
     {
         for (int i = 0; i < ship.batteryStatus.Count; i++)
@@ -37,6 +45,14 @@ public static class ShipHistoryBuilder
     {
         var byShooter = new List<HistoryValue>(); var byIncomingWeapon = new List<HistoryValue>();
         var outgoing = Shots(ship).ToList();
+        if (session.HasPlayerFog)
+        {
+            // A ship knows its own expenditure. The target's damage ledger is private during battle.
+            var fired = outgoing.GroupBy(s => s.WeaponId).Select(g => new HistoryBar(g.First().Weapon,
+                [new(NavalCombatStrings.Text("Ui.Contact.ShotsFired"), g.Count())])).ToArray();
+            return [new(NavalCombatStrings.GetUi("Outgoing Weapon Fire Results"), [], fired,
+                NavalCombatStrings.GetUi("No outgoing weapon fire records."), IsBarChart: true)];
+        }
         var shooterIds = ship.logs.OfType<ShipLogBatteryHitLog>().Select(l => l.shooterId)
             .Concat(ship.logs.OfType<ShipLogRapidFiringGunHitLog>().Select(l => l.shooterId)).Distinct();
         var candidates = shooterIds.Select(id => EntityManager.Instance.Get<ShipLog>(id)).Where(s => s != null)

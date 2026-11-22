@@ -136,7 +136,7 @@ public partial class HistoryStackedBarChart : VisualElement
 
     internal void SetBars(IEnumerable<HistoryBarItem> newBars)
     {
-        bars = newBars?.Where(bar => bar != null && bar.TotalCount > 0).ToList() ?? new();
+        bars = newBars?.Where(bar => bar != null).ToList() ?? new();
         RebuildLabels();
         MarkDirtyRepaint();
     }
@@ -196,11 +196,15 @@ public partial class HistoryStackedBarChart : VisualElement
             {
                 var segmentHeight = chartRect.height * segment.count / maxTotal;
                 currentTop -= segmentHeight;
-                var labelHeight = Mathf.Max(segmentHeight, SegmentLabelPreferredHeight);
+                var text = BuildSegmentText(segment.count, bar.TotalCount, barRect.width);
+                var requiredHeight = text.Contains('\n') ? SegmentLabelPreferredHeight * 2 : SegmentLabelPreferredHeight;
+                if (segmentHeight < requiredHeight + 4f || barRect.width < 36f)
+                    continue;
+                var labelHeight = segmentHeight;
                 var labelTop = currentTop + segmentHeight * 0.5f - labelHeight * 0.5f;
 
                 var label = BuildOverlayLabel(
-                    BuildSegmentText(segment.count, bar.TotalCount, barRect.width),
+                    text,
                     barRect.x,
                     labelTop,
                     barRect.width,
@@ -234,6 +238,8 @@ public partial class HistoryStackedBarChart : VisualElement
         return new Rect(SidePadding, TopPadding, width, height);
     }
 
+    internal List<Rect> GetColumnRects() => GetBarRects(GetChartRect());
+
     List<Rect> GetBarRects(Rect chartRect)
     {
         if (bars.Count == 0)
@@ -266,6 +272,8 @@ public partial class HistoryStackedBarChart : VisualElement
         label.style.top = y;
         label.style.width = width;
         label.style.height = height;
+        label.style.marginLeft = label.style.marginRight = label.style.marginTop = label.style.marginBottom = 0;
+        label.style.paddingLeft = label.style.paddingRight = label.style.paddingTop = label.style.paddingBottom = 0;
         if (color.HasValue)
         {
             label.style.color = color.Value;

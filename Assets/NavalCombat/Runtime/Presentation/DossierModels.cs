@@ -351,7 +351,7 @@ public static class DossierSnapshotFactory
 
     public static DossierSnapshot CreateShipState(BattleSession session, ShipLog ship)
     {
-        if (ship == null)
+        if (ship == null || session?.CanInspect(ship)==false)
             return null;
         var shipClass = ship.shipClass;
         var namedShip = ship.namedShip;
@@ -433,7 +433,7 @@ public static class DossierSnapshotFactory
             .OrderByDescending(log => log.time)
             .Select(log => new DossierRowSnapshot(
                 session.ToScenarioTime(log.time).ToString("yyyy-MM-dd HH:mm:ss", invariant),
-                SafeLogSummary(log)))
+                SafeLogSummary(session, log)))
             .ToList();
         var snapshotTime = session.GameState?.scenarioState == null ? NavalCombatStrings.Text("Ui.Shell.UnknownBattleTime") :
             session.ToScenarioTime(session.GameState.scenarioState.dateTime)
@@ -602,9 +602,9 @@ public static class DossierSnapshotFactory
         return values.Count == 0 ? NavalCombatStrings.Text("Ui.Shell.NoTubesReloading") : NavalCombatStrings.Text("Ui.Shell.ReloadingValue", string.Join(" · ", values));
     }
 
-    static string SafeLogSummary(ShipLogLog log)
+    static string SafeLogSummary(BattleSession session, ShipLogLog log)
     {
-        try { return log.SummaryContent(); }
+        try { return ShipHistoryBuilder.LogSummary(session, log); }
         catch { return Friendly(log.GetType().Name); }
     }
 

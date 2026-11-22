@@ -106,21 +106,27 @@ public sealed partial class NavalGame
     void OpenCommandError(string message)=>PushDialog(L("TheRequestedTacticalOrderIsNotValid"),Text(message));
     void Tactical(Action action)
     {
-        try{action();RefreshSelection(true);BuildUnits();}
+        try{action();RefreshSelection(true);}
         catch(InvalidOperationException e){OpenCommandError(e.Message);}
         catch(ArgumentException e){OpenCommandError(e.Message);}
     }
     void CloseContext(){contextMenu?.RemoveFromHierarchy();contextMenu=null;}
     public void ShowTacticalMenu(ShipLog hit,Vector2 panelPosition)
     {
-        CloseContext();if(hit==null || Session==null)return;
+        CloseContext();if(hit==null || Session==null || !Session.CanDisplay(hit))return;
         if(World.ViewMode=="Bridge" && EntityManager.Instance.Get<ShipLog>(World.BridgeObserverId) is {} observer)Select(observer);
         var actor=selection as ShipLog;
         if(actor==null){Select(hit);actor=hit;}
-        contextMenu=new VisualElement{name="tacticalContextMenu"};contextMenu.AddToClassList("tactical-context");root.Add(contextMenu);
+        contextMenu=new VisualElement{name="tacticalContextMenu",userData=hit};contextMenu.AddToClassList("tactical-context");root.Add(contextMenu);
         void Item(string label,Action action,bool enabled=true){ActionButton(contextMenu,label,()=>{CloseContext();Tactical(action);},enabled).AddToClassList("context-item");}
         bool can=Session.Phase==BattlePhase.Running&&Session.IsPlayerShip(actor)&&actor.mapState==MapState.Deployed&&actor.operationalState==ShipOperationalState.Operational;
-        if(hit==actor)
+        if(Session.IsContact(hit))
+        {
+            Item(ContactTitle(),()=>Select(hit));
+            if(can && actor!=hit)Item(U("Core.TheaterPosture.Attack"),()=>Session.SetAttackConstraint(actor.objectId,hit.objectId),Session.GameState.CanSee(actor,hit));
+            if(can && actor.shipLevelFiringTargetObjectId==hit.objectId)Item(L("CancelAttack"),()=>Session.CancelAttackConstraint(actor.objectId));
+        }
+        else if(hit==actor)
         {
             if(can&&!actor.IsLandBattery())
             {
@@ -133,7 +139,9 @@ public sealed partial class NavalGame
             Item(L("ShowShipClass"),()=>OpenDossier(new(DossierKind.ShipClass,hit.shipClass.objectId,"")));
             Item(L("ShowNamedShip"),()=>OpenDossier(new(DossierKind.NamedShip,hit.namedShip.objectId,"")),hit.namedShip!=null);
             Item(L("ShowShipState"),()=>OpenDossier(new(DossierKind.ShipState,hit.objectId,"")));
-            Item(L("ShowLeader"),()=>OpenDossier(new(DossierKind.Leader,hit.leader.objectId,"")),hit.leader!=null);
+            var aboard=LeadersAboard(hit);
+            var leader=aboard.FirstOrDefault(person=>person.objectId==previewLeaderId)??aboard.FirstOrDefault()??hit.leader;
+            Item(L("ShowLeader"),()=>OpenDossier(new(DossierKind.Leader,leader.objectId,"")),leader!=null);
         }
         else if(can && Session.GetSideId(actor)==Session.GetSideId(hit)&&!actor.IsLandBattery())
         {
@@ -147,7 +155,7 @@ public sealed partial class NavalGame
             Item(U("Core.TheaterPosture.Attack"),()=>Session.SetAttackConstraint(actor.objectId,hit.objectId));
             if(!string.IsNullOrWhiteSpace(actor.shipLevelFiringTargetObjectId))Item(L("CancelAttack"),()=>Session.CancelAttackConstraint(actor.objectId));
         }
-        if(contextMenu.childCount==0){CloseContext();return;}
+        if(Session.CanInspect(hit))Item(Message("Show in order of battle","戦闘序列で表示","在战斗序列中显示","在戰鬥序列中顯示"),()=>OpenFleetDialog(false,hit));
         var menu=contextMenu;
         menu.transform.position=new Vector3(panelPosition.x,panelPosition.y);
         menu.schedule.Execute(()=>{if(menu.panel!=null)menu.transform.position=new Vector3(Mathf.Clamp(panelPosition.x,0,Mathf.Max(0,root.layout.width-menu.layout.width)),Mathf.Clamp(panelPosition.y,0,Mathf.Max(0,root.layout.height-menu.layout.height)));});
@@ -181,14 +189,19 @@ public sealed partial class NavalGame
                 else if(kind=="RelativeParameters")Session.SetRelativeParameters(ship.objectId,distance.value,bearing.value,absolute.value);
                 else if(kind=="FollowFormation")Session.ArrangeFollowFormation(ship.objectId,distance.value);
                 else Session.ArrangeRelativeFormation(ship.objectId,new RelativeFormationRequest{mode=modes[mode.index],distanceYards=distance.value,angleDeg=bearing.value,absolute=absolute.value,isSymmetric=symmetric.value});
-                CloseDialog();RefreshSelection(true);BuildUnits();
+                CloseDialog();RefreshSelection(true);
             }
             catch(Exception e) when(e is ArgumentException or InvalidOperationException){error.text=e.Message;}
         });
     }
     public void OpenDossier(DossierReference reference)
     {
+        if(reference?.Kind==DossierKind.Leader){OpenLeaderDossier(reference);return;}
         var snapshot=DossierSnapshotFactory.Create(Session,reference);if(snapshot==null)return;
+        PushDialog(snapshot.Title,BuildDossierBody(snapshot),snapshot.Dispose,"large");
+    }
+    VisualElement BuildDossierBody(DossierSnapshot snapshot)
+    {
         var body=new VisualElement();body.AddToClassList("grow");body.AddToClassList("dossier-body");
         body.Add(Text(snapshot.Eyebrow,"dossier-eyebrow"));
         if(!string.IsNullOrWhiteSpace(snapshot.Subtitle))body.Add(Text(snapshot.Subtitle,"dossier-subtitle"));
@@ -239,13 +252,14 @@ public sealed partial class NavalGame
             }
         }
         foreach(var tab in snapshot.Tabs)Show(tab);
-        PushDialog(snapshot.Title,body,snapshot.Dispose,"large");
+        return body;
     }
     public void OpenTorpedoAnalysis(ShipLog ship)
     {
+        if(!Session.CanInspect(ship))return;
         var snapshot=TorpedoAnalysisSnapshot.Create(Session,ship);
         string T(string key,params object[] args)=>U("Ui.TorpedoAnalysis."+key,args);
-        string Reasons(TorpedoFireBlock blocks)=>blocks==0?T("Ready"):string.Join(" · ",Enum.GetValues(typeof(TorpedoFireBlock)).Cast<TorpedoFireBlock>().Where(b=>b!=0&&blocks.HasFlag(b)).Select(b=>T(b.ToString())));
+        string Reasons(TorpedoFireBlock blocks)=>blocks.HasFlag(TorpedoFireBlock.NoVisualContact)?Message("No visual contact from this ship","自艦から視認できず","本舰未目视","本艦未目視"):blocks==0?T("Ready"):string.Join(" · ",Enum.GetValues(typeof(TorpedoFireBlock)).Cast<TorpedoFireBlock>().Where(b=>b!=0&&blocks.HasFlag(b)).Select(b=>T(b.ToString())));
         var body=new VisualElement();body.AddToClassList("grow");body.Add(Text(T("Summary",snapshot.Time.ToString("yyyy-MM-dd HH:mm:ss 'UTC'"),snapshot.Remaining,snapshot.SalvoShots,snapshot.WaitSeconds)));
         var columns=new VisualElement();columns.AddToClassList("columns");body.Add(columns);
         var list=new ScrollView();list.AddToClassList("analysis-targets");columns.Add(list);
@@ -280,6 +294,8 @@ public sealed partial class NavalGame
     {
         var body=new ScrollView();body.AddToClassList("grow");
         var languageSource=Q<DropdownField>("language");var languageSetting=new DropdownField("Language",languageSource.choices,languageSource.index){name="settingsLanguage"};body.Add(languageSetting);
+        var fog=new Toggle(Message("Fog of war","戦場の霧","战争迷雾","戰爭迷霧")){name="settingsFogOfWar",value=fogOfWar};body.Add(fog);
+        var debug=new Toggle(Message("Debug mode","デバッグモード","调试模式","除錯模式")){name="settingsDebug",value=debugMode};body.Add(debug);
         var follow=new Toggle(Message("Camera follows selection","選択艦を追尾","相机跟随选中舰艇","相機跟隨選中艦艇")){value=World.Follow};body.Add(follow);
         var scale=new Slider(Message("Ship scale","艦船倍率","舰船显示比例","艦船顯示比例"),1,12){value=Q<Slider>("scale").value};body.Add(scale);
         var coast=new DropdownField(L("MapDisplay"),Q<DropdownField>("coastline").choices,Q<DropdownField>("coastline").index);body.Add(coast);
@@ -297,6 +313,24 @@ public sealed partial class NavalGame
         var minPixels=new FloatField(Message("Minimum ship length (px)","最小艦長 (px)","最小舰长（像素）","最小艦長（像素）")){value=shipLabelMinPixels};body.Add(minPixels);minPixels.SetEnabled(hideSmall.value);hideSmall.RegisterValueChangedCallback(e=>minPixels.SetEnabled(e.newValue));
         var page=PushDialog(L("Settings"),body,size:"medium");ActionButton(page.Actions,L("Apply"),()=>
         {
+            if(fogOfWar!=fog.value)
+            {
+                fogOfWar=fog.value;
+                if(CurrentScreen=="battle")
+                {
+                    Session.GameState.SetFogOfWar(fogOfWar);
+                    World.OnVisibilityChanged();
+                    Select(selection);
+                    nextPanelRefresh=0;
+                    RefreshBattleTable();
+                }
+            }
+            if(debugMode!=debug.value)
+            {
+                debugMode=debug.value;
+                Q<Label>("archiveSystemLanguage").EnableInClassList("hidden",!debugMode);
+                if(CurrentScreen=="archive")Filter();
+            }
             Q<Toggle>("follow").value=follow.value;Q<Slider>("scale").value=scale.value;
             Q<DropdownField>("coastline").value=coast.value;Q<Toggle>("music").value=music.value;Q<Toggle>("sound").value=sound.value;
             audioPlayer.MusicVolume=musicVolume.value;audioPlayer.EffectsVolume=soundVolume.value;

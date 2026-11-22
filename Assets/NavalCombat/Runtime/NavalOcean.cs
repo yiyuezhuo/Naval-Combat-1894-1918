@@ -22,6 +22,7 @@ public sealed partial class NavalWorld
     }
     sealed class WakeTrail
     {
+        public DateTime ContactSince;
         public GameObject Object;
         public Mesh Mesh;
         public readonly List<WakeSample> Samples=new();
@@ -53,7 +54,7 @@ public sealed partial class NavalWorld
     void UpdateWakes()
     {
         foreach(var trail in wakes.Values)trail.Object.SetActive(false);
-        foreach(var ship in Session.GameState.shipLogsOnMap)
+        foreach(var ship in Session.GameState.shipLogsOnMap.Where(Session.CanDisplay))
         {
             if(ship.IsLandBattery())continue;
             float speed=Mathf.Abs((float)ship.speedKnots),strength=Mathf.Clamp01(speed/12);
@@ -67,8 +68,10 @@ public sealed partial class NavalWorld
                 wakes[ship]=trail=new WakeTrail{Object=go,Mesh=mesh};
                 var p=Project(ship.position.LatDeg,ship.position.LonDeg);var f=Quaternion.Euler(0,(float)ship.headingDeg,0)*Vector3.forward*Mathf.Sign((float)ship.speedKnots);
                 // A steady-motion visual wake at scenario entry, replaced by sampled motion as play advances.
-                for(int i=0;i<18;i++)trail.Samples.Add(new(p-f*speed*.514444f*i*5,f,surfaceClock-i*5,strength));
+                if(!Session.IsContact(ship))for(int i=0;i<18;i++)trail.Samples.Add(new(p-f*speed*.514444f*i*5,f,surfaceClock-i*5,strength));
             }
+            var since=Session.IsContact(ship)?Session.GameState.ContactSince(Session.PlayerRootGroupId,ship):default;
+            if(trail.ContactSince!=since){trail.ContactSince=since;trail.Samples.Clear();}
             var position=Project(ship.position.LatDeg,ship.position.LonDeg);
             var forward=Quaternion.Euler(0,(float)ship.headingDeg,0)*Vector3.forward*((float)ship.speedKnots<0?-1:1);
             if(speed>.3f&&(trail.Samples.Count==0||(position-trail.Samples[0].Position).sqrMagnitude>1))trail.Samples.Insert(0,new(position,forward,surfaceClock,strength));
