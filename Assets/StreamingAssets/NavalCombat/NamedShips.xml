@@ -10455,6 +10455,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Good Hope</english>
+   <japanese>グッド・ホープ</japanese>
+   <chineseSimplified>好望角</chineseSimplified>
+   <chineseTraditional>好望角</chineseTraditional>
   </name>
   <shipClassObjectId>6ec18e1e-2a1c-5d2d-baab-a8d9969b5d9e</shipClassObjectId>
   <applicableYearBegin>1911</applicableYearBegin>
@@ -10467,6 +10470,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Monmouth</english>
+   <japanese>モンマス</japanese>
+   <chineseSimplified>蒙茅斯</chineseSimplified>
+   <chineseTraditional>蒙茅斯</chineseTraditional>
   </name>
   <shipClassObjectId>afc4a96e-f48b-574b-b843-019c5ed0c6ab</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -10479,6 +10485,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Glasgow</english>
+   <japanese>グラスゴー</japanese>
+   <chineseSimplified>格拉斯哥</chineseSimplified>
+   <chineseTraditional>格拉斯哥</chineseTraditional>
   </name>
   <shipClassObjectId>bc7b920f-2026-5eca-985d-59e91cc00cfd</shipClassObjectId>
   <applicableYearBegin>1910</applicableYearBegin>
@@ -10491,6 +10500,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Otranto</english>
+   <japanese>オトラント</japanese>
+   <chineseSimplified>奥特朗托</chineseSimplified>
+   <chineseTraditional>奧特朗托</chineseTraditional>
   </name>
   <shipClassObjectId>431f7a5f-7ec7-5b30-bdfa-ca82dd0bbba8</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -10503,6 +10515,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Scharnhorst</english>
+   <japanese>シャルンホルスト</japanese>
+   <chineseSimplified>沙恩霍斯特</chineseSimplified>
+   <chineseTraditional>沙恩霍斯特</chineseTraditional>
   </name>
   <shipClassObjectId>c6583509-79e6-5cf1-b05c-e58be096498d</shipClassObjectId>
   <applicableYearBegin>1909</applicableYearBegin>
@@ -10515,6 +10530,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Gneisenau</english>
+   <japanese>グナイゼナウ</japanese>
+   <chineseSimplified>格奈森瑙</chineseSimplified>
+   <chineseTraditional>格奈森瑙</chineseTraditional>
   </name>
   <shipClassObjectId>081a931e-ba6f-52f0-9df1-4edf9d3cf3eb</shipClassObjectId>
   <applicableYearBegin>1910</applicableYearBegin>
@@ -10527,6 +10545,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Leipzig</english>
+   <japanese>ライプツィヒ</japanese>
+   <chineseSimplified>莱比锡</chineseSimplified>
+   <chineseTraditional>萊比錫</chineseTraditional>
   </name>
   <shipClassObjectId>a900c33c-16fc-54fd-9cdb-b74acf826be8</shipClassObjectId>
   <applicableYearBegin>1910</applicableYearBegin>
@@ -10539,6 +10560,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Dresden</english>
+   <japanese>ドレスデン</japanese>
+   <chineseSimplified>德累斯顿</chineseSimplified>
+   <chineseTraditional>德勒斯登</chineseTraditional>
   </name>
   <shipClassObjectId>032031f3-7399-558e-8d6e-70013163f8f1</shipClassObjectId>
   <applicableYearBegin>1908</applicableYearBegin>
@@ -10551,6 +10575,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Nürnberg</english>
+   <japanese>ニュルンベルク</japanese>
+   <chineseSimplified>纽伦堡</chineseSimplified>
+   <chineseTraditional>紐倫堡</chineseTraditional>
   </name>
   <shipClassObjectId>e5161e6a-0b16-5276-a447-b54c50ea3408</shipClassObjectId>
   <applicableYearBegin>1908</applicableYearBegin>
@@ -10563,6 +10590,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Carnarvon</english>
+   <japanese>カーナヴォン</japanese>
+   <chineseSimplified>卡纳芬</chineseSimplified>
+   <chineseTraditional>卡納芬</chineseTraditional>
   </name>
   <shipClassObjectId>f574771e-21ae-5e71-8e7b-49b82c44e0f0</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -10575,6 +10605,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Inflexible</english>
+   <japanese>インフレキシブル</japanese>
+   <chineseSimplified>不屈</chineseSimplified>
+   <chineseTraditional>不屈</chineseTraditional>
   </name>
   <shipClassObjectId>b57eadc6-aa4f-5a34-9bfb-1a8e66f5c05f</shipClassObjectId>
   <applicableYearBegin>1908</applicableYearBegin>
@@ -10587,6 +10620,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Cornwall</english>
+   <japanese>コーンウォール</japanese>
+   <chineseSimplified>康沃尔</chineseSimplified>
+   <chineseTraditional>康沃爾</chineseTraditional>
   </name>
   <shipClassObjectId>6f7873bc-f019-5578-bb5b-9acfdfc5c34c</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -10599,6 +10635,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Kent</english>
+   <japanese>ケント</japanese>
+   <chineseSimplified>肯特</chineseSimplified>
+   <chineseTraditional>肯特</chineseTraditional>
   </name>
   <shipClassObjectId>be82fedc-1aea-5b43-8fbc-9a34b372587d</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -10611,6 +10650,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Bristol</english>
+   <japanese>ブリストル</japanese>
+   <chineseSimplified>布里斯托尔</chineseSimplified>
+   <chineseTraditional>布里斯托</chineseTraditional>
   </name>
   <shipClassObjectId>07c0d4e4-e00e-5756-b0ea-47ee41d3a1e4</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -10623,6 +10665,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Lion</english>
+   <japanese>ライオン</japanese>
+   <chineseSimplified>狮</chineseSimplified>
+   <chineseTraditional>獅</chineseTraditional>
   </name>
   <shipClassObjectId>446198d9-e951-526c-bf58-248faa087842</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10636,6 +10681,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Princess Royal</english>
+   <japanese>プリンセス・ロイヤル</japanese>
+   <chineseSimplified>长公主</chineseSimplified>
+   <chineseTraditional>長公主</chineseTraditional>
   </name>
   <shipClassObjectId>c5e6f0d5-d119-5059-abbe-7359df9db249</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10648,6 +10696,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Queen Mary</english>
+   <japanese>クイーン・メリー</japanese>
+   <chineseSimplified>玛丽皇后</chineseSimplified>
+   <chineseTraditional>瑪麗皇后</chineseTraditional>
   </name>
   <shipClassObjectId>54bbee8e-e9c4-530c-aa83-f6947527adc2</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10660,6 +10711,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Tiger</english>
+   <japanese>タイガー</japanese>
+   <chineseSimplified>虎</chineseSimplified>
+   <chineseTraditional>虎</chineseTraditional>
   </name>
   <shipClassObjectId>2d0ce9f4-229e-59a7-8e7a-a26efb749f3b</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -10672,6 +10726,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>New Zealand</english>
+   <japanese>ニュージーランド</japanese>
+   <chineseSimplified>新西兰</chineseSimplified>
+   <chineseTraditional>紐西蘭</chineseTraditional>
   </name>
   <shipClassObjectId>55aa0dac-7cad-56b0-b462-fe146d25329a</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10684,6 +10741,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Indefatigable</english>
+   <japanese>インディファティガブル</japanese>
+   <chineseSimplified>不倦</chineseSimplified>
+   <chineseTraditional>不倦</chineseTraditional>
   </name>
   <shipClassObjectId>9739ae1a-cc0d-5d88-9476-6b65df180489</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -10696,6 +10756,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Barham</english>
+   <japanese>バーラム</japanese>
+   <chineseSimplified>巴勒姆</chineseSimplified>
+   <chineseTraditional>巴勒姆</chineseTraditional>
   </name>
   <shipClassObjectId>a4ef71c6-5353-5455-b72a-3b9702dec6d1</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10709,6 +10772,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Valiant</english>
+   <japanese>ヴァリアント</japanese>
+   <chineseSimplified>英勇</chineseSimplified>
+   <chineseTraditional>英勇</chineseTraditional>
   </name>
   <shipClassObjectId>2296b178-152d-5f65-9264-57a72463b14d</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -10721,6 +10787,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Warspite</english>
+   <japanese>ウォースパイト</japanese>
+   <chineseSimplified>厌战</chineseSimplified>
+   <chineseTraditional>厭戰</chineseTraditional>
   </name>
   <shipClassObjectId>2a573ccc-1e06-526a-b71f-ee9557d9dc97</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10733,6 +10802,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Malaya</english>
+   <japanese>マレーヤ</japanese>
+   <chineseSimplified>马来亚</chineseSimplified>
+   <chineseTraditional>馬來亞</chineseTraditional>
   </name>
   <shipClassObjectId>0cf4d8c1-ad87-532c-8d1e-7fffe101b4dc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -10745,6 +10817,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Galatea</english>
+   <japanese>ガラティア</japanese>
+   <chineseSimplified>加拉蒂亚</chineseSimplified>
+   <chineseTraditional>加拉蒂亞</chineseTraditional>
   </name>
   <shipClassObjectId>e63bebe9-beb0-5929-bf87-c2b150f7d0e6</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -10758,6 +10833,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Phaeton</english>
+   <japanese>フェートン</japanese>
+   <chineseSimplified>法厄同</chineseSimplified>
+   <chineseTraditional>法厄同</chineseTraditional>
   </name>
   <shipClassObjectId>6925d579-edb6-55e0-8a7f-cfe5aa7d0097</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10770,6 +10848,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Inconstant</english>
+   <japanese>インコンスタント</japanese>
+   <chineseSimplified>无常</chineseSimplified>
+   <chineseTraditional>無常</chineseTraditional>
   </name>
   <shipClassObjectId>a30e36a9-7af6-5aee-8d69-19701dc1ea6c</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10782,6 +10863,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Cordelia</english>
+   <japanese>コーデリア</japanese>
+   <chineseSimplified>科迪莉娅</chineseSimplified>
+   <chineseTraditional>科迪莉婭</chineseTraditional>
   </name>
   <shipClassObjectId>b1887d9a-8fab-5a87-948f-37289e5ebdb9</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -10794,6 +10878,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Southampton</english>
+   <japanese>サウサンプトン</japanese>
+   <chineseSimplified>南安普敦</chineseSimplified>
+   <chineseTraditional>南安普敦</chineseTraditional>
   </name>
   <shipClassObjectId>88234fe2-dcd5-586d-afcc-49694dea28d2</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -10807,6 +10894,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Birmingham</english>
+   <japanese>バーミンガム</japanese>
+   <chineseSimplified>伯明翰</chineseSimplified>
+   <chineseTraditional>伯明翰</chineseTraditional>
   </name>
   <shipClassObjectId>951fd9b8-17ef-55f7-87f5-74683d478893</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -10819,6 +10909,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Nottingham</english>
+   <japanese>ノッティンガム</japanese>
+   <chineseSimplified>诺丁汉</chineseSimplified>
+   <chineseTraditional>諾丁漢</chineseTraditional>
   </name>
   <shipClassObjectId>390f24fc-5f1d-513d-ad2b-0d84b8321042</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10831,6 +10924,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Dublin</english>
+   <japanese>ダブリン</japanese>
+   <chineseSimplified>都柏林</chineseSimplified>
+   <chineseTraditional>都柏林</chineseTraditional>
   </name>
   <shipClassObjectId>b8ed4eb7-78c5-53c3-ad28-84a2b1977732</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -10843,6 +10939,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Falmouth</english>
+   <japanese>ファルマス</japanese>
+   <chineseSimplified>法尔茅斯</chineseSimplified>
+   <chineseTraditional>法爾茅斯</chineseTraditional>
   </name>
   <shipClassObjectId>1f50e95e-8f3a-5f1e-96ce-acbb0d23caed</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10856,6 +10955,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Yarmouth</english>
+   <japanese>ヤーマス</japanese>
+   <chineseSimplified>雅茅斯</chineseSimplified>
+   <chineseTraditional>雅茅斯</chineseTraditional>
   </name>
   <shipClassObjectId>2cda4480-d1f3-5894-9ac0-be0ba5b07ed2</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10868,6 +10970,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Birkenhead</english>
+   <japanese>バーケンヘッド</japanese>
+   <chineseSimplified>伯肯黑德</chineseSimplified>
+   <chineseTraditional>伯肯黑德</chineseTraditional>
   </name>
   <shipClassObjectId>2838d74e-5a43-57bd-9948-f60cb5fe9a28</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -10880,6 +10985,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Gloucester</english>
+   <japanese>グロスター</japanese>
+   <chineseSimplified>格罗斯特</chineseSimplified>
+   <chineseTraditional>格羅斯特</chineseTraditional>
   </name>
   <shipClassObjectId>1ba353ff-1a3a-51a2-ae31-a7afbdcc2ca2</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -10892,6 +11000,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Fearless</english>
+   <japanese>フィアレス</japanese>
+   <chineseSimplified>无畏</chineseSimplified>
+   <chineseTraditional>無畏</chineseTraditional>
   </name>
   <shipClassObjectId>cdffdde2-eef7-5ec7-b78b-c462b43a6ae7</shipClassObjectId>
   <applicableYearBegin>1913</applicableYearBegin>
@@ -10905,6 +11016,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Acheron</english>
+   <japanese>アケロン</japanese>
+   <chineseSimplified>黄泉</chineseSimplified>
+   <chineseTraditional>黃泉</chineseTraditional>
   </name>
   <shipClassObjectId>c4c5f54b-4bf7-5052-b0cc-fccfbff94639</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -10917,6 +11031,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Ariel</english>
+   <japanese>アリエル</japanese>
+   <chineseSimplified>爱丽儿</chineseSimplified>
+   <chineseTraditional>愛麗兒</chineseTraditional>
   </name>
   <shipClassObjectId>aaf678de-7cef-5d48-9d8a-324e25cfde29</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -10929,6 +11046,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Attack</english>
+   <japanese>アタック</japanese>
+   <chineseSimplified>攻击</chineseSimplified>
+   <chineseTraditional>攻擊</chineseTraditional>
   </name>
   <shipClassObjectId>23301efb-b3b4-550d-9b44-45a3ec81c8f0</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -10941,6 +11061,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Badger</english>
+   <japanese>バッジャー</japanese>
+   <chineseSimplified>獾</chineseSimplified>
+   <chineseTraditional>獾</chineseTraditional>
   </name>
   <shipClassObjectId>448a6d17-3b12-52d5-b17b-bc945cab1186</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -10953,6 +11076,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Defender</english>
+   <japanese>ディフェンダー</japanese>
+   <chineseSimplified>防卫者</chineseSimplified>
+   <chineseTraditional>防衛者</chineseTraditional>
   </name>
   <shipClassObjectId>a1bd9d76-e245-5b3a-8fa1-463d617015c3</shipClassObjectId>
   <applicableYearBegin>1911</applicableYearBegin>
@@ -10965,6 +11091,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Goshawk</english>
+   <japanese>ゴズホーク</japanese>
+   <chineseSimplified>苍鹰</chineseSimplified>
+   <chineseTraditional>蒼鷹</chineseTraditional>
   </name>
   <shipClassObjectId>b1064a77-7248-5806-9728-500878c999ae</shipClassObjectId>
   <applicableYearBegin>1911</applicableYearBegin>
@@ -10977,6 +11106,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Hydra</english>
+   <japanese>ハイドラ</japanese>
+   <chineseSimplified>九头蛇</chineseSimplified>
+   <chineseTraditional>九頭蛇</chineseTraditional>
   </name>
   <shipClassObjectId>acd1e644-2580-5b22-b4e1-2bd8760e323e</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -10989,6 +11121,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Lapwing</english>
+   <japanese>ラッピング</japanese>
+   <chineseSimplified>凤头麦鸡</chineseSimplified>
+   <chineseTraditional>鳳頭麥雞</chineseTraditional>
   </name>
   <shipClassObjectId>26dc56fc-c5e0-516e-9a77-a241abc42214</shipClassObjectId>
   <applicableYearBegin>1912</applicableYearBegin>
@@ -11001,6 +11136,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Lizard</english>
+   <japanese>リザード</japanese>
+   <chineseSimplified>蜥蜴</chineseSimplified>
+   <chineseTraditional>蜥蜴</chineseTraditional>
   </name>
   <shipClassObjectId>62913db2-0e79-5905-bc6a-1b70f1d760e6</shipClassObjectId>
   <applicableYearBegin>1913</applicableYearBegin>
@@ -11013,6 +11151,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Lydiard</english>
+   <japanese>リディアード</japanese>
+   <chineseSimplified>利迪亚德</chineseSimplified>
+   <chineseTraditional>利迪亞德</chineseTraditional>
   </name>
   <shipClassObjectId>d3ff9241-e248-5deb-8004-909d59d8d3ad</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11026,6 +11167,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Landrail</english>
+   <japanese>ランドレール</japanese>
+   <chineseSimplified>秧鸡</chineseSimplified>
+   <chineseTraditional>秧雞</chineseTraditional>
   </name>
   <shipClassObjectId>13e80dc5-10db-5c05-ae86-1066cce9735b</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11038,6 +11182,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Laurel</english>
+   <japanese>ローレル</japanese>
+   <chineseSimplified>月桂</chineseSimplified>
+   <chineseTraditional>月桂</chineseTraditional>
   </name>
   <shipClassObjectId>9ba83206-2d20-57e4-88e3-a7a410bafae3</shipClassObjectId>
   <applicableYearBegin>1913</applicableYearBegin>
@@ -11050,6 +11197,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Liberty</english>
+   <japanese>リバティ</japanese>
+   <chineseSimplified>自由</chineseSimplified>
+   <chineseTraditional>自由</chineseTraditional>
   </name>
   <shipClassObjectId>aef98c17-50fd-564a-8b91-c90ca2923c42</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11062,6 +11212,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Termagant</english>
+   <japanese>ターマガント</japanese>
+   <chineseSimplified>悍妇</chineseSimplified>
+   <chineseTraditional>悍婦</chineseTraditional>
   </name>
   <shipClassObjectId>f761a031-f0fd-50d1-a63d-a917e33a69b4</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11074,6 +11227,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Turbulent</english>
+   <japanese>タービュレント</japanese>
+   <chineseSimplified>动荡</chineseSimplified>
+   <chineseTraditional>動盪</chineseTraditional>
   </name>
   <shipClassObjectId>04d371dd-f112-5a1d-9e68-d24cfc9a6a97</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11086,6 +11242,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Moorsom</english>
+   <japanese>ムーアソム</japanese>
+   <chineseSimplified>穆尔索姆</chineseSimplified>
+   <chineseTraditional>穆爾索姆</chineseTraditional>
   </name>
   <shipClassObjectId>c2670720-f693-5b3b-aa6e-c7b2749d7748</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11098,6 +11257,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Morris</english>
+   <japanese>モリス</japanese>
+   <chineseSimplified>莫里斯</chineseSimplified>
+   <chineseTraditional>莫里斯</chineseTraditional>
   </name>
   <shipClassObjectId>e80a1419-013e-5d3d-906f-324646b10dd0</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11110,6 +11272,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Champion</english>
+   <japanese>チャンピオン</japanese>
+   <chineseSimplified>冠军</chineseSimplified>
+   <chineseTraditional>冠軍</chineseTraditional>
   </name>
   <shipClassObjectId>bdd62e06-41c6-566e-b220-357c1e6524b9</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11123,6 +11288,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Narbrough</english>
+   <japanese>ナーボロー</japanese>
+   <chineseSimplified>纳伯勒</chineseSimplified>
+   <chineseTraditional>納伯勒</chineseTraditional>
   </name>
   <shipClassObjectId>5803356f-1a66-5c4d-9b99-eef02680913a</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11135,6 +11303,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Nerissa</english>
+   <japanese>ネリッサ</japanese>
+   <chineseSimplified>尼莉莎</chineseSimplified>
+   <chineseTraditional>尼莉莎</chineseTraditional>
   </name>
   <shipClassObjectId>1e8f0e3c-ee87-599a-9688-d332c1050259</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11147,6 +11318,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Nestor</english>
+   <japanese>ネスター</japanese>
+   <chineseSimplified>内斯特</chineseSimplified>
+   <chineseTraditional>內斯特</chineseTraditional>
   </name>
   <shipClassObjectId>2bac79a1-4a36-5b1b-bbf6-89ddd74d46f6</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11159,6 +11333,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Nicator</english>
+   <japanese>ニケーター</japanese>
+   <chineseSimplified>尼卡特</chineseSimplified>
+   <chineseTraditional>尼卡特</chineseTraditional>
   </name>
   <shipClassObjectId>88c8779b-bb2b-5232-a4a9-353d3a765ea7</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11171,6 +11348,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Nomad</english>
+   <japanese>ノマド</japanese>
+   <chineseSimplified>游牧民</chineseSimplified>
+   <chineseTraditional>遊牧民</chineseTraditional>
   </name>
   <shipClassObjectId>932e38f2-7220-5a39-89ad-38fce77a47c1</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11183,6 +11363,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Obdurate</english>
+   <japanese>オブデュリト</japanese>
+   <chineseSimplified>顽固</chineseSimplified>
+   <chineseTraditional>頑固</chineseTraditional>
   </name>
   <shipClassObjectId>1988350c-ee31-5d70-bb5d-59a80fd27316</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11195,6 +11378,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Pelican</english>
+   <japanese>ペリカン</japanese>
+   <chineseSimplified>鹈鹕</chineseSimplified>
+   <chineseTraditional>鵜鶘</chineseTraditional>
   </name>
   <shipClassObjectId>78cac9e2-e0ed-5046-928c-1da18ff266a8</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11207,6 +11393,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Petard</english>
+   <japanese>プタード</japanese>
+   <chineseSimplified>爆破筒</chineseSimplified>
+   <chineseTraditional>爆破筒</chineseTraditional>
   </name>
   <shipClassObjectId>b5326b3e-96fd-588f-b63c-ae492b5ebe86</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11219,6 +11408,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Engadine</english>
+   <japanese>エンガディン</japanese>
+   <chineseSimplified>恩加丁</chineseSimplified>
+   <chineseTraditional>恩加丁</chineseTraditional>
   </name>
   <shipClassObjectId>97b62093-63c6-58da-83ee-daf5034071fa</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11231,6 +11423,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Onslow</english>
+   <japanese>オンスロー</japanese>
+   <chineseSimplified>昂斯洛</chineseSimplified>
+   <chineseTraditional>昂斯洛</chineseTraditional>
   </name>
   <shipClassObjectId>dfc02864-5eff-5b64-9682-6e783560b8e5</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11243,6 +11438,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Moresby</english>
+   <japanese>モレスビー</japanese>
+   <chineseSimplified>莫尔兹比</chineseSimplified>
+   <chineseTraditional>莫爾茲比</chineseTraditional>
   </name>
   <shipClassObjectId>939f8562-44a4-5665-9467-7930c5033346</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11255,6 +11453,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Lützow</english>
+   <japanese>リュッツォウ</japanese>
+   <chineseSimplified>吕措</chineseSimplified>
+   <chineseTraditional>呂措</chineseTraditional>
   </name>
   <shipClassObjectId>55c9b4c0-c2a7-51a3-a060-b34c10349027</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11268,6 +11469,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Derfflinger</english>
+   <japanese>デアフリンガー</japanese>
+   <chineseSimplified>德夫林格尔</chineseSimplified>
+   <chineseTraditional>德夫林格爾</chineseTraditional>
   </name>
   <shipClassObjectId>1b5ee5cc-0e29-5d50-9817-18773c80c11a</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11280,6 +11484,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Seydlitz</english>
+   <japanese>ザイドリッツ</japanese>
+   <chineseSimplified>塞德利茨</chineseSimplified>
+   <chineseTraditional>塞德利茨</chineseTraditional>
   </name>
   <shipClassObjectId>0ff379c4-3cef-54ba-9e7f-d7f6965b8ec5</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11292,6 +11499,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Moltke</english>
+   <japanese>モルトケ</japanese>
+   <chineseSimplified>毛奇</chineseSimplified>
+   <chineseTraditional>毛奇</chineseTraditional>
   </name>
   <shipClassObjectId>3407f0e5-0801-5b5c-a29a-24f7b87017fb</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11304,6 +11514,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Von der Tann</english>
+   <japanese>フォン・デア・タン</japanese>
+   <chineseSimplified>冯·德·坦恩</chineseSimplified>
+   <chineseTraditional>馮·德·坦恩</chineseTraditional>
   </name>
   <shipClassObjectId>03ee5d22-42d3-58d5-9fd6-2ef94c2af24b</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11316,6 +11529,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Frankfurt</english>
+   <japanese>フランクフルト</japanese>
+   <chineseSimplified>法兰克福</chineseSimplified>
+   <chineseTraditional>法蘭克福</chineseTraditional>
   </name>
   <shipClassObjectId>4e587de0-4752-5981-aff1-4ac302befcff</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11329,6 +11545,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Pillau</english>
+   <japanese>ピラウ</japanese>
+   <chineseSimplified>皮劳</chineseSimplified>
+   <chineseTraditional>皮勞</chineseTraditional>
   </name>
   <shipClassObjectId>5882d5f8-8f42-560c-b2c2-a96e11819afc</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11341,6 +11560,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Elbing</english>
+   <japanese>エルビング</japanese>
+   <chineseSimplified>埃尔宾</chineseSimplified>
+   <chineseTraditional>埃爾賓</chineseTraditional>
   </name>
   <shipClassObjectId>cb4749f2-72ad-5498-962a-e8812365e6e8</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11353,6 +11575,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Regensburg</english>
+   <japanese>レーゲンスブルク</japanese>
+   <chineseSimplified>雷根斯堡</chineseSimplified>
+   <chineseTraditional>雷根斯堡</chineseTraditional>
   </name>
   <shipClassObjectId>aee32026-2e97-5e20-bc9a-870d4ae431e9</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11366,6 +11591,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>B98</english>
+   <japanese>B98</japanese>
+   <chineseSimplified>B98</chineseSimplified>
+   <chineseTraditional>B98</chineseTraditional>
   </name>
   <shipClassObjectId>342f37e5-fe61-5d98-894f-730c75c7eef7</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11379,6 +11607,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G101</english>
+   <japanese>G101</japanese>
+   <chineseSimplified>G101</chineseSimplified>
+   <chineseTraditional>G101</chineseTraditional>
   </name>
   <shipClassObjectId>9a1c9211-2ae8-5ee5-b13a-e4e2fd4de85e</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11391,6 +11622,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G102</english>
+   <japanese>G102</japanese>
+   <chineseSimplified>G102</chineseSimplified>
+   <chineseTraditional>G102</chineseTraditional>
   </name>
   <shipClassObjectId>38fbc07c-cc4f-5896-8250-0d2ad5177dfc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11403,6 +11637,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>B112</english>
+   <japanese>B112</japanese>
+   <chineseSimplified>B112</chineseSimplified>
+   <chineseTraditional>B112</chineseTraditional>
   </name>
   <shipClassObjectId>8b35e00f-e938-5c44-8fe5-5ca16e738d7a</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11415,6 +11652,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>B97</english>
+   <japanese>B97</japanese>
+   <chineseSimplified>B97</chineseSimplified>
+   <chineseTraditional>B97</chineseTraditional>
   </name>
   <shipClassObjectId>a02530c7-0137-5d6c-a820-bd315da71d3f</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11427,6 +11667,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>B109</english>
+   <japanese>B109</japanese>
+   <chineseSimplified>B109</chineseSimplified>
+   <chineseTraditional>B109</chineseTraditional>
   </name>
   <shipClassObjectId>5cbaa9b3-a933-5c76-a916-ffeac6b8b34b</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11439,6 +11682,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>B110</english>
+   <japanese>B110</japanese>
+   <chineseSimplified>B110</chineseSimplified>
+   <chineseTraditional>B110</chineseTraditional>
   </name>
   <shipClassObjectId>4b5aed67-303f-5d23-93fb-01d8727931f4</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11451,6 +11697,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>B111</english>
+   <japanese>B111</japanese>
+   <chineseSimplified>B111</chineseSimplified>
+   <chineseTraditional>B111</chineseTraditional>
   </name>
   <shipClassObjectId>7724ea05-3b11-5813-934e-0a75cea17ee1</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11463,6 +11712,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G103</english>
+   <japanese>G103</japanese>
+   <chineseSimplified>G103</chineseSimplified>
+   <chineseTraditional>G103</chineseTraditional>
   </name>
   <shipClassObjectId>c4282371-7b1f-5612-ab41-aa2955b52f31</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11475,6 +11727,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G104</english>
+   <japanese>G104</japanese>
+   <chineseSimplified>G104</chineseSimplified>
+   <chineseTraditional>G104</chineseTraditional>
   </name>
   <shipClassObjectId>af927349-fa48-57a7-93e7-dff1dc94ecee</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11487,6 +11742,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G41</english>
+   <japanese>G41</japanese>
+   <chineseSimplified>G41</chineseSimplified>
+   <chineseTraditional>G41</chineseTraditional>
   </name>
   <shipClassObjectId>9e28c80d-1eae-5ffa-9c84-ffe1ae22529d</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11500,6 +11758,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V44</english>
+   <japanese>V44</japanese>
+   <chineseSimplified>V44</chineseSimplified>
+   <chineseTraditional>V44</chineseTraditional>
   </name>
   <shipClassObjectId>f5e11bca-9039-5d9c-bef5-5894adace252</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11512,6 +11773,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G87</english>
+   <japanese>G87</japanese>
+   <chineseSimplified>G87</chineseSimplified>
+   <chineseTraditional>G87</chineseTraditional>
   </name>
   <shipClassObjectId>324fc194-eeaa-5008-9188-117b34427da4</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11524,6 +11788,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G86</english>
+   <japanese>G86</japanese>
+   <chineseSimplified>G86</chineseSimplified>
+   <chineseTraditional>G86</chineseTraditional>
   </name>
   <shipClassObjectId>b7063260-1ebd-58e4-b504-c84eb79c07a8</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11536,6 +11803,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V69</english>
+   <japanese>V69</japanese>
+   <chineseSimplified>V69</chineseSimplified>
+   <chineseTraditional>V69</chineseTraditional>
   </name>
   <shipClassObjectId>5977e171-cad3-5fee-b381-e7e0840e824f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11549,6 +11819,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V45</english>
+   <japanese>V45</japanese>
+   <chineseSimplified>V45</chineseSimplified>
+   <chineseTraditional>V45</chineseTraditional>
   </name>
   <shipClassObjectId>2c97a4d6-54eb-5eda-a159-0e30d6eb5ca0</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11561,6 +11834,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V46</english>
+   <japanese>V46</japanese>
+   <chineseSimplified>V46</chineseSimplified>
+   <chineseTraditional>V46</chineseTraditional>
   </name>
   <shipClassObjectId>fd53e191-69cc-5ca3-89a2-1f7ea937addf</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11573,6 +11849,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S50</english>
+   <japanese>S50</japanese>
+   <chineseSimplified>S50</chineseSimplified>
+   <chineseTraditional>S50</chineseTraditional>
   </name>
   <shipClassObjectId>8fe27595-c48a-527f-85ce-df70ac5054af</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11585,6 +11864,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G37</english>
+   <japanese>G37</japanese>
+   <chineseSimplified>G37</chineseSimplified>
+   <chineseTraditional>G37</chineseTraditional>
   </name>
   <shipClassObjectId>12789e1e-a298-511a-87e5-20bf3b4a318e</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11597,6 +11879,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V28</english>
+   <japanese>V28</japanese>
+   <chineseSimplified>V28</chineseSimplified>
+   <chineseTraditional>V28</chineseTraditional>
   </name>
   <shipClassObjectId>f6a174f3-483a-56f0-9d41-e9cc57526575</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11610,6 +11895,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V27</english>
+   <japanese>V27</japanese>
+   <chineseSimplified>V27</chineseSimplified>
+   <chineseTraditional>V27</chineseTraditional>
   </name>
   <shipClassObjectId>e99d7068-3958-599e-8160-23d61a015d55</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11622,6 +11910,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V26</english>
+   <japanese>V26</japanese>
+   <chineseSimplified>V26</chineseSimplified>
+   <chineseTraditional>V26</chineseTraditional>
   </name>
   <shipClassObjectId>fa12ae84-4ff7-554f-bfa8-e07fd69f4e10</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11634,6 +11925,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S36</english>
+   <japanese>S36</japanese>
+   <chineseSimplified>S36</chineseSimplified>
+   <chineseTraditional>S36</chineseTraditional>
   </name>
   <shipClassObjectId>15c665f5-8011-5cbd-9e26-1f33cc6a9664</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11646,6 +11940,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S51</english>
+   <japanese>S51</japanese>
+   <chineseSimplified>S51</chineseSimplified>
+   <chineseTraditional>S51</chineseTraditional>
   </name>
   <shipClassObjectId>003f6c75-cd99-568a-9836-f6fce0cc1446</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11658,6 +11955,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S52</english>
+   <japanese>S52</japanese>
+   <chineseSimplified>S52</chineseSimplified>
+   <chineseTraditional>S52</chineseTraditional>
   </name>
   <shipClassObjectId>ab00eb00-08df-5a6a-a08d-200d55883eb5</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11670,6 +11970,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V30</english>
+   <japanese>V30</japanese>
+   <chineseSimplified>V30</chineseSimplified>
+   <chineseTraditional>V30</chineseTraditional>
   </name>
   <shipClassObjectId>96795115-b6aa-5618-8beb-1f749ac8c662</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11682,6 +11985,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V29</english>
+   <japanese>V29</japanese>
+   <chineseSimplified>V29</chineseSimplified>
+   <chineseTraditional>V29</chineseTraditional>
   </name>
   <shipClassObjectId>09d0809d-6d93-5819-8414-a9ed027bc250</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11694,6 +12000,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S35</english>
+   <japanese>S35</japanese>
+   <chineseSimplified>S35</chineseSimplified>
+   <chineseTraditional>S35</chineseTraditional>
   </name>
   <shipClassObjectId>11e9d44d-ba0c-58e5-a17a-c940469de439</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11706,6 +12015,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S34</english>
+   <japanese>S34</japanese>
+   <chineseSimplified>S34</chineseSimplified>
+   <chineseTraditional>S34</chineseTraditional>
   </name>
   <shipClassObjectId>9be09464-2c52-5ebd-bc91-76bdef63b6b0</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11718,6 +12030,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Wiesbaden</english>
+   <japanese>ヴィースバーデン</japanese>
+   <chineseSimplified>威斯巴登</chineseSimplified>
+   <chineseTraditional>威斯巴登</chineseTraditional>
   </name>
   <shipClassObjectId>2ae8e4a1-9a5b-50d7-ae2d-6a5d8aba55c8</shipClassObjectId>
   <applicableYearBegin>1915</applicableYearBegin>
@@ -11730,6 +12045,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S31</english>
+   <japanese>S31</japanese>
+   <chineseSimplified>S31</chineseSimplified>
+   <chineseTraditional>S31</chineseTraditional>
   </name>
   <shipClassObjectId>6969ef32-9a0e-55f4-93ed-51c3c80d69a8</shipClassObjectId>
   <applicableYearBegin>1914</applicableYearBegin>
@@ -11742,6 +12060,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>King George V</english>
+   <japanese>キング・ジョージ5世</japanese>
+   <chineseSimplified>乔治五世</chineseSimplified>
+   <chineseTraditional>喬治五世</chineseTraditional>
   </name>
   <shipClassObjectId>231b6be4-2dfa-59d1-9d3f-3df5e19c8835</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11755,6 +12076,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Ajax</english>
+   <japanese>エイジャクス</japanese>
+   <chineseSimplified>阿贾克斯</chineseSimplified>
+   <chineseTraditional>阿賈克斯</chineseTraditional>
   </name>
   <shipClassObjectId>bb340149-00ab-541d-b578-e9c6e0e58465</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11767,6 +12091,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Centurion</english>
+   <japanese>センチュリオン</japanese>
+   <chineseSimplified>百夫长</chineseSimplified>
+   <chineseTraditional>百夫長</chineseTraditional>
   </name>
   <shipClassObjectId>88d7bdaf-4bb7-5fc3-8b8f-af94b12e534e</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11779,6 +12106,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Erin</english>
+   <japanese>エリン</japanese>
+   <chineseSimplified>爱尔兰</chineseSimplified>
+   <chineseTraditional>愛爾蘭</chineseTraditional>
   </name>
   <shipClassObjectId>22a449d1-3815-5c2d-a582-7490bc9e822e</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11791,6 +12121,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Orion</english>
+   <japanese>オライオン</japanese>
+   <chineseSimplified>猎户座</chineseSimplified>
+   <chineseTraditional>獵戶座</chineseTraditional>
   </name>
   <shipClassObjectId>ac7e50e1-5b6d-535a-a74b-c063fe295ea7</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11804,6 +12137,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Monarch</english>
+   <japanese>モナーク</japanese>
+   <chineseSimplified>君主</chineseSimplified>
+   <chineseTraditional>君主</chineseTraditional>
   </name>
   <shipClassObjectId>76a17dad-d04e-5d65-99ac-ffda13b7fd38</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11816,6 +12152,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Conqueror</english>
+   <japanese>コンカラー</japanese>
+   <chineseSimplified>征服者</chineseSimplified>
+   <chineseTraditional>征服者</chineseTraditional>
   </name>
   <shipClassObjectId>3e3dc4e6-95f7-5502-b24d-2975c0d8a158</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11828,6 +12167,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Thunderer</english>
+   <japanese>サンダラー</japanese>
+   <chineseSimplified>雷霆</chineseSimplified>
+   <chineseTraditional>雷霆</chineseTraditional>
   </name>
   <shipClassObjectId>deb9b249-ae49-5c46-a3a8-c4fa1660b8a1</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11840,6 +12182,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Iron Duke</english>
+   <japanese>アイアン・デューク</japanese>
+   <chineseSimplified>铁公爵</chineseSimplified>
+   <chineseTraditional>鐵公爵</chineseTraditional>
   </name>
   <shipClassObjectId>203bd8bf-33a5-5426-a186-31f248c0f1f4</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11853,6 +12198,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Royal Oak</english>
+   <japanese>ロイヤル・オーク</japanese>
+   <chineseSimplified>皇家橡树</chineseSimplified>
+   <chineseTraditional>皇家橡樹</chineseTraditional>
   </name>
   <shipClassObjectId>60967ed7-3965-558a-8f93-d6662e4615aa</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11865,6 +12213,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Superb</english>
+   <japanese>シュパーブ</japanese>
+   <chineseSimplified>壮丽</chineseSimplified>
+   <chineseTraditional>壯麗</chineseTraditional>
   </name>
   <shipClassObjectId>bd2ecb52-e226-5f21-9ca0-2c9284381366</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11878,6 +12229,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Canada</english>
+   <japanese>カナダ</japanese>
+   <chineseSimplified>加拿大</chineseSimplified>
+   <chineseTraditional>加拿大</chineseTraditional>
   </name>
   <shipClassObjectId>29234232-6b83-5331-b859-d3bc402a1174</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11890,6 +12244,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Benbow</english>
+   <japanese>ベンボウ</japanese>
+   <chineseSimplified>本鲍</chineseSimplified>
+   <chineseTraditional>本鮑</chineseTraditional>
   </name>
   <shipClassObjectId>02813f0b-2710-5825-860a-502e623d0612</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11903,6 +12260,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Bellerophon</english>
+   <japanese>ベレロフォン</japanese>
+   <chineseSimplified>柏勒罗丰</chineseSimplified>
+   <chineseTraditional>柏勒羅豐</chineseTraditional>
   </name>
   <shipClassObjectId>0f92e557-0160-50b1-91d5-647d42d9f889</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11915,6 +12275,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Temeraire</english>
+   <japanese>テメレーア</japanese>
+   <chineseSimplified>鲁莽</chineseSimplified>
+   <chineseTraditional>魯莽</chineseTraditional>
   </name>
   <shipClassObjectId>97a32768-3bba-5d07-b6ab-1dde386c3cf6</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11927,6 +12290,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Vanguard</english>
+   <japanese>ヴァンガード</japanese>
+   <chineseSimplified>前卫</chineseSimplified>
+   <chineseTraditional>前衛</chineseTraditional>
   </name>
   <shipClassObjectId>e9d1affa-e5df-573e-b90e-7dace26243b5</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11939,6 +12305,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Colossus</english>
+   <japanese>コロッサス</japanese>
+   <chineseSimplified>巨人</chineseSimplified>
+   <chineseTraditional>巨人</chineseTraditional>
   </name>
   <shipClassObjectId>0115602c-225b-591b-aa08-4dca33c6c181</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11952,6 +12321,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Collingwood</english>
+   <japanese>コリンウッド</japanese>
+   <chineseSimplified>科林伍德</chineseSimplified>
+   <chineseTraditional>科林伍德</chineseTraditional>
   </name>
   <shipClassObjectId>a02a2646-bfe2-56e6-b549-0e1c31a5f931</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11964,6 +12336,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>St. Vincent</english>
+   <japanese>セント・ヴィンセント</japanese>
+   <chineseSimplified>圣文森特</chineseSimplified>
+   <chineseTraditional>聖文森特</chineseTraditional>
   </name>
   <shipClassObjectId>d4da365a-f8ec-58d0-9331-84f819d9607f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11976,6 +12351,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Neptune</english>
+   <japanese>ネプチューン</japanese>
+   <chineseSimplified>海王星</chineseSimplified>
+   <chineseTraditional>海王星</chineseTraditional>
   </name>
   <shipClassObjectId>c73ed7ff-d12c-5570-bd95-0950003aa3c3</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -11988,6 +12366,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Marlborough</english>
+   <japanese>マールバラ</japanese>
+   <chineseSimplified>马尔伯勒</chineseSimplified>
+   <chineseTraditional>馬爾伯勒</chineseTraditional>
   </name>
   <shipClassObjectId>0e27fe81-e722-5f40-9996-157125e5639c</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12001,6 +12382,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Revenge</english>
+   <japanese>リヴェンジ</japanese>
+   <chineseSimplified>复仇</chineseSimplified>
+   <chineseTraditional>復仇</chineseTraditional>
   </name>
   <shipClassObjectId>887115cc-6fd8-5543-928e-e8ee997d1259</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12013,6 +12397,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Hercules</english>
+   <japanese>ハーキュリーズ</japanese>
+   <chineseSimplified>大力神</chineseSimplified>
+   <chineseTraditional>大力神</chineseTraditional>
   </name>
   <shipClassObjectId>81906cd0-7ab6-5448-9e27-6a056a3e9a6f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12025,6 +12412,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Agincourt</english>
+   <japanese>エジンコート</japanese>
+   <chineseSimplified>阿金库尔</chineseSimplified>
+   <chineseTraditional>阿金庫爾</chineseTraditional>
   </name>
   <shipClassObjectId>aa7a5237-6a34-5c4d-afba-e8ef559975da</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12037,6 +12427,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Invincible</english>
+   <japanese>インヴィンシブル</japanese>
+   <chineseSimplified>无敌</chineseSimplified>
+   <chineseTraditional>無敵</chineseTraditional>
   </name>
   <shipClassObjectId>0cee4db5-bfb9-517e-a40a-42d3fff6d31d</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12050,6 +12443,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Inflexible</english>
+   <japanese>インフレキシブル</japanese>
+   <chineseSimplified>不屈</chineseSimplified>
+   <chineseTraditional>不屈</chineseTraditional>
   </name>
   <shipClassObjectId>01927e5d-3a4c-554a-97a2-bfae86e47b82</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12062,6 +12458,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Indomitable</english>
+   <japanese>インドミタブル</japanese>
+   <chineseSimplified>不挠</chineseSimplified>
+   <chineseTraditional>不撓</chineseTraditional>
   </name>
   <shipClassObjectId>85ad77b0-da44-5db8-bd46-3e7925ed27e9</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12074,6 +12473,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Defence</english>
+   <japanese>ディフェンス</japanese>
+   <chineseSimplified>防御</chineseSimplified>
+   <chineseTraditional>防禦</chineseTraditional>
   </name>
   <shipClassObjectId>57e36a55-4c61-5704-a183-f935261257d3</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12087,6 +12489,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Warrior</english>
+   <japanese>ウォーリア</japanese>
+   <chineseSimplified>勇士</chineseSimplified>
+   <chineseTraditional>勇士</chineseTraditional>
   </name>
   <shipClassObjectId>351780b4-7cea-5eb3-9d8f-10b67105dec3</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12099,6 +12504,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Duke of Edinburgh</english>
+   <japanese>デューク・オブ・エジンバラ</japanese>
+   <chineseSimplified>爱丁堡公爵</chineseSimplified>
+   <chineseTraditional>愛丁堡公爵</chineseTraditional>
   </name>
   <shipClassObjectId>155aa2fe-7464-53c3-9441-5e3ee9bb4f4a</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12111,6 +12519,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Minotaur</english>
+   <japanese>マイノーター</japanese>
+   <chineseSimplified>弥诺陶洛斯</chineseSimplified>
+   <chineseTraditional>彌諾陶洛斯</chineseTraditional>
   </name>
   <shipClassObjectId>3f83bdce-ab64-5111-9f29-a0085c34c0c2</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12124,6 +12535,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Shannon</english>
+   <japanese>シャノン</japanese>
+   <chineseSimplified>香农</chineseSimplified>
+   <chineseTraditional>香農</chineseTraditional>
   </name>
   <shipClassObjectId>b7587032-85c0-5597-be80-2132568a8fc0</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12136,6 +12550,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Cochrane</english>
+   <japanese>コクラン</japanese>
+   <chineseSimplified>科克伦</chineseSimplified>
+   <chineseTraditional>科克倫</chineseTraditional>
   </name>
   <shipClassObjectId>16e15aa2-f345-52ad-92ce-e6b283ea0e10</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12148,6 +12565,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Hampshire</english>
+   <japanese>ハンプシャー</japanese>
+   <chineseSimplified>汉普郡</chineseSimplified>
+   <chineseTraditional>漢普郡</chineseTraditional>
   </name>
   <shipClassObjectId>6e73ca76-01af-55a9-9985-54142bf86892</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12160,6 +12580,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Calliope</english>
+   <japanese>カライアピ</japanese>
+   <chineseSimplified>卡里欧辟</chineseSimplified>
+   <chineseTraditional>卡里歐闢</chineseTraditional>
   </name>
   <shipClassObjectId>d496bd1a-dd88-524a-84fd-8e63001c9f3c</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12173,6 +12596,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Constance</english>
+   <japanese>コンスタンス</japanese>
+   <chineseSimplified>康斯坦斯</chineseSimplified>
+   <chineseTraditional>康斯坦斯</chineseTraditional>
   </name>
   <shipClassObjectId>987d5efb-e56a-5a4e-b79c-3a458a3274bc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12185,6 +12611,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Caroline</english>
+   <japanese>カロライン</japanese>
+   <chineseSimplified>卡罗琳</chineseSimplified>
+   <chineseTraditional>卡羅琳</chineseTraditional>
   </name>
   <shipClassObjectId>b7861ad2-8cf5-5778-b0ab-9200334f2254</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12197,6 +12626,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Comus</english>
+   <japanese>コーマス</japanese>
+   <chineseSimplified>科墨斯</chineseSimplified>
+   <chineseTraditional>科墨斯</chineseTraditional>
   </name>
   <shipClassObjectId>9389e387-9122-5c54-a003-af133d0b1f53</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12209,6 +12641,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Royalist</english>
+   <japanese>ロイヤリスト</japanese>
+   <chineseSimplified>保皇党人</chineseSimplified>
+   <chineseTraditional>保皇黨人</chineseTraditional>
   </name>
   <shipClassObjectId>c862cf32-006d-58cb-9956-607c48909394</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12221,6 +12656,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Active</english>
+   <japanese>アクティブ</japanese>
+   <chineseSimplified>积极</chineseSimplified>
+   <chineseTraditional>積極</chineseTraditional>
   </name>
   <shipClassObjectId>6c197e06-07aa-51c0-853e-1961fcc2ddae</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12233,6 +12671,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Blanche</english>
+   <japanese>ブランチ</japanese>
+   <chineseSimplified>布兰奇</chineseSimplified>
+   <chineseTraditional>布蘭奇</chineseTraditional>
   </name>
   <shipClassObjectId>0b0ad856-47b3-56f6-b96e-35e8b24142da</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12245,6 +12686,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Bellona</english>
+   <japanese>ベローナ</japanese>
+   <chineseSimplified>贝罗娜</chineseSimplified>
+   <chineseTraditional>貝羅娜</chineseTraditional>
   </name>
   <shipClassObjectId>e38e4f20-a86c-5cbc-9fd2-764a0193a76c</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12257,6 +12701,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Boadicea</english>
+   <japanese>ボーデシア</japanese>
+   <chineseSimplified>博阿迪西亚</chineseSimplified>
+   <chineseTraditional>博阿迪西亞</chineseTraditional>
   </name>
   <shipClassObjectId>bc7f96c4-bbb3-5ff8-9762-2d78ba7d0e8e</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12269,6 +12716,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Canterbury</english>
+   <japanese>カンタベリー</japanese>
+   <chineseSimplified>坎特伯雷</chineseSimplified>
+   <chineseTraditional>坎特伯雷</chineseTraditional>
   </name>
   <shipClassObjectId>bcdce65a-310b-5336-b9dc-6751d26dfbb5</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12281,6 +12731,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Chester</english>
+   <japanese>チェスター</japanese>
+   <chineseSimplified>切斯特</chineseSimplified>
+   <chineseTraditional>切斯特</chineseTraditional>
   </name>
   <shipClassObjectId>d8c03578-7700-5304-a6c5-ec15d5309969</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12293,6 +12746,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Tipperary</english>
+   <japanese>ティペラリー</japanese>
+   <chineseSimplified>蒂珀雷里</chineseSimplified>
+   <chineseTraditional>蒂珀雷裏</chineseTraditional>
   </name>
   <shipClassObjectId>8f019573-4b7c-5b7b-86b4-2ba51ce705b1</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12306,6 +12762,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Broke</english>
+   <japanese>ブローク</japanese>
+   <chineseSimplified>布罗克</chineseSimplified>
+   <chineseTraditional>布羅克</chineseTraditional>
   </name>
   <shipClassObjectId>1a91635e-d24d-5c17-8398-bfe1a6b1fad6</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12318,6 +12777,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Achaetes</english>
+   <japanese>アハテス</japanese>
+   <chineseSimplified>阿卡忒斯</chineseSimplified>
+   <chineseTraditional>阿卡忒斯</chineseTraditional>
   </name>
   <shipClassObjectId>08eb9d78-24eb-5ad9-8f9d-3aa465cdd1e4</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12330,6 +12792,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Ambuscade</english>
+   <japanese>アンバスケード</japanese>
+   <chineseSimplified>伏击</chineseSimplified>
+   <chineseTraditional>伏擊</chineseTraditional>
   </name>
   <shipClassObjectId>ab5b862a-3f44-5e99-ad92-14ec1e62ab88</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12342,6 +12807,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Ardent</english>
+   <japanese>アーデント</japanese>
+   <chineseSimplified>热心</chineseSimplified>
+   <chineseTraditional>熱心</chineseTraditional>
   </name>
   <shipClassObjectId>b292634b-08d1-5e0f-bbea-995307c738e1</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12354,6 +12822,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Owl</english>
+   <japanese>オウル</japanese>
+   <chineseSimplified>猫头鹰</chineseSimplified>
+   <chineseTraditional>貓頭鷹</chineseTraditional>
   </name>
   <shipClassObjectId>70df2d57-52ec-5728-81b1-2dee74630bf8</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12366,6 +12837,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Porpoise</english>
+   <japanese>ポルポイズ</japanese>
+   <chineseSimplified>鼠海豚</chineseSimplified>
+   <chineseTraditional>鼠海豚</chineseTraditional>
   </name>
   <shipClassObjectId>b653fb6f-8f73-53dd-880b-79bee8bf0baa</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12378,6 +12852,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Sparrowhawk</english>
+   <japanese>スパローホーク</japanese>
+   <chineseSimplified>雀鹰</chineseSimplified>
+   <chineseTraditional>雀鷹</chineseTraditional>
   </name>
   <shipClassObjectId>22b4fea7-0443-58b8-bce7-e110e1c547a0</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12390,6 +12867,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Spitfire</english>
+   <japanese>スピットファイア</japanese>
+   <chineseSimplified>喷火</chineseSimplified>
+   <chineseTraditional>噴火</chineseTraditional>
   </name>
   <shipClassObjectId>00787394-a4b9-53b3-9b9e-421c556e16f0</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12402,6 +12882,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Unity</english>
+   <japanese>ユニティ</japanese>
+   <chineseSimplified>团结</chineseSimplified>
+   <chineseTraditional>團結</chineseTraditional>
   </name>
   <shipClassObjectId>af08c030-c4d6-5d1b-a823-8206743e595f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12414,6 +12897,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Contest</english>
+   <japanese>コンテスト</japanese>
+   <chineseSimplified>竞赛</chineseSimplified>
+   <chineseTraditional>競賽</chineseTraditional>
   </name>
   <shipClassObjectId>a08fa289-95ce-5a6f-a2f1-425701c22b1d</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12426,6 +12912,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Fortune</english>
+   <japanese>フォーチュン</japanese>
+   <chineseSimplified>幸运</chineseSimplified>
+   <chineseTraditional>幸運</chineseTraditional>
   </name>
   <shipClassObjectId>ddc9b021-4c57-52d9-b12d-9f9e049f0d69</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12438,6 +12927,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Garland</english>
+   <japanese>ガーランド</japanese>
+   <chineseSimplified>花环</chineseSimplified>
+   <chineseTraditional>花環</chineseTraditional>
   </name>
   <shipClassObjectId>5dbd67a3-5736-5b21-8b45-7eeec5dbf84a</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12450,6 +12942,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Hardy</english>
+   <japanese>ハーディ</japanese>
+   <chineseSimplified>哈迪</chineseSimplified>
+   <chineseTraditional>哈迪</chineseTraditional>
   </name>
   <shipClassObjectId>15e3d163-1c8c-59f3-a004-26fde87ef5b6</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12462,6 +12957,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Midge</english>
+   <japanese>ミッジ</japanese>
+   <chineseSimplified>蠓</chineseSimplified>
+   <chineseTraditional>蠓</chineseTraditional>
   </name>
   <shipClassObjectId>aa89c016-5c96-5322-8330-903f5370a4db</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12474,6 +12972,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Ophelia</english>
+   <japanese>オフィーリア</japanese>
+   <chineseSimplified>奥菲莉娅</chineseSimplified>
+   <chineseTraditional>奧菲莉婭</chineseTraditional>
   </name>
   <shipClassObjectId>6f38fee1-a460-5aed-824b-d7aecb0ca4b7</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12486,6 +12987,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Christopher</english>
+   <japanese>クリストファー</japanese>
+   <chineseSimplified>克里斯托弗</chineseSimplified>
+   <chineseTraditional>克里斯托弗</chineseTraditional>
   </name>
   <shipClassObjectId>94e0b56c-7ffb-5a52-b4ae-df5fe633e6b6</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12498,6 +13002,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Acasta</english>
+   <japanese>アカスタ</japanese>
+   <chineseSimplified>阿卡斯塔</chineseSimplified>
+   <chineseTraditional>阿卡斯塔</chineseTraditional>
   </name>
   <shipClassObjectId>19da9e1b-b36e-598b-b70e-8feff87bc138</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12510,6 +13017,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Shark</english>
+   <japanese>シャーク</japanese>
+   <chineseSimplified>鲨鱼</chineseSimplified>
+   <chineseTraditional>鯊魚</chineseTraditional>
   </name>
   <shipClassObjectId>533b5603-fd17-5e8f-a429-8291e0665f07</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12522,6 +13032,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Castor</english>
+   <japanese>カースター</japanese>
+   <chineseSimplified>卡斯托尔</chineseSimplified>
+   <chineseTraditional>卡斯托爾</chineseTraditional>
   </name>
   <shipClassObjectId>1191e4e8-2eda-575b-9c58-5fba967e4494</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12535,6 +13048,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Kempenfelt</english>
+   <japanese>ケンペンフェルト</japanese>
+   <chineseSimplified>肯彭费尔特</chineseSimplified>
+   <chineseTraditional>肯彭費爾特</chineseTraditional>
   </name>
   <shipClassObjectId>eb37f491-9f1d-5df5-9486-ef2fa24accf7</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12547,6 +13063,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Magic</english>
+   <japanese>マジック</japanese>
+   <chineseSimplified>魔术</chineseSimplified>
+   <chineseTraditional>魔術</chineseTraditional>
   </name>
   <shipClassObjectId>31ec6b2c-f8db-56d5-8f26-a1d6b4bec711</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12559,6 +13078,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Mandate</english>
+   <japanese>マンデート</japanese>
+   <chineseSimplified>任务</chineseSimplified>
+   <chineseTraditional>任務</chineseTraditional>
   </name>
   <shipClassObjectId>c54731d9-5872-5209-b7e5-65cbaf5a3378</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12571,6 +13093,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Manners</english>
+   <japanese>マナーズ</japanese>
+   <chineseSimplified>曼纳斯</chineseSimplified>
+   <chineseTraditional>曼納斯</chineseTraditional>
   </name>
   <shipClassObjectId>9cc67ee0-e18c-5f02-82eb-1ef4ee989c15</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12583,6 +13108,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Marne</english>
+   <japanese>マルヌ</japanese>
+   <chineseSimplified>马恩</chineseSimplified>
+   <chineseTraditional>馬恩</chineseTraditional>
   </name>
   <shipClassObjectId>0fcbe52e-5f3f-5bcb-ad36-078e62c116cc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12595,6 +13123,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Martial</english>
+   <japanese>マーシャル</japanese>
+   <chineseSimplified>尚武</chineseSimplified>
+   <chineseTraditional>尚武</chineseTraditional>
   </name>
   <shipClassObjectId>ba1d3538-6023-5b2f-aa21-069fd3154678</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12607,6 +13138,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Michael</english>
+   <japanese>マイケル</japanese>
+   <chineseSimplified>迈克尔</chineseSimplified>
+   <chineseTraditional>邁克爾</chineseTraditional>
   </name>
   <shipClassObjectId>7c8ce543-cfa6-5037-9ce1-aa464049e94b</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12619,6 +13153,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Milbrook</english>
+   <japanese>ミルブルック</japanese>
+   <chineseSimplified>米尔布鲁克</chineseSimplified>
+   <chineseTraditional>米爾布魯克</chineseTraditional>
   </name>
   <shipClassObjectId>34ad3288-3096-517a-a957-cae22019b696</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12631,6 +13168,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Minion</english>
+   <japanese>ミニオン</japanese>
+   <chineseSimplified>宠儿</chineseSimplified>
+   <chineseTraditional>寵兒</chineseTraditional>
   </name>
   <shipClassObjectId>532423ff-1090-55a0-8a68-b133baa40bc3</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12643,6 +13183,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Mons</english>
+   <japanese>モンス</japanese>
+   <chineseSimplified>蒙斯</chineseSimplified>
+   <chineseTraditional>蒙斯</chineseTraditional>
   </name>
   <shipClassObjectId>bdc32ceb-75a7-55c5-8937-9e94c660b038</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12655,6 +13198,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Moon</english>
+   <japanese>ムーン</japanese>
+   <chineseSimplified>月亮</chineseSimplified>
+   <chineseTraditional>月亮</chineseTraditional>
   </name>
   <shipClassObjectId>50705087-c676-58a2-bbdd-c85732fa4951</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12667,6 +13213,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Morning Star</english>
+   <japanese>モーニングスター</japanese>
+   <chineseSimplified>晨星</chineseSimplified>
+   <chineseTraditional>晨星</chineseTraditional>
   </name>
   <shipClassObjectId>6f4ab97a-3f17-5306-95a5-0097587777fc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12679,6 +13228,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Mounsey</english>
+   <japanese>モンシー</japanese>
+   <chineseSimplified>芒西</chineseSimplified>
+   <chineseTraditional>芒西</chineseTraditional>
   </name>
   <shipClassObjectId>8b12440b-8e74-5ba0-a42a-59886d183d49</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12691,6 +13243,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Mystic</english>
+   <japanese>ミスティック</japanese>
+   <chineseSimplified>神秘</chineseSimplified>
+   <chineseTraditional>神祕</chineseTraditional>
   </name>
   <shipClassObjectId>2d1c21f0-8a68-5abd-87aa-de10574b8f13</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12703,6 +13258,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Ossory</english>
+   <japanese>オソーリィ</japanese>
+   <chineseSimplified>奥索里</chineseSimplified>
+   <chineseTraditional>奧索裏</chineseTraditional>
   </name>
   <shipClassObjectId>b6fcda74-306e-533b-96b1-d3bbcaf2138f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12715,6 +13273,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Faulknor</english>
+   <japanese>フォークナー</japanese>
+   <chineseSimplified>福克纳</chineseSimplified>
+   <chineseTraditional>福克納</chineseTraditional>
   </name>
   <shipClassObjectId>fd375604-c84e-5689-ab26-e1f21dbc7a50</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12728,6 +13289,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Marksman</english>
+   <japanese>マークスマン</japanese>
+   <chineseSimplified>神枪手</chineseSimplified>
+   <chineseTraditional>神槍手</chineseTraditional>
   </name>
   <shipClassObjectId>a111b471-463e-518d-a249-7f4957395d1d</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12740,6 +13304,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Maenad</english>
+   <japanese>マエナード</japanese>
+   <chineseSimplified>迈纳德</chineseSimplified>
+   <chineseTraditional>邁納德</chineseTraditional>
   </name>
   <shipClassObjectId>f5b3b227-185e-5751-9c37-f5e58cbfbdcd</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12752,6 +13319,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Marvel</english>
+   <japanese>マーベル</japanese>
+   <chineseSimplified>奇迹</chineseSimplified>
+   <chineseTraditional>奇蹟</chineseTraditional>
   </name>
   <shipClassObjectId>e0a287cf-9ab7-5270-ae9c-a50ac9b93716</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12764,6 +13334,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Mary Rose</english>
+   <japanese>メアリーローズ</japanese>
+   <chineseSimplified>玛丽玫瑰</chineseSimplified>
+   <chineseTraditional>瑪麗玫瑰</chineseTraditional>
   </name>
   <shipClassObjectId>600168bc-909b-56c5-9ab4-727955e28480</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12776,6 +13349,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Menace</english>
+   <japanese>メナス</japanese>
+   <chineseSimplified>威胁</chineseSimplified>
+   <chineseTraditional>威脅</chineseTraditional>
   </name>
   <shipClassObjectId>23de72ec-792f-54fd-b614-3a9a938bf0f7</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12788,6 +13364,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Mindful</english>
+   <japanese>マインドフル</japanese>
+   <chineseSimplified>警觉</chineseSimplified>
+   <chineseTraditional>警覺</chineseTraditional>
   </name>
   <shipClassObjectId>8c332004-5ca8-5cd2-b2cf-e49aa14bb7f2</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12800,6 +13379,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Mischief</english>
+   <japanese>ミスチーフ</japanese>
+   <chineseSimplified>恶作剧</chineseSimplified>
+   <chineseTraditional>惡作劇</chineseTraditional>
   </name>
   <shipClassObjectId>19093cf6-4aa7-534f-92bf-077ab9af64a3</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12812,6 +13394,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Munster</english>
+   <japanese>マンスター</japanese>
+   <chineseSimplified>芒斯特</chineseSimplified>
+   <chineseTraditional>芒斯特</chineseTraditional>
   </name>
   <shipClassObjectId>eb185fb6-1c04-514d-8bf3-359d4d675c85</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12824,6 +13409,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Narwhal</english>
+   <japanese>ナーワル</japanese>
+   <chineseSimplified>独角鲸</chineseSimplified>
+   <chineseTraditional>獨角鯨</chineseTraditional>
   </name>
   <shipClassObjectId>287a1e86-740c-52d2-a2c5-9849ae8b14fc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12836,6 +13424,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Noble</english>
+   <japanese>ノーブル</japanese>
+   <chineseSimplified>高贵</chineseSimplified>
+   <chineseTraditional>高貴</chineseTraditional>
   </name>
   <shipClassObjectId>5253a563-b251-5fa4-a609-526fcb87ca10</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12848,6 +13439,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Nonsuch</english>
+   <japanese>ノンサッチ</japanese>
+   <chineseSimplified>无双</chineseSimplified>
+   <chineseTraditional>無雙</chineseTraditional>
   </name>
   <shipClassObjectId>1dd7bf5c-3611-5c72-98d7-1a15ff290dee</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12860,6 +13454,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Obedient</english>
+   <japanese>オブディエント</japanese>
+   <chineseSimplified>顺从</chineseSimplified>
+   <chineseTraditional>順從</chineseTraditional>
   </name>
   <shipClassObjectId>60b418fb-ec4c-5bc7-b86f-1b82f4142575</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12872,6 +13469,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Onslaught</english>
+   <japanese>オンスロート</japanese>
+   <chineseSimplified>猛攻</chineseSimplified>
+   <chineseTraditional>猛攻</chineseTraditional>
   </name>
   <shipClassObjectId>adb262ed-57af-5187-ad95-e401736befed</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12884,6 +13484,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Opal</english>
+   <japanese>オパール</japanese>
+   <chineseSimplified>蛋白石</chineseSimplified>
+   <chineseTraditional>蛋白石</chineseTraditional>
   </name>
   <shipClassObjectId>91ef20df-49d8-574e-b5b1-352a6f093ce3</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12896,6 +13499,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Abdiel</english>
+   <japanese>アブディール</japanese>
+   <chineseSimplified>阿布迪尔</chineseSimplified>
+   <chineseTraditional>阿布迪爾</chineseTraditional>
   </name>
   <shipClassObjectId>f0cdc210-8e95-5354-88b1-4d7d8cb4d69c</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12908,6 +13514,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Oak</english>
+   <japanese>オーク</japanese>
+   <chineseSimplified>橡树</chineseSimplified>
+   <chineseTraditional>橡樹</chineseTraditional>
   </name>
   <shipClassObjectId>0237016d-ecc8-5947-b5fe-f4fea996ec6f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12920,6 +13529,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>König</english>
+   <japanese>ケーニヒ</japanese>
+   <chineseSimplified>国王</chineseSimplified>
+   <chineseTraditional>國王</chineseTraditional>
   </name>
   <shipClassObjectId>8cc2b824-8045-5dbe-8e9e-6f0c87ca7139</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12933,6 +13545,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Grosser Kurfürst</english>
+   <japanese>グローサー・クルフュルスト</japanese>
+   <chineseSimplified>大选帝侯</chineseSimplified>
+   <chineseTraditional>大選帝侯</chineseTraditional>
   </name>
   <shipClassObjectId>23de1ea0-af81-5d15-b556-000f05621d37</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12945,6 +13560,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Markgraf</english>
+   <japanese>マルクグラーフ</japanese>
+   <chineseSimplified>藩侯</chineseSimplified>
+   <chineseTraditional>藩侯</chineseTraditional>
   </name>
   <shipClassObjectId>255279bc-e76a-576a-bcc0-b8c78c2774cc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12957,6 +13575,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Kaiser</english>
+   <japanese>カイザー</japanese>
+   <chineseSimplified>皇帝</chineseSimplified>
+   <chineseTraditional>皇帝</chineseTraditional>
   </name>
   <shipClassObjectId>bb56f5e4-2657-580d-9665-f31451154ffb</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12970,6 +13591,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Prinzregent Luitpold</english>
+   <japanese>プリンツレゲント・ルイトポルト</japanese>
+   <chineseSimplified>柳特波尔德摄政王</chineseSimplified>
+   <chineseTraditional>柳特波爾德攝政王</chineseTraditional>
   </name>
   <shipClassObjectId>bec4f373-d7db-52e2-9d39-9c57fe595b11</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12982,6 +13606,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Kaiserin</english>
+   <japanese>カイザリン</japanese>
+   <chineseSimplified>皇后</chineseSimplified>
+   <chineseTraditional>皇后</chineseTraditional>
   </name>
   <shipClassObjectId>aaa70aea-41d5-52c7-aeed-f67f30a4cacc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -12994,6 +13621,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Friedrich der Grosse</english>
+   <japanese>フリードリヒ・デア・グローセ</japanese>
+   <chineseSimplified>腓特烈大帝</chineseSimplified>
+   <chineseTraditional>腓特烈大帝</chineseTraditional>
   </name>
   <shipClassObjectId>11feadbb-9e5a-5a68-9709-850011057b0a</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13007,6 +13637,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Ostfriesland</english>
+   <japanese>オストフリースラント</japanese>
+   <chineseSimplified>东弗里斯兰</chineseSimplified>
+   <chineseTraditional>東弗里斯蘭</chineseTraditional>
   </name>
   <shipClassObjectId>d5e98f07-d93d-5ebe-b649-0921a8501042</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13020,6 +13653,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Thüringen</english>
+   <japanese>テューリンゲン</japanese>
+   <chineseSimplified>图林根</chineseSimplified>
+   <chineseTraditional>圖林根</chineseTraditional>
   </name>
   <shipClassObjectId>caf1caae-8538-578b-8975-3b0c51747f9e</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13032,6 +13668,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Helgoland</english>
+   <japanese>ヘルゴラント</japanese>
+   <chineseSimplified>黑尔戈兰</chineseSimplified>
+   <chineseTraditional>黑爾戈蘭</chineseTraditional>
   </name>
   <shipClassObjectId>d4974850-1c40-5dca-ad1c-7473a1175a01</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13044,6 +13683,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Oldenburg</english>
+   <japanese>オルデンブルク</japanese>
+   <chineseSimplified>奥尔登堡</chineseSimplified>
+   <chineseTraditional>奧爾登堡</chineseTraditional>
   </name>
   <shipClassObjectId>ad47fe07-b187-581e-a830-b85e489c40cb</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13056,6 +13698,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Posen</english>
+   <japanese>ポーゼン</japanese>
+   <chineseSimplified>波森</chineseSimplified>
+   <chineseTraditional>波森</chineseTraditional>
   </name>
   <shipClassObjectId>41e6b7e0-7dbd-521e-90a4-581a876651d4</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13069,6 +13714,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Rheinland</english>
+   <japanese>ラインラント</japanese>
+   <chineseSimplified>莱茵兰</chineseSimplified>
+   <chineseTraditional>萊茵蘭</chineseTraditional>
   </name>
   <shipClassObjectId>e2f85605-700e-55fc-8c5a-5ee25ab3a76f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13081,6 +13729,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Nassau</english>
+   <japanese>ナッサウ</japanese>
+   <chineseSimplified>拿骚</chineseSimplified>
+   <chineseTraditional>拿騷</chineseTraditional>
   </name>
   <shipClassObjectId>e3c04b41-03f8-582d-84d7-60c2ddfaf7e2</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13093,6 +13744,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Deutschland</english>
+   <japanese>ドイッチュラント</japanese>
+   <chineseSimplified>德意志</chineseSimplified>
+   <chineseTraditional>德意志</chineseTraditional>
   </name>
   <shipClassObjectId>f07baefe-dde7-572f-a56c-debdddcc6f27</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13106,6 +13760,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Pommern</english>
+   <japanese>ポンメルン</japanese>
+   <chineseSimplified>波美拉尼亚</chineseSimplified>
+   <chineseTraditional>波美拉尼亞</chineseTraditional>
   </name>
   <shipClassObjectId>f958dcf4-1e14-5b30-bcd7-f29a7b75fce7</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13118,6 +13775,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Hessen</english>
+   <japanese>ヘッセン</japanese>
+   <chineseSimplified>黑森</chineseSimplified>
+   <chineseTraditional>黑森</chineseTraditional>
   </name>
   <shipClassObjectId>0b6a5bc6-c3f8-5e42-913b-14b8f0835a93</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13130,6 +13790,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Hannover</english>
+   <japanese>ハノーファー</japanese>
+   <chineseSimplified>汉诺威</chineseSimplified>
+   <chineseTraditional>漢諾威</chineseTraditional>
   </name>
   <shipClassObjectId>4ea646fc-c633-5c01-85ab-b0c1ddf637b0</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13143,6 +13806,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Schlesien</english>
+   <japanese>シュレージエン</japanese>
+   <chineseSimplified>西里西亚</chineseSimplified>
+   <chineseTraditional>西里西亞</chineseTraditional>
   </name>
   <shipClassObjectId>9bbe77cc-d729-502a-9b2e-cad199607d83</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13155,6 +13821,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Schleswig-Holstein</english>
+   <japanese>シュレスヴィヒ・ホルシュタイン</japanese>
+   <chineseSimplified>石勒苏益格-荷尔斯泰因</chineseSimplified>
+   <chineseTraditional>石勒蘇益格-荷爾斯泰因</chineseTraditional>
   </name>
   <shipClassObjectId>1d6f5826-e6b3-512d-a88d-ff0af0e6f6f8</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13167,6 +13836,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Stettin</english>
+   <japanese>シュテッティン</japanese>
+   <chineseSimplified>斯德丁</chineseSimplified>
+   <chineseTraditional>斯德丁</chineseTraditional>
   </name>
   <shipClassObjectId>58b67fba-12ba-5547-bfc3-3e4d1fe92598</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13180,6 +13852,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Stuttgart</english>
+   <japanese>シュトゥットガルト</japanese>
+   <chineseSimplified>斯图加特</chineseSimplified>
+   <chineseTraditional>斯圖加特</chineseTraditional>
   </name>
   <shipClassObjectId>1a6cc9a2-3243-5548-8ac3-f666214a6593</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13192,6 +13867,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Hamburg</english>
+   <japanese>ハンブルク</japanese>
+   <chineseSimplified>汉堡</chineseSimplified>
+   <chineseTraditional>漢堡</chineseTraditional>
   </name>
   <shipClassObjectId>337fa5bc-f427-57b7-9715-57c52c97963f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13204,6 +13882,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Rostock</english>
+   <japanese>ロストック</japanese>
+   <chineseSimplified>罗斯托克</chineseSimplified>
+   <chineseTraditional>羅斯托克</chineseTraditional>
   </name>
   <shipClassObjectId>46cc6f62-ae44-56f3-8fc3-01a720d9448b</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13217,6 +13898,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G39</english>
+   <japanese>G39</japanese>
+   <chineseSimplified>G39</chineseSimplified>
+   <chineseTraditional>G39</chineseTraditional>
   </name>
   <shipClassObjectId>38aa13db-4884-51fd-92a1-9f0223870834</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13230,6 +13914,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G40</english>
+   <japanese>G40</japanese>
+   <chineseSimplified>G40</chineseSimplified>
+   <chineseTraditional>G40</chineseTraditional>
   </name>
   <shipClassObjectId>c4d07b4a-1ab3-5d11-8eec-ebb36fd2dbdc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13242,6 +13929,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G38</english>
+   <japanese>G38</japanese>
+   <chineseSimplified>G38</chineseSimplified>
+   <chineseTraditional>G38</chineseTraditional>
   </name>
   <shipClassObjectId>1e446028-5a74-5b6f-92f6-99a5ac2a85ee</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13254,6 +13944,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S32</english>
+   <japanese>S32</japanese>
+   <chineseSimplified>S32</chineseSimplified>
+   <chineseTraditional>S32</chineseTraditional>
   </name>
   <shipClassObjectId>c5e745e2-2812-5ab7-a31b-af20e758d847</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13266,6 +13959,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S53</english>
+   <japanese>S53</japanese>
+   <chineseSimplified>S53</chineseSimplified>
+   <chineseTraditional>S53</chineseTraditional>
   </name>
   <shipClassObjectId>a17b9f5f-a75b-5f7a-a715-a532d0fb2389</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13279,6 +13975,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V71</english>
+   <japanese>V71</japanese>
+   <chineseSimplified>V71</chineseSimplified>
+   <chineseTraditional>V71</chineseTraditional>
   </name>
   <shipClassObjectId>39d50cc1-8bad-5207-bbd5-dd500c27a2a2</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13291,6 +13990,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V73</english>
+   <japanese>V73</japanese>
+   <chineseSimplified>V73</chineseSimplified>
+   <chineseTraditional>V73</chineseTraditional>
   </name>
   <shipClassObjectId>aa59e7a0-1f15-5206-b1c6-cb4cecbbbe87</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13303,6 +14005,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G88</english>
+   <japanese>G88</japanese>
+   <chineseSimplified>G88</chineseSimplified>
+   <chineseTraditional>G88</chineseTraditional>
   </name>
   <shipClassObjectId>7a41a901-ce07-5430-9533-dc0d9b39a5b2</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13315,6 +14020,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S54</english>
+   <japanese>S54</japanese>
+   <chineseSimplified>S54</chineseSimplified>
+   <chineseTraditional>S54</chineseTraditional>
   </name>
   <shipClassObjectId>acffc65d-7812-5e0a-a85c-c46dbfbae9b9</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13327,6 +14035,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V48</english>
+   <japanese>V48</japanese>
+   <chineseSimplified>V48</chineseSimplified>
+   <chineseTraditional>V48</chineseTraditional>
   </name>
   <shipClassObjectId>557d1e5b-7c8a-5801-bdce-134a776fe274</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13339,6 +14050,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G42</english>
+   <japanese>G42</japanese>
+   <chineseSimplified>G42</chineseSimplified>
+   <chineseTraditional>G42</chineseTraditional>
   </name>
   <shipClassObjectId>7cf32f0c-e311-501a-a136-dbc94cde1e48</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13351,6 +14065,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G11</english>
+   <japanese>G11</japanese>
+   <chineseSimplified>G11</chineseSimplified>
+   <chineseTraditional>G11</chineseTraditional>
   </name>
   <shipClassObjectId>9b4cf73c-631e-52d5-aa7f-d0621bdaab6f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13364,6 +14081,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V2</english>
+   <japanese>V2</japanese>
+   <chineseSimplified>V2</chineseSimplified>
+   <chineseTraditional>V2</chineseTraditional>
   </name>
   <shipClassObjectId>0dca4336-bc3f-51f1-80ca-4a3e9bf88e36</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13376,6 +14096,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V4</english>
+   <japanese>V4</japanese>
+   <chineseSimplified>V4</chineseSimplified>
+   <chineseTraditional>V4</chineseTraditional>
   </name>
   <shipClassObjectId>324902ab-7c53-54e5-8285-5e2a981e567c</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13388,6 +14111,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V6</english>
+   <japanese>V6</japanese>
+   <chineseSimplified>V6</chineseSimplified>
+   <chineseTraditional>V6</chineseTraditional>
   </name>
   <shipClassObjectId>4bd5c0d8-dae7-5458-bf78-0cb3d08f7d05</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13400,6 +14126,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V1</english>
+   <japanese>V1</japanese>
+   <chineseSimplified>V1</chineseSimplified>
+   <chineseTraditional>V1</chineseTraditional>
   </name>
   <shipClassObjectId>53584757-a3a0-55c6-8efd-39418f64cb22</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13412,6 +14141,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V3</english>
+   <japanese>V3</japanese>
+   <chineseSimplified>V3</chineseSimplified>
+   <chineseTraditional>V3</chineseTraditional>
   </name>
   <shipClassObjectId>7b850daf-a6e8-5007-9921-8570fc05b5c5</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13424,6 +14156,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G8</english>
+   <japanese>G8</japanese>
+   <chineseSimplified>G8</chineseSimplified>
+   <chineseTraditional>G8</chineseTraditional>
   </name>
   <shipClassObjectId>15016b38-8071-5112-a309-135743d4124e</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13436,6 +14171,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G7</english>
+   <japanese>G7</japanese>
+   <chineseSimplified>G7</chineseSimplified>
+   <chineseTraditional>G7</chineseTraditional>
   </name>
   <shipClassObjectId>f10387bc-0e8a-58d0-90cd-214f9449f9d2</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13448,6 +14186,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V5</english>
+   <japanese>V5</japanese>
+   <chineseSimplified>V5</chineseSimplified>
+   <chineseTraditional>V5</chineseTraditional>
   </name>
   <shipClassObjectId>6734980f-8906-5444-9139-20774f8a1934</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13460,6 +14201,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G9</english>
+   <japanese>G9</japanese>
+   <chineseSimplified>G9</chineseSimplified>
+   <chineseTraditional>G9</chineseTraditional>
   </name>
   <shipClassObjectId>34b4dc2c-2cb9-5d29-8c07-9aff269377fc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13472,6 +14216,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>G10</english>
+   <japanese>G10</japanese>
+   <chineseSimplified>G10</chineseSimplified>
+   <chineseTraditional>G10</chineseTraditional>
   </name>
   <shipClassObjectId>ee4bfe91-63a1-533c-ba74-5ecd5cc01d21</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13484,6 +14231,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S24</english>
+   <japanese>S24</japanese>
+   <chineseSimplified>S24</chineseSimplified>
+   <chineseTraditional>S24</chineseTraditional>
   </name>
   <shipClassObjectId>990a2986-d7dc-5b73-a7ab-8b2a9168acc9</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13497,6 +14247,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S15</english>
+   <japanese>S15</japanese>
+   <chineseSimplified>S15</chineseSimplified>
+   <chineseTraditional>S15</chineseTraditional>
   </name>
   <shipClassObjectId>1f83887e-ce39-54fa-b477-87dc6e30c250</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13509,6 +14262,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S17</english>
+   <japanese>S17</japanese>
+   <chineseSimplified>S17</chineseSimplified>
+   <chineseTraditional>S17</chineseTraditional>
   </name>
   <shipClassObjectId>dabf79a3-6bb5-554f-b7ec-dc938f107a87</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13521,6 +14277,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S20</english>
+   <japanese>S20</japanese>
+   <chineseSimplified>S20</chineseSimplified>
+   <chineseTraditional>S20</chineseTraditional>
   </name>
   <shipClassObjectId>00d79932-cfc8-5fda-b974-2845c313a5b9</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13533,6 +14292,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S16</english>
+   <japanese>S16</japanese>
+   <chineseSimplified>S16</chineseSimplified>
+   <chineseTraditional>S16</chineseTraditional>
   </name>
   <shipClassObjectId>5299cf12-4a7b-58c7-a7f8-a1dfe8dfb0e0</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13545,6 +14307,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S18</english>
+   <japanese>S18</japanese>
+   <chineseSimplified>S18</chineseSimplified>
+   <chineseTraditional>S18</chineseTraditional>
   </name>
   <shipClassObjectId>60b97b95-2e7b-5558-83ad-8ea3ece623bc</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13557,6 +14322,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S19</english>
+   <japanese>S19</japanese>
+   <chineseSimplified>S19</chineseSimplified>
+   <chineseTraditional>S19</chineseTraditional>
   </name>
   <shipClassObjectId>9fa5e053-9ae4-5822-9a97-d31845180b1f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13569,6 +14337,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>S23</english>
+   <japanese>S23</japanese>
+   <chineseSimplified>S23</chineseSimplified>
+   <chineseTraditional>S23</chineseTraditional>
   </name>
   <shipClassObjectId>1bcd40a5-7f49-5fdd-b034-9f116ac7180f</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13581,6 +14352,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>V189</english>
+   <japanese>V189</japanese>
+   <chineseSimplified>V189</chineseSimplified>
+   <chineseTraditional>V189</chineseTraditional>
   </name>
   <shipClassObjectId>2a062884-ec2a-5ba7-9c86-1b818c3edad2</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13593,6 +14367,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Black Prince</english>
+   <japanese>ブラック・プリンス</japanese>
+   <chineseSimplified>黑太子</chineseSimplified>
+   <chineseTraditional>黑太子</chineseTraditional>
   </name>
   <shipClassObjectId>c93ac74a-3407-5c6f-b89b-5b080ea7bcd1</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13605,6 +14382,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Nessus</english>
+   <japanese>ネスソス</japanese>
+   <chineseSimplified>涅索斯</chineseSimplified>
+   <chineseTraditional>涅索斯</chineseTraditional>
   </name>
   <shipClassObjectId>132a2594-d93e-5c81-92a0-f5a7f86aac9e</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13617,6 +14397,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Kronprinz</english>
+   <japanese>クローンプリンツ</japanese>
+   <chineseSimplified>王储</chineseSimplified>
+   <chineseTraditional>王儲</chineseTraditional>
   </name>
   <shipClassObjectId>a280580b-21e7-507b-af88-b5a4169c047b</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13629,6 +14412,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Westfalen</english>
+   <japanese>ヴェストファーレン</japanese>
+   <chineseSimplified>威斯特法伦</chineseSimplified>
+   <chineseTraditional>威斯特法倫</chineseTraditional>
   </name>
   <shipClassObjectId>10159149-240e-5c34-8d2a-886aa413de71</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13641,6 +14427,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>München</english>
+   <japanese>ミュンヘン</japanese>
+   <chineseSimplified>慕尼黑</chineseSimplified>
+   <chineseTraditional>慕尼黑</chineseTraditional>
   </name>
   <shipClassObjectId>13150a80-6dcf-5794-b4fd-d3406d1b73f0</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13653,6 +14442,9 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
  <NamedShip>
   <name>
    <english>Frauenlob</english>
+   <japanese>フラウエンロープ</japanese>
+   <chineseSimplified>弗劳恩洛布</chineseSimplified>
+   <chineseTraditional>弗勞恩洛布</chineseTraditional>
   </name>
   <shipClassObjectId>c1282f67-d2a9-5378-ad73-b287a6139101</shipClassObjectId>
   <applicableYearBegin>1916</applicableYearBegin>
@@ -13661,5 +14453,329 @@ https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1
   <builderDesc>
    <english>AG Weser, Bremen</english>
   </builderDesc>
+ </NamedShip>
+ <NamedShip>
+  <objectId>b1478789-6345-5119-befa-325057dc06bc</objectId>
+  <name>
+   <english>Olympia</english>
+   <japanese>オリンピア</japanese>
+   <chineseSimplified>奥林匹亚</chineseSimplified>
+   <chineseTraditional>奧林匹亞</chineseTraditional>
+  </name>
+  <shipClassObjectId>fb78f349-7016-55fc-b690-5a1bb70c1902</shipClassObjectId>
+  <applicableYearBegin>1895</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>2850e175-7213-586b-9a5a-bff2ad53097a</objectId>
+  <name>
+   <english>Baltimore</english>
+   <japanese>ボルチモア</japanese>
+   <chineseSimplified>巴尔的摩</chineseSimplified>
+   <chineseTraditional>巴爾的摩</chineseTraditional>
+  </name>
+  <shipClassObjectId>d5452366-6c55-5d92-937b-3110ef83456c</shipClassObjectId>
+  <applicableYearBegin>1890</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>80e1123d-c552-5e5c-b734-0ce9efaa6cc8</objectId>
+  <name>
+   <english>Raleigh</english>
+   <japanese>ローリー</japanese>
+   <chineseSimplified>罗利</chineseSimplified>
+   <chineseTraditional>羅利</chineseTraditional>
+  </name>
+  <shipClassObjectId>977015c4-26a6-53b1-a0a6-acd1a8549cae</shipClassObjectId>
+  <applicableYearBegin>1894</applicableYearBegin>
+  <applicableYearEnd>1899</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>8c6e8731-7185-5dc8-9b1e-37e0d278f019</objectId>
+  <name>
+   <english>Boston</english>
+   <japanese>ボストン</japanese>
+   <chineseSimplified>波士顿</chineseSimplified>
+   <chineseTraditional>波士頓</chineseTraditional>
+  </name>
+  <shipClassObjectId>2b94fcbc-ecb3-5b9e-9d27-e391e34e7e22</shipClassObjectId>
+  <applicableYearBegin>1886</applicableYearBegin>
+  <applicableYearEnd>1907</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>2053e56d-0d9e-55b1-8fed-8b25da6a8815</objectId>
+  <name>
+   <english>Concord</english>
+   <japanese>コンコード</japanese>
+   <chineseSimplified>康科德</chineseSimplified>
+   <chineseTraditional>康科德</chineseTraditional>
+  </name>
+  <shipClassObjectId>c007a828-4124-5933-99cf-f414af446c0f</shipClassObjectId>
+  <applicableYearBegin>1891</applicableYearBegin>
+  <applicableYearEnd>1909</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>0aebd5ef-43c9-53cc-8604-90a4e1add882</objectId>
+  <name>
+   <english>Petrel</english>
+   <japanese>ペトレル</japanese>
+   <chineseSimplified>海燕</chineseSimplified>
+   <chineseTraditional>海燕</chineseTraditional>
+  </name>
+  <shipClassObjectId>2b6245ed-ac16-57b1-9ab1-c9a10ec2e7db</shipClassObjectId>
+  <applicableYearBegin>1889</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>22ac5631-7707-5bc9-9fb7-a2debefd4d6a</objectId>
+  <name>
+   <english>Reina Cristina</english>
+   <japanese>レイナ・クリスティーナ</japanese>
+   <chineseSimplified>雷娜·克里斯蒂娜</chineseSimplified>
+   <chineseTraditional>克里斯蒂娜太后</chineseTraditional>
+  </name>
+  <shipClassObjectId>12461019-70b1-5fe3-bd7d-25c5edff787a</shipClassObjectId>
+  <applicableYearBegin>1890</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>833254af-e6f6-5f32-a8dd-65ae50c2b2e9</objectId>
+  <name>
+   <english>Castilla</english>
+   <japanese>カスティーリャ</japanese>
+   <chineseSimplified>卡斯蒂利亚</chineseSimplified>
+   <chineseTraditional>卡斯蒂利亞</chineseTraditional>
+  </name>
+  <shipClassObjectId>746a959b-bd2d-55b1-a18a-96e1bf4764f9</shipClassObjectId>
+  <applicableYearBegin>1898</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>ab56b648-f89f-5c3c-96a6-f03e41591156</objectId>
+  <name>
+   <english>Velasco</english>
+   <japanese>ベラスコ</japanese>
+   <chineseSimplified>贝拉斯科</chineseSimplified>
+   <chineseTraditional>貝拉斯科</chineseTraditional>
+  </name>
+  <shipClassObjectId>08741230-a763-5133-978b-7222a407908d</shipClassObjectId>
+  <applicableYearBegin>1881</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>475e8b8f-b6b1-5ac7-8274-40ea86e0c193</objectId>
+  <name>
+   <english>Don Juan de Austria</english>
+   <japanese>ドン・フアン・デ・アウストリア</japanese>
+   <chineseSimplified>奥地利的唐璜</chineseSimplified>
+   <chineseTraditional>奧地利的唐璜</chineseTraditional>
+  </name>
+  <shipClassObjectId>1775a612-433d-53b5-9d76-26c915aa03de</shipClassObjectId>
+  <applicableYearBegin>1889</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>ac502793-2a22-5e52-aadd-9c6728b92eb5</objectId>
+  <name>
+   <english>Don Antonio de Ulloa</english>
+   <japanese>ドン・アントニオ・デ・ウロア</japanese>
+   <chineseSimplified>唐·安东尼奥·乌略亚</chineseSimplified>
+   <chineseTraditional>唐·安東尼奧·烏略亞</chineseTraditional>
+  </name>
+  <shipClassObjectId>ea381e87-e329-574e-a8f8-a3b606fb916d</shipClassObjectId>
+  <applicableYearBegin>1889</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>81455570-aafb-530f-9113-34db8dcbba36</objectId>
+  <name>
+   <english>Isla de Luzón</english>
+   <japanese>イスラ・デ・ルソン</japanese>
+   <chineseSimplified>吕宋岛</chineseSimplified>
+   <chineseTraditional>呂宋島</chineseTraditional>
+  </name>
+  <shipClassObjectId>50ed054a-fbc5-5f0e-bf56-a130192f5531</shipClassObjectId>
+  <applicableYearBegin>1887</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>a71faea3-c6c3-580f-803c-36c18125b344</objectId>
+  <name>
+   <english>Isla de Cuba</english>
+   <japanese>イスラ・デ・キューバ</japanese>
+   <chineseSimplified>古巴岛</chineseSimplified>
+   <chineseTraditional>古巴島</chineseTraditional>
+  </name>
+  <shipClassObjectId>3b55201b-2032-5b62-b0f2-a8708ec731cf</shipClassObjectId>
+  <applicableYearBegin>1887</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>3eb1894a-0c6d-52fc-b655-442a92aad29e</objectId>
+  <name>
+   <english>Marqués del Duero</english>
+   <japanese>マルケス・デル・ドゥエロ</japanese>
+   <chineseSimplified>杜罗侯爵</chineseSimplified>
+   <chineseTraditional>杜羅侯爵</chineseTraditional>
+  </name>
+  <shipClassObjectId>605ac87f-eba1-542c-90e9-b8681f827e51</shipClassObjectId>
+  <applicableYearBegin>1898</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>86c37110-60a3-5010-92f0-ffa498fc86c2</objectId>
+  <name>
+   <english>Indiana</english>
+   <japanese>インディアナ</japanese>
+   <chineseSimplified>印第安纳</chineseSimplified>
+   <chineseTraditional>印第安納</chineseTraditional>
+  </name>
+  <shipClassObjectId>2558e0f1-381e-5c85-a1bf-6afb0b162e02</shipClassObjectId>
+  <applicableYearBegin>1895</applicableYearBegin>
+  <applicableYearEnd>1902</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>1a02a5e0-5be4-5824-8890-87a1a4c513b3</objectId>
+  <name>
+   <english>Oregon</english>
+   <japanese>オレゴン</japanese>
+   <chineseSimplified>俄勒冈</chineseSimplified>
+   <chineseTraditional>奧勒岡</chineseTraditional>
+  </name>
+  <shipClassObjectId>94d13860-c1ae-5146-abbf-d7d82a39fb54</shipClassObjectId>
+  <applicableYearBegin>1896</applicableYearBegin>
+  <applicableYearEnd>1903</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>0e637cf4-222a-5487-81d4-f6be05f0c281</objectId>
+  <name>
+   <english>Iowa</english>
+   <japanese>アイオワ</japanese>
+   <chineseSimplified>衣阿华</chineseSimplified>
+   <chineseTraditional>愛荷華</chineseTraditional>
+  </name>
+  <shipClassObjectId>7bb82a23-776d-5e93-ad69-edcfe87d64ca</shipClassObjectId>
+  <applicableYearBegin>1897</applicableYearBegin>
+  <applicableYearEnd>1906</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>c744c88f-8389-54bb-8636-efe81d9d1ba9</objectId>
+  <name>
+   <english>Texas</english>
+   <japanese>テキサス</japanese>
+   <chineseSimplified>德克萨斯</chineseSimplified>
+   <chineseTraditional>德克薩斯</chineseTraditional>
+  </name>
+  <shipClassObjectId>0533ce96-4158-5480-8437-5d94aa709c44</shipClassObjectId>
+  <applicableYearBegin>1895</applicableYearBegin>
+  <applicableYearEnd>1906</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>c32504d8-f157-5c92-bc22-6d1e7ec8f4b2</objectId>
+  <name>
+   <english>Brooklyn</english>
+   <japanese>ブルックリン</japanese>
+   <chineseSimplified>布鲁克林</chineseSimplified>
+   <chineseTraditional>布魯克林</chineseTraditional>
+  </name>
+  <shipClassObjectId>50ac6ca9-b896-5313-8875-d7bc95a008bf</shipClassObjectId>
+  <applicableYearBegin>1896</applicableYearBegin>
+  <applicableYearEnd>1905</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>71024cd1-754d-5b15-97ec-b254901d1301</objectId>
+  <name>
+   <english>Vixen</english>
+   <japanese>ヴィクセン</japanese>
+   <chineseSimplified>雌狐</chineseSimplified>
+   <chineseTraditional>雌狐</chineseTraditional>
+  </name>
+  <shipClassObjectId>1e7cdfce-8e49-5daa-a404-6d3f7f34dff6</shipClassObjectId>
+  <applicableYearBegin>1898</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>d553ffe4-d9e0-57de-800d-10471d9503be</objectId>
+  <name>
+   <english>Gloucester</english>
+   <japanese>グロスター</japanese>
+   <chineseSimplified>格罗斯特</chineseSimplified>
+   <chineseTraditional>格羅斯特</chineseTraditional>
+  </name>
+  <shipClassObjectId>ab796111-86b0-5636-ac77-4f1320040a94</shipClassObjectId>
+  <applicableYearBegin>1898</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>a85c3b97-dfbc-59ec-8906-a38c6a8bea35</objectId>
+  <name>
+   <english>Infanta María Teresa</english>
+   <japanese>インファンタ・マリア・テレサ</japanese>
+   <chineseSimplified>玛丽亚·特蕾莎公主</chineseSimplified>
+   <chineseTraditional>瑪麗亞·特蕾莎公主</chineseTraditional>
+  </name>
+  <shipClassObjectId>6c0f5a59-482e-5994-9533-a02c2ad57ab2</shipClassObjectId>
+  <applicableYearBegin>1893</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>fc83f23d-38e1-5710-91f3-8659ab96bcb6</objectId>
+  <name>
+   <english>Vizcaya</english>
+   <japanese>ビスカヤ</japanese>
+   <chineseSimplified>比斯卡亚</chineseSimplified>
+   <chineseTraditional>比斯卡亞</chineseTraditional>
+  </name>
+  <shipClassObjectId>f56ee06a-ddc7-5c93-8a44-5e3a9c996382</shipClassObjectId>
+  <applicableYearBegin>1893</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>3bb7a88d-403d-5332-9b48-e21f0dfb1efa</objectId>
+  <name>
+   <english>Almirante Oquendo</english>
+   <japanese>アルミランテ・オケンド</japanese>
+   <chineseSimplified>奥肯多海军上将</chineseSimplified>
+   <chineseTraditional>奧肯多海軍上將</chineseTraditional>
+  </name>
+  <shipClassObjectId>e50a7b34-76a7-5617-8e49-df6710cec1df</shipClassObjectId>
+  <applicableYearBegin>1893</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>2c54b14a-4b9c-5d65-baa2-6423016e9e8a</objectId>
+  <name>
+   <english>Cristóbal Colón</english>
+   <japanese>クリストバル・コロン</japanese>
+   <chineseSimplified>克里斯托瓦尔·科隆</chineseSimplified>
+   <chineseTraditional>克里斯托瓦爾·科隆</chineseTraditional>
+  </name>
+  <shipClassObjectId>7ffd5e78-fed9-5c51-8aa1-8daf8dad749d</shipClassObjectId>
+  <applicableYearBegin>1897</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>32728f7d-24bc-58b1-942f-84cff3d2d4fb</objectId>
+  <name>
+   <english>Furor</english>
+   <japanese>フーロル</japanese>
+   <chineseSimplified>愤怒</chineseSimplified>
+   <chineseTraditional>憤怒</chineseTraditional>
+  </name>
+  <shipClassObjectId>97d00cbe-0ddd-522a-a99d-da3181fc4027</shipClassObjectId>
+  <applicableYearBegin>1896</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
+ </NamedShip>
+ <NamedShip>
+  <objectId>75885491-d8b2-51e7-a4dc-dfbb194cf4df</objectId>
+  <name>
+   <english>Plutón</english>
+   <japanese>プルトン</japanese>
+   <chineseSimplified>冥王星</chineseSimplified>
+   <chineseTraditional>冥王星</chineseTraditional>
+  </name>
+  <shipClassObjectId>a318d385-b482-5222-8d97-8a3c98c3c961</shipClassObjectId>
+  <applicableYearBegin>1897</applicableYearBegin>
+  <applicableYearEnd>1898</applicableYearEnd>
  </NamedShip>
 </ArrayOfNamedShip>

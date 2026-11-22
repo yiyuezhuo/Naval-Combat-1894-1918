@@ -73,6 +73,30 @@
       }
     },
     {
+      "file": "SAH - Battle of Manila Bay.scen.xml",
+      "historical": true,
+      "startUtc": "1898-04-30T21:41:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SAH - Battle of Manila Bay",
+        "japanese": "SAH - マニラ湾海戦",
+        "chineseSimplified": "SAH - 马尼拉湾海战",
+        "chineseTraditional": "SAH - 馬尼拉灣海戰"
+      }
+    },
+    {
+      "file": "SAH - Battle of Santiago de Cuba.scen.xml",
+      "historical": true,
+      "startUtc": "1898-07-03T14:35:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "SAH - Battle of Santiago de Cuba",
+        "japanese": "SAH - サンティアゴ・デ・クーバ海戦",
+        "chineseSimplified": "SAH - 圣地亚哥海战",
+        "chineseTraditional": "SAH - 聖地牙哥海戰"
+      }
+    },
+    {
       "file": "BRH - Battle of the Taku Forts.scen.xml",
       "historical": true,
       "startUtc": "1900-06-16T16:50:00Z",
@@ -186,10 +210,22 @@
       "startUtc": "1914-12-08T14:50:00Z",
       "recommendation": "neutral",
       "names": {
-        "english": "WWH - Battle of the Falklands",
-        "japanese": "WWH - フォークランド沖海戦",
-        "chineseSimplified": "WWH - 福克兰群岛海战",
-        "chineseTraditional": "WWH - 福克蘭群島海戰"
+        "english": "WWH - Battle of the Falklands (High Seas Fleet Ver.)",
+        "japanese": "WWH - フォークランド沖海戦 (High Seas Fleet Ver.)",
+        "chineseSimplified": "WWH - 福克兰群岛海战（High Seas Fleet Ver.）",
+        "chineseTraditional": "WWH - 福克蘭群島海戰（High Seas Fleet Ver.）"
+      }
+    },
+    {
+      "file": "WWH - Battle of the Falklands - 1050 Reconstruction.scen.xml",
+      "historical": true,
+      "startUtc": "1914-12-08T14:50:00Z",
+      "recommendation": "neutral",
+      "names": {
+        "english": "WWH - Battle of the Falklands (10:50 Reconstruction)",
+        "japanese": "WWH - フォークランド沖海戦 (10:50 Reconstruction)",
+        "chineseSimplified": "WWH - 福克兰群岛海战（10:50 追击重建）",
+        "chineseTraditional": "WWH - 福克蘭群島海戰（10:50 追擊重建）"
       }
     },
     {

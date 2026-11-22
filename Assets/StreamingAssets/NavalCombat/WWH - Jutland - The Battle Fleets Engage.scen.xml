@@ -10,6 +10,9 @@
       <ShipGroup>
         <name>
           <english>Grand Fleet</english>
+          <japanese>大艦隊</japanese>
+          <chineseSimplified>大舰队</chineseSimplified>
+          <chineseTraditional>大艦隊</chineseTraditional>
         </name>
         <objectId>6f734310-6abc-5759-9adc-c289a4c13fd6</objectId>
         <formation>General</formation>
@@ -51,6 +54,9 @@
       <ShipGroup>
         <name>
           <english>High Seas Fleet</english>
+          <japanese>大洋艦隊</japanese>
+          <chineseSimplified>公海舰队</chineseSimplified>
+          <chineseTraditional>公海艦隊</chineseTraditional>
         </name>
         <objectId>352f8fd1-5008-5811-8f82-4653f0795021</objectId>
         <formation>General</formation>
@@ -80,6 +86,9 @@
       <ShipGroup>
         <name>
           <english>British 2nd Battle Squadron</english>
+          <japanese>イギリス第2戦艦戦隊</japanese>
+          <chineseSimplified>英国第2战列舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第2戰列艦分艦隊</chineseTraditional>
         </name>
         <objectId>8dc7be80-81b5-50c7-997c-453ce9a4a1cb</objectId>
         <formation>General</formation>
@@ -92,6 +101,9 @@
       <ShipGroup>
         <name>
           <english>British 1st Division</english>
+          <japanese>イギリス第1戦艦隊</japanese>
+          <chineseSimplified>英国第1战列舰支队</chineseSimplified>
+          <chineseTraditional>英國第1戰列艦支隊</chineseTraditional>
         </name>
         <objectId>dc1a9648-e391-56f2-993a-a284a9a0e097</objectId>
         <formation>General</formation>
@@ -109,6 +121,9 @@
       <ShipGroup>
         <name>
           <english>British 2nd Division</english>
+          <japanese>イギリス第2戦艦隊</japanese>
+          <chineseSimplified>英国第2战列舰支队</chineseSimplified>
+          <chineseTraditional>英國第2戰列艦支隊</chineseTraditional>
         </name>
         <objectId>cd2cdd0c-e95a-5d13-b253-1745a3bf3afe</objectId>
         <formation>General</formation>
@@ -126,6 +141,9 @@
       <ShipGroup>
         <name>
           <english>British 4th Battle Squadron</english>
+          <japanese>イギリス第4戦艦戦隊</japanese>
+          <chineseSimplified>英国第4战列舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第4戰列艦分艦隊</chineseTraditional>
         </name>
         <objectId>d274bef5-639a-54f0-9c90-b453eaba5d50</objectId>
         <formation>General</formation>
@@ -138,6 +156,9 @@
       <ShipGroup>
         <name>
           <english>British 3rd Division</english>
+          <japanese>イギリス第3戦艦隊</japanese>
+          <chineseSimplified>英国第3战列舰支队</chineseSimplified>
+          <chineseTraditional>英國第3戰列艦支隊</chineseTraditional>
         </name>
         <objectId>7a7743a1-e561-5145-8de1-cc54547a857b</objectId>
         <formation>General</formation>
@@ -155,6 +176,9 @@
       <ShipGroup>
         <name>
           <english>British 4th Division</english>
+          <japanese>イギリス第4戦艦隊</japanese>
+          <chineseSimplified>英国第4战列舰支队</chineseSimplified>
+          <chineseTraditional>英國第4戰列艦支隊</chineseTraditional>
         </name>
         <objectId>c4921077-4133-52ec-a46d-7fcab235f483</objectId>
         <formation>General</formation>
@@ -172,6 +196,9 @@
       <ShipGroup>
         <name>
           <english>British 1st Battle Squadron</english>
+          <japanese>イギリス第1戦艦戦隊</japanese>
+          <chineseSimplified>英国第1战列舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第1戰列艦分艦隊</chineseTraditional>
         </name>
         <objectId>25277a37-1c55-5e0b-9eff-424eeba8125e</objectId>
         <formation>General</formation>
@@ -184,6 +211,9 @@
       <ShipGroup>
         <name>
           <english>British 5th Division</english>
+          <japanese>イギリス第5戦艦隊</japanese>
+          <chineseSimplified>英国第5战列舰支队</chineseSimplified>
+          <chineseTraditional>英國第5戰列艦支隊</chineseTraditional>
         </name>
         <objectId>f964c374-ef26-582a-9222-2133e82fc523</objectId>
         <formation>General</formation>
@@ -201,6 +231,9 @@
       <ShipGroup>
         <name>
           <english>British 6th Division</english>
+          <japanese>イギリス第6戦艦隊</japanese>
+          <chineseSimplified>英国第6战列舰支队</chineseSimplified>
+          <chineseTraditional>英國第6戰列艦支隊</chineseTraditional>
         </name>
         <objectId>4514d013-3e27-5f5a-8884-8eb6476bc481</objectId>
         <formation>General</formation>
@@ -218,6 +251,9 @@
       <ShipGroup>
         <name>
           <english>British 5th Battle Squadron</english>
+          <japanese>イギリス第5戦艦戦隊</japanese>
+          <chineseSimplified>英国第5战列舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第5戰列艦分艦隊</chineseTraditional>
         </name>
         <objectId>b02fb7e3-e35e-5df2-9772-4d0d9bf316d1</objectId>
         <formation>General</formation>
@@ -235,6 +271,9 @@
       <ShipGroup>
         <name>
           <english>British 1st and 2nd Battlecruiser Squadrons</english>
+          <japanese>イギリス第1・第2巡洋戦艦戦隊</japanese>
+          <chineseSimplified>英国第1、第2战列巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第1、第2戰列巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>b6537f63-007f-55ea-9531-3a5fe697d5e8</objectId>
         <formation>General</formation>
@@ -252,6 +291,9 @@
       <ShipGroup>
         <name>
           <english>British 3rd Battlecruiser Squadron</english>
+          <japanese>イギリス第3巡洋戦艦戦隊</japanese>
+          <chineseSimplified>英国第3战列巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第3戰列巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>efe922ee-da62-5f9e-8841-a922420a4852</objectId>
         <formation>General</formation>
@@ -268,6 +310,9 @@
       <ShipGroup>
         <name>
           <english>British 1st Cruiser Squadron</english>
+          <japanese>イギリス第1巡洋艦戦隊</japanese>
+          <chineseSimplified>英国第1巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第1巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>843d4b48-2824-5603-93d4-ee6855385e9c</objectId>
         <formation>General</formation>
@@ -283,6 +328,9 @@
       <ShipGroup>
         <name>
           <english>British Detached Duke of Edinburgh</english>
+          <japanese>イギリス軍デューク・オブ・エジンバラ（別働）</japanese>
+          <chineseSimplified>英国海军爱丁堡公爵（分遣）</chineseSimplified>
+          <chineseTraditional>英國海軍愛丁堡公爵（分遣）</chineseTraditional>
         </name>
         <objectId>33f638c8-6ddd-5653-90d3-9ee1845b162d</objectId>
         <formation>General</formation>
@@ -294,6 +342,9 @@
       <ShipGroup>
         <name>
           <english>British Detached Black Prince</english>
+          <japanese>イギリス軍ブラック・プリンス（別働）</japanese>
+          <chineseSimplified>英国海军黑太子（分遣）</chineseSimplified>
+          <chineseTraditional>英國海軍黑太子（分遣）</chineseTraditional>
         </name>
         <objectId>920958c5-8aac-507e-9012-7656e3349bc3</objectId>
         <formation>General</formation>
@@ -305,6 +356,9 @@
       <ShipGroup>
         <name>
           <english>British 2nd Cruiser Squadron</english>
+          <japanese>イギリス第2巡洋艦戦隊</japanese>
+          <chineseSimplified>英国第2巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第2巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>15de31fa-6597-5bec-9a39-85f7773eb5ae</objectId>
         <formation>General</formation>
@@ -321,6 +375,9 @@
       <ShipGroup>
         <name>
           <english>British Detached Hampshire</english>
+          <japanese>イギリス軍ハンプシャー（別働）</japanese>
+          <chineseSimplified>英国海军汉普郡（分遣）</chineseSimplified>
+          <chineseTraditional>英國海軍漢普郡（分遣）</chineseTraditional>
         </name>
         <objectId>d8b95550-0bdb-58f1-a985-608214cab0d9</objectId>
         <formation>General</formation>
@@ -332,6 +389,9 @@
       <ShipGroup>
         <name>
           <english>British 1st Light Cruiser Squadron</english>
+          <japanese>イギリス第1軽巡洋艦戦隊</japanese>
+          <chineseSimplified>英国第1轻巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第1輕巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>50bbb612-e664-59e7-a53f-31c081b08f14</objectId>
         <formation>General</formation>
@@ -349,6 +409,9 @@
       <ShipGroup>
         <name>
           <english>British 2nd Light Cruiser Squadron</english>
+          <japanese>イギリス第2軽巡洋艦戦隊</japanese>
+          <chineseSimplified>英国第2轻巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第2輕巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>0fd69c79-356e-5626-8691-1d3924ef621b</objectId>
         <formation>General</formation>
@@ -366,6 +429,9 @@
       <ShipGroup>
         <name>
           <english>British 3rd Light Cruiser Squadron</english>
+          <japanese>イギリス第3軽巡洋艦戦隊</japanese>
+          <chineseSimplified>英国第3轻巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第3輕巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>e0faf626-a9f6-53b9-804e-bf9e54ca307b</objectId>
         <formation>General</formation>
@@ -383,6 +449,9 @@
       <ShipGroup>
         <name>
           <english>British 4th Light Cruiser Squadron</english>
+          <japanese>イギリス第4軽巡洋艦戦隊</japanese>
+          <chineseSimplified>英国第4轻巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>英國第4輕巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>87e7db2f-40f7-5576-946e-471cace9b21a</objectId>
         <formation>General</formation>
@@ -401,6 +470,9 @@
       <ShipGroup>
         <name>
           <english>British Attached scouts</english>
+          <japanese>イギリス艦隊付属偵察艦</japanese>
+          <chineseSimplified>英国舰队直属侦察舰</chineseSimplified>
+          <chineseTraditional>英國艦隊直屬偵察艦</chineseTraditional>
         </name>
         <objectId>9c8f0f63-0468-5129-a0be-11a20464429b</objectId>
         <formation>General</formation>
@@ -416,6 +488,9 @@
       <ShipGroup>
         <name>
           <english>British Chester</english>
+          <japanese>イギリス軍チェスター</japanese>
+          <chineseSimplified>英国海军切斯特</chineseSimplified>
+          <chineseTraditional>英國海軍切斯特</chineseTraditional>
         </name>
         <objectId>c2aa8f80-518c-5e4a-a8d6-e73d283370e4</objectId>
         <formation>General</formation>
@@ -427,6 +502,9 @@
       <ShipGroup>
         <name>
           <english>British 1st Destroyer Flotilla</english>
+          <japanese>イギリス第1水雷戦隊</japanese>
+          <chineseSimplified>英国第1驱逐舰队</chineseSimplified>
+          <chineseTraditional>英國第1驅逐艦隊</chineseTraditional>
         </name>
         <objectId>19085837-8cad-533f-82df-e415400f8dc1</objectId>
         <formation>General</formation>
@@ -450,6 +528,9 @@
       <ShipGroup>
         <name>
           <english>British 4th Destroyer Flotilla</english>
+          <japanese>イギリス第4水雷戦隊</japanese>
+          <chineseSimplified>英国第4驱逐舰队</chineseSimplified>
+          <chineseTraditional>英國第4驅逐艦隊</chineseTraditional>
         </name>
         <objectId>10c105dc-3085-5eb2-b39c-c41f558f76cd</objectId>
         <formation>General</formation>
@@ -478,6 +559,9 @@
       <ShipGroup>
         <name>
           <english>British Detached 4th Flotilla</english>
+          <japanese>イギリス第4水雷戦隊別働隊</japanese>
+          <chineseSimplified>英国第4驱逐舰队分遣队</chineseSimplified>
+          <chineseTraditional>英國第4驅逐艦隊分遣隊</chineseTraditional>
         </name>
         <objectId>616fb987-fc24-587e-9147-579c0813894b</objectId>
         <formation>General</formation>
@@ -490,6 +574,9 @@
       <ShipGroup>
         <name>
           <english>British Disabled Acasta</english>
+          <japanese>イギリス軍アカスタ（行動不能）</japanese>
+          <chineseSimplified>英国海军阿卡斯塔（失去行动能力）</chineseSimplified>
+          <chineseTraditional>英國海軍阿卡斯塔（失去行動能力）</chineseTraditional>
         </name>
         <objectId>531fa998-4a86-5f65-9029-101d642ca622</objectId>
         <formation>General</formation>
@@ -501,6 +588,9 @@
       <ShipGroup>
         <name>
           <english>British Disabled Shark</english>
+          <japanese>イギリス軍シャーク（行動不能）</japanese>
+          <chineseSimplified>英国海军鲨鱼（失去行动能力）</chineseSimplified>
+          <chineseTraditional>英國海軍鯊魚（失去行動能力）</chineseTraditional>
         </name>
         <objectId>dddad212-50ef-50e1-bba4-4b2d0e53c6d5</objectId>
         <formation>General</formation>
@@ -512,6 +602,9 @@
       <ShipGroup>
         <name>
           <english>British 9th and 10th Destroyer Flotillas</english>
+          <japanese>イギリス第9・第10合同水雷戦隊</japanese>
+          <chineseSimplified>英国第9、第10联合驱逐舰队</chineseSimplified>
+          <chineseTraditional>英國第9、第10聯合驅逐艦隊</chineseTraditional>
         </name>
         <objectId>a297a812-b3d2-5d0b-84a9-e8670c54e887</objectId>
         <formation>General</formation>
@@ -533,6 +626,9 @@
       <ShipGroup>
         <name>
           <english>British 11th Destroyer Flotilla</english>
+          <japanese>イギリス第11水雷戦隊</japanese>
+          <chineseSimplified>英国第11驱逐舰队</chineseSimplified>
+          <chineseTraditional>英國第11驅逐艦隊</chineseTraditional>
         </name>
         <objectId>3b1e5db1-abc9-52a7-b409-81bc6b3299dc</objectId>
         <formation>General</formation>
@@ -562,6 +658,9 @@
       <ShipGroup>
         <name>
           <english>British 12th Destroyer Flotilla</english>
+          <japanese>イギリス第12水雷戦隊</japanese>
+          <chineseSimplified>英国第12驱逐舰队</chineseSimplified>
+          <chineseTraditional>英國第12驅逐艦隊</chineseTraditional>
         </name>
         <objectId>95288a30-66d4-59f4-bd9b-72ae988285e5</objectId>
         <formation>General</formation>
@@ -591,6 +690,9 @@
       <ShipGroup>
         <name>
           <english>British 13th Destroyer Flotilla</english>
+          <japanese>イギリス第13水雷戦隊</japanese>
+          <chineseSimplified>英国第13驱逐舰队</chineseSimplified>
+          <chineseTraditional>英國第13驅逐艦隊</chineseTraditional>
         </name>
         <objectId>6795ab15-c341-560e-a7cd-97b6a650ad9b</objectId>
         <formation>General</formation>
@@ -612,6 +714,9 @@
       <ShipGroup>
         <name>
           <english>British Independent vessels</english>
+          <japanese>イギリス軍独立行動艦艇</japanese>
+          <chineseSimplified>英国独立行动舰艇</chineseSimplified>
+          <chineseTraditional>英國獨立行動艦艇</chineseTraditional>
         </name>
         <objectId>1a13f61c-6a2b-5f9e-b908-45c78c4ce083</objectId>
         <formation>General</formation>
@@ -624,6 +729,9 @@
       <ShipGroup>
         <name>
           <english>British Engadine</english>
+          <japanese>イギリス軍エンガディン</japanese>
+          <chineseSimplified>英国海军恩加丁</chineseSimplified>
+          <chineseTraditional>英國海軍恩加丁</chineseTraditional>
         </name>
         <objectId>3804d445-32a3-5209-845c-ec6fe2ee3800</objectId>
         <formation>General</formation>
@@ -635,6 +743,9 @@
       <ShipGroup>
         <name>
           <english>British Disabled Onslow</english>
+          <japanese>イギリス軍オンスロー（行動不能）</japanese>
+          <chineseSimplified>英国海军昂斯洛（失去行动能力）</chineseSimplified>
+          <chineseTraditional>英國海軍昂斯洛（失去行動能力）</chineseTraditional>
         </name>
         <objectId>d6928fdb-a827-5288-8658-ccf172388adb</objectId>
         <formation>General</formation>
@@ -646,6 +757,9 @@
       <ShipGroup>
         <name>
           <english>German III Battle Squadron</english>
+          <japanese>ドイツ第3戦艦戦隊</japanese>
+          <chineseSimplified>德国第3战列舰分舰队</chineseSimplified>
+          <chineseTraditional>德國第3戰列艦分艦隊</chineseTraditional>
         </name>
         <objectId>212f606f-dfb0-567a-a61d-b4dfd514dd59</objectId>
         <formation>General</formation>
@@ -659,6 +773,9 @@
       <ShipGroup>
         <name>
           <english>German V Division</english>
+          <japanese>ドイツ第5戦艦隊</japanese>
+          <chineseSimplified>德国第5战列舰支队</chineseSimplified>
+          <chineseTraditional>德國第5戰列艦支隊</chineseTraditional>
         </name>
         <objectId>16cc856e-900f-5851-b56f-81a1fb107a8a</objectId>
         <formation>General</formation>
@@ -676,6 +793,9 @@
       <ShipGroup>
         <name>
           <english>German VI Division</english>
+          <japanese>ドイツ第6戦艦隊</japanese>
+          <chineseSimplified>德国第6战列舰支队</chineseSimplified>
+          <chineseTraditional>德國第6戰列艦支隊</chineseTraditional>
         </name>
         <objectId>fd0a914e-d09c-5364-927a-81b137083d5d</objectId>
         <formation>General</formation>
@@ -692,6 +812,9 @@
       <ShipGroup>
         <name>
           <english>German Fleet Flagship</english>
+          <japanese>ドイツ艦隊旗艦</japanese>
+          <chineseSimplified>德国舰队旗舰</chineseSimplified>
+          <chineseTraditional>德國艦隊旗艦</chineseTraditional>
         </name>
         <objectId>58d446e5-e168-511a-bc7f-833c21ecf3e8</objectId>
         <formation>General</formation>
@@ -706,6 +829,9 @@
       <ShipGroup>
         <name>
           <english>German I Battle Squadron</english>
+          <japanese>ドイツ第1戦艦戦隊</japanese>
+          <chineseSimplified>德国第1战列舰分舰队</chineseSimplified>
+          <chineseTraditional>德國第1戰列艦分艦隊</chineseTraditional>
         </name>
         <objectId>a64d2638-04a6-5452-8743-db4c02d37772</objectId>
         <formation>General</formation>
@@ -718,6 +844,9 @@
       <ShipGroup>
         <name>
           <english>German I Division</english>
+          <japanese>ドイツ第1戦艦隊</japanese>
+          <chineseSimplified>德国第1战列舰支队</chineseSimplified>
+          <chineseTraditional>德國第1戰列艦支隊</chineseTraditional>
         </name>
         <objectId>c85f0b51-6873-51e3-a5c5-d6ed9d07d8ff</objectId>
         <formation>General</formation>
@@ -735,6 +864,9 @@
       <ShipGroup>
         <name>
           <english>German II Division</english>
+          <japanese>ドイツ第2戦艦隊</japanese>
+          <chineseSimplified>德国第2战列舰支队</chineseSimplified>
+          <chineseTraditional>德國第2戰列艦支隊</chineseTraditional>
         </name>
         <objectId>7913ed6e-2c9c-58de-b3f9-b46af52c0d6c</objectId>
         <formation>General</formation>
@@ -752,6 +884,9 @@
       <ShipGroup>
         <name>
           <english>German II Battle Squadron</english>
+          <japanese>ドイツ第2戦艦戦隊</japanese>
+          <chineseSimplified>德国第2战列舰分舰队</chineseSimplified>
+          <chineseTraditional>德國第2戰列艦分艦隊</chineseTraditional>
         </name>
         <objectId>6f9b60ed-d3ba-5ca0-a066-737f5a33e99e</objectId>
         <formation>General</formation>
@@ -764,6 +899,9 @@
       <ShipGroup>
         <name>
           <english>German III Division</english>
+          <japanese>ドイツ第3戦艦隊</japanese>
+          <chineseSimplified>德国第3战列舰支队</chineseSimplified>
+          <chineseTraditional>德國第3戰列艦支隊</chineseTraditional>
         </name>
         <objectId>e8e2a600-845b-5a79-b873-5c484546205d</objectId>
         <formation>General</formation>
@@ -780,6 +918,9 @@
       <ShipGroup>
         <name>
           <english>German IV Division</english>
+          <japanese>ドイツ第4戦艦隊</japanese>
+          <chineseSimplified>德国第4战列舰支队</chineseSimplified>
+          <chineseTraditional>德國第4戰列艦支隊</chineseTraditional>
         </name>
         <objectId>e724aa60-4964-534a-9000-f3c2386f5cd1</objectId>
         <formation>General</formation>
@@ -796,6 +937,9 @@
       <ShipGroup>
         <name>
           <english>German I Scouting Group</english>
+          <japanese>ドイツ第1偵察群</japanese>
+          <chineseSimplified>德国第1侦察集群</chineseSimplified>
+          <chineseTraditional>德國第1偵察集羣</chineseTraditional>
         </name>
         <objectId>4a4c305c-398f-5295-875e-9f615f436630</objectId>
         <formation>General</formation>
@@ -814,6 +958,9 @@
       <ShipGroup>
         <name>
           <english>German II Scouting Group</english>
+          <japanese>ドイツ第2偵察群</japanese>
+          <chineseSimplified>德国第2侦察集群</chineseSimplified>
+          <chineseTraditional>德國第2偵察集羣</chineseTraditional>
         </name>
         <objectId>ccd419c4-9cf2-5d9b-b061-6bd507e0c235</objectId>
         <formation>General</formation>
@@ -830,6 +977,9 @@
       <ShipGroup>
         <name>
           <english>German Disabled Wiesbaden</english>
+          <japanese>ドイツ軍ヴィースバーデン（行動不能）</japanese>
+          <chineseSimplified>德国海军威斯巴登（失去行动能力）</chineseSimplified>
+          <chineseTraditional>德國海軍威斯巴登（失去行動能力）</chineseTraditional>
         </name>
         <objectId>88db41ca-e699-58fb-801d-6a00b35590a7</objectId>
         <formation>General</formation>
@@ -841,6 +991,9 @@
       <ShipGroup>
         <name>
           <english>German IV Scouting Group</english>
+          <japanese>ドイツ第4偵察群</japanese>
+          <chineseSimplified>德国第4侦察集群</chineseSimplified>
+          <chineseTraditional>德國第4偵察集羣</chineseTraditional>
         </name>
         <objectId>5fda7712-9d19-5d50-96d1-a1915581e20c</objectId>
         <formation>General</formation>
@@ -859,6 +1012,9 @@
       <ShipGroup>
         <name>
           <english>German First Torpedo-Boat Leader</english>
+          <japanese>ドイツ第1水雷艇部隊司令艦</japanese>
+          <chineseSimplified>德国第一鱼雷艇部队指挥舰</chineseSimplified>
+          <chineseTraditional>德國第一魚雷艇部隊指揮艦</chineseTraditional>
         </name>
         <objectId>f61f9435-4535-5251-b9e9-e48dd78e16e4</objectId>
         <formation>General</formation>
@@ -873,6 +1029,9 @@
       <ShipGroup>
         <name>
           <english>German I Torpedo-Boat Flotilla</english>
+          <japanese>ドイツ第1水雷戦隊</japanese>
+          <chineseSimplified>德国第1鱼雷艇队</chineseSimplified>
+          <chineseTraditional>德國第1魚雷艇隊</chineseTraditional>
         </name>
         <objectId>6580693b-bc7a-53fe-a88d-cb28647978dc</objectId>
         <formation>General</formation>
@@ -890,6 +1049,9 @@
       <ShipGroup>
         <name>
           <english>German II Torpedo-Boat Flotilla</english>
+          <japanese>ドイツ第2水雷戦隊</japanese>
+          <chineseSimplified>德国第2鱼雷艇队</chineseSimplified>
+          <chineseTraditional>德國第2魚雷艇隊</chineseTraditional>
         </name>
         <objectId>4f433989-ef89-549d-9f71-b51b34f60a7d</objectId>
         <formation>General</formation>
@@ -913,6 +1075,9 @@
       <ShipGroup>
         <name>
           <english>German III Torpedo-Boat Flotilla</english>
+          <japanese>ドイツ第3水雷戦隊</japanese>
+          <chineseSimplified>德国第3鱼雷艇队</chineseSimplified>
+          <chineseTraditional>德國第3魚雷艇隊</chineseTraditional>
         </name>
         <objectId>fd637d70-be3e-5582-8ef0-8c9ff64e2feb</objectId>
         <formation>General</formation>
@@ -933,6 +1098,9 @@
       <ShipGroup>
         <name>
           <english>German V Torpedo-Boat Flotilla</english>
+          <japanese>ドイツ第5水雷戦隊</japanese>
+          <chineseSimplified>德国第5鱼雷艇队</chineseSimplified>
+          <chineseTraditional>德國第5魚雷艇隊</chineseTraditional>
         </name>
         <objectId>8251fef6-9117-59c8-acb7-71894e7778e3</objectId>
         <formation>General</formation>
@@ -957,6 +1125,9 @@
       <ShipGroup>
         <name>
           <english>German VI Torpedo-Boat Flotilla</english>
+          <japanese>ドイツ第6水雷戦隊</japanese>
+          <chineseSimplified>德国第6鱼雷艇队</chineseSimplified>
+          <chineseTraditional>德國第6魚雷艇隊</chineseTraditional>
         </name>
         <objectId>0c490406-0066-5ee3-896c-c8e9e59bad05</objectId>
         <formation>General</formation>
@@ -974,6 +1145,9 @@
       <ShipGroup>
         <name>
           <english>German XII Half-Flotilla</english>
+          <japanese>ドイツ第12水雷艇半隊</japanese>
+          <chineseSimplified>德国第12鱼雷艇半队</chineseSimplified>
+          <chineseTraditional>德國第12魚雷艇半隊</chineseTraditional>
         </name>
         <objectId>c7aa6def-9570-53c9-a939-2ae0790bdb1c</objectId>
         <formation>General</formation>
@@ -992,6 +1166,9 @@
       <ShipGroup>
         <name>
           <english>German VII Torpedo-Boat Flotilla</english>
+          <japanese>ドイツ第7水雷戦隊</japanese>
+          <chineseSimplified>德国第7鱼雷艇队</chineseSimplified>
+          <chineseTraditional>德國第7魚雷艇隊</chineseTraditional>
         </name>
         <objectId>26a79111-6a75-5200-822c-8effd50a5467</objectId>
         <formation>General</formation>
@@ -1014,6 +1191,9 @@
       <ShipGroup>
         <name>
           <english>German Second Torpedo-Boat Leader</english>
+          <japanese>ドイツ第2水雷艇部隊司令艦</japanese>
+          <chineseSimplified>德国第二鱼雷艇部队指挥舰</chineseSimplified>
+          <chineseTraditional>德國第二魚雷艇部隊指揮艦</chineseTraditional>
         </name>
         <objectId>6bb1158e-81f7-5b1d-8dc0-1402ba8c6a05</objectId>
         <formation>General</formation>
@@ -1028,6 +1208,9 @@
       <ShipGroup>
         <name>
           <english>German IX Torpedo-Boat Flotilla</english>
+          <japanese>ドイツ第9水雷戦隊</japanese>
+          <chineseSimplified>德国第9鱼雷艇队</chineseSimplified>
+          <chineseTraditional>德國第9魚雷艇隊</chineseTraditional>
         </name>
         <objectId>4e4f984f-a4c3-5fae-acc9-52bb7d58d164</objectId>
         <formation>General</formation>
@@ -59670,6 +59853,56 @@
     <leadersBuiltin>false</leadersBuiltin>
     <shipClassesBuiltin>false</shipClassesBuiltin>
     <namedShipsBuiltin>false</namedShipsBuiltin>
+    <leaderAppointments>
+      <LeaderAppointment>
+        <leaderObjectId>8855438c-0e11-4c35-848c-677e189e3a53</leaderObjectId>
+        <commandObjectId>6f734310-6abc-5759-9adc-c289a4c13fd6</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>4cff66bb-0920-5f3e-9940-2283909769f3</shipObjectId>
+      </LeaderAppointment>
+      <LeaderAppointment>
+        <leaderObjectId>7cbd9c60-6bcd-5b38-b516-5c117fa285fe</leaderObjectId>
+        <commandObjectId>352f8fd1-5008-5811-8f82-4653f0795021</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>b733d3d2-0a8a-51aa-a62a-b465f9afb6aa</shipObjectId>
+      </LeaderAppointment>
+      <LeaderAppointment>
+        <leaderObjectId>062a8b88-d4a6-51ff-911e-f987c0b1866b</leaderObjectId>
+        <commandObjectId>7a7743a1-e561-5145-8de1-cc54547a857b</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>46bc6599-3585-558a-be4b-e6e858f3833f</shipObjectId>
+      </LeaderAppointment>
+      <LeaderAppointment>
+        <leaderObjectId>37fbefbd-ac61-5a34-b5d9-4b42b110ef6a</leaderObjectId>
+        <commandObjectId>b02fb7e3-e35e-5df2-9772-4d0d9bf316d1</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>8803c9ff-29b4-53b0-bc06-d251b29e3f03</shipObjectId>
+      </LeaderAppointment>
+      <LeaderAppointment>
+        <leaderObjectId>5ceb1d30-8dc3-5145-a318-2f2016c8b78f</leaderObjectId>
+        <commandObjectId>4a4c305c-398f-5295-875e-9f615f436630</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>e6dd5b69-51b1-5811-8e36-8f64c99b2d51</shipObjectId>
+      </LeaderAppointment>
+      <LeaderAppointment>
+        <leaderObjectId>7cbd9c60-6bcd-5b38-b516-5c117fa285fe</leaderObjectId>
+        <commandObjectId>58d446e5-e168-511a-bc7f-833c21ecf3e8</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>b733d3d2-0a8a-51aa-a62a-b465f9afb6aa</shipObjectId>
+      </LeaderAppointment>
+      <LeaderAppointment>
+        <leaderObjectId>1d218e15-aeb7-5f7b-8b17-a11239f340a3</leaderObjectId>
+        <commandObjectId>b6537f63-007f-55ea-9531-3a5fe697d5e8</commandObjectId>
+        <post>DeputyCommander</post>
+        <shipObjectId>183d7a33-473f-53d9-975b-66ccc3e6acfd</shipObjectId>
+        <title>
+          <english>Commander, 2nd Battlecruiser Squadron</english>
+          <japanese>第2巡洋戦艦戦隊司令官</japanese>
+          <chineseSimplified>第2战列巡洋舰分舰队司令</chineseSimplified>
+          <chineseTraditional>第2戰列巡洋艦分艦隊司令</chineseTraditional>
+        </title>
+      </LeaderAppointment>
+    </leaderAppointments>
     <scenarioState>
       <dateTime>1916-05-31T18:00:00Z</dateTime>
       <beginDateTime>1916-05-31T18:00:00Z</beginDateTime>

@@ -64,7 +64,7 @@ internal static class ShipLayoutMesh
             models.Remove(ship);
         return models.GetValue(ship, s => new Model(s));
     }
-    internal static float[] Build(ShipClass ship) => ship.type==ShipType.LandBattery ? NavalShipMesh.Build(ship,false,false) : new Model(ship).Raw();
+    internal static float[] Build(ShipClass ship,Func<ShipGraphicPart,bool> highlighted=null) => ship.type==ShipType.LandBattery ? NavalShipMesh.Build(ship,false,false) : new Model(ship).Raw(highlighted);
     internal static Vector3 Eye(ShipClass ship)
     {
         var eye=Cached(ship).Layout.Observer;
@@ -76,6 +76,7 @@ internal static class ShipLayoutMesh
         internal readonly int Revision;
         readonly ShipClassPlaceholderRenderInput input;
         readonly List<float> hullRaw = [], structureRaw = [];
+        readonly List<(ShipGraphicPart Part,int Start,int Count)> structureRanges=[];
         readonly float[] staticPrepared, hullPrepared;
         internal readonly List<(ShipGraphicPart Part,Vector3 Origin,float[] Raw,float[] Prepared)> weapons = [];
         internal readonly List<(PlaceholderMountRenderRecord Record,bool CanTrain)> weaponBindings=[];
@@ -83,6 +84,7 @@ internal static class ShipLayoutMesh
         internal float[] StaticGeometry => staticPrepared;
         internal float[] DestroyedGeometry => hullPrepared;
         internal IReadOnlyList<(float[] Housing,float[][] Barrels)> WeaponGeometry => weaponPieces;
+        internal IEnumerable<(ShipGraphicPart Part,float[] Raw)> StructureGeometry => structureRanges.Select(r=>(r.Part,structureRaw.Skip(r.Start).Take(r.Count).ToArray()));
         internal NavalPickMesh PickMesh {get;private set;}
         internal NavalPickMesh DestroyedPickMesh {get;private set;}
         readonly float length, beam;
@@ -94,6 +96,10 @@ internal static class ShipLayoutMesh
             (length,beam)=NavalShipMesh.Dimensions(ship);
             var hull=new NavalMesh(); var surface=new Vector3(.30f,.35f,.38f); var deck=new Vector3(.69f,.58f,.40f);
             var height=(float)Layout.Freeboard;
+            static Vector3 HullBottom(Vector3 top) => new(
+                top.X*(float)ShipGraphicLayoutBuilder.HullBottomBeamScale,
+                top.Y*(float)ShipGraphicLayoutBuilder.HullBottomLengthScale,
+                (float)ShipGraphicLayoutBuilder.HullBottomZ);
             for(var i=0;i<Layout.Hull.Count;i++)
             {
                 var a=Layout.Hull[i]; var b=Layout.Hull[(i+1)%Layout.Hull.Count];
@@ -101,7 +107,7 @@ internal static class ShipLayoutMesh
                 var va=new Vector3((float)a.X*beam,(float)a.Y*length,height);
                 var vb=new Vector3((float)b.X*beam,(float)b.Y*length,height);
                 hull.Triangle(new(0,0,height),vb,va,deck);
-                hull.Quad(va,vb,new(vb.X*.9f,vb.Y*.99f,-.3f),new(va.X*.9f,va.Y*.99f,-.3f),surface);
+                hull.Quad(va,vb,HullBottom(vb),HullBottom(va),surface);
             }
             hullRaw.AddRange(hull.Vertices);
             var structure=new NavalMesh();
@@ -125,10 +131,13 @@ internal static class ShipLayoutMesh
                         else structure.Cylinder(bottom,p.BarbetteDiameter>0?(float)p.BarbetteDiameter/2:w*.48f,support,surface,24);
                     }
                     if(p.Kind==ShipGraphicPartKind.Gun && p.Appearance==ShipGunAppearance.Casemate)
-                        structure.Box(pos+new Vector3(0,0,h/2),new(w,l,h),surface);
-                    if(p.Kind==ShipGraphicPartKind.Gun && p.Appearance==ShipGunAppearance.Turret && p.FixedHousing)
+                        CasemateHousing(structure,pos,w,l,h,surface);
+                    if(p.Kind==ShipGraphicPartKind.Gun && (p.Appearance==ShipGunAppearance.FixedMount || (p.Appearance==ShipGunAppearance.Turret && p.FixedHousing)))
                     {
-                        var housing=new NavalMesh();TurretHouse(housing,w,l,h,surface,p.HousingShape);
+                        var housing=new NavalMesh();
+                        if(p.Appearance==ShipGunAppearance.FixedMount)
+                            housing.Box(new(0,0,h*.32f),new(w*.8f,l*.9f,h*.64f),surface);
+                        else TurretHouse(housing,w,l,h,surface,p.HousingShape);
                         var a=(float)(p.RestAngle*Math.PI/180);var c=MathF.Cos(a);var sn=MathF.Sin(a);
                         for(var i=0;i<housing.Vertices.Count;i+=9)
                         {
@@ -138,7 +147,8 @@ internal static class ShipLayoutMesh
                         }
                     }
                     var raw=Weapon(p,w,l,h);
-                    weapons.Add((p,pos,raw,NavalMesh.Prepare(raw)));
+                    var pivot=pos+new Vector3((float)p.GunPivotOffset.X,(float)p.GunPivotOffset.Y,0);
+                    weapons.Add((p,pivot,raw,NavalMesh.Prepare(raw)));
                     weaponPieces.Add(p.Kind==ShipGraphicPartKind.Gun
                         ? (NavalMesh.Prepare(Weapon(p,w,l,h,-2)),Enumerable.Range(0,p.Barrels).Select(i=>NavalMesh.Prepare(Weapon(p,w,l,h,i))).ToArray())
                         : (NavalMesh.Prepare(raw),Array.Empty<float[]>()));
@@ -148,6 +158,7 @@ internal static class ShipLayoutMesh
                         !(record.mountArcs.Count>0 && record.mountArcs.All(a=>a.CoverageDeg<=30))));
                     continue;
                 }
+                var structureStart=structure.Vertices.Count;
                 switch(p.Kind)
                 {
                     case ShipGraphicPartKind.Deck:
@@ -178,12 +189,15 @@ internal static class ShipLayoutMesh
                         break;
                     case ShipGraphicPartKind.Mast:
                         structure.Cylinder(pos,Math.Max(.12f,w/2),h,new(.12f,.15f,.17f),8);
-                        structure.Box(pos+new Vector3(0,0,h*.7f),new(beam*.45f,.14f,.14f),new(.12f,.15f,.17f));
+                        structure.Box(pos+new Vector3(0,0,h*.7f),new((float)p.CrossbarWidth*beam,.14f,.14f),new(.12f,.15f,.17f));
+                        if(p.StructureStyle==ShipStructureStyle.TripodMast)
+                            foreach(var side in new[]{-1,1})Rod(structure,pos+new Vector3(side*Math.Max(w*3,beam*.1f),-Math.Max(l,beam*.1f),0),pos+new Vector3(0,0,h*.8f),Math.Max(.10f,w*.3f),surface);
                         structure.Cylinder(pos+new Vector3(0,0,h*.53f),Math.Max(.35f,w*1.8f),.18f,surface,12);
                         break;
                     case ShipGraphicPartKind.Funnel:
-                        Ellipse(structure,pos,w/2,l/2,h,new(.58f,.45f,.25f));
-                        Ellipse(structure,pos+new Vector3(0,0,h-.25f),w*.52f,l*.52f,.3f,new(.12f,.15f,.17f));
+                        var rake=-(float)Math.Tan(p.RakeDegrees*Math.PI/180);
+                        Ellipse(structure,pos,w/2,l/2,h,new(.58f,.45f,.25f),rake);
+                        Ellipse(structure,pos+new Vector3(0,rake*(h-.25f),h-.25f),w*.52f,l*.52f,.3f,new(.12f,.15f,.17f),rake);
                         break;
                     case ShipGraphicPartKind.Bridge:
                         // Start at the actual deck beneath the whole support, not at the
@@ -199,14 +213,31 @@ internal static class ShipLayoutMesh
                         if(bridgeSupportHeight>0)
                             structure.Box(new(pos.X,pos.Y,supportBase+bridgeSupportHeight/2),
                                 new(w*.42f,l*.75f,bridgeSupportHeight),surface);
-                        structure.Box(pos+new Vector3(0,0,h-.15f),new(w,l,.3f),surface);
+                        structure.Box(pos+new Vector3(0,0,h-.15f),new((float)p.WingWidth*beam,l,.3f),surface);
+                        if(p.StructureStyle==ShipStructureStyle.ClosedBridge)
+                        {
+                            var cabinHeight=Math.Min(2.4f,h);
+                            structure.Box(pos+new Vector3(0,0,h-cabinHeight/2),new(w*.65f,l,cabinHeight),surface);
+                            structure.Box(pos+new Vector3(0,l*.505f,h-cabinHeight*.3f),new(w*.58f,.05f,cabinHeight*.25f),new(.12f,.20f,.24f));
+                        }
                         // Short front screen makes the open command platform readable without railings.
                         structure.Box(pos+new Vector3(0,l*.47f,h+.25f),new(w,.12f,.5f),surface);
+                        break;
+                    case ShipGraphicPartKind.Deckhouse when p.StructureStyle==ShipStructureStyle.BeveledDeckhouse:
+                        var outline=ShipGraphicLayoutBuilder.HousingOutline(ShipGunHousingShape.Beveled);
+                        for(var i=0;i<outline.Length;i++)
+                        {
+                            var a=outline[i];var b=outline[(i+1)%outline.Length];
+                            var bottomA=pos+new Vector3((float)a.X*w,(float)a.Y*l,0);var bottomB=pos+new Vector3((float)b.X*w,(float)b.Y*l,0);
+                            var topA=bottomA+new Vector3(0,0,h);var topB=bottomB+new Vector3(0,0,h);
+                            structure.Quad(bottomA,bottomB,topB,topA,surface);structure.Triangle(pos+new Vector3(0,0,h),topA,topB,surface);
+                        }
                         break;
                     default:
                         structure.Box(pos+new Vector3(0,0,h/2),new(w,l,h),p.Kind==ShipGraphicPartKind.Deck?deck:surface);
                         break;
                 }
+                structureRanges.Add((p,structureStart,structure.Vertices.Count-structureStart));
             }
             structureRaw.AddRange(structure.Vertices);
             PickMesh=new NavalPickMesh(hullRaw.Concat(structureRaw).ToArray(),9);
@@ -242,8 +273,17 @@ internal static class ShipLayoutMesh
                 {
                     case ShipGunAppearance.Turret:
                         if(!p.FixedHousing) TurretHouse(m,width,length,height,grey,p.HousingShape); break;
+                    case ShipGunAppearance.FixedMount:
+                        break; // The carriage belongs to the static geometry.
                     case ShipGunAppearance.Casemate:
-                        break; // The armoured housing is fixed to the ship; only its gun trains.
+                        // The curved shield turns inside the fixed dark opening and stays put during recoil.
+                        var socketRadius=Math.Min(width,length)*.15f;
+                        for(var i=0;i<p.Barrels;i++)
+                        {
+                            var x=(i-(p.Barrels-1)/2f)*width/Math.Max(2,p.Barrels+1);
+                            m.Cylinder(new(x,0,height*.39f),socketRadius,height*.53f,grey,16);
+                        }
+                        break;
                     case ShipGunAppearance.Shield:
                         m.Cylinder(Vector3.Zero,width*.25f,height*.65f,grey,10);
                         m.Box(new(0,length*.15f,height*.65f),new(width,.15f,height),grey); break;
@@ -261,6 +301,29 @@ internal static class ShipLayoutMesh
                 else m.Box(new(x,barrel*.42f,.2f),new(.45f,barrel,.45f),dark);
             }
             return m.Vertices.ToArray();
+        }
+        static void CasemateHousing(NavalMesh mesh,Vector3 pos,float width,float length,float height,Vector3 armor)
+        {
+            // A recessed horizontal opening between a fixed sill and roof. The hull hides the inboard half.
+            var recess=new Vector3(.09f,.12f,.14f);
+            const int sides=24;
+            (float Radius,float Z,Vector3 Wall)[] rings=[
+                (.48f,0,armor),(.5f,.34f,armor),(.43f,.34f,recess),
+                (.43f,.94f,recess),(.5f,.94f,armor),(.49f,1,armor)];
+            Vector3 Rim(int i,int ring)
+            {
+                var a=(i%sides)*2*MathF.PI/sides;
+                var (radius,z,_)=rings[ring];
+                return pos+new Vector3(MathF.Cos(a)*width*radius,MathF.Sin(a)*length*radius,z*height);
+            }
+            for(var i=0;i<sides;i++)
+            {
+                var j=i+1;
+                for(var r=0;r<rings.Length-1;r++)
+                    mesh.Quad(Rim(i,r),Rim(j,r),Rim(j,r+1),Rim(i,r+1),rings[r].Wall);
+                mesh.Triangle(pos+Vector3.UnitZ*height,Rim(i,rings.Length-1),Rim(j,rings.Length-1),armor);
+                mesh.Triangle(pos,Rim(j,0),Rim(i,0),armor);
+            }
         }
         static void TorpedoTube(NavalMesh mesh,float offset,float angle,float start,float length,float diameter,float axis,Vector3 color,Vector3 dark)
         {
@@ -326,14 +389,20 @@ internal static class ShipLayoutMesh
                 mesh.Triangle(origin+new Vector3(0,length,0),Point(stations.Length-1,i+1),Point(stations.Length-1,i),color);
             }
         }
-        static void Ellipse(NavalMesh mesh,Vector3 position,float rx,float ry,float height,Vector3 color)
+        static void Ellipse(NavalMesh mesh,Vector3 position,float rx,float ry,float height,Vector3 color,float rake=0)
         {
             var m=new NavalMesh();m.Cylinder(Vector3.Zero,1,height,color,16);
             for(var i=0;i<m.Vertices.Count;i+=9)
             {
-                var n=Vector3.Normalize(new Vector3(m.Vertices[i+6]/rx,m.Vertices[i+7]/ry,m.Vertices[i+8]));
-                mesh.Vertices.AddRange([position.X+m.Vertices[i]*rx,position.Y+m.Vertices[i+1]*ry,position.Z+m.Vertices[i+2],color.X,color.Y,color.Z,n.X,n.Y,n.Z]);
+                var n=Vector3.Normalize(new Vector3(m.Vertices[i+6]/rx,m.Vertices[i+7]/ry,m.Vertices[i+8]-rake*m.Vertices[i+7]/ry));
+                mesh.Vertices.AddRange([position.X+m.Vertices[i]*rx,position.Y+m.Vertices[i+1]*ry+rake*m.Vertices[i+2],position.Z+m.Vertices[i+2],color.X,color.Y,color.Z,n.X,n.Y,n.Z]);
             }
+        }
+        static void Rod(NavalMesh mesh,Vector3 start,Vector3 end,float radius,Vector3 color)
+        {
+            var forward=Vector3.Normalize(end-start);var right=Vector3.Normalize(Vector3.Cross(forward,Vector3.UnitY));var up=Vector3.Cross(right,forward);
+            Vector3 Offset(int i)=>radius*(right*MathF.Cos(i*MathF.PI/4)+up*MathF.Sin(i*MathF.PI/4));
+            for(var i=0;i<8;i++)mesh.Quad(start+Offset(i),start+Offset(i+1),end+Offset(i+1),end+Offset(i),color);
         }
         internal void UpdatePose(ShipLog ship,Span<double> angles,AbstractMountStatusRecord[] states)
         {
@@ -365,10 +434,18 @@ internal static class ShipLayoutMesh
                     if(result[i+3]==.30f) {result[i+3]=.72f;result[i+4]=.74f;result[i+5]=.71f;}
             return result.ToArray();
         }
-        internal float[] Raw()
+        internal float[] Raw(Func<ShipGraphicPart,bool> highlighted=null)
         {
             var result=hullRaw.Concat(structureRaw).ToList();
-            foreach(var w in weapons) Append(result,w.Raw,w.Origin,ShipGraphicLayoutBuilder.Direction(w.Part,input),9);
+            foreach(var range in structureRanges.Where(r=>highlighted?.Invoke(r.Part)==true))
+                for(var i=hullRaw.Count+range.Start;i<hullRaw.Count+range.Start+range.Count;i+=9){result[i+3]=.2f;result[i+4]=.95f;result[i+5]=.85f;}
+            foreach(var w in weapons)
+            {
+                var start=result.Count;
+                Append(result,w.Raw,w.Origin,ShipGraphicLayoutBuilder.Direction(w.Part,input),9);
+                if(highlighted?.Invoke(w.Part)==true)
+                    for(var i=start;i<result.Count;i+=9){result[i+3]=.2f;result[i+4]=.95f;result[i+5]=.85f;}
+            }
             return result.ToArray();
         }
         static void Append(List<float> output,float[] source,Vector3 pos,double degrees,int stride)

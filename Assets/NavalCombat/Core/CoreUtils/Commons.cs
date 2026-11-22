@@ -12,10 +12,10 @@ namespace CoreUtils
         France,
         Germany,
         UnitedStates,
-        // Spain,
         Italy,
         AustriaHungary, // Austria-Hungary 
         Portugal,
+        Spain,
         // Germany,
         // Turkey, // Ottoman
         // Holland,

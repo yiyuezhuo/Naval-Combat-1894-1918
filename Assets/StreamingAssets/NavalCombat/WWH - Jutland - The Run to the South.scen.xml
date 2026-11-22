@@ -8,6 +8,9 @@
       <ShipGroup>
         <name>
           <english>Battlecruiser Fleet</english>
+          <japanese>巡洋戦艦艦隊</japanese>
+          <chineseSimplified>战列巡洋舰队</chineseSimplified>
+          <chineseTraditional>戰列巡洋艦隊</chineseTraditional>
         </name>
         <objectId>b8c977e6-4f52-529c-970f-39d127db5785</objectId>
         <formation>General</formation>
@@ -30,6 +33,9 @@
       <ShipGroup>
         <name>
           <english>German Scouting Forces</english>
+          <japanese>ドイツ偵察部隊</japanese>
+          <chineseSimplified>德国侦察部队</chineseSimplified>
+          <chineseTraditional>德國偵察部隊</chineseTraditional>
         </name>
         <objectId>297890aa-aed3-56fd-82d1-e036efe5f2d0</objectId>
         <formation>General</formation>
@@ -45,6 +51,9 @@
       <ShipGroup>
         <name>
           <english>1st Battlecruiser Squadron</english>
+          <japanese>第1巡洋戦艦戦隊</japanese>
+          <chineseSimplified>第1战列巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>第1戰列巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>7698f06d-1492-5472-9fc6-86681b2c80c9</objectId>
         <formation>General</formation>
@@ -59,6 +68,9 @@
       <ShipGroup>
         <name>
           <english>2nd Battlecruiser Squadron</english>
+          <japanese>第2巡洋戦艦戦隊</japanese>
+          <chineseSimplified>第2战列巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>第2戰列巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>130aabe9-9e3e-5fd8-81b4-703e5758077d</objectId>
         <formation>General</formation>
@@ -74,6 +86,9 @@
       <ShipGroup>
         <name>
           <english>5th Battle Squadron</english>
+          <japanese>第5戦艦戦隊</japanese>
+          <chineseSimplified>第5战列舰分舰队</chineseSimplified>
+          <chineseTraditional>第5戰列艦分艦隊</chineseTraditional>
         </name>
         <objectId>e38fd328-cead-54ae-aac0-b7ce01fbb283</objectId>
         <formation>General</formation>
@@ -91,6 +106,9 @@
       <ShipGroup>
         <name>
           <english>1st Light Cruiser Squadron</english>
+          <japanese>第1軽巡洋艦戦隊</japanese>
+          <chineseSimplified>第1轻巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>第1輕巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>549d9f6d-d111-50f8-8821-8186c8b2566d</objectId>
         <formation>General</formation>
@@ -108,6 +126,9 @@
       <ShipGroup>
         <name>
           <english>2nd Light Cruiser Squadron</english>
+          <japanese>第2軽巡洋艦戦隊</japanese>
+          <chineseSimplified>第2轻巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>第2輕巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>cc35dfd4-6604-5362-9734-40a78105a1e5</objectId>
         <formation>General</formation>
@@ -124,6 +145,9 @@
       <ShipGroup>
         <name>
           <english>Detached 2nd LCS</english>
+          <japanese>第2軽巡洋艦戦隊別働隊</japanese>
+          <chineseSimplified>第2轻巡洋舰分舰队分遣队</chineseSimplified>
+          <chineseTraditional>第2輕巡洋艦分艦隊分遣隊</chineseTraditional>
         </name>
         <objectId>7df6790e-3349-558b-8974-f68d299022b2</objectId>
         <formation>General</formation>
@@ -136,6 +160,9 @@
       <ShipGroup>
         <name>
           <english>3rd Light Cruiser Squadron</english>
+          <japanese>第3軽巡洋艦戦隊</japanese>
+          <chineseSimplified>第3轻巡洋舰分舰队</chineseSimplified>
+          <chineseTraditional>第3輕巡洋艦分艦隊</chineseTraditional>
         </name>
         <objectId>ecb72073-7c77-58a7-bfa5-d1c064d875cc</objectId>
         <formation>General</formation>
@@ -153,6 +180,9 @@
       <ShipGroup>
         <name>
           <english>1st Destroyer Flotilla</english>
+          <japanese>第1水雷戦隊</japanese>
+          <chineseSimplified>第1驱逐舰队</chineseSimplified>
+          <chineseTraditional>第1驅逐艦隊</chineseTraditional>
         </name>
         <objectId>5befad2d-16a5-57ea-8d58-f144841c9fb1</objectId>
         <formation>General</formation>
@@ -176,6 +206,9 @@
       <ShipGroup>
         <name>
           <english>9th and 10th Destroyer Flotillas</english>
+          <japanese>第9・第10合同水雷戦隊</japanese>
+          <chineseSimplified>第9、第10联合驱逐舰队</chineseSimplified>
+          <chineseTraditional>第9、第10聯合驅逐艦隊</chineseTraditional>
         </name>
         <objectId>b654717f-e5fe-5a96-8e93-7a59567f0bd3</objectId>
         <formation>General</formation>
@@ -197,6 +230,9 @@
       <ShipGroup>
         <name>
           <english>13th Destroyer Flotilla</english>
+          <japanese>第13水雷戦隊</japanese>
+          <chineseSimplified>第13驱逐舰队</chineseSimplified>
+          <chineseTraditional>第13驅逐艦隊</chineseTraditional>
         </name>
         <objectId>cdb4ba52-8026-5c52-8364-9ab693a6f26b</objectId>
         <formation>General</formation>
@@ -219,6 +255,9 @@
       <ShipGroup>
         <name>
           <english>Engadine and escorts</english>
+          <japanese>エンガディンと護衛艦</japanese>
+          <chineseSimplified>恩加丁及护航舰</chineseSimplified>
+          <chineseTraditional>恩加丁及護航艦</chineseTraditional>
         </name>
         <objectId>64c8fd12-8caa-54ea-abd3-663eb2951531</objectId>
         <formation>General</formation>
@@ -232,6 +271,9 @@
       <ShipGroup>
         <name>
           <english>I Scouting Group</english>
+          <japanese>第1偵察群</japanese>
+          <chineseSimplified>第1侦察集群</chineseSimplified>
+          <chineseTraditional>第1偵察集羣</chineseTraditional>
         </name>
         <objectId>48dfc52d-14d4-5975-a4da-fbb382259385</objectId>
         <formation>General</formation>
@@ -247,6 +289,9 @@
       <ShipGroup>
         <name>
           <english>II Scouting Group</english>
+          <japanese>第2偵察群</japanese>
+          <chineseSimplified>第2侦察集群</chineseSimplified>
+          <chineseTraditional>第2偵察集羣</chineseTraditional>
         </name>
         <objectId>61db2fae-909e-547d-acdd-9b5a7ac0cb0e</objectId>
         <formation>General</formation>
@@ -264,6 +309,9 @@
       <ShipGroup>
         <name>
           <english>Detached scouts</english>
+          <japanese>別働偵察隊</japanese>
+          <chineseSimplified>侦察分遣队</chineseSimplified>
+          <chineseTraditional>偵察分遣隊</chineseTraditional>
         </name>
         <objectId>fb93dc9f-0f24-5f6e-906d-79b3628131c3</objectId>
         <formation>General</formation>
@@ -275,6 +323,9 @@
       <ShipGroup>
         <name>
           <english>Detached scout</english>
+          <japanese>別働偵察艦</japanese>
+          <chineseSimplified>侦察分遣舰</chineseSimplified>
+          <chineseTraditional>偵察分遣艦</chineseTraditional>
         </name>
         <objectId>58e60908-602c-5b94-8f2e-631e559ed5bf</objectId>
         <formation>General</formation>
@@ -286,6 +337,9 @@
       <ShipGroup>
         <name>
           <english>Torpedo-Boat Flotilla Leader</english>
+          <japanese>水雷艇部隊司令部</japanese>
+          <chineseSimplified>鱼雷艇部队司令部</chineseSimplified>
+          <chineseTraditional>魚雷艇部隊司令部</chineseTraditional>
         </name>
         <objectId>816cd963-eb3f-5eb9-bfa3-2a3043862fce</objectId>
         <formation>General</formation>
@@ -303,6 +357,9 @@
       <ShipGroup>
         <name>
           <english>II Torpedo-Boat Flotilla</english>
+          <japanese>第2水雷戦隊</japanese>
+          <chineseSimplified>第2鱼雷艇队</chineseSimplified>
+          <chineseTraditional>第2魚雷艇隊</chineseTraditional>
         </name>
         <objectId>8ff46917-5de2-5cdd-ab1c-d390caff2152</objectId>
         <formation>General</formation>
@@ -326,6 +383,9 @@
       <ShipGroup>
         <name>
           <english>VI Torpedo-Boat Flotilla</english>
+          <japanese>第6水雷戦隊</japanese>
+          <chineseSimplified>第6鱼雷艇队</chineseSimplified>
+          <chineseTraditional>第6魚雷艇隊</chineseTraditional>
         </name>
         <objectId>02dbda5e-bbe5-5c69-bce3-14247c0f7465</objectId>
         <formation>General</formation>
@@ -348,6 +408,9 @@
       <ShipGroup>
         <name>
           <english>IX Torpedo-Boat Flotilla</english>
+          <japanese>第9水雷戦隊</japanese>
+          <chineseSimplified>第9鱼雷艇队</chineseSimplified>
+          <chineseTraditional>第9魚雷艇隊</chineseTraditional>
         </name>
         <objectId>8149cb43-71d6-5b02-bfc1-1b32081e5a55</objectId>
         <formation>General</formation>
@@ -19896,6 +19959,32 @@
         </doctrine>
       </ShipLog>
     </shipLogs>
+    <leaderAppointments>
+      <LeaderAppointment>
+        <leaderObjectId>017e9781-0752-5e99-aea1-fb938f25154e</leaderObjectId>
+        <commandObjectId>b8c977e6-4f52-529c-970f-39d127db5785</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>1f90f5a8-04de-5354-942e-f4f187626b64</shipObjectId>
+      </LeaderAppointment>
+      <LeaderAppointment>
+        <leaderObjectId>37fbefbd-ac61-5a34-b5d9-4b42b110ef6a</leaderObjectId>
+        <commandObjectId>e38fd328-cead-54ae-aac0-b7ce01fbb283</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>e73a6cf6-561b-56cb-a338-efec144a3119</shipObjectId>
+      </LeaderAppointment>
+      <LeaderAppointment>
+        <leaderObjectId>70bf946c-1241-5bc5-8056-0a8ae509acef</leaderObjectId>
+        <commandObjectId>cc35dfd4-6604-5362-9734-40a78105a1e5</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>dd094474-a68a-53c1-b7e9-1c5e9dfc92c3</shipObjectId>
+      </LeaderAppointment>
+      <LeaderAppointment>
+        <leaderObjectId>92d2e7b1-4df3-5ea3-b53b-79a485781669</leaderObjectId>
+        <commandObjectId>61db2fae-909e-547d-acdd-9b5a7ac0cb0e</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>fe49fb85-992a-526b-8698-180394d6660a</shipObjectId>
+      </LeaderAppointment>
+    </leaderAppointments>
     <scenarioState>
       <dateTime>1916-05-31T15:30:00Z</dateTime>
       <beginDateTime>1916-05-31T15:30:00Z</beginDateTime>

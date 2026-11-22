@@ -10958,9 +10958,8 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>1fe92e3d-740f-48a4-94f2-8506acffa72d</string>
-     <string>454e6954-a34c-4c93-a803-f2942d2af313</string>
-     <string>5911131c-e3e8-4ef2-95e7-4ad42fa31b45</string>
+     <string>a95b546b-f0e9-5734-92e8-d9aef1353101</string>
+     <string>d526b79a-117b-5d7d-beb1-aef45b971716</string>
     </childrenObjectIds>
     <name>
      <english>Combined Fleet</english>
@@ -11027,6 +11026,143 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
+     <string>1fe92e3d-740f-48a4-94f2-8506acffa72d</string>
+     <string>5911131c-e3e8-4ef2-95e7-4ad42fa31b45</string>
+    </childrenObjectIds>
+    <name>
+     <english>First Fleet</english>
+     <japanese>第1艦隊</japanese>
+     <chineseSimplified>第一舰队</chineseSimplified>
+     <chineseTraditional>第一艦隊</chineseTraditional>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference>
+     <referenceObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</referenceObjectId>
+    </leaderReference>
+    <type>Fleet</type>
+    <formation>General</formation>
+    <objectId>a95b546b-f0e9-5734-92e8-d9aef1353101</objectId>
+    <parentObjectId>d3472847-2d07-482e-8145-8a0c428ce5e2</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>7966a4b9-0668-5828-ae8f-51fb56e8cffc</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
+     <string>454e6954-a34c-4c93-a803-f2942d2af313</string>
+    </childrenObjectIds>
+    <name>
+     <english>Second Fleet</english>
+     <japanese>第2艦隊</japanese>
+     <chineseSimplified>第二舰队</chineseSimplified>
+     <chineseTraditional>第二艦隊</chineseTraditional>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference>
+     <referenceObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</referenceObjectId>
+    </leaderReference>
+    <type>Fleet</type>
+    <formation>General</formation>
+    <objectId>d526b79a-117b-5d7d-beb1-aef45b971716</objectId>
+    <parentObjectId>d3472847-2d07-482e-8145-8a0c428ce5e2</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>0bd6d6ee-64aa-5203-8165-7df985dd71f2</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
      <string>06ee5f21-9a14-423f-858e-f47d1f76f4a5</string>
      <string>c676f069-bf1c-4df4-bb73-0e78f8054873</string>
      <string>b19e5582-8cd9-4267-ae66-764c4752cea8</string>
@@ -11049,7 +11185,7 @@
     <type>General</type>
     <formation>General</formation>
     <objectId>1fe92e3d-740f-48a4-94f2-8506acffa72d</objectId>
-    <parentObjectId>d3472847-2d07-482e-8145-8a0c428ce5e2</parentObjectId>
+    <parentObjectId>a95b546b-f0e9-5734-92e8-d9aef1353101</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -11121,7 +11257,7 @@
     <type>General</type>
     <formation>General</formation>
     <objectId>454e6954-a34c-4c93-a803-f2942d2af313</objectId>
-    <parentObjectId>d3472847-2d07-482e-8145-8a0c428ce5e2</parentObjectId>
+    <parentObjectId>d526b79a-117b-5d7d-beb1-aef45b971716</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -11192,7 +11328,7 @@
     <type>General</type>
     <formation>General</formation>
     <objectId>5911131c-e3e8-4ef2-95e7-4ad42fa31b45</objectId>
-    <parentObjectId>d3472847-2d07-482e-8145-8a0c428ce5e2</parentObjectId>
+    <parentObjectId>a95b546b-f0e9-5734-92e8-d9aef1353101</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>

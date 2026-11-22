@@ -1815,6 +1815,20 @@
     </doctrine>
    </ShipGroup>
   </shipGroups>
+  <leaderAppointments>
+   <LeaderAppointment>
+    <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
+    <commandObjectId>96a18446-8d4a-4b89-a219-d514cade9751</commandObjectId>
+    <post>Commander</post>
+    <shipObjectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</shipObjectId>
+   </LeaderAppointment>
+   <LeaderAppointment>
+    <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
+    <commandObjectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</commandObjectId>
+    <post>Captain</post>
+    <shipObjectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</shipObjectId>
+   </LeaderAppointment>
+  </leaderAppointments>
   <scenarioState>
    <dateTime>1894-07-24T23:45:00Z</dateTime>
    <beginDateTime>1894-07-24T23:45:00Z</beginDateTime>

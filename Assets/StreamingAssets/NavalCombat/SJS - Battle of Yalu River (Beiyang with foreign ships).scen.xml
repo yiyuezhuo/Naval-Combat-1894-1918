@@ -6,6 +6,15 @@
   <namedShipsPath>NamedShips.xml</namedShipsPath>
  </streamingAssetReference>
  <navalGameState>
+  <leaderAppointments>
+   <LeaderAppointment>
+    <leaderObjectId>31837e7c-4f0d-492d-bae1-d05617a22da9</leaderObjectId>
+    <commandObjectId>b4d3a47e-88b4-4860-b11e-2a0164a777ec</commandObjectId>
+    <post>VisitingOfficial</post>
+    <title><english>Chief of the Naval General Staff</english><japanese>軍令部長</japanese><chineseSimplified>军令部部长</chineseSimplified><chineseTraditional>軍令部部長</chineseTraditional></title>
+    <shipObjectId>c4bd2221-a6e2-4646-a59e-60c9e392a80b</shipObjectId>
+   </LeaderAppointment>
+  </leaderAppointments>
   <leadersBuiltin>false</leadersBuiltin>
   <shipClassesBuiltin>false</shipClassesBuiltin>
   <namedShipsBuiltin>false</namedShipsBuiltin>

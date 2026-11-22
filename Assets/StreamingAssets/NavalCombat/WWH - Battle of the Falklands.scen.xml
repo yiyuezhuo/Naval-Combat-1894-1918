@@ -8,6 +8,9 @@
       <ShipGroup>
         <name>
           <english>British South Atlantic Squadron</english>
+          <japanese>イギリス南大西洋戦隊</japanese>
+          <chineseSimplified>英国南大西洋分舰队</chineseSimplified>
+          <chineseTraditional>英國南大西洋分艦隊</chineseTraditional>
         </name>
         <objectId>ed221eed-a657-5390-aafb-fc1166f721da</objectId>
         <formation>General</formation>
@@ -27,6 +30,9 @@
       <ShipGroup>
         <name>
           <english>German East Asia Squadron</english>
+          <japanese>ドイツ東洋艦隊</japanese>
+          <chineseSimplified>德国东亚分舰队</chineseSimplified>
+          <chineseTraditional>德國東亞分艦隊</chineseTraditional>
         </name>
         <objectId>9608de8e-3d4e-57b8-9f7e-b7f2723544e2</objectId>
         <formation>General</formation>
@@ -57,8 +63,8 @@
         <followedTargetObjectId>7a3b3d18-6286-52db-80ac-f6f84b1ef2ff</followedTargetObjectId>
         <followDistanceYards>500</followDistanceYards>
         <position>
-          <LatDeg>-51.63657130104371</LatDeg>
-          <LonDeg>-57.78704839647996</LonDeg>
+          <LatDeg>-51.6715713010437</LatDeg>
+          <LonDeg>-57.72704839648</LonDeg>
         </position>
         <batteryStatus>
           <BatteryStatus>
@@ -396,8 +402,8 @@
         <headingDeg>100</headingDeg>
         <desiredHeadingDeg>100</desiredHeadingDeg>
         <position>
-          <LatDeg>-51.638</LatDeg>
-          <LonDeg>-57.773999999999994</LonDeg>
+          <LatDeg>-51.673</LatDeg>
+          <LonDeg>-57.714</LonDeg>
         </position>
         <batteryStatus>
           <BatteryStatus>
@@ -687,8 +693,8 @@
         <followedTargetObjectId>ea99ed76-a128-5fac-b1ae-cf5058171c48</followedTargetObjectId>
         <followDistanceYards>500</followDistanceYards>
         <position>
-          <LatDeg>-51.63728583128499</LatDeg>
-          <LonDeg>-57.78052430100545</LonDeg>
+          <LatDeg>-51.672285831285</LatDeg>
+          <LonDeg>-57.7205243010054</LonDeg>
         </position>
         <batteryStatus>
           <BatteryStatus>
@@ -1029,8 +1035,8 @@
         <followedTargetObjectId>4c649117-e422-539c-831a-33525eedee92</followedTargetObjectId>
         <followDistanceYards>500</followDistanceYards>
         <position>
-          <LatDeg>-51.63585640929682</LatDeg>
-          <LonDeg>-57.793572286331276</LonDeg>
+          <LatDeg>-51.6708564092968</LatDeg>
+          <LonDeg>-57.7335722863313</LonDeg>
         </position>
         <batteryStatus>
           <BatteryStatus>
@@ -1337,8 +1343,8 @@
         <headingDeg>100</headingDeg>
         <desiredHeadingDeg>100</desiredHeadingDeg>
         <position>
-          <LatDeg>-51.634</LatDeg>
-          <LonDeg>-57.744</LonDeg>
+          <LatDeg>-51.669</LatDeg>
+          <LonDeg>-57.684</LonDeg>
         </position>
         <batteryStatus>
           <BatteryStatus>
@@ -1645,8 +1651,8 @@
         <headingDeg>100</headingDeg>
         <desiredHeadingDeg>100</desiredHeadingDeg>
         <position>
-          <LatDeg>-51.63942725276864</LatDeg>
-          <LonDeg>-57.760950781765466</LonDeg>
+          <LatDeg>-51.6744272527686</LatDeg>
+          <LonDeg>-57.7009507817655</LonDeg>
         </position>
         <batteryStatus>
           <BatteryStatus>
@@ -1937,8 +1943,8 @@
         <headingDeg>100</headingDeg>
         <desiredHeadingDeg>100</desiredHeadingDeg>
         <position>
-          <LatDeg>-51.63370956522914</LatDeg>
-          <LonDeg>-57.8131427212237</LonDeg>
+          <LatDeg>-51.6687095652291</LatDeg>
+          <LonDeg>-57.7531427212237</LonDeg>
         </position>
         <batteryStatus>
           <BatteryStatus>
@@ -3643,16 +3649,64 @@
         </doctrine>
       </ShipLog>
     </shipLogs>
+    <leaderAppointments>
+      <LeaderAppointment>
+        <leaderObjectId>819c8f80-c43a-5cc0-93d8-8f44fa9ea3ae</leaderObjectId>
+        <commandObjectId>ed221eed-a657-5390-aafb-fc1166f721da</commandObjectId>
+        <post>Commander</post>
+        <shipObjectId>4c649117-e422-539c-831a-33525eedee92</shipObjectId>
+      </LeaderAppointment>
+    </leaderAppointments>
     <scenarioState>
       <dateTime>1914-12-08T14:50:00Z</dateTime>
       <beginDateTime>1914-12-08T14:50:00Z</beginDateTime>
       <visibility>ExceptionallyClear</visibility>
       <seaStateBeaufort>0</seaStateBeaufort>
       <globalDescription>
-        <english>Source: High Seas Fleet, 2nd ed., pp. 37–39.</english>
-        <japanese>Source: High Seas Fleet, 2nd ed., pp. 37–39.</japanese>
-        <chineseSimplified>Source: High Seas Fleet, 2nd ed., pp. 37–39.</chineseSimplified>
-        <chineseTraditional>Source: High Seas Fleet, 2nd ed., pp. 37–39.</chineseTraditional>
+        <english>Deployment follows High Seas Fleet, second edition. The British leave harbor at 5 knots, with Carnarvon, Inflexible, Invincible and Cornwall forming the main column. Sturdee is aboard Invincible. Southeast of Cape Pembroke, the Germans steer 085° at 14 knots, with the two armored cruisers abreast and the three light cruisers behind them.
+
+**Differences in the historical timeline**
+
+1. The booklet starts the scenario at 10:50, but the slow British departure column more closely resembles the situation around 09:45–10:00. The official history records Invincible easing to 24 knots during the chase at 10:50, with Glasgow ordered to remain 3 nautical miles ahead and Inflexible ordered onto the starboard quarter to clear the smoke.
+2. Bristol was only coming out of harbor around 10:50.
+3. The booklet dates its German setup to 10:50, but captions the formation diagram 09:20.
+
+**Sources**
+
+High Seas Fleet, second edition, pp. 37–38; [Corbett, Naval Operations, Volume I, Chapter XXIX](https://www.naval-history.net/WW1Book-RN1b.htm); [Sturdee’s despatch](https://www.naval-history.net/WW1Battle1412Falklands.htm).</english>
+        <japanese>Deployment follows High Seas Fleet, second edition. The British leave harbor at 5 knots, with Carnarvon, Inflexible, Invincible and Cornwall forming the main column. Sturdee is aboard Invincible. Southeast of Cape Pembroke, the Germans steer 085° at 14 knots, with the two armored cruisers abreast and the three light cruisers behind them.
+
+**Differences in the historical timeline**
+
+1. The booklet starts the scenario at 10:50, but the slow British departure column more closely resembles the situation around 09:45–10:00. The official history records Invincible easing to 24 knots during the chase at 10:50, with Glasgow ordered to remain 3 nautical miles ahead and Inflexible ordered onto the starboard quarter to clear the smoke.
+2. Bristol was only coming out of harbor around 10:50.
+3. The booklet dates its German setup to 10:50, but captions the formation diagram 09:20.
+
+**Sources**
+
+High Seas Fleet, second edition, pp. 37–38; [Corbett, Naval Operations, Volume I, Chapter XXIX](https://www.naval-history.net/WW1Book-RN1b.htm); [Sturdee’s despatch](https://www.naval-history.net/WW1Battle1412Falklands.htm).</japanese>
+        <chineseSimplified>采用《High Seas Fleet》第二版的部署：英军以 5 节驶出港口，主队依次为 Carnarvon、Inflexible、Invincible、Cornwall；Sturdee 在 Invincible 上。德军在 Cape Pembroke 东南方，航向 085°、航速 14 节，两艘装甲巡洋舰并列，三艘轻巡洋舰在后。
+
+**史料中的时间差异**
+
+1. 剧本书将开局设在 10:50，但英军的低速出港纵队更接近 09:45–10:00 的情况。官方战史记载，10:50 的 Invincible 已在追击中降速至 24 节，Glasgow 奉命保持前方 3 海里，Inflexible 奉命移至右后方避烟。
+2. Bristol 约在 10:50 才正在出港。
+3. 剧本书的德军部署正文标为 10:50，队形图却标为 09:20。
+
+**参考资料**
+
+《High Seas Fleet》第二版，第 37–38 页；[Corbett《海军作战史》第一卷，第 XXIX 章](https://www.naval-history.net/WW1Book-RN1b.htm)；[Sturdee 战报](https://www.naval-history.net/WW1Battle1412Falklands.htm)。</chineseSimplified>
+        <chineseTraditional>采用《High Seas Fleet》第二版的部署：英军以 5 节驶出港口，主队依次为 Carnarvon、Inflexible、Invincible、Cornwall；Sturdee 在 Invincible 上。德军在 Cape Pembroke 东南方，航向 085°、航速 14 节，两艘装甲巡洋舰并列，三艘轻巡洋舰在后。
+
+**史料中的时间差异**
+
+1. 剧本书将开局设在 10:50，但英军的低速出港纵队更接近 09:45–10:00 的情况。官方战史记载，10:50 的 Invincible 已在追击中降速至 24 节，Glasgow 奉命保持前方 3 海里，Inflexible 奉命移至右后方避烟。
+2. Bristol 约在 10:50 才正在出港。
+3. 剧本书的德军部署正文标为 10:50，队形图却标为 09:20。
+
+**参考资料**
+
+《High Seas Fleet》第二版，第 37–38 页；[Corbett《海军作战史》第一卷，第 XXIX 章](https://www.naval-history.net/WW1Book-RN1b.htm)；[Sturdee 战报](https://www.naval-history.net/WW1Battle1412Falklands.htm)。</chineseTraditional>
       </globalDescription>
     </scenarioState>
   </navalGameState>

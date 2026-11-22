@@ -52,6 +52,7 @@ public static class ShipClassPlaceholderRenderAdapter
         {
             objectId = record.objectId,
             casemate = record.mountArcsPattern == MountArcsPattern.Casemate,
+            fixedMount = record is GunMountRecord { mountType: GunMountType.FixedMlrBlr },
             mountLocation = ToPlaceholderMountLocation(record.mountLocation),
             barrels = record.barrels,
 

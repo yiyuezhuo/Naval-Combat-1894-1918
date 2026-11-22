@@ -6525,6 +6525,10 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
    <chineseSimplified>马克西米利安·冯·施佩</chineseSimplified>
    <chineseTraditional>馬克西米利安·馮·施佩</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Maximilian_von_Spee.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>Outstanding</navalOperational>
   <navalTactical>Average</navalTactical>
@@ -6540,6 +6544,10 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
    <chineseSimplified>多维顿·斯特迪</chineseSimplified>
    <chineseTraditional>多維頓·斯特迪</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Doveton_Sturdee.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
   <navalTactical>Average</navalTactical>
@@ -6551,7 +6559,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>David Beatty</english>
+   <japanese>デイヴィッド・ビーティー</japanese>
+   <chineseSimplified>戴维·贝蒂</chineseSimplified>
+   <chineseTraditional>戴維·貝蒂</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/David_Beatty.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
   <navalTactical>AboveAverage</navalTactical>
@@ -6563,7 +6578,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>William Pakenham</english>
+   <japanese>ウィリアム・パケナム</japanese>
+   <chineseSimplified>威廉·帕克纳姆</chineseSimplified>
+   <chineseTraditional>威廉·帕克納姆</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/William_Pakenham.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
   <navalTactical>Unknown</navalTactical>
@@ -6575,7 +6597,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Hugh Evan-Thomas</english>
+   <japanese>ヒュー・エヴァン＝トマス</japanese>
+   <chineseSimplified>休·埃文-托马斯</chineseSimplified>
+   <chineseTraditional>休·埃文-湯瑪斯</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Hugh_Evan-Thomas.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
   <navalTactical>AboveAverage</navalTactical>
@@ -6587,6 +6616,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Edwyn Alexander-Sinclair</english>
+   <japanese>エドウィン・アレクサンダー＝シンクレア</japanese>
+   <chineseSimplified>埃德温·亚历山大-辛克莱</chineseSimplified>
+   <chineseTraditional>埃德溫·亞歷山大-辛克萊</chineseTraditional>
   </name>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6599,6 +6631,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>William Goodenough</english>
+   <japanese>ウィリアム・グッディナフ</japanese>
+   <chineseSimplified>威廉·古迪纳夫</chineseSimplified>
+   <chineseTraditional>威廉·古迪納夫</chineseTraditional>
   </name>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -6611,6 +6646,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Trevylyan Napier</english>
+   <japanese>トレヴェリアン・ネイピア</japanese>
+   <chineseSimplified>特里维利安·纳皮尔</chineseSimplified>
+   <chineseTraditional>特里維利安·納皮爾</chineseTraditional>
   </name>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6623,6 +6661,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>C. D. Roper</english>
+   <japanese>C・D・ローパー</japanese>
+   <chineseSimplified>C·D·罗珀</chineseSimplified>
+   <chineseTraditional>C·D·羅珀</chineseTraditional>
   </name>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6635,6 +6676,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>M. L. Goldsmith</english>
+   <japanese>M・L・ゴールドスミス</japanese>
+   <chineseSimplified>M·L·戈德史密斯</chineseSimplified>
+   <chineseTraditional>M·L·戈德史密斯</chineseTraditional>
   </name>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6647,6 +6691,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>J. U. Farie</english>
+   <japanese>J・U・フェアリ</japanese>
+   <chineseSimplified>J·U·费里</chineseSimplified>
+   <chineseTraditional>J·U·費裏</chineseTraditional>
   </name>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6659,7 +6706,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Franz von Hipper</english>
+   <japanese>フランツ・フォン・ヒッパー</japanese>
+   <chineseSimplified>弗朗茨·冯·希佩尔</chineseSimplified>
+   <chineseTraditional>弗朗茨·馮·希佩爾</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Franz_von_Hipper.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>Outstanding</navalOperational>
   <navalTactical>AboveAverage</navalTactical>
@@ -6671,7 +6725,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Friedrich Bödicker</english>
+   <japanese>フリードリヒ・ベディッカー</japanese>
+   <chineseSimplified>弗里德里希·伯迪克</chineseSimplified>
+   <chineseTraditional>弗里德里希·伯迪克</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Friedrich_Bodicker.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
   <navalTactical>Unknown</navalTactical>
@@ -6683,6 +6744,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Paul Heinrich</english>
+   <japanese>パウル・ハインリヒ</japanese>
+   <chineseSimplified>保罗·海因里希</chineseSimplified>
+   <chineseTraditional>保羅·海因裏希</chineseTraditional>
   </name>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6695,6 +6759,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Schuur</english>
+   <japanese>シュール</japanese>
+   <chineseSimplified>舒尔</chineseSimplified>
+   <chineseTraditional>舒爾</chineseTraditional>
   </name>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6707,6 +6774,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Max Schultz</english>
+   <japanese>マックス・シュルツ</japanese>
+   <chineseSimplified>马克斯·舒尔茨</chineseSimplified>
+   <chineseTraditional>馬克斯·舒爾茨</chineseTraditional>
   </name>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6719,6 +6789,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Goehle</english>
+   <japanese>ゲーレ</japanese>
+   <chineseSimplified>格勒</chineseSimplified>
+   <chineseTraditional>格勒</chineseTraditional>
   </name>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6731,7 +6804,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Reinhard Scheer</english>
+   <japanese>ラインハルト・シェア</japanese>
+   <chineseSimplified>赖因哈德·舍尔</chineseSimplified>
+   <chineseTraditional>賴因哈德·舍爾</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Reinhard_Scheer.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>7cbd9c60-6bcd-5b38-b516-5c117fa285fe</objectId>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -6744,7 +6824,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Martyn Jerram</english>
+   <japanese>マーティン・ジェラム</japanese>
+   <chineseSimplified>马丁·杰拉姆</chineseSimplified>
+   <chineseTraditional>馬丁·傑拉姆</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Martyn_Jerram.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>33d3a6e0-eb6a-5ac4-a294-853391f6dc72</objectId>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6757,6 +6844,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Arthur Leveson</english>
+   <japanese>アーサー・ルーソン</japanese>
+   <chineseSimplified>阿瑟·莱韦森</chineseSimplified>
+   <chineseTraditional>阿瑟·萊韋森</chineseTraditional>
   </name>
   <objectId>94224e94-de57-526d-9e26-8631a3331d8c</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6770,7 +6860,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Alexander Duff</english>
+   <japanese>アレクサンダー・ダフ</japanese>
+   <chineseSimplified>亚历山大·达夫</chineseSimplified>
+   <chineseTraditional>亞歷山大·達夫</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Alexander_Duff.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>062a8b88-d4a6-51ff-911e-f987c0b1866b</objectId>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -6783,6 +6880,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Ernest Gaunt</english>
+   <japanese>アーネスト・ゴーント</japanese>
+   <chineseSimplified>欧内斯特·冈特</chineseSimplified>
+   <chineseTraditional>歐內斯特·岡特</chineseTraditional>
   </name>
   <objectId>464b9b55-d142-5032-880c-3452f06ba817</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6796,7 +6896,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Cecil Burney</english>
+   <japanese>セシル・バーニー</japanese>
+   <chineseSimplified>塞西尔·伯尼</chineseSimplified>
+   <chineseTraditional>塞西爾·伯尼</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Cecil_Burney.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>82e7ee0d-010e-527e-8d5a-bb80fb3a32cd</objectId>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -6809,7 +6916,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Horace Hood</english>
+   <japanese>ホレース・フッド</japanese>
+   <chineseSimplified>赫拉斯·胡德</chineseSimplified>
+   <chineseTraditional>赫拉斯·胡德</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Horace_Hood.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>b4661a01-787c-5072-8dbf-85621952bffe</objectId>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -6822,7 +6936,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Robert Arbuthnot</english>
+   <japanese>ロバート・アーバスノット</japanese>
+   <chineseSimplified>罗伯特·阿巴思诺特</chineseSimplified>
+   <chineseTraditional>羅伯特·阿巴思諾特</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Robert_Arbuthnot.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>88bf28ef-f7f5-5c7c-8814-93a944d5d352</objectId>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>BarelyCompetent</navalOperational>
@@ -6835,7 +6956,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Herbert Heath</english>
+   <japanese>ハーバート・ヒース</japanese>
+   <chineseSimplified>赫伯特·希思</chineseSimplified>
+   <chineseTraditional>赫伯特·希思</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Herbert_Heath.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>400e1ff3-c18e-5739-849c-e056869feb85</objectId>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -6848,6 +6976,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Charles Le Mesurier</english>
+   <japanese>チャールズ・ル・メザラー</japanese>
+   <chineseSimplified>查尔斯·勒梅苏里耶</chineseSimplified>
+   <chineseTraditional>查爾斯·勒梅蘇里耶</chineseTraditional>
   </name>
   <objectId>c7fbb895-52d5-5fa2-96e3-19b79581696b</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6861,6 +6992,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Charles Roper</english>
+   <japanese>チャールズ・ローパー</japanese>
+   <chineseSimplified>查尔斯·罗珀</chineseSimplified>
+   <chineseTraditional>查爾斯·羅珀</chineseTraditional>
   </name>
   <objectId>e58372aa-8025-570a-905f-7e4d0b79f805</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6874,6 +7008,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Charles Wintour</english>
+   <japanese>チャールズ・ウィンター</japanese>
+   <chineseSimplified>查尔斯·温图尔</chineseSimplified>
+   <chineseTraditional>查爾斯·溫圖爾</chineseTraditional>
   </name>
   <objectId>a323c7a7-af81-5094-a795-ccdccf16165b</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6887,6 +7024,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Malcolm Goldsmith</english>
+   <japanese>マルコム・ゴールドスミス</japanese>
+   <chineseSimplified>马尔科姆·戈德史密斯</chineseSimplified>
+   <chineseTraditional>馬爾科姆·戈德史密斯</chineseTraditional>
   </name>
   <objectId>811376fc-0875-556e-a584-c99c3f23e341</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6900,6 +7040,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>James Hawksley</english>
+   <japanese>ジェームズ・ホークスリー</japanese>
+   <chineseSimplified>詹姆斯·霍克斯利</chineseSimplified>
+   <chineseTraditional>詹姆斯·霍克斯利</chineseTraditional>
   </name>
   <objectId>23b1baf0-ac46-51c2-a00c-509791a332fa</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6913,6 +7056,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Anselan Stirling</english>
+   <japanese>アンセラン・スターリング</japanese>
+   <chineseSimplified>安塞兰·斯特林</chineseSimplified>
+   <chineseTraditional>安塞蘭·斯特林</chineseTraditional>
   </name>
   <objectId>f3b11ec3-a01e-5298-9c1d-b9ef0e6fbd88</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6926,6 +7072,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>James Farie</english>
+   <japanese>ジェイムズ・フェアリ</japanese>
+   <chineseSimplified>詹姆斯·费里</chineseSimplified>
+   <chineseTraditional>詹姆斯·費裏</chineseTraditional>
   </name>
   <objectId>45e27daa-0f3e-571f-b02f-70d2a889c694</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6939,7 +7088,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Paul Behncke</english>
+   <japanese>パウル・ベーンケ</japanese>
+   <chineseSimplified>保罗·贝恩克</chineseSimplified>
+   <chineseTraditional>保羅·貝恩克</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Paul_Behncke.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>0a368f7b-3e1c-5206-bdec-f6456a09387f</objectId>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -6952,6 +7108,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Hermann Nordmann</english>
+   <japanese>ヘルマン・ノルトマン</japanese>
+   <chineseSimplified>赫尔曼·诺德曼</chineseSimplified>
+   <chineseTraditional>赫爾曼·諾德曼</chineseTraditional>
   </name>
   <objectId>4a8302a0-38d3-526a-83ad-bfbda201021c</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6965,7 +7124,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Ehrhard Schmidt</english>
+   <japanese>エアハルト・シュミット</japanese>
+   <chineseSimplified>埃尔哈德·施密特</chineseSimplified>
+   <chineseTraditional>埃爾哈德·施密特</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Ehrhard_Schmidt.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>ec9a7d8f-159b-544d-b30a-9ff73a2550cc</objectId>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -6978,6 +7144,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Walter Engelhardt</english>
+   <japanese>ヴァルター・エンゲルハルト</japanese>
+   <chineseSimplified>瓦尔特·恩格尔哈特</chineseSimplified>
+   <chineseTraditional>瓦爾特·恩格爾哈特</chineseTraditional>
   </name>
   <objectId>576b4c0f-0ba2-565e-a9e1-1d8926e6b2b1</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -6991,7 +7160,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Franz Mauve</english>
+   <japanese>フランツ・モーフェ</japanese>
+   <chineseSimplified>弗朗茨·毛弗</chineseSimplified>
+   <chineseTraditional>弗朗茨·毛弗</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Franz_Mauve.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>afacca95-7248-53f0-b07d-6af4f6b03f83</objectId>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>Average</navalOperational>
@@ -7004,6 +7180,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Gottfried von Dalwigk zu Lichtenfels</english>
+   <japanese>ゴットフリート・フォン・ダルヴィク・ツー・リヒテンフェルス</japanese>
+   <chineseSimplified>戈特弗里德·冯·达尔维克·楚·利希滕费尔斯</chineseSimplified>
+   <chineseTraditional>戈特弗裏德·馮·達爾維克·楚·利希滕費爾斯</chineseTraditional>
   </name>
   <objectId>1530b8ea-66b3-5314-8eea-d533f200d775</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -7017,7 +7196,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Ludwig von Reuter</english>
+   <japanese>ルートヴィヒ・フォン・ロイター</japanese>
+   <chineseSimplified>路德维希·冯·罗伊特</chineseSimplified>
+   <chineseTraditional>路德維希·馮·羅伊特</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Ludwig_von_Reuter.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>8db01415-befb-514f-a8ee-572e24d9110c</objectId>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -7030,7 +7216,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Andreas Michelsen</english>
+   <japanese>アンドレアス・ミヒェルゼン</japanese>
+   <chineseSimplified>安德烈亚斯·米歇尔森</chineseSimplified>
+   <chineseTraditional>安德烈亞斯·米歇爾森</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Andreas_Michelsen.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>23e66432-0d1f-5dbd-bf46-545f09455b43</objectId>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -7043,7 +7236,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Conrad Albrecht</english>
+   <japanese>コンラート・アルブレヒト</japanese>
+   <chineseSimplified>康拉德·阿尔布雷希特</chineseSimplified>
+   <chineseTraditional>康拉德·阿爾布雷希特</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Conrad_Albrecht.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>294f3c5f-437a-52b4-b53a-157b02adf3e6</objectId>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -7056,6 +7256,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Wilhelm Hollmann</english>
+   <japanese>ヴィルヘルム・ホルマン</japanese>
+   <chineseSimplified>威廉·霍尔曼</chineseSimplified>
+   <chineseTraditional>威廉·霍爾曼</chineseTraditional>
   </name>
   <objectId>2a961f31-577d-5b68-aa2a-d0ec8aeb6b4e</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -7069,7 +7272,14 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Oskar Heinecke</english>
+   <japanese>オスカー・ハイネッケ</japanese>
+   <chineseSimplified>奥斯卡·海内克</chineseSimplified>
+   <chineseTraditional>奧斯卡·海內克</chineseTraditional>
   </name>
+  <portraitReference>
+   <path>Pictures/Leaders/Oskar_Heinecke.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
   <objectId>d9c3ab2b-5843-5f0c-9b9f-6ebdca66445a</objectId>
   <navalStrategic>Average</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
@@ -7082,6 +7292,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Rudolf Lahs</english>
+   <japanese>ルドルフ・ラース</japanese>
+   <chineseSimplified>鲁道夫·拉斯</chineseSimplified>
+   <chineseTraditional>魯道夫·拉斯</chineseTraditional>
   </name>
   <objectId>05079c04-1edf-57c9-9054-ac4f90279acf</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -7095,6 +7308,9 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
  <Leader>
   <name>
    <english>Gottlieb von Koch</english>
+   <japanese>ゴットリープ・フォン・コッホ</japanese>
+   <chineseSimplified>戈特利布·冯·科赫</chineseSimplified>
+   <chineseTraditional>戈特利布·馮·科赫</chineseTraditional>
   </name>
   <objectId>54e465b7-0d7a-55f9-bde4-5733b9a5970a</objectId>
   <navalStrategic>Average</navalStrategic>
@@ -7103,6 +7319,136 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
   <remark>
    <english>Career-based editorial ratings (strategic / operational / tactical): Average / Average / Average. Strategic = fleet manoeuvre planning; operational = combat/fleet command; tactical = ship command. Ratings may use later career evidence. Provisional Average values explicitly identified in the Japanese rationale are low-confidence scenario estimates, not established historical findings. Sources: https://en.wikipedia.org/wiki/Battle_of_Jutland_order_of_battle https://drouot.com/fr/l/35610727-the-estates-of-the-imperial-navy-officers-christ-and-von</english>
    <japanese>生涯の経歴に基づく編集評価（1916年以後の実績も参照）。戦略＝艦隊の戦略機動計画、戦役＝交戦・艦隊指揮、戦術＝艦長としての指揮。人物同定：第7水雷艇隊司令Gottlieb von Koch。戦略：大艦隊機動の成果は未実証で標準の暫定値。戦役：水雷艇隊および後年の第2水雷部隊指揮官としての経験から標準。戦術：個艇指揮の具体的評価は乏しく標準の暫定値。旗艦S24の艇長Finkおよび同名の動物学者とは区別する。 暫定値はゲーム用の推定であり、史料で能力が確定したことを意味しない。出典：https://en.wikipedia.org/wiki/Battle_of_Jutland_order_of_battle https://drouot.com/fr/l/35610727-the-estates-of-the-imperial-navy-officers-christ-and-von</japanese>
+  </remark>
+ </Leader>
+ <Leader>
+  <name><english>Akiyama Saneyuki</english><japanese>秋山真之</japanese><chineseSimplified>秋山真之</chineseSimplified><chineseTraditional>秋山真之</chineseTraditional></name>
+  <portraitReference>
+   <path>Pictures/Leaders/Akiyama_Saneyuki.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <objectId>819e7fb0-cfd0-51fe-928a-d933fc35f1a8</objectId>
+ </Leader>
+ <Leader>
+  <name><english>Katō Tomosaburō</english><japanese>加藤友三郎</japanese><chineseSimplified>加藤友三郎</chineseSimplified><chineseTraditional>加藤友三郎</chineseTraditional></name>
+  <portraitReference>
+   <path>Pictures/Leaders/Kato_Tomosaburo.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <objectId>d7f25f47-59c1-5585-85c6-39e0556189a3</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>George Dewey</english>
+   <japanese>ジョージ・デューイ</japanese>
+   <chineseSimplified>乔治·杜威</chineseSimplified>
+   <chineseTraditional>喬治·杜威</chineseTraditional>
+  </name>
+  <objectId>46389658-066c-5c9d-80ec-22070ec926d6</objectId>
+  <portraitReference>
+   <path>Pictures/Leaders/George_Dewey.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>Outstanding</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <remark>
+   <english>Commodore commanding the US Asiatic Squadron aboard Olympia at Manila Bay on 1 May 1898.
+
+Scenario ratings (naval strategic / operational / tactical): AboveAverage / Outstanding / AboveAverage. Dewey gathered intelligence and arranged coal and supplies at Hong Kong before the campaign. He kept the squadron together during the night approach and repeated passes at Manila Bay. His earlier service as executive officer of Mississippi under fire at Port Hudson also supports the small-unit rating.
+
+https://www.history.navy.mil/content/history/nhhc/about-us/leadership/director/directors-corner/h-grams/h-gram-018/h-018-5.html
+https://www.history.navy.mil/research/library/z-files/zb-files/zb-files-d/dewey-george.html</english>
+   <chineseSimplified>杜威在香港收集情报、筹措燃煤和补给。夜间进湾和随后的多轮交战中，他保持了分舰队的行动一致。战术评级也参考了他在哈德逊港交战时担任密西西比号副舰长的经历。
+
+https://www.history.navy.mil/content/history/nhhc/about-us/leadership/director/directors-corner/h-grams/h-gram-018/h-018-5.html
+https://www.history.navy.mil/research/library/z-files/zb-files/zb-files-d/dewey-george.html</chineseSimplified>
+  </remark>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Patricio Montojo y Pasarón</english>
+   <japanese>パトリシオ・モントホ・イ・パサロン</japanese>
+   <chineseSimplified>帕特里西奥·蒙托霍-帕萨隆</chineseSimplified>
+   <chineseTraditional>帕特里西奧·蒙托霍-帕薩隆</chineseTraditional>
+  </name>
+  <objectId>5928993f-3040-5711-aab0-dc495eafb767</objectId>
+  <portraitReference>
+   <path>Pictures/Leaders/Patricio_Montojo.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <remark>
+   <english>Rear admiral commanding the Spanish squadron aboard Reina Cristina at the opening of the Battle of Manila Bay on 1 May 1898.
+
+Scenario ratings (naval strategic / operational / tactical): Average / Average / Average. Montojo had planned to defend Subic Bay, but found its defenses incomplete. His choice of a shallow anchorage at Cavite helped crews escape sinking ships but left the squadron poorly supported. He continued directing the battle after leaving his burning flagship. His ship-level record supports a provisional Average.
+
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-battle-of-manila/admiral-patricio-mon.html
+https://www.history.navy.mil/content/history/nhhc/about-us/leadership/director/directors-corner/h-grams/h-gram-018/h-018-5.html</english>
+   <chineseSimplified>蒙托霍原拟防守苏比克湾，到场后发现防御工程尚未完成。甲米地的浅水锚地便于舰员逃生，却难以得到岸防支援。旗舰起火后，他换舰继续指挥。单舰指挥的证据有限，战术暂评一般。
+
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-battle-of-manila/admiral-patricio-mon.html
+https://www.history.navy.mil/content/history/nhhc/about-us/leadership/director/directors-corner/h-grams/h-gram-018/h-018-5.html</chineseSimplified>
+  </remark>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Winfield Scott Schley</english>
+   <japanese>ウィンフィールド・スコット・シュリー</japanese>
+   <chineseSimplified>温菲尔德·斯科特·施莱</chineseSimplified>
+   <chineseTraditional>溫菲爾德·斯科特·施萊</chineseTraditional>
+  </name>
+  <objectId>8fb469a4-61d1-57a9-8f07-b9166244b041</objectId>
+  <portraitReference>
+   <path>Pictures/Leaders/Winfield_Scott_Schley.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <remark>
+   <english>Commodore aboard Brooklyn and senior officer on the blockade line when the battle began on 3 July 1898. Rear Admiral William T. Sampson had left his station aboard New York.
+
+Scenario ratings (naval strategic / operational / tactical): Average / AboveAverage / Average. Schley successfully led the 1884 Greely relief expedition and was the senior officer present during the pursuit at Santiago. His delay in establishing the enemy’s location at Cienfuegos weighs against a higher strategic rating. The captains fought their own ships at Santiago, so the fleet victory alone gives limited evidence for the ship-level rating.
+
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-battle-of-santia.html
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-flying-squadron.html
+https://msa.maryland.gov/megafile/msa/speccol/sc5200/sc5287/000031/000000/000026/restricted/schley_facts.html</english>
+   <chineseSimplified>施莱成功指挥了1884年格里利北极救援远征，又在圣地亚哥追击战中担任在场的资深指挥官。他在西恩富戈斯迟迟未能判明敌情，影响了战略评级。圣地亚哥各舰由各自舰长操舰，施莱的单舰战术暂评一般。
+
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-battle-of-santia.html
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-flying-squadron.html
+https://msa.maryland.gov/megafile/msa/speccol/sc5200/sc5287/000031/000000/000026/restricted/schley_facts.html</chineseSimplified>
+  </remark>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Pascual Cervera y Topete</english>
+   <japanese>パスクアル・セルベラ・イ・トペテ</japanese>
+   <chineseSimplified>帕斯夸尔·塞尔韦拉-托佩特</chineseSimplified>
+   <chineseTraditional>帕斯夸爾·塞爾韋拉-托佩特</chineseTraditional>
+  </name>
+  <objectId>a101da51-5336-542e-bf6a-a1cbe868b656</objectId>
+  <portraitReference>
+   <path>Pictures/Leaders/Pascual_Cervera.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <remark>
+   <english>Rear admiral commanding the Spanish squadron aboard Infanta María Teresa at Santiago de Cuba on 3 July 1898.
+
+Scenario ratings (naval strategic / operational / tactical): AboveAverage / Average / Average. Cervera correctly assessed his squadron’s readiness and warned his superiors about the deployment. He remained at Santiago while the blockade strengthened and eventually sailed under orders. He led the sortie in Infanta María Teresa and took direct charge after her captain was wounded. These decisions support an average battle and ship command rating.
+
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-battle-of-santia/rear-admiral-pascual/_jcr_content.html
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-flying-squadron.html</english>
+   <chineseSimplified>塞尔韦拉在出征前准确判断了舰队的整备状况，并向上级陈明风险。他在圣地亚哥停留期间，美方加强了封锁，最终奉命突围。他乘旗舰率先出港，并在舰长负伤后接手指挥。战役和单舰战术均评为一般。
+
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-battle-of-santia/rear-admiral-pascual/_jcr_content.html
+https://www.history.navy.mil/research/publications/documentary-histories/united-states-navy-s/the-flying-squadron.html</chineseSimplified>
   </remark>
  </Leader>
 </ArrayOfLeader>

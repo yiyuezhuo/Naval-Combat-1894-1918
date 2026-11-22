@@ -2345,6 +2345,9 @@
       <ShipGroup>
         <name>
           <english>British South Atlantic Squadron</english>
+          <japanese>イギリス南大西洋戦隊</japanese>
+          <chineseSimplified>英国南大西洋分舰队</chineseSimplified>
+          <chineseTraditional>英國南大西洋分艦隊</chineseTraditional>
         </name>
         <objectId>50ff1311-2f20-5abd-b465-691b5c62f11d</objectId>
         <formation>LineAhead</formation>
@@ -2361,6 +2364,9 @@
       <ShipGroup>
         <name>
           <english>German East Asia Squadron</english>
+          <japanese>ドイツ東洋艦隊</japanese>
+          <chineseSimplified>德国东亚分舰队</chineseSimplified>
+          <chineseTraditional>德國東亞分艦隊</chineseTraditional>
         </name>
         <objectId>51537105-7ef6-51ee-b1ca-e9e57de7f188</objectId>
         <formation>LineAhead</formation>

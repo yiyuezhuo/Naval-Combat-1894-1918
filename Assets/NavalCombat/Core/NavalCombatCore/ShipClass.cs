@@ -533,7 +533,14 @@ namespace NavalCombatCore
     }
 
     /// <summary>One physical gun mounting; barrels is its gun count.</summary>
-    public sealed class GunMountRecord : MountRecord { }
+    public sealed class GunMountRecord : MountRecord
+    {
+        [System.ComponentModel.DefaultValue(GunMountType.Unspecified)]
+        public GunMountType mountType;
+    }
+
+    // The printed mounting type is independent of the gun's recorded arcs.
+    public enum GunMountType { Unspecified, FixedMlrBlr }
 
     /// <summary>One physical torpedo launcher; barrels is its tube count.</summary>
     public sealed class TorpedoMountRecord : MountRecord

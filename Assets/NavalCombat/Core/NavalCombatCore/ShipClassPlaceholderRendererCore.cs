@@ -69,6 +69,7 @@ public sealed class PlaceholderMountRenderRecord
 {
     public string objectId;
     public bool casemate;
+    public bool fixedMount;
     public PlaceholderMountLocation mountLocation;
     public int barrels;
 
@@ -584,18 +585,38 @@ public static class ShipClassPlaceholderImageRendererCore
                 DrawPhysicalTorpedoMount(canvas,pos,direction,part,shipPixelRect.width/ShipGraphicLayoutBuilder.Dimensions(shipClass).Length,settings.weaponScale,palette.hullOutline,palette.detailFill,palette.torpedoBaseFill);
             else if(part.Kind==ShipGraphicPartKind.Mast)
             {
-                canvas.DrawLine(new(pos.x,pos.y-shipPixelRect.height*.23),new(pos.x,pos.y+shipPixelRect.height*.23),Math.Max(2,settings.lineWidth),palette.hullOutline);
+                canvas.DrawLine(new(pos.x,pos.y-shipPixelRect.height*part.CrossbarWidth/2),new(pos.x,pos.y+shipPixelRect.height*part.CrossbarWidth/2),Math.Max(2,settings.lineWidth),palette.hullOutline);
                 canvas.FillEllipse(pos,Math.Max(2,l/2),Math.Max(2,w/2),palette.hullOutline);
+                if(part.StructureStyle==ShipStructureStyle.TripodMast)
+                    foreach(var side in new[]{-1,1})canvas.DrawLine(pos,new(pos.x-Math.Max(part.Length,.1*ShipGraphicLayoutBuilder.Dimensions(shipClass).Beam/ShipGraphicLayoutBuilder.Dimensions(shipClass).Length)*shipPixelRect.width,pos.y+side*Math.Max(part.Width*3,.1)*shipPixelRect.height),settings.lineWidth,palette.hullOutline);
             }
             else if(part.Kind==ShipGraphicPartKind.Funnel)
             {
-                canvas.FillEllipse(pos,l/2,w/2,palette.funnelOutline);
-                canvas.FillEllipse(pos,Math.Max(1,l/2-settings.lineWidth),Math.Max(1,w/2-settings.lineWidth),palette.funnelFill);
+                var offset=-Math.Tan(part.RakeDegrees*Math.PI/180)*part.Height/ShipGraphicLayoutBuilder.Dimensions(shipClass).Length*shipPixelRect.width;
+                for(int i=0;i<=Math.Ceiling(Math.Abs(offset));i++)
+                    canvas.FillEllipse(new(pos.x+Math.Sign(offset)*i,pos.y),l/2,w/2,palette.funnelOutline);
+                for(int i=0;i<=Math.Ceiling(Math.Abs(offset));i++)
+                    canvas.FillEllipse(new(pos.x+Math.Sign(offset)*i,pos.y),Math.Max(1,l/2-settings.lineWidth),Math.Max(1,w/2-settings.lineWidth),palette.funnelFill);
+                var top=new PixelVector2(pos.x+offset,pos.y);
+                canvas.FillEllipse(top,l/2,w/2,palette.funnelOutline);
+                canvas.FillEllipse(top,Math.Max(1,l/2-settings.lineWidth),Math.Max(1,w/2-settings.lineWidth),palette.funnelFill);
             }
             else if(part.Kind==ShipGraphicPartKind.Deck)
             {
                 for(var px=Math.Max(0,(int)(pos.x-l/2));px<Math.Min(canvas.width,pos.x+l/2);px++)
                     if(!double.IsNaN(topEdge[px])) canvas.DrawLine(new(px,Math.Max(topEdge[px],pos.y-w/2)),new(px,Math.Min(bottomEdge[px],pos.y+w/2)),1,palette.detailFill);
+            }
+            else if(part.Kind==ShipGraphicPartKind.Bridge)
+            {
+                var wings=part.WingWidth*shipPixelRect.height;
+                DrawDeckBlock(canvas,new PixelRect(pos.x-l/2,pos.y-wings/2,l,wings),palette.detailFill,palette.hullOutline,settings.lineWidth);
+                if(part.StructureStyle==ShipStructureStyle.ClosedBridge)DrawDeckBlock(canvas,new PixelRect(pos.x-l/2,pos.y-w*.325,l,w*.65),palette.detailFill,palette.hullOutline,settings.lineWidth);
+            }
+            else if(part.StructureStyle==ShipStructureStyle.BeveledDeckhouse)
+            {
+                var polygon=ShipGraphicLayoutBuilder.HousingOutline(ShipGunHousingShape.Beveled).Select(v=>new PixelVector2(pos.x+v.Y*l,pos.y+v.X*w)).ToArray();
+                canvas.FillPolygon(polygon,palette.detailFill);
+                for(int i=0;i<polygon.Length;i++)canvas.DrawLine(polygon[i],polygon[(i+1)%polygon.Length],settings.lineWidth,palette.hullOutline);
             }
             else DrawDeckBlock(canvas,new PixelRect(pos.x-l/2,pos.y-w/2,l,w),palette.detailFill,palette.hullOutline,settings.lineWidth);
         }
@@ -1380,9 +1401,10 @@ public static class ShipClassPlaceholderImageRendererCore
         }
         var side=new PixelVector2(-direction.y,direction.x);
         var spacing=width/Math.Max(2,part.Barrels+1);
+        var pivot=pos+new PixelVector2(part.GunPivotOffset.Y,part.GunPivotOffset.X)*pixelsPerMeter;
         for(var i=0;i<part.Barrels;i++)
         {
-            var at=pos+side*((i-(part.Barrels-1)/2d)*spacing);
+            var at=pivot+side*((i-(part.Barrels-1)/2d)*spacing);
             var start=part.BarrelStart*pixelsPerMeter;var tube=part.BarrelLength*pixelsPerMeter;
             var clip=ShipGraphicLayoutBuilder.VisibleBarrelStart(part,length/pixelsPerMeter)*pixelsPerMeter;
             var stations=new[]{(T:0d,D:3d),(T:.2,D:2.8),(T:.6,D:1.8),(T:1d,D:1.4)};
@@ -1423,12 +1445,19 @@ public static class ShipClassPlaceholderImageRendererCore
             Polygon(ShipGraphicLayoutBuilder.HousingOutline(part.HousingShape)
                 .Select(v=>pos+across*(v.X*width)+forward*(v.Y*length)).ToArray());
         }
+        else if(part.Appearance==ShipGunAppearance.FixedMount)
+        {
+            var a=part.RestAngle*Math.PI/180;
+            var forward=new PixelVector2(Math.Cos(a),Math.Sin(a));
+            var across=new PixelVector2(-forward.y,forward.x);
+            Polygon([pos-across*(width*.4)-forward*(length*.45),pos+across*(width*.4)-forward*(length*.45),
+                pos+across*(width*.4)+forward*(length*.45),pos-across*(width*.4)+forward*(length*.45)]);
+        }
         else if(part.Appearance==ShipGunAppearance.Casemate)
         {
-            var a=part.RestAngle*Math.PI/180;var forward=new PixelVector2(Math.Cos(a),Math.Sin(a));
-            var across=new PixelVector2(-forward.y,forward.x);
-            Polygon([pos-across*(width/2)-forward*(length/2),pos+across*(width/2)-forward*(length/2),
-                pos+across*(width/2)+forward*(length/2),pos-across*(width/2)+forward*(length/2)]);
+            canvas.FillEllipse(pos,length/2,width/2,outline);
+            if(length>2 && width>2)
+                canvas.FillEllipse(pos,length/2-1,width/2-1,new RgbaColor(fill.r,fill.g,fill.b,255));
         }
         else
         {

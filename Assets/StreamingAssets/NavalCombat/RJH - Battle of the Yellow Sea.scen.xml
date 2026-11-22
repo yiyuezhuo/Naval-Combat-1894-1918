@@ -6,6 +6,15 @@
   <namedShipsPath>NamedShips.xml</namedShipsPath>
  </streamingAssetReference>
  <navalGameState>
+  <leaderAppointments>
+   <LeaderAppointment>
+    <leaderObjectId>d03cc3f1-4ede-4b12-80d0-9443331b9645</leaderObjectId>
+    <commandObjectId>63eb987e-43e6-4536-bfea-558feebc76e4</commandObjectId>
+    <post>DeputyCommander</post>
+    <title><english>Battle Line Deputy Commander</english><japanese>戦列副司令官</japanese><chineseSimplified>战列线副舰队司令</chineseSimplified><chineseTraditional>戰列線副艦隊司令</chineseTraditional></title>
+    <shipObjectId>cf9528df-738a-4bed-a0e4-ebecd72b3bd8</shipObjectId>
+   </LeaderAppointment>
+  </leaderAppointments>
   <leadersBuiltin>false</leadersBuiltin>
   <shipClassesBuiltin>false</shipClassesBuiltin>
   <namedShipsBuiltin>false</namedShipsBuiltin>

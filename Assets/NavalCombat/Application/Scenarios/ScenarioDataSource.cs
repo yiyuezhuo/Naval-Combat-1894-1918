@@ -33,7 +33,7 @@ public sealed record ScenarioCatalogEntry(
     public ScenarioRecommendation Recommendation { get; init; }
     public string Prefix => FileName.Split(" - ", 2, StringSplitOptions.None)[0].ToUpperInvariant();
     public bool IsTutorial => Prefix == "TT";
-    public string WarCode => Prefix.Length == 3 && Prefix[..2] is "SJ" or "RJ" or "BR" or "WW" ? Prefix[..2] : "Other";
+    public string WarCode => Prefix.Length == 3 && Prefix[..2] is "SJ" or "RJ" or "BR" or "WW" or "SA" ? Prefix[..2] : "Other";
     public string HistoryCode => Historical.HasValue ? (Historical.Value ? "H" : "S") : Prefix.Length==3 && Prefix[2] is 'H' or 'S' ? Prefix[2].ToString() : "Other";
 }
 

@@ -6,6 +6,22 @@
   <namedShipsPath>NamedShips.xml</namedShipsPath>
  </streamingAssetReference>
  <navalGameState>
+  <leaderAppointments>
+   <LeaderAppointment>
+    <leaderObjectId>819e7fb0-cfd0-51fe-928a-d933fc35f1a8</leaderObjectId>
+    <commandObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</commandObjectId>
+    <post>StaffOfficer</post>
+    <title><english>Combined Fleet Staff Officer</english><japanese>聯合艦隊参謀</japanese><chineseSimplified>联合舰队参谋</chineseSimplified><chineseTraditional>聯合艦隊參謀</chineseTraditional></title>
+    <shipObjectId>a2ced0f7-23ce-4611-87d9-bba5cde1464c</shipObjectId>
+   </LeaderAppointment>
+   <LeaderAppointment>
+    <leaderObjectId>d7f25f47-59c1-5585-85c6-39e0556189a3</leaderObjectId>
+    <commandObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</commandObjectId>
+    <post>ChiefOfStaff</post>
+    <title><english>Combined Fleet Chief of Staff</english><japanese>聯合艦隊参謀長</japanese><chineseSimplified>联合舰队参谋长</chineseSimplified><chineseTraditional>聯合艦隊參謀長</chineseTraditional></title>
+    <shipObjectId>a2ced0f7-23ce-4611-87d9-bba5cde1464c</shipObjectId>
+   </LeaderAppointment>
+  </leaderAppointments>
   <leadersBuiltin>false</leadersBuiltin>
   <shipClassesBuiltin>false</shipClassesBuiltin>
   <namedShipsBuiltin>false</namedShipsBuiltin>
@@ -25217,9 +25233,9 @@
     </childrenObjectIds>
     <name>
      <english>Pacific Fleet</english>
-     <japanese />
-     <chineseSimplified />
-     <chineseTraditional />
+     <japanese>ロシア第2太平洋艦隊</japanese>
+     <chineseSimplified>俄国第二太平洋舰队</chineseSimplified>
+     <chineseTraditional>俄國第二太平洋艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -26468,6 +26484,9 @@
     </childrenObjectIds>
     <name>
      <english>First Division</english>
+     <japanese>第1戦艦隊</japanese>
+     <chineseSimplified>第一装甲舰支队</chineseSimplified>
+     <chineseTraditional>第一裝甲艦支隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -26548,6 +26567,9 @@
     </childrenObjectIds>
     <name>
      <english>Second Division</english>
+     <japanese>第2戦艦隊</japanese>
+     <chineseSimplified>第二装甲舰支队</chineseSimplified>
+     <chineseTraditional>第二裝甲艦支隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -26628,6 +26650,9 @@
     </childrenObjectIds>
     <name>
      <english>Third Division</english>
+     <japanese>第3戦艦隊</japanese>
+     <chineseSimplified>第三装甲舰支队</chineseSimplified>
+     <chineseTraditional>第三裝甲艦支隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -26706,6 +26731,9 @@
     </childrenObjectIds>
     <name>
      <english>Attached Cruisers</english>
+     <japanese>艦隊付属巡洋艦</japanese>
+     <chineseSimplified>直属巡洋舰</chineseSimplified>
+     <chineseTraditional>直屬巡洋艦</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -26784,6 +26812,9 @@
     </childrenObjectIds>
     <name>
      <english>First Cruiser Division</english>
+     <japanese>第1巡洋艦隊</japanese>
+     <chineseSimplified>第一巡洋舰支队</chineseSimplified>
+     <chineseTraditional>第一巡洋艦支隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -26863,6 +26894,9 @@
     </childrenObjectIds>
     <name>
      <english>Second Scouting Division</english>
+     <japanese>第2偵察隊</japanese>
+     <chineseSimplified>第二侦察支队</chineseSimplified>
+     <chineseTraditional>第二偵察支隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -26941,6 +26975,9 @@
     </childrenObjectIds>
     <name>
      <english>1st Destroyer Division</english>
+     <japanese>第1駆逐艦隊</japanese>
+     <chineseSimplified>第一驱逐舰支队</chineseSimplified>
+     <chineseTraditional>第一驅逐艦支隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -27020,6 +27057,9 @@
     </childrenObjectIds>
     <name>
      <english>2nd Destroyer Division</english>
+     <japanese>第2駆逐艦隊</japanese>
+     <chineseSimplified>第二驱逐舰支队</chineseSimplified>
+     <chineseTraditional>第二驅逐艦支隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -27102,6 +27142,9 @@
     </childrenObjectIds>
     <name>
      <english>Transport Squadron</english>
+     <japanese>輸送船隊</japanese>
+     <chineseSimplified>运输船队</chineseSimplified>
+     <chineseTraditional>運輸船隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>

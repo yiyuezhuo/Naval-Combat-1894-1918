@@ -5,6 +5,8 @@ using System.Linq;
 /// <summary>Deterministic physical layout; no canvas, glyph scale or per-ship target state.</summary>
 public static class ShipGraphicLayoutBuilder
 {
+    // Lower ring of the waterline mesh, in metres (Z) and fractions of the upper ring (XY).
+    public const double HullBottomZ = -.3, HullBottomBeamScale = .9, HullBottomLengthScale = .99;
     public static ShipGraphicParameters EditableParameters(ShipClassPlaceholderRenderInput input)
     {
         var layout=Build(input);
@@ -12,9 +14,9 @@ public static class ShipGraphicLayoutBuilder
         {
             source=input.graphicParameters?.source??"",notes=input.graphicParameters?.notes??"",
             freeboard=layout.Freeboard,bowFullness=input.graphicParameters?.bowFullness??1,sternFullness=input.graphicParameters?.sternFullness??.65,
-            replaceStructures=true,
+            replaceStructures=true,mainBridgeId=input.graphicParameters?.mainBridgeId??"",
             structures=layout.Parts.Where(p=>p.Kind is ShipGraphicPartKind.Deck or ShipGraphicPartKind.Deckhouse or ShipGraphicPartKind.Bridge or ShipGraphicPartKind.Mast or ShipGraphicPartKind.Funnel)
-                .Select(p=>new ShipGraphicStructure {kind=p.Kind,x=p.X,y=p.Y,z=p.Z,width=p.Width,length=p.Length,height=p.Height}).ToList(),
+                .Select(p=>new ShipGraphicStructure {objectId=p.StructureId,kind=p.Kind,x=p.X,y=p.Y,z=p.Z,width=p.Width,length=p.Length,height=p.Height,style=p.StructureStyle,wingWidth=p.WingWidth,crossbarWidth=p.CrossbarWidth,rakeDegrees=p.RakeDegrees}).ToList(),
             mounts=layout.Parts.Where(p=>p.Kind==ShipGraphicPartKind.Gun)
                 .Select(p=>new ShipGraphicMountOverride {batteryId=p.BatteryId,mountRecordId=p.MountRecordId,
                     x=p.X,y=p.Y,z=p.Z,width=p.Width,length=p.Length,height=p.Height,barbetteDiameter=p.BarbetteDiameter,barrelLength=0,exposedBarrelLength=p.ExposedBarrelLength,restAngle=p.RestAngle,appearance=p.Appearance,housingShape=p.HousingShape,fixedHousing=p.FixedHousing}).ToList(),
@@ -44,10 +46,11 @@ public static class ShipGraphicLayoutBuilder
             .Concat(Enumerable.Range(1,40).Select(i=>-.28+.78*i/40)).ToArray();
         foreach(var y in stations) result.Hull.Add((-Breadth(y),y));
         foreach(var y in stations.Skip(1).SkipLast(1).Reverse()) result.Hull.Add((Breadth(y),y));
+        int automaticIndex=0;
         void Structure(ShipGraphicPartKind kind,double x,double y,double z,double w,double l,double h)
         {
-            result.Parts.Add(new(kind,Finite(x),Finite(y),Positive(w,.1),Positive(l,.02),0,1,0)
-                { Z=Finite(z,deck),Height=Positive(h,1) });
+            result.Parts.Add(new(kind,x,y,w,l,0,1,0)
+                { Z=z,Height=h,StructureId="auto-"+automaticIndex++,WingWidth=w,CrossbarWidth=.45 });
         }
         if (p?.replaceStructures != true)
         {
@@ -59,11 +62,29 @@ public static class ShipGraphicLayoutBuilder
                 : input.type is PlaceholderShipType.ArmoredCruiser or PlaceholderShipType.Destroyer ? 3 : 2;
             for(var i=0;i<count;i++) Structure(ShipGraphicPartKind.Funnel,0,.06-i*.095,deck+beam*.13,.18,.035,beam*.55);
         }
-        foreach(var s in p?.structures ?? new())
+        var authored=p?.structures??new();
+        var resolved=new Dictionary<ShipGraphicStructure,ShipGraphicPart>();
+        var visiting=new HashSet<ShipGraphicStructure>();
+        ShipGraphicPart Resolve(ShipGraphicStructure s)
         {
-            if(s.kind is ShipGraphicPartKind.Gun or ShipGraphicPartKind.RapidFire or ShipGraphicPartKind.DeckTorpedo or ShipGraphicPartKind.SubmergedTorpedo)
-            { result.Warnings.Add("Structure cannot create weapons: " + s.kind); continue; }
-            Structure(s.kind,s.x,s.y,s.z,s.width,s.length,s.height);
+            if(resolved.TryGetValue(s,out var found))return found;
+            if(!visiting.Add(s)){result.Warnings.Add("Structure attachment cycle: "+s.objectId);return null;}
+            var parent=string.IsNullOrEmpty(s.parentId)?null:authored.FirstOrDefault(v=>v.objectId==s.parentId);
+            var support=parent!=null&&IsStructure(parent.kind)?Resolve(parent):null;
+            if(!string.IsNullOrEmpty(s.parentId)&&support==null)result.Warnings.Add("Missing structure support: "+s.objectId);
+            var x=Finite(s.x)+(support?.X??0);var y=Finite(s.y)+(support?.Y??0);
+            var z=Finite(s.z)+(support!=null?support.Z+support.Height:s.attachedToDeck?deck:0);
+            var w=Positive(s.width,.1);var l=Positive(s.length,.02);
+            if(s.kind==ShipGraphicPartKind.Funnel&&s.style==ShipStructureStyle.RoundFunnel)l=w*beam/length;
+            found=new(s.kind,x,y,w,l,0,1,0) { Z=z,Height=Positive(s.height,1),
+                StructureId=string.IsNullOrEmpty(s.objectId)?"legacy-"+authored.IndexOf(s):s.objectId,
+                StructureStyle=s.style,WingWidth=Positive(s.wingWidth,w),CrossbarWidth=Positive(s.crossbarWidth,.45),RakeDegrees=Math.Clamp(Finite(s.rakeDegrees),-45,45) };
+            visiting.Remove(s);resolved[s]=found;return found;
+        }
+        foreach(var s in authored)
+        {
+            if(!IsStructure(s.kind)){result.Warnings.Add("Structure cannot create weapons: "+s.kind);continue;}
+            result.Parts.Add(Resolve(s));
         }
         var entries = new List<(PlaceholderMountRenderRecord Record,int Battery,int RecordIndex,double Caliber,string BatteryId)>();
         for(var b=0;b<input.batteryRecords.Count;b++)
@@ -74,7 +95,7 @@ public static class ShipGraphicLayoutBuilder
         {
             var placements=PlaceGuns(group.Select(e=>
                 new GunPlacement(e.Battery,e.RecordIndex,e.Record,e.Caliber,
-                    p?.mounts.FirstOrDefault(o=>!string.IsNullOrEmpty(e.Record.objectId) && o.batteryId==e.BatteryId && o.mountRecordId==e.Record.objectId))),length,beam,result.Warnings);
+                    p?.mounts.FirstOrDefault(o=>!o.automaticPosition && !string.IsNullOrEmpty(e.Record.objectId) && o.batteryId==e.BatteryId && o.mountRecordId==e.Record.objectId))),length,beam,result.Warnings);
             foreach(var e in group)
             {
                 var (x,_)=Position(e.Record.mountLocation,0,1);
@@ -91,27 +112,45 @@ public static class ShipGraphicLayoutBuilder
                 var actualLength=o==null?size.Length:Positive(o.length,size.Length/length)*length;
                 var appearance=o?.appearance??style;
                 var baseDiameter=Positive(o?.barbetteDiameter??0,appearance==ShipGunAppearance.Turret?actualWidth*1.08:0);
-                // At arbitrary training angles either footprint axis can face the hull edge.
-                if(x!=0) x=Math.Sign(x)*Math.Min(Math.Abs(x),Math.Max(0,Breadth(y)-Math.Max(baseDiameter,Math.Max(actualWidth,actualLength))/beam*.5));
+                var height=Positive(o?.height??0,GunSize(e.Caliber,e.Record.barrels,beam,appearance).Height);
                 var z=deck;
-                foreach(var structure in result.Parts.Where(s=>s.Kind is ShipGraphicPartKind.Deck or ShipGraphicPartKind.Deckhouse))
-                    if(Math.Abs(x-structure.X)<structure.Width/2+actualWidth/beam/2
-                        && Math.Abs(y-structure.Y)<structure.Length/2+actualLength/length/2)
-                        z=Math.Max(z,structure.Z+structure.Height);
-                if(appearance==ShipGunAppearance.Turret) z+=.65;
+                if(appearance==ShipGunAppearance.Casemate && x!=0 && (o==null || o.automaticPosition))
+                {
+                    // One battery deck below the weather deck, with clearance above the waterline on low hulls.
+                    z=deck-Math.Min(Math.Max(2.4,height+.25),deck*.65);
+                    var depth=(deck-(z+height*.5))/(deck-HullBottomZ);
+                    var station=y/(1-depth*(1-HullBottomLengthScale));
+                    var side=Breadth(station)*(1-depth*(1-HullBottomBeamScale));
+                    // The fixed housing spans X in ship axes. Bury most of it and leave its outer face exposed.
+                    x=Math.Sign(x)*Math.Max(0,side-actualWidth*.25/beam);
+                }
+                else
+                {
+                    // At arbitrary training angles either footprint axis can face the hull edge.
+                    if(x!=0) x=Math.Sign(x)*Math.Min(Math.Abs(x),Math.Max(0,Breadth(y)-Math.Max(baseDiameter,Math.Max(actualWidth,actualLength))/beam*.5));
+                    foreach(var structure in result.Parts.Where(s=>s.Kind is ShipGraphicPartKind.Deck or ShipGraphicPartKind.Deckhouse))
+                        if(Math.Abs(x-structure.X)<structure.Width/2+actualWidth/beam/2
+                            && Math.Abs(y-structure.Y)<structure.Length/2+actualLength/length/2)
+                            z=Math.Max(z,structure.Z+structure.Height);
+                    if(appearance==ShipGunAppearance.Turret) z+=.65;
+                }
+                if(o!=null && !o.automaticPosition) { x=Finite(o.x); y=Finite(o.y); z=Finite(o.z,z); }
+                (double X,double Y) pivot=(0,0);
+                if(appearance==ShipGunAppearance.Casemate)
+                    pivot=x!=0 ? (Math.Sign(x)*actualWidth*.38,0) : (0,Math.Sign(y)*actualLength*.38);
                 var barrelTotal=Positive(o?.barrelLength??0,caliber*Positive(input.batteryRecords[e.Battery].barrelLengthCalibers,30));
                 var start=-Math.Min(barrelTotal*.2,actualWidth*.35);
                 var face=appearance switch {
                     ShipGunAppearance.Turret=>actualLength*.47,
                     ShipGunAppearance.Shield=>actualLength*.15+.075,
-                    ShipGunAppearance.Casemate=>actualLength*.5,
+                    ShipGunAppearance.Casemate=>(x!=0?actualWidth:actualLength)*.5,
                     _=>0d
                 };
                 var exposed=Positive(o?.exposedBarrelLength??0,Math.Max(caliber,barrelTotal+start-face));
                 barrelTotal=face+exposed-start;
-                result.Parts.Add(new(ShipGraphicPartKind.Gun,o==null?x:Finite(o.x),o==null?y:Finite(o.y),
-                    o==null?width/beam:Positive(o.width,width/beam),actualLength/length,Math.Sin(angle),Math.Cos(angle),Math.Max(1,e.Record.barrels))
-                { Z=o==null?z:Finite(o.z,z),Height=Positive(o?.height??0,GunSize(e.Caliber,e.Record.barrels,beam,appearance).Height),BarbetteDiameter=baseDiameter,BarrelLength=barrelTotal,Caliber=caliber,BarrelStart=start,BarrelFace=face,ExposedBarrelLength=exposed,
+                var pivotDepth=Math.Abs(pivot.X)+Math.Abs(pivot.Y);
+                result.Parts.Add(new(ShipGraphicPartKind.Gun,x,y,actualWidth/beam,actualLength/length,Math.Sin(angle),Math.Cos(angle),Math.Max(1,e.Record.barrels))
+                { Z=z,Height=height,BarbetteDiameter=baseDiameter,GunPivotOffset=pivot,BarrelLength=barrelTotal,Caliber=caliber,BarrelStart=start-pivotDepth,BarrelFace=face-pivotDepth,ExposedBarrelLength=exposed,
                     BatteryId=e.BatteryId,MountRecordId=e.Record.objectId??"",BatteryIndex=e.Battery,RecordIndex=e.RecordIndex,
                     RestAngle=rest,Appearance=o?.appearance??style,HousingShape=o?.housingShape??ShipGunHousingShape.Beveled,FixedHousing=o?.fixedHousing??false });
             }
@@ -152,17 +191,20 @@ public static class ShipGraphicLayoutBuilder
                     RecordIndex=r,MountRecordId=rec.objectId??"",RestAngle=rest });
             }
         }
-        var bridge=result.Parts.FirstOrDefault(s=>s.Kind==ShipGraphicPartKind.Bridge);
+        var bridge=result.Parts.FirstOrDefault(s=>s.Kind==ShipGraphicPartKind.Bridge&&s.StructureId==p?.mainBridgeId)
+            ??result.Parts.FirstOrDefault(s=>s.Kind==ShipGraphicPartKind.Bridge);
         result.Observer=bridge==null ? (beam*.1,length*.22,deck+beam*.25+1.7)
             : (bridge.X*beam+Math.Min(1,bridge.Width*beam*.2),(bridge.Y+bridge.Length*.3)*length,bridge.Z+bridge.Height+1.7);
         if(p?.customObserver==true) result.Observer=(Finite(p.observerX)*beam,Finite(p.observerY)*length,Finite(p.observerZ,result.Observer.Z));
         return result;
     }
 
+    public static bool IsStructure(ShipGraphicPartKind kind) => kind is ShipGraphicPartKind.Deck or ShipGraphicPartKind.Deckhouse or ShipGraphicPartKind.Bridge or ShipGraphicPartKind.Mast or ShipGraphicPartKind.Funnel;
+
     // IDs associate authored overrides only. Physical size and armament determine placement.
     sealed record GunPlacement(int Battery,int RecordIndex,PlaceholderMountRenderRecord Record,double Caliber,ShipGraphicMountOverride Override);
     internal static ShipGunAppearance DefaultAppearance(double caliber,PlaceholderMountRenderRecord record) =>
-        record.casemate?ShipGunAppearance.Casemate:caliber>=7 || record.barrels>1?ShipGunAppearance.Turret:ShipGunAppearance.Shield;
+        record.fixedMount?ShipGunAppearance.FixedMount:record.casemate?ShipGunAppearance.Casemate:caliber>=7 || record.barrels>1?ShipGunAppearance.Turret:ShipGunAppearance.Shield;
 
     // Envelope fit to the plan comparisons in docs/SHIP_GUN_APPEARANCE.md, not measured hardware.
     // Crew/breech room is additive; shield/open footprints must not inherit enclosed-turret bulk.
@@ -187,8 +229,11 @@ public static class ShipGraphicLayoutBuilder
 
     // Clip only invisible gunhouse internals. Nominal length, muzzle and taper stations stay unchanged.
     public static double VisibleBarrelStart(ShipGraphicPart part,double mountLength) =>
-        part.Appearance==ShipGunAppearance.Turret
-            ? Math.Max(part.BarrelStart,-mountLength*.30+Math.Clamp(part.Caliber*2,.08,.65)) : part.BarrelStart;
+        part.Appearance switch {
+            ShipGunAppearance.Casemate => Math.Max(0,part.BarrelStart),
+            ShipGunAppearance.Turret => Math.Max(part.BarrelStart,-mountLength*.30+Math.Clamp(part.Caliber*2,.08,.65)),
+            _ => part.BarrelStart
+        };
 
     static Dictionary<(int,int),double> PlaceGuns(IEnumerable<GunPlacement> source,double length,double beam,List<string> warnings)
     {
