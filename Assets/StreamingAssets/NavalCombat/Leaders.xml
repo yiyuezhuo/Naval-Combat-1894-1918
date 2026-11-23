@@ -130,7 +130,7 @@ https://en.wikipedia.org/wiki/Fang_Boqian</english>
    <chineseTraditional>林國祥</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Lin_Guoxiang.png</path>
+   <path>Pictures/Leaders/Lin_Guoxiang.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -153,7 +153,7 @@ https://en.wikipedia.org/wiki/Fang_Boqian</english>
    <chineseTraditional>林泰曾</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Lin_Taizeng.png</path>
+   <path>Pictures/Leaders/Lin_Taizeng.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -209,7 +209,7 @@ https://en.wikipedia.org/wiki/Liu_Buchan</english>
    <chineseTraditional>林履中</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Lin_Lvzhong.png</path>
+   <path>Pictures/Leaders/Lin_Lvzhong.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -237,7 +237,7 @@ https://zh.wikipedia.org/wiki/%E6%9E%97%E5%B1%A5%E4%B8%AD</english>
    <chineseTraditional>黃建勳</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Huang_Jianxun.png</path>
+   <path>Pictures/Leaders/Huang_Jianxun.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -265,7 +265,7 @@ https://zh.wikipedia.org/zh-hans/%E9%BB%84%E5%BB%BA%E5%8B%8B</english>
    <chineseTraditional>葉祖珪</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Ye_Zugui.png</path>
+   <path>Pictures/Leaders/Ye_Zugui.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -293,7 +293,7 @@ https://zh.wikipedia.org/zh-hant/%E5%8F%B6%E7%A5%96%E7%8F%AA</english>
    <chineseTraditional>鄧世昌</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Deng_Shichang.png</path>
+   <path>Pictures/Leaders/Deng_Shichang.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -351,7 +351,7 @@ https://en.wikipedia.org/wiki/Lin_Yongsheng</english>
    <chineseTraditional>丘寶仁</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Qiu_Baoren.png</path>
+   <path>Pictures/Leaders/Qiu_Baoren.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -381,7 +381,7 @@ https://baike.baidu.com/item/%E9%82%B1%E5%AE%9D%E4%BB%81/8717162</english>
    <chineseTraditional>李和</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Li He.png</path>
+   <path>Pictures/Leaders/Li He.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -409,7 +409,7 @@ https://zh.wikipedia.org/wiki/%E6%9D%8E%E5%92%8C_(%E5%8C%97%E6%B4%8B%E6%B0%B4%E5
    <chineseTraditional>吳敬榮</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Wu_Jingrong.png</path>
+   <path>Pictures/Leaders/Wu_Jingrong.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -609,7 +609,7 @@ https://ja.wikipedia.org/wiki/%E9%87%8E%E6%9D%91%E8%B2%9E</english>
    <chineseTraditional>內田正敏</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Uchida_Masatoshi.png</path>
+   <path>Pictures/Leaders/Uchida_Masatoshi.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -843,7 +843,7 @@ https://en.wikipedia.org/wiki/Tsai_Tingkan</english>
    <chineseTraditional>王平</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Wang Ping_Placeholder.png</path>
+   <path>Pictures/Leaders/Wang Ping_Placeholder.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -1473,7 +1473,7 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</english>
    <chineseTraditional>龔照璵</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures\Leaders\Gong Zhaoyu.png</path>
+   <path>Pictures\Leaders\Gong Zhaoyu.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -1569,7 +1569,7 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</english>
    <chineseTraditional>西寬二郎</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures\Leaders\Nishi Kanjirō.png</path>
+   <path>Pictures\Leaders\Nishi Kanjirō.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -1684,7 +1684,7 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</english>
    <chineseTraditional>大寺安純</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures\Leaders\Ōdera Yasuzumi.png</path>
+   <path>Pictures\Leaders\Ōdera Yasuzumi.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -2124,7 +2124,7 @@ https://shozokan.nich.go.jp/collection/object/SZK001476-353</english>
    <chineseTraditional>有村有恆</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures\Leaders\Kimura Aritsune.png</path>
+   <path>Pictures\Leaders\Kimura Aritsune.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -2924,7 +2924,7 @@ https://en.wikipedia.org/wiki/Ury%C5%AB_Sotokichi</english>
    <chineseTraditional>仙頭武央</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures\Leaders\Sento_Takenaka.png</path>
+   <path>Pictures\Leaders\Sento_Takenaka.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -4053,7 +4053,7 @@ https://shozokan.nich.go.jp/collection/?at=imageList&amp;id=12283</english>
    <chineseTraditional>楊用霖</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures\Leaders\Yang_Yonglin.png</path>
+   <path>Pictures\Leaders\Yang_Yonglin.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -4971,7 +4971,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</eng
    <chineseTraditional>羅伯特·哈索恩·約翰斯頓-斯圖爾特</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures\Leaders\Britain_Generic_Leader.png</path>
+   <path>Pictures\Leaders\Britain_Generic_Leader.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -5176,7 +5176,7 @@ https://dreadnoughtproject.org/tfs/index.php/John_Rushworth_Jellicoe,_First_Earl
    <chineseTraditional>約翰·麥奎</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures\Leaders\Britain_Generic_Leader.png</path>
+   <path>Pictures\Leaders\Britain_Generic_Leader.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -5577,7 +5577,7 @@ https://en.wikipedia.org/wiki/Roger_Keyes,_1st_Baron_Keyes
    <chineseTraditional>科林·麥肯齊</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures\Leaders\Britain_Generic_Leader.png</path>
+   <path>Pictures\Leaders\Britain_Generic_Leader.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -6711,7 +6711,7 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
    <chineseTraditional>弗朗茨·馮·希佩爾</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Franz_von_Hipper.png</path>
+   <path>Pictures/Leaders/Franz_von_Hipper.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>AboveAverage</navalStrategic>
@@ -7129,7 +7129,7 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
    <chineseTraditional>埃爾哈德·施密特</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Ehrhard_Schmidt.png</path>
+   <path>Pictures/Leaders/Ehrhard_Schmidt.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <objectId>ec9a7d8f-159b-544d-b30a-9ff73a2550cc</objectId>
@@ -7277,7 +7277,7 @@ https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
    <chineseTraditional>奧斯卡·海內克</chineseTraditional>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Oskar_Heinecke.png</path>
+   <path>Pictures/Leaders/Oskar_Heinecke.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <objectId>d9c3ab2b-5843-5f0c-9b9f-6ebdca66445a</objectId>
